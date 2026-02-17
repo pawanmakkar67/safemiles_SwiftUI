@@ -25,6 +25,7 @@ class LogsViewModel: ObservableObject {
     @Published var availableDates: [Date] = []
     @Published var currentLog: Logs?
     @Published var dutySegments: [DutySegment] = []
+    @Published var totalRecapHours: String = "00:00"
     @Published var isLoading = false
     
     init() {
@@ -65,9 +66,9 @@ class LogsViewModel: ObservableObject {
                 self.logsData = Global.shared.logsDataVal
                 self.extractAvailableDates()
                 
-                // Select first available date if current selection is not valid or just default to recent
-                if self.selectedDate == Date(), let firstDate = self.availableDates.first {
-                     self.selectedDate = firstDate
+                // Select last available date (latest) if current selection is not valid or default
+                if self.selectedDate == Date(), let lastDate = self.availableDates.last {
+                     self.selectedDate = lastDate
                 }
                 
                 self.updateCurrentLog()
@@ -83,6 +84,7 @@ class LogsViewModel: ObservableObject {
         guard let logs = logsData?.logs else { return }
         
         let dateFormatter = DateFormatter()
+        dateFormatter.timeZone = getAppTimeZone()
         dateFormatter.dateFormat = "yyyy-MM-dd"
         let selectedDateStr = dateFormatter.string(from: selectedDate)
         
@@ -98,10 +100,11 @@ class LogsViewModel: ObservableObject {
         guard let logs = logsData?.logs else { return }
         
         let dateFormatter = DateFormatter()
+        dateFormatter.timeZone = getAppTimeZone()
         dateFormatter.dateFormat = "yyyy-MM-dd"
         
         let dates = logs.compactMap { dateFormatter.date(from: $0.date ?? "") }
-        self.availableDates = dates.sorted(by: { $0 < $1 })
+        self.availableDates = Array(Set(dates)).sorted(by: { $0 < $1 })
     }
     
     func changeDate(by days: Int) {
@@ -113,87 +116,87 @@ class LogsViewModel: ObservableObject {
     
     private func calculateDutySegments() {
         dutySegments.removeAll()
-//        guard let log = currentLog else {
-//            // Default: OFF for 24h if no log
-//            dutySegments = [DutySegment(status: .off, startHour: 0, endHour: 24, isDotted: false)]
-//            return
-//        }
-//        
-//        let allEvents = log.events ?? []
-//        // Filter out 'login' events for the graph as requested
-//        let events = allEvents.filter { $0.code?.lowercased() != "login" }
-//        let lastCode = log.log ?? "off"
-//        
-//        if events.isEmpty {
-//            addInitialEvents(code: lastCode, initialTime: log.last_eventdatetime ?? "", noEvents: true)
-//            return
-//        }
-//        
-//        // Ported Logic from EventVC
-//        for (index, value) in events.enumerated() {
-//            var currentValue: EventsModel? = value
-//            var nextValue: EventsModel?
-//            
-//            if events.count == 1 {
-//                nextValue = events[index]
-//            } else if (index + 1) < events.count {
-//                nextValue = events[index + 1]
-//            } else if (index == events.count - 1) {
-//                // Last element
-//            }
-//            
-//            // Add initial segment if first event is not at 00:00
-//            if index == 0 {
-//                addInitialEvents(code: lastCode, initialTime: currentValue?.eventdatetime ?? "")
-//            }
-//            
-//            guard let currentCode = currentValue?.code else { continue }
-//            
-//            let startHour = getHourWithMinutes(from: currentValue?.eventdatetime)
-//            var endHour: Float = 0.0
-//            
-//            // Determine End Hour
-//            if index == events.count - 1 {
-//                endHour = 24.0 // Or current time if Today? simplified to 24 for now, can refine.
-//                if Calendar.current.isDateInToday(selectedDate) {
-//                    endHour = getCurrentHourInCDT()
-//                }
-//            } else {
-//                 endHour = getHourWithMinutes(from: nextValue?.eventdatetime)
-//            }
-//            
-//            if events.count == 1 {
-//                endHour = 24.0
-//                if Calendar.current.isDateInToday(selectedDate) {
-//                    endHour = getCurrentHourInCDT()
-//                }
-//            }
-//            
-//            // Map Code to Status
-//            var status: DutyStatus = .off
-//            var isDotted = false
-//            
-//            switch currentCode {
-//            case "on", "login", "Active":
-//                status = .on
-//            case "ym":
-//                status = .on
-//                isDotted = true
-//            case "sb":
-//                status = .sleeper
-//            case "d":
-//                status = .driving
-//            case "off":
-//                status = .off
-//            case "pu":
-//                status = .off
-//                isDotted = true
-//            default:
-//                status = .off
-//            }
-//            
-//            dutySegments.append(DutySegment(status: status, startHour: startHour, endHour: endHour, isDotted: isDotted))
-//        }
+        guard let log = currentLog else {
+            // Default: OFF for 24h if no log
+            dutySegments = [DutySegment(status: .off, startHour: 0, endHour: 24, isDotted: false)]
+            return
+        }
+        
+        let allEvents = log.events ?? []
+        // Filter out 'login' events for the graph as requested
+        let events = allEvents.filter { $0.code?.lowercased() != "login" }
+        let lastCode = log.last_code ?? "off"
+        
+        if events.isEmpty {
+            addInitialEvents(code: lastCode, initialTime: log.date ?? "", noEvents: true)
+            return
+        }
+        
+        // Ported Logic from EventVC
+        for (index, value) in events.enumerated() {
+            var currentValue: Events? = value
+            var nextValue: Events?
+            
+            if events.count == 1 {
+                nextValue = events[index]
+            } else if (index + 1) < events.count {
+                nextValue = events[index + 1]
+            } else if (index == events.count - 1) {
+                // Last element
+            }
+            
+            // Add initial segment if first event is not at 00:00
+            if index == 0 {
+                addInitialEvents(code: lastCode, initialTime: currentValue?.eventdatetime ?? "")
+            }
+            
+            guard let currentCode = currentValue?.code else { continue }
+            
+            let startHour = getHourWithMinutes(from: currentValue?.eventdatetime)
+            var endHour: Float = 0.0
+            
+            // Determine End Hour
+            if index == events.count - 1 {
+                endHour = 24.0 // Or current time if Today? simplified to 24 for now, can refine.
+                if Calendar.current.isDateInToday(selectedDate) {
+                    endHour = getCurrentHourInCDT()
+                }
+            } else {
+                 endHour = getHourWithMinutes(from: nextValue?.eventdatetime)
+            }
+            
+            if events.count == 1 {
+                endHour = 24.0
+                if Calendar.current.isDateInToday(selectedDate) {
+                    endHour = getCurrentHourInCDT()
+                }
+            }
+            
+            // Map Code to Status
+            var status: DutyStatus = .off
+            var isDotted = false
+            
+            switch currentCode {
+            case "on", "login", "Active":
+                status = .on
+            case "ym":
+                status = .on
+                isDotted = true
+            case "sb":
+                status = .sleeper
+            case "d":
+                status = .driving
+            case "off":
+                status = .off
+            case "pu":
+                status = .off
+                isDotted = true
+            default:
+                status = .off
+            }
+            
+            dutySegments.append(DutySegment(status: status, startHour: startHour, endHour: endHour, isDotted: isDotted))
+        }
     }
     
     private func addInitialEvents(code: String, initialTime: String, noEvents: Bool = false) {
@@ -233,6 +236,9 @@ class LogsViewModel: ObservableObject {
     private func getHourWithMinutes(from dateStr: String?) -> Float {
         guard let dateStr = dateStr else { return 0.0 }
         let formatter = ISO8601DateFormatter()
+        // The formatter parsers the string into a Date (absolute time).
+        // Setting timeZone on formatter helps if the string has no offset, but strict ISO8601 usually does.
+        formatter.timeZone = getAppTimeZone()
         formatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
         
         var date = formatter.date(from: dateStr)
@@ -242,7 +248,11 @@ class LogsViewModel: ObservableObject {
         }
         
         guard let validDate = date else { return 0.0 }
-        let calendar = Calendar.current
+        
+        // Use App TimeZone for converting the absolute Date to hours/minutes
+        var calendar = Calendar.current
+        calendar.timeZone = getAppTimeZone()
+        
         let hour = calendar.component(.hour, from: validDate)
         let minute = calendar.component(.minute, from: validDate)
         
@@ -251,7 +261,8 @@ class LogsViewModel: ObservableObject {
     
     private func getCurrentHourInCDT() -> Float {
         let date = Date()
-        let calendar = Calendar.current
+        var calendar = Calendar.current
+        calendar.timeZone = getAppTimeZone()
         let hour = calendar.component(.hour, from: date)
         let minute = calendar.component(.minute, from: date)
         return Float(hour) + (Float(minute) / 60.0)

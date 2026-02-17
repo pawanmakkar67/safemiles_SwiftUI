@@ -3,6 +3,8 @@ import CoreBluetooth
 import Combine
 import SwiftUI
 import PacificTrack
+import ObjectMapper
+import Alamofire
 
 /// Tracker Peripheral Wrapper
 struct TrackerPeripheral {
@@ -18,6 +20,8 @@ class BLEManager: NSObject, ObservableObject, TrackerServiceDelegate {
     @Published var state: CBManagerState = .unknown
     @Published var discoveredPeripherals = [TrackerPeripheral]()
     @Published var connectedPeripheral: CBPeripheral?
+    
+    private var lastFetchedVin: String?
     
     var centralManager: CBCentralManager!
     
@@ -228,6 +232,11 @@ extension BLEManager {
         let eventTypeTag = event.getValue(forTag: "E") ?? ""
         print("Event Received: #\(event.sequenceNumber) \(eventTypeTag)")
         
+        // Fetch vehicle details when event data is received
+        Task {
+            await self.getVehicleDetails()
+        }
+        
         // Notify system that event is processed
         processed(true)
     }
@@ -264,5 +273,32 @@ extension BLEManager {
         // If there are other specific dictionary updates required (like 'eldevice' or 'virtualDashboard' dictionaries 
         // mentioned in the snippet), they should be added here if those variables are accessible.
         // For now, updating Global.shared is the critical part for the new views.
+    }
+    
+    // MARK: - Vehicle Details API
+    
+    func getVehicleDetails() async {
+        // Get VIN from EventData
+        guard let eventData = Global.shared.trackerInfoV,
+              let vehicleVinNo = eventData.vin,
+              !vehicleVinNo.isEmpty,
+              vehicleVinNo != lastFetchedVin else {
+            return
+        }
+        
+        lastFetchedVin = vehicleVinNo
+        
+        let vehicleUrl = ApiList.getVehicleDetails + vehicleVinNo + "/"
+        
+        APIManager.shared.request(url: vehicleUrl, method: .get) { comp in
+            // Completion handler
+        } success: { response in
+            let obj = Mapper<VehicleDetailsModel>().map(JSONObject: response)
+            Global.shared.connectVehicleDetail = obj
+            UserDefaults.setConnectvehicle(obj)
+            print("Vehicle details fetched successfully for VIN: \(vehicleVinNo)")
+        } failure: { error in
+            print("Failed to fetch vehicle details: \(error)")
+        }
     }
 }

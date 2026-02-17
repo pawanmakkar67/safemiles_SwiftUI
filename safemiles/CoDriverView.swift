@@ -17,7 +17,7 @@ struct CoDriverView: View {
                 // Common Header
                 CommonHeader(
                     title: "Co-Driver",
-                    leftIcon: "line.3.horizontal",
+                    leftIcon: "Menu",
                     onLeftTap: {
                         withAnimation {
                             showSideMenu = true

@@ -19,8 +19,8 @@ struct AppColors {
     static let buttonTextBlack = Color(hex: "0A0A0A")
     static let textDarkGray = Color(hex: "333333")
     static let cardBackground = Color.white
+    static let NoteBackground = Color(hex: "#F1F5F9")
 
-    
     // Home View Colors
     static let ringActive = Color.cyan
     static let ringBackground = Color.gray.opacity(0.2)

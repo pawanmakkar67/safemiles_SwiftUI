@@ -16,7 +16,7 @@ class AddDvirViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
     @Published var selectedVehicle: VehicleData?
     @Published var vehicleDefects: [String] = []
     
-    @Published var trailers: String = ""
+    @Published var trailers: [String] = []
     @Published var trailerDefects: [String] = []
     
     @Published var signatureImage: UIImage?
@@ -35,11 +35,14 @@ class AddDvirViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
     private let locationManager = CLLocationManager()
     
     init(dvirData: DivrData? = nil) {
+        print("DEBUG: AddDvirViewModel - init")
         super.init()
         if let data = dvirData {
+            print("DEBUG: AddDvirViewModel - init with existing data: \(data.id ?? "unknown")")
             self.editingDvirId = data.id
             preFillData(data)
         } else {
+            print("DEBUG: AddDvirViewModel - init new report")
             setupInitialData()
             setupLocation() // Only auto-detect location for new reports
         }
@@ -49,6 +52,7 @@ class AddDvirViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
         // Pre-fill time
         if let dateStr = data.dvir_date_time {
              let formatter = ISO8601DateFormatter()
+             formatter.timeZone = getAppTimeZone()
              formatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
              if let date = formatter.date(from: dateStr) {
                  self.time = date
@@ -66,7 +70,7 @@ class AddDvirViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
         self.company = Global.shared.myProfile?.company?.name ?? ""
         self.status = data.status ?? "Vehicle Condition Satisfactory"
         self.remarks = data.remarks ?? ""
-        self.trailers = data.trailers?.joined(separator: ", ") ?? ""
+        self.trailers = data.trailers ?? []
         
         if let vehicleId = data.vehicle?.id {
             self.selectedVehicle = Global.shared.vehicleList.first(where: { $0.id == vehicleId })
@@ -88,18 +92,27 @@ class AddDvirViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
     }
     
     private func setupLocation() {
+        print("DEBUG: AddDvirViewModel - setupLocation started")
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
     }
     
+    private var hasResolvedLocation = false
+    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        guard let loc = locations.last else { return }
+        guard let loc = locations.last, !hasResolvedLocation else { return }
+        print("DEBUG: AddDvirViewModel - didUpdateLocations: \(loc.coordinate)")
+        
+        // Stop updating immediately to prevent further delegate calls
         locationManager.stopUpdatingLocation()
+        hasResolvedLocation = true
         
         let geocoder = CLGeocoder()
-        geocoder.reverseGeocodeLocation(loc) { placemarks, error in
+        geocoder.reverseGeocodeLocation(loc) { [weak self] placemarks, error in
+            guard let self = self else { return }
+            
             if let place = placemarks?.first {
                 var addressString = ""
                 if let subThoroughfare = place.subThoroughfare { addressString += subThoroughfare + " " }
@@ -108,6 +121,7 @@ class AddDvirViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
                 if let administrativeArea = place.administrativeArea { addressString += administrativeArea }
                 
                 DispatchQueue.main.async {
+                    print("DEBUG: AddDvirViewModel - Location resolved: \(addressString)")
                     if self.location.isEmpty { // Only set if empty
                          self.location = addressString
                     }
@@ -117,11 +131,14 @@ class AddDvirViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
     }
     
     func updateStatus() {
+        print("DEBUG: AddDvirViewModel - updateStatus called")
         let hasDefects = !vehicleDefects.isEmpty || !trailerDefects.isEmpty
+        print("DEBUG: AddDvirViewModel - hasDefects: \(hasDefects) (Vehicle: \(vehicleDefects.count), Trailer: \(trailerDefects.count))")
         
         // Remove "Vehicle Condition Satisfactory" if defects exist
         if hasDefects {
             if status == "Vehicle Condition Satisfactory" {
+                print("DEBUG: AddDvirViewModel - Changing status to 'Has Defects'")
                 status = "Has Defects"
             }
         } else {
@@ -129,6 +146,7 @@ class AddDvirViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
             // The logic in snippet:
             // if (DefectsField.text == "" && Defect2Field.text == "") -> "Vehicle Condition Satisfactory"
             if status == "Has Defects" {
+                print("DEBUG: AddDvirViewModel - Changing status back to 'Vehicle Condition Satisfactory'")
                 status = "Vehicle Condition Satisfactory"
             }
         }
@@ -141,15 +159,13 @@ class AddDvirViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
         
         // Format Date
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+        dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
         let dateSelected = dateFormatter.string(from: time)
-        
-        // Trailers Array
-        let trailersArr = trailers.components(separatedBy: ",").map { $0.trimmingCharacters(in: .whitespaces) }.filter { !$0.isEmpty }
-        
+
         // Params
         var params: [String: Any] = [
-            "dvir_time": dateSelected,
+            "dvir_date_time": dateSelected,
             "location": location,
             "odometer": odometer,
             "status": status,
@@ -157,7 +173,7 @@ class AddDvirViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
             "trailer_defects": trailerDefects,
             "vehicle": selectedVehicle?.id ?? "",
             "vehicle_defects": vehicleDefects,
-            "trailers": trailersArr
+            "trailers": trailers
         ]
         
         // Only include signature if it's new/changed. If editing and no new signature, maybe backend keeps old?

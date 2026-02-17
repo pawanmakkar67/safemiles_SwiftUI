@@ -8,10 +8,13 @@ struct DvirDetailView: View {
     @State private var data: DivrData
     @Environment(\.presentationMode) var presentationMode
     @State private var showEditView = false
+    @State private var isNavigatingToEdit = false
+    var dismissToRoot: (() -> Void)?
     
-    init(data: DivrData) {
+    init(data: DivrData, dismissToRoot: (() -> Void)? = nil) {
         self.initialData = data
         _data = State(initialValue: data)
+        self.dismissToRoot = dismissToRoot
     }
     
     var body: some View {
@@ -19,10 +22,13 @@ struct DvirDetailView: View {
             // Header
             CommonHeader(
                 title: "DVIR",
-                leftIcon: "chevron.left",
-                rightIcon: "antenna.radiowaves.left.and.right",
+                leftIcon: "left",
                 onLeftTap: {
-                    presentationMode.wrappedValue.dismiss()
+                    if let dismissToRoot = dismissToRoot {
+                        dismissToRoot()
+                    } else {
+                        presentationMode.wrappedValue.dismiss()
+                    }
                 },
                 onRightTap: {
                      // Bluetooth action
@@ -42,6 +48,7 @@ struct DvirDetailView: View {
                             
                             Menu {
                                 Button(action: {
+                                    isNavigatingToEdit = true
                                     showEditView = true
                                 }) {
                                     Label("Edit", systemImage: "pencil")
@@ -56,11 +63,6 @@ struct DvirDetailView: View {
                                 Image(systemName: "ellipsis")
                                     .foregroundColor(AppColors.textBlack)
                                     .padding(8) // Increase touch target
-                            }
-                            
-                            // Edit Navigation Link
-                            NavigationLink(destination: AddDvirView(dvirData: data), isActive: $showEditView) {
-                                EmptyView()
                             }
                         }
                         
@@ -192,12 +194,19 @@ struct DvirDetailView: View {
                     Spacer().frame(height: 20)
                 }
             }
+            
+            // Hidden Navigation Link for Edit
+            NavigationLink(destination: AddDvirView(dvirData: data), isActive: $showEditView) {
+                EmptyView()
+            }
+            .hidden()
         }
         .background(AppColors.background)
         .navigationBarHidden(true)
         .onAppear {
             fetchDetail()
         }
+
     }
     
     // MARK: - Subviews & Helpers
@@ -246,6 +255,7 @@ struct DvirDetailView: View {
     func formatDate(_ dateStr: String?) -> String {
         guard let dateStr = dateStr else { return "" }
         let formatter = ISO8601DateFormatter()
+        formatter.timeZone = getAppTimeZone()
         formatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
         var date = formatter.date(from: dateStr)
         if date == nil {
@@ -255,6 +265,7 @@ struct DvirDetailView: View {
         
         if let validDate = date {
             let displayFormatter = DateFormatter()
+            displayFormatter.timeZone = getAppTimeZone()
             displayFormatter.dateFormat = "EEEE MMM d, yyyy"
             return displayFormatter.string(from: validDate)
         }
@@ -264,6 +275,7 @@ struct DvirDetailView: View {
      func formatDateTime(_ dateStr: String?) -> String {
         guard let dateStr = dateStr else { return "" }
         let formatter = ISO8601DateFormatter()
+        formatter.timeZone = getAppTimeZone()
         formatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
          
         var date = formatter.date(from: dateStr)
@@ -274,8 +286,11 @@ struct DvirDetailView: View {
         
         if let validDate = date {
             let displayFormatter = DateFormatter()
-            displayFormatter.dateFormat = "hh:mm a zzz" // 12:00 PM EST
-            return displayFormatter.string(from: validDate)
+            displayFormatter.timeZone = getAppTimeZone()
+            displayFormatter.dateFormat = "hh:mm a"
+            let timeStr = displayFormatter.string(from: validDate)
+            let abbr = getAbbreviation(displayFormatter.timeZone)
+            return "\(timeStr) \(abbr)"
         }
         return dateStr
     }

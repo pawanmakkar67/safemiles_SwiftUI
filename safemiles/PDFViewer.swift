@@ -27,7 +27,7 @@ struct PDFViewer: View {
         VStack(spacing: 0) {
             CommonHeader(
                 title: title,
-                leftIcon: "arrow.left",
+                leftIcon: "left",
                 onLeftTap: {
                     presentationMode.wrappedValue.dismiss()
                 },

@@ -3,6 +3,7 @@ import Combine
 import ObjectMapper
 import CoreBluetooth
 import Alamofire
+import PacificTrack
 
 class HomeViewModel: ObservableObject {
     @Published var circleBorderColor: Color = .gray.opacity(0.2)
@@ -26,6 +27,13 @@ class HomeViewModel: ObservableObject {
     @Published var vehicle: String = ""
     @Published var driver: String = ""
     
+    // Drive Progress (0.0 to 1.0 for circular progress bar)
+    @Published var driveProgress: Double = 0.0
+    
+    // Status Update Modal
+    @Published var showStatusUpdateModal: Bool = false
+    @Published var selectedStatusUpdateCode: String = ""
+    
     // Timer Logic
     private var timer: Timer?
     private var refreshTimer: Timer?
@@ -33,7 +41,20 @@ class HomeViewModel: ObservableObject {
     
     // Status Logic
     private var speedStateCounter = 0
-    private var lastSpeedState: String? // Simplified speed state
+    private var lastSpeedState: SpeedState?
+    private var manualChange: String = ""
+    
+    // Speed tracking
+    @Published var speed: String = "0"
+    
+    // BLE Manager reference
+    private let ble = BLEManager.shared
+    
+    // Speed State Enum
+    enum SpeedState {
+        case low
+        case high
+    }
     
     init() {
         startPolling()
@@ -45,11 +66,24 @@ class HomeViewModel: ObservableObject {
                 self?.timerString = secondsToHoursMinutes(remaining)
             }
         })
+        
+        // Notification Observers
+        NotificationCenter.default.addObserver(self, selector: #selector(handleRecapUpdate), name: .recapUpdate, object: nil)
+    }
+    
+    @objc func handleRecapUpdate() {
+        print("HomeViewModel: Received recapUpdate notification")
+        fetchRecap()
+        Task {
+            await getLiveStatus()
+            await getVehciles() // Refresh vehicles too if needed, but status is key
+        }
     }
     
     deinit {
         stopPolling()
         stopAutoRefresh()
+        NotificationCenter.default.removeObserver(self)
     }
     
     func onAppear() {
@@ -64,29 +98,31 @@ class HomeViewModel: ObservableObject {
         // referencing BLEManager.shared logic from StatusVC
     }
     
-     func getLiveStatus() async {
+    @Published var allViolations: [Violation] = []
+    @Published var showViolationsSheet: Bool = false
+
+    // ... (rest of the file) ...
+    
+    func getLiveStatus() async {
       
-         let params: [String: Any] = ["limit": 15]
+         let page = ((Global.shared.logsDataVal?.logs?.count ?? 0) / 10) + 1
+         let params = ["page": page]
          
-         APIManager.shared.request(url: ApiList.getLogs, method: .get) { comp in
-             
+         APIManager.shared.request(url: ApiList.getLogs, method: .get, parameters: params) { comp in
+             // completion
          } success: { response in
-                          let obj = Mapper<logsModel>().map(JSONObject: response)
-//                          Global.shared.logsDataVal = obj?.logs
-//                          Global.shared.logsTotalCount = obj?.total_count ?? 0
+             
+             guard let obj = Mapper<logsModel>().map(JSONObject: response) else { return }
+             
+             if page != 1, let newLogs = obj.logs {
+                 Global.shared.logsDataVal?.logs?.append(contentsOf: newLogs)
+             } else {
+                 Global.shared.logsDataVal = obj
+             }
 
          } failure: { error in
              
          }
-
-
-//         APIManager.shared.request(url: ApiList.getLogs,method: .get, parameters: params) { comp in
-//             
-//         } success: { response in
-//             
-//         } failure: { error in
-//             
-//         }
     }
     
     func getVehciles() async {
@@ -97,11 +133,11 @@ class HomeViewModel: ObservableObject {
             
             let obj = Mapper<vehicleModel>().map(JSONObject: response)
             Global.shared.vehicleList = obj?.data ?? []
-            if Global.shared.vehicleList.count > 0 {
-                DispatchQueue.main.async {
-                    self.vehicle = Global.shared.vehicleList[0].id ?? ""
-                }
-            }
+//            if Global.shared.vehicleList.count > 0 {
+//                DispatchQueue.main.async {
+//                    self.vehicle = Global.shared.vehicleList[0].id ?? ""
+//                }
+//            }
         } failure: { error in
             
         }
@@ -158,29 +194,35 @@ class HomeViewModel: ObservableObject {
         self.currentStatus = getTitles(code)
         updateCircleStatus(code: code)
         self.recapDays = data.recap_days ?? []
+        self.allViolations = data.violations ?? []
         
-        // Populate Summary
-//        self.totalRecapHours = String(format: "%.2f", data.total_recap_hours ?? 0.0)
-//        self.hoursAvailableToday = String(format: "%.2f", data.hours_available_today ?? 0.0)
-//        self.hoursAvailableTomorrow = String(format: "%.2f", data.hours_available_tomorrow ?? 0.0)
-        
-        // Today's Worked Hours Logic
-        let todayStr = getOnlyDate(Date())
-        if let todayEntry = data.recap_days?.first(where: { $0.date == todayStr }) {
-            let time = todayEntry.worked_hours ?? "00:00"
-            let parts = time.components(separatedBy: ":")
-            if parts.count >= 2 {
-                self.hoursWorkedToday = "\(parts[0]):\(parts[1])"
-            } else {
-                self.hoursWorkedToday = time
-            }
-        } else {
-            self.hoursWorkedToday = "00:00"
+        if let lastEventVehicle = data.last_event?.vehicle {
+            self.vehicle = lastEventVehicle
         }
         
-        self.todayDateStr = getFormattedDate(from: todayStr)
-        if let tomorrow = Calendar.current.date(byAdding: .day, value: 1, to: Date()) {
-            self.tomorrowDateStr = getFormattedDate(from: getOnlyDate(tomorrow))
+        // Populate Summary
+        
+        // Convert hours_worked from hh:mm:ss to hh:mm
+        if let hoursWorked = data.hours_worked {
+            let components = hoursWorked.components(separatedBy: ":")
+            if components.count >= 2 {
+                self.hoursAvailableToday = "\(components[0]):\(components[1])"
+            } else {
+                self.hoursAvailableToday = hoursWorked
+            }
+        } else {
+            self.hoursAvailableToday = "00:00"
+        }
+
+        if let hoursWorked = data.hours_available {
+            let components = hoursWorked.components(separatedBy: ":")
+            if components.count >= 2 {
+                self.hoursAvailableTomorrow = "\(components[0]):\(components[1])"
+            } else {
+                self.hoursAvailableTomorrow = hoursWorked
+            }
+        } else {
+            self.hoursAvailableTomorrow = "00:00"
         }
         
         // --- HOS Calculations ---
@@ -190,6 +232,22 @@ class HomeViewModel: ObservableObject {
                 diffsec = diff.absSeconds
             }
         }
+
+        // Calculate total recap hours by summing all worked_hours from recap_days
+        // worked_hours comes in HH:MM:SS format (e.g., "00:22:44")
+        var totalSeconds = 0
+        for day in self.recapDays {
+            if let workedHours = day.worked_hours {
+                let components = workedHours.components(separatedBy: ":")
+                if components.count == 3,
+                   let hours = Int(components[0]),
+                   let minutes = Int(components[1]),
+                   let seconds = Int(components[2]) {
+                    totalSeconds += (hours * 3600) + (minutes * 60) + seconds
+                }
+            }
+        }
+        self.totalRecapHours = secondsToHoursMinutes(totalSeconds)
         
         // Countdown/Timer Logic Calculation (Simplified port from StatusVC)
         // ... (Logic for countdown vs counter based on status)
@@ -258,6 +316,18 @@ class HomeViewModel: ObservableObject {
                         }
                     }
                 }
+                
+                // Update progress bar for off/sb/pu statuses
+                let totalLimit = newVal < 50400 ? 1800 : 36000
+                if let vll = data.last_event?.eventdatetime {
+                    if let diff = differenceHMSFromNow(isoString: vll) {
+                        if diff.isPast {
+                            let remainingSecs = max(totalLimit - diff.absSeconds, 0)
+                            let progress = Double(remainingSecs) / Double(totalLimit)
+                            self.driveProgress = progress
+                        }
+                    }
+                }
             }
             else {
                 if countdown.mode != .counter {
@@ -284,6 +354,24 @@ class HomeViewModel: ObservableObject {
                     secs = 0
                 }
                 driveValueLocal =  secondsToHoursMinutes(secs)
+                
+                // Calculate drive progress for circular progress bar (reverse mode)
+                // Drive (d): 28800 seconds (8 hours) - tracks only drive time
+                // On Duty (on) or Yard Move (ym): 50400 seconds (14 hours) - tracks total time
+                var totalLimit = 28800 // Default to drive limit
+                var consumedSeconds = vll
+                
+                if (code.lowercased() == "ym" || code.lowercased() == "on") {
+                    totalLimit = 50400 // 14-hour shift limit
+                    consumedSeconds = getTotalSecs(data.hos_status)
+                    consumedSeconds += diffsec
+                } else if (code.lowercased() == "d") {
+                    consumedSeconds += diffsec
+                }
+                
+                let remainingSeconds = max(totalLimit - consumedSeconds, 0)
+                let progress = Double(remainingSeconds) / Double(totalLimit)
+                self.driveProgress = progress
             }
             
             if let vll = data.hos_status?.code_d_sec {
@@ -318,19 +406,27 @@ class HomeViewModel: ObservableObject {
             if (code.lowercased() == "sb")  {
                 breakCal = diffsec
             }
-//            let objBreak = data.last_event?.sb_break ?? 0
-//            let currentSec = convertTimeToSeconds(timeString: driveValueLocal) ?? 0
-//            var IntSec = 0
-//            if currentSec > 28800 {
-//                IntSec = 28800 - Int(objBreak) - breakCal
-//            } else {
-//                IntSec = currentSec - Int(objBreak) - breakCal
-//            }
-//            
-//            if (IntSec < 0) {
-//                IntSec = 0
-//            }
-//            self.breakValue = secondsToHoursMinutes(max(IntSec, 0))
+            let objBreak = data.last_event?.sb_break ?? 0
+            let currentSec = convertTimeToSeconds(timeString: driveValueLocal) ?? 0
+            var IntSec = 0
+            if currentSec > 28800 {
+                IntSec = 28800 - Int(objBreak) - breakCal
+            } else {
+                IntSec = currentSec - Int(objBreak) - breakCal
+            }
+            
+            if (IntSec < 0) {
+                IntSec = 0
+            }
+            self.breakValue = secondsToHoursMinutes(max(IntSec, 0))
+            
+            // Update progress bar for break status
+            if (code.lowercased() == "sb") {
+                let totalLimit = currentSec > 28800 ? 28800 : currentSec
+                let remainingBreak = max(IntSec, 0)
+                let progress = totalLimit > 0 ? Double(remainingBreak) / Double(totalLimit) : 0.0
+                self.driveProgress = progress
+            }
     }
     private func updateCircleStatus(code: String) {
         // App Colors need to be mapped. Using SwiftUI Colors for now.
@@ -403,6 +499,215 @@ class HomeViewModel: ObservableObject {
     }
 
     private func updateEvents() {
-        // ... (Hardware update logic can be ported here if needed)
+        // Update speed from Global shared data
+        if let virtualDashboard = Global.shared.virtualDashboardData,
+           let currentSpeed = virtualDashboard.speed {
+            self.speed = "\(currentSpeed)"
+        }
+        
+        let codeRecap = Global.shared.recapvalues?.last_event?.code ?? "off"
+        var code = Global.shared.recapvalues?.last_event?.code ?? "off"
+        
+        if ble.connectedPeripheral != nil {
+            if (codeRecap == "on" || codeRecap == "d" || codeRecap.lowercased() == "off" || codeRecap.lowercased() == "sb") {
+                let currentSpeed = Int(speed) ?? 0
+                let currentState: SpeedState = currentSpeed < 5 ? .low : .high
+
+                // If speed state changed, reset counter
+                if lastSpeedState != currentState {
+                    speedStateCounter = 1 // First occurrence
+                    lastSpeedState = currentState
+                } else {
+                    speedStateCounter += 1 // Increment if state persists
+                }
+                
+                // If the state has been consistent for 2 checks, trigger the change
+                if speedStateCounter == 2 {
+                    var shouldUpdate = false
+                    switch currentState {
+                    case .low:
+                        if (codeRecap == "on" || codeRecap == "d") {
+                            code = "on"
+                            shouldUpdate = true
+                        }
+                    case .high:
+                        code = "d"
+                        shouldUpdate = true
+                    }
+                    
+                    if shouldUpdate {
+                        print("code changes from counter ==>", code)
+                        self.sendHardwareUpdate(code: code)
+                        // Reset counter after update to prevent continuous updates if logic requires
+                        speedStateCounter = 0
+                        lastSpeedState = nil // Reset state tracking
+                    }
+                }
+            }
+            
+            if manualChange != "" {
+                code = manualChange
+            }
+            else if code == "" {
+                code = codeRecap
+            }
+            if code == "" {
+                code = "on"
+            }
+            
+            self.sendHardwareUpdate(code: code)
+        }
+    }
+    
+    // MARK: - Hardware Update
+    // MARK: - Hardware Update
+    func sendHardwareUpdate(code: String) {
+        guard let eventData = Global.shared.EventData else {
+            print("No event data available for hardware update")
+            return
+        }
+        
+        let latitude = eventData.geolocation.latitude
+        let longitude = eventData.geolocation.longitude
+        let odometer = eventData.odometer
+        let engineHours = eventData.engineHours
+        
+        // Prepare ELD Data (trackerInfoV)
+        var eldevice: [String: Any] = [:]
+        if let trackerInfo = Global.shared.trackerInfoV {
+            // Manually map or use Mapper if available. 
+            // Using a simple manual map for key fields based on TrackerInfo definition
+//            eldevice["id"] = trackerInfo.id
+//            eldevice["mac_address"] = trackerInfo.macAddress
+//            eldevice["serial_number"] = trackerInfo.serialNumber
+//            eldevice["model"] = trackerInfo.model
+//            eldevice["firmware_version"] = trackerInfo.firmwareVersion
+//            eldevice["vin"] = trackerInfo.vin
+            // Add other fields if needed from TrackerInfo
+            
+            eldevice.updateValue(trackerInfo.productName, forKey: "eld_type")
+            eldevice.updateValue(trackerInfo.mainVersion.version, forKey: "fw_version")
+            eldevice.updateValue(trackerInfo.bleVersion.version, forKey: "bleVersion")
+            eldevice.updateValue(ble.connectedPeripheral?.identifier.uuidString ?? "", forKey: "device_uuid")
+            eldevice.updateValue(trackerInfo.serialNumber, forKey: "device_number")
+
+            
+        }
+        
+        // Prepare Event JSON (VirtualDashboardData)
+        var virtualDashboardJSON = ""
+        if let vDashboard = Global.shared.virtualDashboardData {
+            if let jsonString = vDashboard.toJSONString() {
+                virtualDashboardJSON = jsonString
+            }
+        }
+        
+        let driverId = self.driver
+        // Use connected vehicle ID if available, else default vehicle ID
+        let vehicleId = Global.shared.connectVehicleDetail?.id ?? self.vehicle
+        let vehicleVinNo = Global.shared.trackerInfoV?.vin ?? ""
+        let seqID = eventData.sequenceNumber 
+        let location_notes = "Automatic" // Placeholder or resolved address
+        let positioning = "Location generated when connected to ECM"
+
+        let params: [String: Any] = [
+            "eventdatetime": "\(Date())",
+            "code": code,
+            "cert_date": getOnlyDate(Date()),
+            "seq_id": seqID,
+            "origin": "Auto",
+            "status": "Active",
+            "driver": driverId,
+            "vehicle": vehicleId,
+            "odometer": odometer,
+            "engine_hours": engineHours,
+            "eld_data": eldevice,
+            "positioning": positioning,
+            "latitude": latitude,
+            "longitude": longitude,
+            "location_notes": location_notes,
+            "location_cal": location_notes,
+            "location_source": "Automatic",
+            "eventjson": virtualDashboardJSON,
+            "vin": vehicleVinNo
+        ]
+        
+        print("Sending hardware update with params: \(params)")
+        
+        APIManager.shared.request(url: ApiList.updateHardwareEvent, method: .post, parameters: params) { comp in
+            // Completion handler
+        } success: { response in
+            print("Hardware update successful: \(response)")
+            // Refresh recap after successful update
+            DispatchQueue.main.async {
+                self.fetchRecap()
+            }
+        } failure: { error in
+            print("Hardware update failed: \(error)")
+        }
+    }
+    
+    func getOnlyDate(_ date: Date) -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        return formatter.string(from: date)
+    }
+    
+    // MARK: - Manual Status Change
+    func setManualStatusChange(code: String) {
+        self.manualChange = code
+        updateEvents()
+    }
+    
+    func clearManualStatusChange() {
+        self.manualChange = ""
+    }
+}
+
+extension PacificTrack.VirtualDashboardData {
+    func toJSONString() -> String? {
+        var dict: [String: Any] = [:]
+        
+        if let val = self.busType { dict["busType"] = val }
+        if let val = self.odometerComputed { dict["odometerComputed"] = val }
+        if let val = self.engineHoursComputed { dict["engineHoursComputed"] = val }
+        if let val = self.currentGear { dict["currentGear"] = val }
+        if let val = self.seatbeltOn { dict["seatbeltOn"] = val }
+        if let val = self.speed { dict["speed"] = val }
+        if let val = self.rpm { dict["rpm"] = val }
+        if let val = self.numberOfDTCPending { dict["numberOfDTCPending"] = val }
+        if let val = self.oilPressure { dict["oilPressure"] = val }
+        if let val = self.oilLevel { dict["oilLevel"] = val }
+        if let val = self.oilTemperature { dict["oilTemperature"] = val }
+        if let val = self.coolantLevel { dict["coolantLevel"] = val }
+        if let val = self.coolantTemperature { dict["coolantTemperature"] = val }
+        if let val = self.fuelLevel { dict["fuelLevel"] = val }
+        if let val = self.DEFlevel { dict["DEFlevel"] = val }
+        if let val = self.engineLoad { dict["engineLoad"] = val }
+        if let val = self.barometer { dict["barometer"] = val }
+        if let val = self.intakeManifoldTemperature { dict["intakeManifoldTemperature"] = val }
+        if let val = self.engineFuelTankTemperature { dict["engineFuelTankTemperature"] = val }
+        if let val = self.engineIntercoolerTemperature { dict["engineIntercoolerTemperature"] = val }
+        if let val = self.engineTurboOilTemperature { dict["engineTurboOilTemperature"] = val }
+        if let val = self.transmisionOilTemperature { dict["transmisionOilTemperature"] = val }
+        if let val = self.fuelLevel2 { dict["fuelLevel2"] = val }
+        if let val = self.fuelRate { dict["fuelRate"] = val }
+        if let val = self.averageFuelEconomy { dict["averageFuelEconomy"] = val }
+        if let val = self.ambientAirTemperature { dict["ambientAirTemperature"] = val }
+        if let val = self.odometer { dict["odometer"] = val }
+        if let val = self.engineHours { dict["engineHours"] = val }
+        if let val = self.idleHours { dict["idleHours"] = val }
+        if let val = self.PTOHours { dict["PTOHours"] = val }
+        if let val = self.totalIdleFuel { dict["totalIdleFuel"] = val }
+        if let val = self.totalFuelUsed { dict["totalFuelUsed"] = val }
+        if let val = self.vin { dict["vin"] = val }
+        
+        do {
+            let data = try JSONSerialization.data(withJSONObject: dict, options: [])
+            return String(data: data, encoding: .utf8)
+        } catch {
+            print("Error serializing VirtualDashboardData: \(error)")
+            return nil
+        }
     }
 }

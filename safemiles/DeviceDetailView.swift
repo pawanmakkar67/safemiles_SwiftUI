@@ -16,8 +16,7 @@ struct DeviceDetailView: View {
             // Header
             CommonHeader(
                 title: "Device Details",
-                leftIcon: "arrow.left",
-                rightIcon: nil,
+                leftIcon: "left",
                 onLeftTap: {
                     presentationMode.wrappedValue.dismiss()
                 }
@@ -128,7 +127,7 @@ struct DeviceInfoCard: View {
     func formatDate(_ date: Date) -> String {
         let formatter = DateFormatter()
         formatter.dateFormat = "MM-dd-yyyy HH:mm:ss"
-        formatter.timeZone = TimeZone(abbreviation: "UTC")
+        formatter.timeZone = getAppTimeZone()
         return formatter.string(from: date)
     }
 }

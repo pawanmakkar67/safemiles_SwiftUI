@@ -10,7 +10,7 @@ struct SendLogsView: View {
             // Header
             CommonHeader(
                 title: "Send Logs",
-                leftIcon: "chevron.left",
+                leftIcon: "left",
                 rightIcon: nil,
                 onLeftTap: {
                     presentationMode.wrappedValue.dismiss()
@@ -44,7 +44,7 @@ struct SendLogsView: View {
                                         .foregroundColor(AppColors.textGray)
                                 }
                                 .padding(12)
-                                .background(AppColors.inputGray)
+                                .background(AppColors.textFieldBackground)
                                 .cornerRadius(8)
                                 .overlay(
                                     RoundedRectangle(cornerRadius: 8)

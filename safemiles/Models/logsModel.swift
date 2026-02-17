@@ -60,6 +60,7 @@ import ObjectMapper
 struct logsModel : Mappable {
     var logs : [Logs]?
     var metadata : Metadata?
+    var recap : RecapModel?
 
     init?(map: Map) {
 
@@ -69,6 +70,7 @@ struct logsModel : Mappable {
 
         logs <- map["logs"]
         metadata <- map["metadata"]
+        recap <- map["recap"]
     }
 
 }
@@ -99,9 +101,9 @@ struct Logs : Mappable {
     var date : String?
     var hours_driven : String?
     var events : [Events]?
-    var violations : [String]?
+    var violations : [Violation]?
     var log : Log?
-
+    var last_code : String?
     init?(map: Map) {
 
     }
@@ -113,6 +115,27 @@ struct Logs : Mappable {
         events <- map["events"]
         violations <- map["violations"]
         log <- map["log"]
+        last_code <- map["last_code"]
+    }
+
+}
+
+struct Violation : Mappable {
+    var id : String?
+    var violation_type : String?
+    var violation_notes : String?
+    var occurred_at : String?
+    
+    init?(map: Map) {
+
+    }
+
+    mutating func mapping(map: Map) {
+
+        id <- map["id"]
+        violation_type <- map["violation_type"]
+        violation_notes <- map["violation_notes"]
+        occurred_at <- map["occurred_at"]
     }
 
 }
@@ -129,7 +152,8 @@ struct Events : Mappable {
     var last_odometer : Double?
     var engine_hours : Double?
     var last_engine_hours : Double?
-
+    var time_diff : Int?
+    var is_last_event : Bool?
     init?(map: Map) {
 
     }
@@ -146,6 +170,8 @@ struct Events : Mappable {
         last_odometer <- map["last_odometer"]
         engine_hours <- map["engine_hours"]
         last_engine_hours <- map["last_engine_hours"]
+        time_diff <- map["time_diff"]
+        is_last_event <- map["is_last_event"]
     }
 
 }

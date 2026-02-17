@@ -36,9 +36,9 @@ struct BluetoothScanningView: View {
                         showDeviceDetail = true
                     }
                 }) {
-                    Image(systemName: "arrow.right")
+                    Image(systemName: "info.circle")
                         .font(AppFonts.iconMedium)
-                        .foregroundStyle(bleManager.connectedPeripheral?.state == .connected ? AppColors.green : AppColors.white)
+                        .foregroundStyle(AppColors.white)
                 }
             }
             .padding()
@@ -135,7 +135,9 @@ struct BluetoothScanningView: View {
                     .padding(.top, 10)
                     
                     // Footer Info Card
-                    FooterInfoCard()
+                    Image("footer_info_card")
+                        .resizable()
+                        .scaledToFit()
                         .padding()
                 }
             }
@@ -210,69 +212,3 @@ struct DeviceRow: View {
     }
 }
 
-struct FooterInfoCard: View {
-    var body: some View {
-        VStack(spacing: 12) {
-            VStack(alignment: .leading, spacing: 4) {
-                Text("SN: XAXXXXXXXXXX")
-                    .font(.caption)
-                    .foregroundColor(AppColors.textDarkGray)
-                
-                // Fake Barcode
-                BarcodeView()
-            }
-            .frame(maxWidth: .infinity, alignment: .leading)
-            
-            VStack(alignment: .leading, spacing: 4) {
-                Text("MAC: XABXXXAXXXB")
-                    .font(.caption)
-                    .foregroundColor(AppColors.textDarkGray)
-                 // Fake Barcode
-                BarcodeView()
-            }
-            .frame(maxWidth: .infinity, alignment: .leading)
-            
-            HStack {
-                Text("CODE: XXXXXX")
-                    .font(.caption)
-                    .foregroundColor(AppColors.textDarkGray)
-                Spacer()
-                Text("PT30-U")
-                    .font(.caption)
-                    .foregroundColor(AppColors.textDarkGray)
-            }
-            
-            HStack {
-                Text("FCC ID: XBAXXXBAXX")
-                    .font(.caption)
-                    .foregroundColor(AppColors.textDarkGray)
-                Spacer()
-                Text("IC: XXXXX-PT30U")
-                    .font(.caption)
-                    .foregroundColor(AppColors.textDarkGray)
-            }
-            
-            Divider()
-                .background(Color.gray)
-            
-            Text("Designed in California | Assembled in China")
-                .font(.caption2)
-                .foregroundColor(AppColors.textGray)
-        }
-        .padding()
-        .background(AppColors.footerBeige) // Beige/Light yellow color
-        .cornerRadius(8)
-    }
-}
-
-struct BarcodeView: View {
-    var body: some View {
-        HStack(spacing: 2) {
-            ForEach(0..<30) { _ in
-                Rectangle()
-                    .fill(AppColors.black)
-                    .frame(width: CGFloat.random(in: 1...4), height: 25)
-            }
-        }
-    }
-}

@@ -22,7 +22,7 @@ struct InformationPacketView: View {
                 // Common Header
                 CommonHeader(
                     title: "Information Packet",
-                    leftIcon: "line.3.horizontal",
+                    leftIcon: "Menu",
                     onLeftTap: {
                         withAnimation {
                             showSideMenu = true

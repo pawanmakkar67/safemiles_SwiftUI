@@ -14,7 +14,7 @@ struct SelectVehicleView: View {
                 // Common Header
                 CommonHeader(
                     title: "Select Vehicle",
-                    leftIcon: "line.3.horizontal",
+                    leftIcon: "Menu",
                     onLeftTap: {
                         withAnimation {
                             showSideMenu = true

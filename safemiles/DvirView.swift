@@ -5,103 +5,132 @@ struct DvirView: View {
     @StateObject private var viewModel = DvirViewModel()
     @Environment(\.presentationMode) var presentationMode
     @State private var showAddDvir = false
-    @State private var selectedDvir: DivrData?
     @State private var showDetail = false
+    @State private var selectedDvirData: DivrData?
     
     var body: some View {
-        NavigationView {
-            VStack(spacing: 0) {
-                // Header
-                CommonHeader(
-                    title: "DVIR",
-                    leftIcon: "line.3.horizontal",
-                    rightIcon: "antenna.radiowaves.left.and.right",
-                    onLeftTap: {
-                        withAnimation {
-                            showSideMenu = true
-                        }
-                    },
-                    onRightTap: {
-                        // Handle Bluetooth
+        ZStack {
+            // Main DVIR List View
+            mainListView
+                .zIndex(0)
+            
+            // AddDvirView overlay
+            if showAddDvir {
+                AddDvirView(onDismiss: {
+                    withAnimation {
+                        showAddDvir = false
                     }
-                )
+                })
+                .transition(.move(edge: .trailing))
+                .zIndex(1)
+                .onDisappear {
+                    print("DEBUG: DvirView - AddDvirView disappeared, refreshing")
+                    viewModel.fetchDivrs(refresh: true)
+                }
+            }
+            
+            // DvirDetailView overlay
+            if showDetail, let data = selectedDvirData {
+                DvirDetailView(data: data, dismissToRoot: {
+                    withAnimation {
+                        showDetail = false
+                        selectedDvirData = nil
+                    }
+                    print("DEBUG: DvirView - Dismiss to root, refreshing")
+                    viewModel.fetchDivrs(refresh: true)
+                })
+                .transition(.move(edge: .trailing))
+                .zIndex(1)
+            }
+        }
+        .navigationBarHidden(true)
+    }
+    
+    private var mainListView: some View {
+        VStack(spacing: 0) {
+            // Header
+            CommonHeader(
+                title: "DVIR",
+                leftIcon: "Menu",
+                onLeftTap: {
+                    withAnimation {
+                        showSideMenu = true
+                    }
+                },
+                onRightTap: {
+                    // Handle Bluetooth
+                }
+            )
+            
+            // Content
+            ZStack {
+                AppColors.background
+                    .edgesIgnoringSafeArea(.all)
                 
-                // Content
-                ZStack {
-                    AppColors.background
-                        .edgesIgnoringSafeArea(.all)
-                    
-                    VStack(spacing: 16) {
-                        // Navigation Links
-                        NavigationLink(destination: AddDvirView(), isActive: $showAddDvir) {
-                             EmptyView()
-                        }
-                        
-                        // Detail Link
-                        if let data = selectedDvir {
-                             NavigationLink(destination: DvirDetailView(data: data), isActive: $showDetail) {
-                                  EmptyView()
-                             }
-                        }
-                        
-                        // Add DVIR Button
-                        Button(action: {
+                VStack(spacing: 16) {
+                    // Add DVIR Button
+                    Button(action: {
+                        withAnimation {
                             showAddDvir = true
-                        }) {
-                            HStack {
-                                Image(systemName: "plus")
-                                Text("Add DVIR")
+                        }
+                    }) {
+                        HStack {
+                            Image(systemName: "plus")
+                            Text("Add DVIR")
+                        }
+                        .font(AppFonts.buttonTitle)
+                        .foregroundColor(AppColors.textBlack)
+                        .frame(maxWidth: .infinity)
+                        .padding()
+                        .background(AppColors.white)
+                        .cornerRadius(8)
+                        .shadow(color: AppColors.blackOpacity10, radius: 2, x: 0, y: 1)
+                    }
+                    .padding(.horizontal)
+                    .padding(.top, 5)
+                    
+                    // List
+                    ScrollView {
+                        LazyVStack(spacing: 16) {
+                            ForEach(viewModel.dvirData.indices, id: \.self) { index in
+                                let data = viewModel.dvirData[index]
+                                DvirRow(data: data)
+                                    .onTapGesture {
+                                        selectedDvirData = data
+                                        withAnimation {
+                                            showDetail = true
+                                        }
+                                    }
+                                    .onAppear {
+                                        if index == viewModel.dvirData.count - 2 {
+                                            viewModel.loadMore()
+                                        }
+                                    }
                             }
-                            .font(AppFonts.buttonTitle)
-                            .foregroundColor(AppColors.textBlack)
-                            .frame(maxWidth: .infinity)
-                            .padding()
-                            .background(AppColors.white)
-                            .cornerRadius(8)
-                            .shadow(color: AppColors.blackOpacity10, radius: 2, x: 0, y: 1)
+                            
+                            if viewModel.isLoading {
+                                ProgressView()
+                                    .padding()
+                            }
                         }
                         .padding(.horizontal)
-                        .padding(.top, 5)
-                        
-                        // List
-                        ScrollView {
-                            LazyVStack(spacing: 16) {
-                                ForEach(viewModel.dvirData.indices, id: \.self) { index in
-                                    let data = viewModel.dvirData[index]
-                                    DvirRow(data: data)
-                                        .onTapGesture {
-                                            self.selectedDvir = data
-                                            self.showDetail = true
-                                        }
-                                        .onAppear {
-                                            if index == viewModel.dvirData.count - 2 {
-                                                viewModel.loadMore()
-                                            }
-                                        }
-                                }
-                                
-                                if viewModel.isLoading {
-                                    ProgressView()
-                                        .padding()
-                                }
-                            }
-                            .padding(.horizontal)
-                            .padding(.bottom, 20)
-                        }
-                        .refreshable {
-                             viewModel.fetchDivrs(refresh: true)
-                        }
+                        .padding(.bottom, 20)
+                    }
+                    .refreshable {
+                         viewModel.fetchDivrs(refresh: true)
                     }
                 }
             }
-            .navigationBarHidden(true)
         }
         .onAppear {
+            print("DEBUG: DvirView - onAppear")
             showSideMenu = false
-            viewModel.fetchDivrs(refresh: true)
-            showAddDvir = false
+            
+            if viewModel.dvirData.isEmpty {
+                 print("DEBUG: DvirView - Initial Fetch")
+                 viewModel.fetchDivrs(refresh: true)
+            }
         }
-        
     }
 }
 
@@ -170,6 +199,7 @@ struct DvirRow: View {
     func formatDate(_ dateStr: String?) -> String {
         guard let dateStr = dateStr else { return "" }
         let formatter = ISO8601DateFormatter()
+        formatter.timeZone = getAppTimeZone()
         formatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
         
         var date = formatter.date(from: dateStr)
@@ -180,6 +210,7 @@ struct DvirRow: View {
         
         if let validDate = date {
             let displayFormatter = DateFormatter()
+            displayFormatter.timeZone = getAppTimeZone()
             displayFormatter.dateFormat = "EEEE MMM d, yyyy"
             return displayFormatter.string(from: validDate)
         }

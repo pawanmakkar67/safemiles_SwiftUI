@@ -14,7 +14,7 @@ struct RulesView: View {
                 // Common Header
                 CommonHeader(
                     title: "Rules",
-                    leftIcon: "line.3.horizontal",
+                    leftIcon: "Menu",
                     onLeftTap: {
                         withAnimation {
                             showSideMenu = true

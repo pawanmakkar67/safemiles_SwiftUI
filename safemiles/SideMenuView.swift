@@ -55,7 +55,7 @@ struct SideMenuView: View {
                                     isShowing = false
                                 }
                             }) {
-                                Image(systemName: "line.3.horizontal")
+                                Image("Menu")
                                     .font(AppFonts.iconMedium)
                                     .foregroundColor(AppColors.textWhite)
                             }
@@ -80,12 +80,12 @@ struct SideMenuView: View {
                     ScrollView {
                         VStack(alignment: .leading, spacing: 0) {
                             
-                            sideMenuButton(title: "Home", icon: "house.fill", option: .home)
-                            sideMenuButton(title: "DOT Inspection", icon: "checkmark.circle", option: .dotInspection)
-                            sideMenuButton(title: "Rules", icon: "doc.text", option: .rules)
-                            sideMenuButton(title: "Co-Driver", icon: "person.2.badge.plus", option: .coDriver)
-                            sideMenuButton(title: "Select Vehicle", icon: "truck.phl.fill", option: .selectVehicle)
-                            sideMenuButton(title: "Information Packet", icon: "info.circle", option: .infoPacket)
+                            sideMenuButton(title: "Home", icon: "Home", option: .home)
+                            sideMenuButton(title: "DOT Inspection", icon: "Tick", option: .dotInspection)
+                            sideMenuButton(title: "Rules", icon: "Rules", option: .rules)
+                            sideMenuButton(title: "Co-Driver", icon: "coDriver", option: .coDriver)
+                            sideMenuButton(title: "Select Vehicle", icon: "selectVehicle", option: .selectVehicle)
+                            sideMenuButton(title: "Information Packet", icon: "infoPacket", option: .infoPacket)
                             
                         }
                     }
@@ -98,7 +98,7 @@ struct SideMenuView: View {
                         // Logout Logic handled by parent or here if needed, but keeping consistent with enum
                     }) {
                         HStack(spacing: 16) {
-                            Image(systemName: "rectangle.portrait.and.arrow.right")
+                            Image("logout")
                             .font(.system(size: 18))
                             .rotationEffect(.degrees(180)) // Flip to point out
                         
@@ -131,7 +131,7 @@ struct SideMenuView: View {
             isShowing = false
         }) {
             HStack(spacing: 16) {
-                Image(systemName: icon)
+                Image(icon)
                     .font(AppFonts.iconSmall)
                     .foregroundColor(contentColor)
                     .frame(width: 24)

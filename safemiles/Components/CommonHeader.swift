@@ -2,8 +2,8 @@ import SwiftUI
 
 struct CommonHeader: View {
     let title: String
-    var leftIcon: String? = "line.3.horizontal"
-    var rightIcon: String? = "antenna.radiowaves.left.and.right"
+    var leftIcon: String? = "Menu"
+    var rightIcon: String? = ""
     var rightIconColor: Color = .white
     var onLeftTap: (() -> Void)?
     var onRightTap: (() -> Void)?
@@ -14,13 +14,13 @@ struct CommonHeader: View {
                 Button(action: {
                     onLeftTap?()
                 }) {
-                    Image(systemName: leftIcon)
+                    Image(leftIcon)
                         .font(AppFonts.iconMedium)
                         .foregroundColor(AppColors.white)
                 }
             } else {
                 // Keep spacing balanced if needed, or remove
-                Image(systemName: "line.3.horizontal")
+                Image("Menu")
                     .font(AppFonts.iconMedium)
                     .foregroundColor(AppColors.clear)
             }
@@ -33,16 +33,24 @@ struct CommonHeader: View {
             
             Spacer()
             
-            if let rightIcon = rightIcon {
+            if let rightIcon = rightIcon, !rightIcon.isEmpty {
                 Button(action: {
                     onRightTap?()
                 }) {
-                    Image(systemName: rightIcon) // Use appropriate bluetooth icon
-                        .font(AppFonts.iconMedium)
-                        .foregroundColor(rightIconColor)
+                    // Check if it's a system icon
+                    if rightIcon == "plus" || rightIcon.contains("circle") || rightIcon.contains("chevron") {
+                        Image(systemName: rightIcon)
+                            .font(AppFonts.iconMedium)
+                            .foregroundColor(rightIconColor)
+                    } else {
+                        Image(rightIcon)
+                            .renderingMode(.template)
+                            .font(AppFonts.iconMedium)
+                            .foregroundColor(rightIconColor)
+                    }
                 }
             } else {
-                 Image(systemName: "line.3.horizontal")
+                 Image("Menu")
                      .font(AppFonts.iconMedium)
                      .foregroundColor(AppColors.clear)
             }

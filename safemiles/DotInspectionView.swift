@@ -16,7 +16,7 @@ struct DotInspectionView: View {
                 // Common Header
                 CommonHeader(
                     title: "Dot Inspection",
-                    leftIcon: "line.3.horizontal",
+                    leftIcon: "Menu",
                     onLeftTap: {
                         withAnimation {
                             showSideMenu = true
@@ -119,11 +119,12 @@ struct DotInspectionView: View {
                                 .font(AppFonts.captionText) // Small font
                                 .foregroundColor(AppColors.textGray)
                                 .multilineTextAlignment(.leading)
+                                .background(AppColors.NoteBackground)
                             
                             Spacer()
                         }
                         .padding()
-                        .background(AppColors.background) // Very light gray background
+                        .background(AppColors.NoteBackground) // Very light gray background
                         .cornerRadius(8)
                         .overlay(
                             RoundedRectangle(cornerRadius: 8)

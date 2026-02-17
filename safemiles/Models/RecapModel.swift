@@ -20,6 +20,9 @@ struct RecapModel : Mappable {
     var hos_status : Hos_status?
     var last_event : Last_event?
     var cycle_start_local : String?
+    var hours_available : String?
+    var hours_worked : String?
+    var violations : [Violation]?
 
     init?(map: Map) {
 
@@ -32,6 +35,9 @@ struct RecapModel : Mappable {
         hos_status <- map["hos_status"]
         last_event <- map["last_event"]
         cycle_start_local <- map["cycle_start_local"]
+        hours_available <- map["hours_available"]
+        hours_worked <- map["hours_worked"]
+        violations <- map["violation"]
     }
 
 }
@@ -190,7 +196,9 @@ struct Last_event : Mappable {
     var driver : String?
     var vehicle : String?
     var eldevice : String?
+    var sb_break : Int?
 
+    
     init?(map: Map) {
 
     }
@@ -219,6 +227,8 @@ struct Last_event : Mappable {
         driver <- map["driver"]
         vehicle <- map["vehicle"]
         eldevice <- map["eldevice"]
+        sb_break <- map["sb_break"]
+
     }
 
 }

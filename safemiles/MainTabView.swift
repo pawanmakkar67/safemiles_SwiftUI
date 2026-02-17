@@ -22,25 +22,25 @@ struct MainTabView: View {
         TabView(selection: $selection) {
             HomeView(showSideMenu: $showSideMenu)
                 .tabItem {
-                    Label("Home", systemImage: "house")
+                    Label("Home", image: "Home")
                 }
                 .tag(0)
             
             DvirView(showSideMenu: $showSideMenu)
                 .tabItem {
-                    Label("DVIR", systemImage: "clock.arrow.circlepath")
+                    Label("DVIR", image: "DVIR")
                 }
                 .tag(1)
             
             LogsView(showSideMenu: $showSideMenu)
                 .tabItem {
-                    Label("Logs", systemImage: "doc.text")
+                    Label("Logs", image: "Logs")
                 }
                 .tag(2)
             
             AccountView(showSideMenu: $showSideMenu)
                 .tabItem {
-                    Label("Account", systemImage: "person")
+                    Label("Account", image: "user_ic")
                 }
                 .tag(3)
         }

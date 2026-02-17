@@ -9,7 +9,7 @@ struct HomeView: View {
     @State private var showBluetoothScan = false
     
     var body: some View {
-        NavigationView { // Ensure navigation context if not already present, though MainTabView likely needs it. 
+        // NavigationView removed to rely on parent NavigationView
             // Check if MainTabView uses NavigationView. If not, we might need one here or at root.
             // Given the snippet, VStack is root. Adding NavigationLink inside.
             VStack(spacing: 0) {
@@ -18,9 +18,9 @@ struct HomeView: View {
                 // Common Header
                 CommonHeader(
                     title: "Home",
-                    leftIcon: "line.3.horizontal",
-                    rightIcon: "antenna.radiowaves.left.and.right",
-                    rightIconColor: bleManager.connectedPeripheral?.state == .connected ? AppColors.green : AppColors.white,
+                    leftIcon: "Menu",
+                    rightIcon: "ble",
+                    rightIconColor: bleManager.connectedPeripheral?.state == .connected ? AppColors.statusGreen : AppColors.white,
                     onLeftTap: {
                         withAnimation {
                             showSideMenu = true
@@ -51,7 +51,7 @@ struct HomeView: View {
                                 
                                 // Progress Ring
                                 Circle()
-                                    .trim(from: 0, to: 0.5) // Example value, needs calculation if dynamic
+                                    .trim(from: 0, to: viewModel.driveProgress)
                                     .stroke(
                                         viewModel.circleBorderColor, // Use dynamic color
                                         style: StrokeStyle(lineWidth: 15, lineCap: .round)
@@ -90,6 +90,15 @@ struct HomeView: View {
                                         isActive: viewModel.currentCode == "d",
                                         statusCode: "d"
                                     )
+                                    .onTapGesture {
+                                        if viewModel.currentCode != "d" {
+                                            viewModel.selectedStatusUpdateCode = "d"
+                                            withAnimation {
+                                                viewModel.showStatusUpdateModal = true
+                                            }
+                                        }
+                                    }
+                                    
                                     StatusCard(
                                         title: "OFF",
                                         icon: "truck.box.fill",
@@ -97,6 +106,14 @@ struct HomeView: View {
                                         isActive: viewModel.currentCode == "off",
                                         statusCode: "off"
                                     )
+                                    .onTapGesture {
+                                        if viewModel.currentCode != "off" {
+                                            viewModel.selectedStatusUpdateCode = "off"
+                                            withAnimation {
+                                                viewModel.showStatusUpdateModal = true
+                                            }
+                                        }
+                                    }
                                     StatusCard(
                                         title: "ON\nDuty",
                                         icon: "truck.box.fill",
@@ -104,6 +121,15 @@ struct HomeView: View {
                                         isActive: viewModel.currentCode == "on",
                                         statusCode: "on"
                                     )
+                                    .onTapGesture {
+                                        if viewModel.currentCode != "on" {
+                                            viewModel.selectedStatusUpdateCode = "on"
+                                            withAnimation {
+                                                viewModel.showStatusUpdateModal = true
+                                            }
+                                        }
+                                    }
+                                    
                                     StatusCard(
                                         title: "Yard\nMoves",
                                         icon: "truck.box.fill",
@@ -111,6 +137,15 @@ struct HomeView: View {
                                         isActive: viewModel.currentCode == "ym",
                                         statusCode: "ym"
                                     )
+                                    .onTapGesture {
+                                        if viewModel.currentCode != "ym" {
+                                            viewModel.selectedStatusUpdateCode = "ym"
+                                            withAnimation {
+                                                viewModel.showStatusUpdateModal = true
+                                            }
+                                        }
+                                    }
+                                    
                                     StatusCard(
                                         title: "Sleeper",
                                         icon: "bed.double.fill",
@@ -118,6 +153,15 @@ struct HomeView: View {
                                         isActive: viewModel.currentCode == "sb",
                                         statusCode: "sb"
                                     )
+                                    .onTapGesture {
+                                        if viewModel.currentCode != "sb" {
+                                            viewModel.selectedStatusUpdateCode = "sb"
+                                            withAnimation {
+                                                viewModel.showStatusUpdateModal = true
+                                            }
+                                        }
+                                    }
+                                    
                                     StatusCard(
                                         title: "Personal\nUse",
                                         icon: "figure.walk",
@@ -125,15 +169,60 @@ struct HomeView: View {
                                         isActive: viewModel.currentCode == "pu",
                                         statusCode: "pu"
                                     )
+                                    .onTapGesture {
+                                        if viewModel.currentCode != "pu" {
+                                            viewModel.selectedStatusUpdateCode = "pu"
+                                            withAnimation {
+                                                viewModel.showStatusUpdateModal = true
+                                            }
+                                        }
+                                    }
                                 }
                                 .padding(.horizontal)
                                 .padding(.bottom, 10) // Shadow spacing
                             }
                             
+                            // Violation Alert
+                            if !viewModel.allViolations.isEmpty {
+                                Button(action: {
+                                    viewModel.showViolationsSheet = true
+                                }) {
+                                    HStack(spacing: 12) {
+                                        Image(systemName: "exclamationmark.circle")
+                                            .font(.system(size: 20))
+                                            .foregroundColor(AppColors.statusRed)
+                                        
+                                        Text("Violation Alert : \(viewModel.allViolations.count) violations recorded")
+                                            .font(AppFonts.bodyText)
+                                            .foregroundColor(AppColors.textBlack)
+                                        
+                                        Spacer()
+                                        
+                                        Image(systemName: "square.and.arrow.up")
+                                            .font(.system(size: 16))
+                                            .foregroundColor(AppColors.textGray)
+                                    }
+                                    .padding()
+                                    .background(AppColors.statusRed.opacity(0.1))
+                                    .cornerRadius(8)
+                                    .overlay(
+                                        RoundedRectangle(cornerRadius: 8)
+                                            .stroke(AppColors.statusRed, lineWidth: 1)
+                                    )
+                                }
+                                .padding(.horizontal)
+                                .sheet(isPresented: $viewModel.showViolationsSheet) {
+                                    ViolationsView(violations: viewModel.allViolations)
+                                        .presentationDetents([.medium])
+                                        .presentationDragIndicator(.visible)
+
+                                }
+                            }
+                            
                             // HOS List
                             VStack(spacing: 0) {
                                 Text("Hours Of Service")
-                                    .font(AppFonts.headline)
+                                    .font(AppFonts.buttonText)
                                     .frame(maxWidth: .infinity, alignment: .center)
                                     .padding(.vertical, 8)
                                     .background(AppColors.sectionHeaderBackground)
@@ -161,9 +250,8 @@ struct HomeView: View {
                             
                             // Summary Rows
                             RecapSummaryRow(title: "Total", middleText: "Last \(viewModel.recapDays.count) Days", value: viewModel.totalRecapHours)
-                            RecapSummaryRow(title: "Hours Worked Today", middleText: viewModel.todayDateStr, value: viewModel.hoursWorkedToday)
-                            RecapSummaryRow(title: "Hours Available Today", middleText: viewModel.todayDateStr, value: viewModel.hoursAvailableToday)
-                            RecapSummaryRow(title: "Hours Available Tomorrow", middleText: viewModel.tomorrowDateStr, value: viewModel.hoursAvailableTomorrow)
+                            RecapSummaryRow(title: "Hours Worked", middleText: viewModel.todayDateStr, value: viewModel.hoursAvailableToday)
+                            RecapSummaryRow(title: "Hours Available", middleText: viewModel.tomorrowDateStr, value: viewModel.hoursAvailableTomorrow)
                         }
                         .padding(.top, 20)
                         .padding(.bottom, 20)
@@ -176,7 +264,14 @@ struct HomeView: View {
                 showBluetoothScan = false
                 viewModel.onAppear()
             }
-        }
+            .overlay(
+                Group {
+                    if viewModel.showStatusUpdateModal {
+                        StatusUpdateView(selectedCode: viewModel.selectedStatusUpdateCode, isPresented: $viewModel.showStatusUpdateModal)
+                    }
+                }
+            )
+
     }
     
     func formatRecapTime(_ time: String?) -> String {

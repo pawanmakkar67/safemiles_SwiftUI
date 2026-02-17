@@ -2,6 +2,9 @@ import SwiftUI
 
 struct EventsView: View {
     @ObservedObject var viewModel: LogsViewModel
+    @State private var showViolations: Bool = false
+    @State private var showEditLog: Bool = false
+    @State private var selectedEvent: Events?
     
     var body: some View {
         ScrollView {
@@ -9,17 +12,63 @@ struct EventsView: View {
                 // Graph
                 LogbookGraphView(segments: viewModel.dutySegments)
                     .frame(height: 140)
-                    .padding()
+                    .padding(.vertical,12)
+                    .padding(.horizontal,7)
                     .background(AppColors.white)
                     .cornerRadius(8)
                     .shadow(radius: 2)
                     .padding(.horizontal)
                 
+                // Violation Alert Banner
+                if let violations = viewModel.currentLog?.violations, !violations.isEmpty {
+                    Button(action: {
+                        showViolations = true
+                    }) {
+                        HStack(spacing: 12) {
+                            // Warning Icon
+                            Image("infoRed")
+                                .resizable()
+                                .frame(width: 24, height: 24)
+                                .foregroundColor(AppColors.statusRed)
+                            
+                            // Text
+                            Text("Violation Alert : \(violations.count) violation\(violations.count == 1 ? "" : "s") recorded")
+                                .font(AppFonts.bodyText)
+                                .foregroundColor(AppColors.statusRed)
+                            
+                            Spacer()
+                            
+                            // Refresh/Arrow Icon
+                            Image("Vector")
+                                .resizable()
+                                .frame(width: 18, height: 18)
+                                .foregroundColor(AppColors.statusRed)
+                        }
+                        .padding()
+                        .background(AppColors.statusRed.opacity(0.1))
+                        .cornerRadius(8)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 8)
+                                .stroke(AppColors.statusRed.opacity(0.3), lineWidth: 1)
+                        )
+                    }
+                    .padding(.horizontal)
+                }
+                
                 // Events List
                 LazyVStack(spacing: 0) {
                     if let events = viewModel.currentLog?.events {
                         ForEach(events.indices, id: \.self) { index in
-                            EventRow(event: events[index], logDate: viewModel.selectedDate)
+                            let nextEvent = index + 1 < events.count ? events[index + 1] : nil
+                            EventRow(
+                                event: events[index],
+                                nextEvent: nextEvent,
+                                logDate: viewModel.selectedDate,
+                                onEdit: {
+                                    selectedEvent = events[index]
+                                    showEditLog = true
+                                }
+                            )
                             Divider()
                         }
                     } else {
@@ -36,6 +85,20 @@ struct EventsView: View {
             .padding(.vertical)
         }
         .background(AppColors.background)
+        .sheet(isPresented: $showViolations) {
+            ViolationsView(violations: viewModel.currentLog?.violations ?? [])
+                .presentationDetents([.medium])
+                .presentationDragIndicator(.visible)
+        }
+        .sheet(isPresented: $showEditLog) {
+            if let event = selectedEvent {
+                AddEditLogView(
+                    isPresented: $showEditLog,
+                    event: event,
+                    log: viewModel.currentLog
+                )
+            }
+        }
     }
 }
 
@@ -44,8 +107,8 @@ struct LogbookGraphView: View {
     
     // Constants matching the user's UIKit design
     private let statuses: [DutyStatus] = [.off, .sleeper, .driving, .on]
-    private let leftMargin: CGFloat = 20
-    private let rightMargin: CGFloat = 25
+    private let leftMargin: CGFloat = 25
+    private let rightMargin: CGFloat = 35
     private let topMargin: CGFloat = 25
     private let bottomMargin: CGFloat = 10
     
@@ -86,7 +149,7 @@ struct LogbookGraphView: View {
                 
                 // Draw text roughly centered in the row, to the left
                 // Calculating rough Y center: y + rowHeight/2
-                let textPoint = CGPoint(x: leftMargin - 15, y: y + rowHeight / 2) // Approximate centering
+                let textPoint = CGPoint(x: 9, y: y + rowHeight / 2) // Approximate centering
                 context.draw(labelText, at: textPoint)
             }
             
@@ -193,7 +256,9 @@ struct LogbookGraphView: View {
 
 struct EventRow: View {
     let event: Events
+    let nextEvent: Events?
     let logDate: Date
+    let onEdit: () -> Void
     
     var body: some View {
         HStack {
@@ -201,54 +266,84 @@ struct EventRow: View {
             Rectangle()
                 .fill(getStatusColor(event.code))
                 .frame(width: 4)
+                .cornerRadius(2)
                 .padding(.vertical, 8)
             
             // Code & Time
-            VStack(alignment: .leading, spacing: 4) {
+            HStack(alignment: .center, spacing: 12) {
                 Text(getDisplayCode(event.code))
-                    .font(AppFonts.bodyText)
+                    .font(AppFonts.cardTitle)
                     .foregroundColor(getStatusColor(event.code))
+                    .frame(width: 50, alignment: .leading)
                 
                 Text(formatTime(event.eventdatetime))
-                    .font(AppFonts.captionText)
-                    .foregroundColor(AppColors.textGray)
+                    .font(AppFonts.bodyText)
+                    .foregroundColor(AppColors.textBlack)
             }
             
             Spacer()
             
-            // Location
-            if let loc = event.location_notes {
-                Text(loc)
-                    .font(AppFonts.captionText)
-                    .foregroundColor(AppColors.textGray)
-                    .lineLimit(1)
-            }
-            
             // Duration
-//            if let dur = event.time_diff {
-                 // Format duration logic if needed
-//            }
+            let duration = convertSecondsToHoursAndMinutes(event.time_diff ?? 0)
+            Text("\(duration.hours)h \(duration.minutes)m")
+                    .font(AppFonts.bodyText)
+                    .foregroundColor(AppColors.textGray)
+            
             
             // Edit Icon
-            Image(systemName: "pencil")
-                .foregroundColor(AppColors.textGray)
+            Button(action: onEdit) {
+                Image(systemName: "pencil")
+                    .foregroundColor(AppColors.iconGray)
+                    .padding(.leading, 8)
+            }
         }
-        .padding()
+        .padding(.vertical, 12)
+        .padding(.horizontal, 5)
+    }
+    
+    func calculateDuration() -> String? {
+        guard let next = nextEvent,
+              let startStr = event.eventdatetime,
+              let endStr = next.eventdatetime else { return nil }
+        
+        let formatter = ISO8601DateFormatter()
+        // We calculate difference based on absolute absolute time, so TZ doesn't strictly matter for difference, 
+        // but parsing needs to be correct.
+        formatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
+        
+        guard let startDate = formatter.date(from: startStr) ?? ISO8601DateFormatter().date(from: startStr),
+              let endDate = formatter.date(from: endStr) ?? ISO8601DateFormatter().date(from: endStr) else { return nil }
+        
+        let diff = endDate.timeIntervalSince(startDate)
+        let seconds = Int(diff)
+        
+        let hours = seconds / 3600
+        let minutes = (seconds % 3600) / 60
+        
+        if hours > 0 {
+            if minutes > 0 {
+                 return "\(hours)h \(minutes)m"
+            }
+            return "\(hours)h"
+        } else {
+            return "\(minutes)m"
+        }
     }
     
     func getStatusColor(_ code: String?) -> Color {
-        switch code {
+        switch code?.lowercased() {
         case "d", "driving": return AppColors.statusGreen
         case "on", "login": return AppColors.buttonActive
         case "sb": return AppColors.orange
+        case "off", "off duty": return AppColors.textGray
         default: return AppColors.textGray
         }
     }
     
     func getDisplayCode(_ code: String?) -> String {
-        switch code {
-        case "d": return "Drive"
-        case "sb": return "Sleeper"
+        switch code?.lowercased() {
+        case "d": return "D" // Or just Drive? Screenshot says "ON", "OFF".
+        case "sb": return "SB"
         case "on": return "ON"
         case "off": return "OFF"
         default: return code?.uppercased() ?? "-"
@@ -258,12 +353,16 @@ struct EventRow: View {
     func formatTime(_ dateStr: String?) -> String {
         guard let dateStr = dateStr else { return "" }
          let formatter = ISO8601DateFormatter()
+         formatter.timeZone = getAppTimeZone()
          formatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
          
          if let date = formatter.date(from: dateStr) ?? ISO8601DateFormatter().date(from: dateStr) {
              let displayFormatter = DateFormatter()
-             displayFormatter.dateFormat = "hh:mm a zzz"
-             return displayFormatter.string(from: date)
+             displayFormatter.timeZone = getAppTimeZone()
+             displayFormatter.dateFormat = "hh:mm a"
+             let timeStr = displayFormatter.string(from: date)
+             let abbr = getAbbreviation(displayFormatter.timeZone)
+             return "\(timeStr) \(abbr)"
          }
          return dateStr
     }

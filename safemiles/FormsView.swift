@@ -8,8 +8,8 @@ struct FormsView: View {
     @State private var vehicleNumber: String = ""
     @State private var coDriverId: String = ""
     @State private var coDriverName: String = ""
-    @State private var trailers: String = ""
-    @State private var shippingDocs: String = ""
+    @State private var trailers: [String] = []
+    @State private var shippingDocs: [String] = []
     
     @State private var showVehiclePicker = false
     @State private var showCoDriverPicker = false
@@ -53,18 +53,23 @@ struct FormsView: View {
                 }
                 
                 // TRAILERS
-                EditableFormCard(
+                DynamicListField(
                     title: "TRAILERS",
-                    text: $trailers,
+                    placeholder: "e.g. T123",
+                    items: $trailers,
                     isReadOnly: isCertified
                 )
+                .padding(.horizontal, -16) // Compensate for outer padding
                 
                 // SHIPPING DOCUMENTS
-                EditableFormCard(
+                DynamicListField(
                     title: "SHIPPING DOCUMENTS",
-                    text: $shippingDocs,
+                    placeholder: "e.g. BOL-12345",
+                    items: $shippingDocs,
                     isReadOnly: isCertified
                 )
+                .padding(.horizontal, -16) // Compensate for outer padding
+                
                 
                 // CO-DRIVER
                 FormCard(
@@ -134,14 +139,11 @@ struct FormsView: View {
     }
     
     func saveForm() {
-        let trailerList = trailers.components(separatedBy: ",").map { $0.trimmingCharacters(in: .whitespaces) }.filter { !$0.isEmpty }
-        let docList = shippingDocs.components(separatedBy: ",").map { $0.trimmingCharacters(in: .whitespaces) }.filter { !$0.isEmpty }
-        
         viewModel.saveForm(
             vehicleId: vehicleId,
             coDriverId: coDriverId,
-            trailers: trailerList,
-            shippingDocs: docList
+            trailers: trailers,
+            shippingDocs: shippingDocs
         ) { success, message in
             alertMessage = message
             showAlert = true
@@ -149,12 +151,11 @@ struct FormsView: View {
     }
     
     func getDriverName() -> String {
-        //        guard let user = viewModel.currentLog?.driver?.user else { return "Unknown" }
-        //        let first = user.first_name ?? ""
-        //        let last = user.last_name ?? ""
-        //        let name = "\(first) \(last)".trimmingCharacters(in: .whitespaces)
-        //        return name.isEmpty ? (user.username ?? "Unknown") : name
-            return ""
+        guard let user = Global.shared.myProfile?.user else { return "Unknown" }
+                let first = user.first_name ?? ""
+                let last = user.last_name ?? ""
+                let name = "\(first) \(last)".trimmingCharacters(in: .whitespaces)
+                return name.isEmpty ? (user.username ?? "Unknown") : name
     }
 }
 
@@ -299,5 +300,102 @@ struct CoDriverPicker: View {
             .navigationTitle(title)
             .navigationBarItems(trailing: Button("Close") { presentationMode.wrappedValue.dismiss() })
         }
+    }
+}
+
+// MARK: - Dynamic List Field Component
+struct DynamicListField: View {
+    let title: String
+    let placeholder: String
+    @Binding var items: [String]
+    var isReadOnly: Bool = false
+    @State private var inputText: String = ""
+    
+    var body: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            Text(title)
+                .font(AppFonts.captionText)
+                .fontWeight(.bold)
+                .foregroundColor(AppColors.textBlack)
+            
+            if !isReadOnly {
+                // Input Row with ADD button
+                HStack(spacing: 8) {
+                    TextField(placeholder, text: $inputText)
+                        .font(AppFonts.bodyText)
+                        .padding(12)
+                        .background(AppColors.inputGray)
+                        .cornerRadius(8)
+                    
+                    Button(action: addItem) {
+                        Text("ADD")
+                            .font(AppFonts.buttonTitle)
+                            .foregroundColor(.white)
+                            .padding(.horizontal, 20)
+                            .padding(.vertical, 12)
+                            .background(Color(red: 0.0, green: 0.7, blue: 0.7))
+                            .cornerRadius(8)
+                    }
+                    .disabled(inputText.trimmingCharacters(in: .whitespaces).isEmpty)
+                    .opacity(inputText.trimmingCharacters(in: .whitespaces).isEmpty ? 0.5 : 1.0)
+                }
+            }
+            
+            // List of added items
+            if !items.isEmpty {
+                VStack(spacing: 8) {
+                    ForEach(items.indices, id: \.self) { index in
+                        HStack {
+                            Text(items[index])
+                                .font(AppFonts.bodyText)
+                                .foregroundColor(AppColors.textBlack)
+                            
+                            Spacer()
+                            
+                            if !isReadOnly {
+                                Button(action: {
+                                    deleteItem(at: index)
+                                }) {
+                                    Text("Delete")
+                                        .font(AppFonts.buttonTitle)
+                                        .foregroundColor(.white)
+                                        .padding(.horizontal, 16)
+                                        .padding(.vertical, 8)
+                                        .background(AppColors.statusRed)
+                                        .cornerRadius(8)
+                                }
+                            }
+                        }
+                        .padding(12)
+                        .background(AppColors.white)
+                        .cornerRadius(8)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 8)
+                                .stroke(AppColors.grayOpacity20, lineWidth: 1)
+                        )
+                    }
+                }
+            } else if isReadOnly {
+                Text("None")
+                    .font(AppFonts.bodyText)
+                    .foregroundColor(AppColors.textGray)
+                    .padding(12)
+            }
+        }
+        .padding()
+        .background(AppColors.white)
+        .cornerRadius(12)
+        .shadow(color: AppColors.blackOpacity05 ?? Color.black.opacity(0.05), radius: 2, x: 0, y: 1)
+    }
+    
+    private func addItem() {
+        let trimmed = inputText.trimmingCharacters(in: .whitespaces)
+        guard !trimmed.isEmpty else { return }
+        items.append(trimmed)
+        inputText = ""
+    }
+    
+    private func deleteItem(at: Int) {
+        items.remove(at: at)
     }
 }

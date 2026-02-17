@@ -85,4 +85,5 @@ extension Notification.Name {
     static let recapUpdate = Notification.Name("recapUpdate")
     static let logsUpdate = Notification.Name("logsUpdate")
     static let telematicsUpdated = Notification.Name("telematicsUpdated")
+    static let dvirUpdated = Notification.Name("dvirUpdated")
 }

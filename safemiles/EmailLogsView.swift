@@ -10,8 +10,7 @@ struct EmailLogsView: View {
             // Header
             CommonHeader(
                 title: "Email Logs",
-                leftIcon: "chevron.left",
-                rightIcon: nil,
+                leftIcon: "left",
                 onLeftTap: {
                     presentationMode.wrappedValue.dismiss()
                 }

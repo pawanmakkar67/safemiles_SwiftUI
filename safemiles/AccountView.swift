@@ -20,7 +20,7 @@ struct AccountView: View {
                 // Common Header
                 CommonHeader(
                     title: "Account",
-                    leftIcon: "line.3.horizontal",
+                    leftIcon: "Menu",
                     onLeftTap: {
                         withAnimation {
                             showSideMenu = true
@@ -60,7 +60,7 @@ struct AccountView: View {
                             Spacer()
                         }
                         .padding()
-                        .background(AppColors.buttonTextWhite)
+                        .background(AppColors.NoteBackground)
                         .cornerRadius(8)
                         .overlay(
                             RoundedRectangle(cornerRadius: 8)

@@ -4,6 +4,7 @@ import PencilKit
 struct AddDvirView: View {
     @StateObject private var viewModel: AddDvirViewModel
     @Environment(\.presentationMode) var presentationMode
+    var onDismiss: (() -> Void)? = nil
     
     // Canvas for Binding
     @State private var canvasView = PKCanvasView()
@@ -12,8 +13,9 @@ struct AddDvirView: View {
     @State private var showVehicleDefects = false
     @State private var showTrailerDefects = false
     
-    init(dvirData: DivrData? = nil) {
+    init(dvirData: DivrData? = nil, onDismiss: (() -> Void)? = nil) {
         _viewModel = StateObject(wrappedValue: AddDvirViewModel(dvirData: dvirData))
+        self.onDismiss = onDismiss
     }
     
     var body: some View {
@@ -35,12 +37,19 @@ struct AddDvirView: View {
         .navigationBarHidden(true)
         .onAppear {
              // Initial check if we need to load anything
+             print("DEBUG: AddDvirView - onAppear")
         }
-        .onChange(of: viewModel.vehicleDefects) { _ in viewModel.updateStatus() }
-        .onChange(of: viewModel.trailerDefects) { _ in viewModel.updateStatus() }
+        .onDisappear {
+             print("DEBUG: AddDvirView - onDisappear")
+        }
+
         .onChange(of: viewModel.submitSuccess) { success in
             if success {
-                presentationMode.wrappedValue.dismiss()
+                if let onDismiss = onDismiss {
+                    onDismiss()
+                } else {
+                    presentationMode.wrappedValue.dismiss()
+                }
             }
         }
         .alert(item: Binding<AlertItem?>(
@@ -50,19 +59,25 @@ struct AddDvirView: View {
             Alert(title: Text("Alert"), message: Text(item.message), dismissButton: .default(Text("OK")))
         }
         // Sheets
-        .sheet(isPresented: $showVehicleDefects) {
+        .sheet(isPresented: $showVehicleDefects, onDismiss: { viewModel.updateStatus() }) {
             DefectSelectionView(
                 title: "Vehicle Defects",
                 allDefects: VEHICLE_DEFECTS.allCases.map { $0.rawValue },
                 selectedDefects: $viewModel.vehicleDefects
             )
         }
-        .sheet(isPresented: $showTrailerDefects) {
+        .sheet(isPresented: $showTrailerDefects, onDismiss: { viewModel.updateStatus() }) {
              DefectSelectionView(
                 title: "Trailer Defects",
                 allDefects: TRAILER_DEFECTS.allCases.map { $0.rawValue },
                 selectedDefects: $viewModel.trailerDefects
             )
+        }
+        .onChange(of: showVehicleDefects) { isShowing in
+            print("DEBUG: AddDvirView - showVehicleDefects changed to: \(isShowing)")
+        }
+        .onChange(of: showTrailerDefects) { isShowing in
+            print("DEBUG: AddDvirView - showTrailerDefects changed to: \(isShowing)")
         }
     }
     
@@ -71,10 +86,13 @@ struct AddDvirView: View {
     private var headerView: some View {
         CommonHeader(
             title: viewModel.editingDvirId != nil ? "Edit DVIR" : "Add DVIR",
-            leftIcon: "chevron.left",
-            rightIcon: nil,
+            leftIcon: "left",
             onLeftTap: {
-                presentationMode.wrappedValue.dismiss()
+                if let onDismiss = onDismiss {
+                    onDismiss()
+                } else {
+                    presentationMode.wrappedValue.dismiss()
+                }
             }
         )
     }
@@ -92,6 +110,7 @@ struct AddDvirView: View {
                     .foregroundColor(AppColors.textGray)
                 DatePicker("", selection: $viewModel.time, displayedComponents: [.date, .hourAndMinute])
                     .labelsHidden()
+                    .environment(\.timeZone, getAppTimeZone())
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding(12)
                     .background(AppColors.inputGray)
@@ -220,8 +239,23 @@ struct AddDvirView: View {
                 .font(AppFonts.sectionHeader)
                 .foregroundColor(AppColors.textGray)
             
-            // Trailers Input
-            customTextField(title: "Trailers", placeholder: "e.g. 1, t2", text: $viewModel.trailers)
+            // Trailers Input (simple text field)
+            VStack(alignment: .leading, spacing: 8) {
+                Text("Trailers")
+                    .font(AppFonts.captionText)
+                    .foregroundColor(AppColors.textGray)
+                
+                TextField("e.g. T123, T456", text: Binding(
+                    get: { viewModel.trailers.joined(separator: ", ") },
+                    set: { newValue in
+                        viewModel.trailers = newValue.components(separatedBy: ",").map { $0.trimmingCharacters(in: .whitespaces) }.filter { !$0.isEmpty }
+                    }
+                ))
+                .font(AppFonts.bodyText)
+                .padding(12)
+                .background(AppColors.inputGray)
+                .cornerRadius(8)
+            }
             
             // Trailer Defects
             Button(action: { showTrailerDefects = true }) {
@@ -342,37 +376,69 @@ struct DefectSelectionView: View {
     @Binding var selectedDefects: [String]
     @Environment(\.presentationMode) var presentationMode
     
+    @State private var workingSelection: [String] = []
+    
     var body: some View {
-        NavigationView {
-            List {
-                ForEach(allDefects, id: \.self) { defect in
-                    Button(action: {
-                        toggleSelection(defect)
-                    }) {
-                        HStack {
-                            Text(defect)
-                                .foregroundColor(AppColors.textBlack)
-                            Spacer()
-                            if selectedDefects.contains(defect) {
-                                Image(systemName: "checkmark")
-                                .foregroundColor(AppColors.statusGreen)
+        VStack(spacing: 0) {
+            // Custom Header
+            HStack {
+                Spacer()
+                Text(title)
+                    .font(AppFonts.headline)
+                    .foregroundColor(AppColors.textBlack)
+                Spacer()
+                Button("Done") {
+                    selectedDefects = workingSelection
+                    presentationMode.wrappedValue.dismiss()
+                }
+                .font(AppFonts.buttonText)
+                .foregroundColor(AppColors.textBlack) // Or primary color
+            }
+            .padding()
+            .background(Color.white)
+            .shadow(color: Color.gray.opacity(0.2), radius: 2, x: 0, y: 2)
+            
+            ScrollView {
+                LazyVStack(spacing: 0) {
+                    ForEach(allDefects, id: \.self) { defect in
+                        Button(action: {
+                            toggleSelection(defect)
+                        }) {
+                            HStack {
+                                Text(defect)
+                                    .foregroundColor(AppColors.textBlack)
+                                    .padding(.vertical, 12) // Add padding for touch target
+                                Spacer()
+                                if workingSelection.contains(defect) {
+                                    Image(systemName: "checkmark")
+                                        .foregroundColor(AppColors.statusGreen)
+                                }
                             }
+                            .padding(.horizontal)
+                            .contentShape(Rectangle()) // Ensure entire row is tappable
                         }
+                        .buttonStyle(PlainButtonStyle())
+                        
+                        Divider()
+                            .padding(.leading) 
                     }
                 }
             }
-            .navigationBarTitle(title, displayMode: .inline)
-            .navigationBarItems(trailing: Button("Done") {
-                presentationMode.wrappedValue.dismiss()
-            })
+        }
+        .onAppear {
+            print("DEBUG: DefectSelectionView - onAppear")
+            workingSelection = selectedDefects
+        }
+        .onDisappear {
+            print("DEBUG: DefectSelectionView - onDisappear")
         }
     }
     
     func toggleSelection(_ defect: String) {
-        if let index = selectedDefects.firstIndex(of: defect) {
-            selectedDefects.remove(at: index)
+        if let index = workingSelection.firstIndex(of: defect) {
+            workingSelection.remove(at: index)
         } else {
-            selectedDefects.append(defect)
+            workingSelection.append(defect)
         }
     }
 }
