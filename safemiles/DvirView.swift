@@ -50,7 +50,7 @@ struct DvirView: View {
         VStack(spacing: 0) {
             // Header
             CommonHeader(
-                title: "DVIR",
+                title: "DVIR Detail",
                 leftIcon: "Menu",
                 onLeftTap: {
                     withAnimation {
@@ -86,8 +86,8 @@ struct DvirView: View {
                         .cornerRadius(8)
                         .shadow(color: AppColors.blackOpacity10, radius: 2, x: 0, y: 1)
                     }
-                    .padding(.horizontal)
-                    .padding(.top, 5)
+                    .padding()
+                    // .padding(.top, 10)
                     
                     // List
                     ScrollView {
@@ -159,7 +159,7 @@ struct DvirRow: View {
                 Spacer()
                 Image(systemName: "chevron.right")
                     .foregroundColor(AppColors.iconGray)
-                    .font(.system(size: 14))
+                    .font(AppFonts.bodyText)
             }
             
             Divider()

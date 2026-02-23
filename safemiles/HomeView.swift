@@ -189,7 +189,7 @@ struct HomeView: View {
                                 }) {
                                     HStack(spacing: 12) {
                                         Image(systemName: "exclamationmark.circle")
-                                            .font(.system(size: 20))
+                                            .font(AppFonts.iconSmall)
                                             .foregroundColor(AppColors.statusRed)
                                         
                                         Text("Violation Alert : \(viewModel.allViolations.count) violations recorded")
@@ -199,7 +199,7 @@ struct HomeView: View {
                                         Spacer()
                                         
                                         Image(systemName: "square.and.arrow.up")
-                                            .font(.system(size: 16))
+                                            .font(AppFonts.callout)
                                             .foregroundColor(AppColors.textGray)
                                     }
                                     .padding()
@@ -246,15 +246,16 @@ struct HomeView: View {
                                 )
                             }
                             
-                            Divider().padding(.vertical, 5)
+                            Divider().padding(0)
                             
                             // Summary Rows
                             RecapSummaryRow(title: "Total", middleText: "Last \(viewModel.recapDays.count) Days", value: viewModel.totalRecapHours)
                             RecapSummaryRow(title: "Hours Worked", middleText: viewModel.todayDateStr, value: viewModel.hoursAvailableToday)
                             RecapSummaryRow(title: "Hours Available", middleText: viewModel.tomorrowDateStr, value: viewModel.hoursAvailableTomorrow)
                         }
-                        .padding(.top, 20)
-                        .padding(.bottom, 20)
+                        .padding(20)
+                        .cornerRadius(8)
+//                        .padding(.bottom, 20)
                     }
                 }
                 .background(AppColors.background)

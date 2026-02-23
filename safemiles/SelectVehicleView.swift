@@ -6,6 +6,7 @@ struct SelectVehicleView: View {
     @StateObject private var viewModel = SelectVehicleViewModel()
     @ObservedObject var bleManager = BLEManager.shared
     @State private var showBluetoothScan = false
+    @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
         ZStack {
@@ -82,6 +83,11 @@ struct SelectVehicleView: View {
         }
         .alert(isPresented: $viewModel.showAlert) {
             Alert(title: Text("Alert"), message: Text(viewModel.alertMessage ?? ""), dismissButton: .default(Text("OK")))
+        }
+        .onChange(of: bleManager.connectedPeripheral) { connectedPeripheral in
+            if connectedPeripheral != nil {
+                presentationMode.wrappedValue.dismiss()
+            }
         }
     }
 }

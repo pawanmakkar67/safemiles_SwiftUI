@@ -55,6 +55,26 @@ struct EventsView: View {
                     .padding(.horizontal)
                 }
                 
+                // Details Header & Add Button
+                HStack {
+                    Text("Details")
+                        .font(AppFonts.headline)
+                        .foregroundColor(AppColors.textBlack)
+                    
+                    Spacer()
+                    
+                    Button(action: {
+                        selectedEvent = nil
+                        showEditLog = true
+                    }) {
+                        Image(systemName: "plus")
+                            .font(AppFonts.iconSmall)
+                            .foregroundColor(AppColors.textBlack)
+                            .padding(8) // Increase touch target
+                    }
+                }
+                .padding(.horizontal)
+                
                 // Events List
                 LazyVStack(spacing: 0) {
                     if let events = viewModel.currentLog?.events {
@@ -91,13 +111,11 @@ struct EventsView: View {
                 .presentationDragIndicator(.visible)
         }
         .sheet(isPresented: $showEditLog) {
-            if let event = selectedEvent {
-                AddEditLogView(
-                    isPresented: $showEditLog,
-                    event: event,
-                    log: viewModel.currentLog
-                )
-            }
+            AddEditLogView(
+                isPresented: $showEditLog,
+                event: selectedEvent,
+                log: viewModel.currentLog
+            )
         }
     }
 }
@@ -267,7 +285,7 @@ struct EventRow: View {
                 .fill(getStatusColor(event.code))
                 .frame(width: 4)
                 .cornerRadius(2)
-                .padding(.vertical, 8)
+                .padding(.vertical, 1)
             
             // Code & Time
             HStack(alignment: .center, spacing: 12) {

@@ -32,6 +32,15 @@ class LogsViewModel: ObservableObject {
         // Observe Global changes if needed, but for now we fetch directly
         self.logsData = Global.shared.logsDataVal
         updateCurrentLog()
+        
+        // Observe logsUpdate notification to refresh when events are added/edited
+        NotificationCenter.default.addObserver(forName: .logsUpdate, object: nil, queue: .main) { [weak self] _ in
+            self?.fetchLogs(refresh: true)
+        }
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
     
     func fetchLogs(refresh: Bool = false) {
@@ -273,51 +282,58 @@ class LogsViewModel: ObservableObject {
             return
         }
         
-        let params: [String: Any] = [
-            "log_id": logId,
-            "logdate": log.date ?? "",
-            "vehicle": vehicleId,
-            "co_driver": coDriverId,
-            "shipping_docs": shippingDocs,
-            "trailers": trailers
+        let isoFormatter = ISO8601DateFormatter()
+        isoFormatter.formatOptions = [.withInternetDateTime]
+        let currentIsoStr = isoFormatter.string(from: Date())
+        
+        var params: [String: Any] = [
+            "eventdatetime": currentIsoStr,
+            "shipping_docs": shippingDocs.joined(separator: ","),
+            "trailers": trailers.joined(separator: ",")
         ]
         
+        if !vehicleId.isEmpty {
+            params["vehicle"] = vehicleId
+        }
+        
+        if !coDriverId.isEmpty {
+            params["co_driver"] = coDriverId
+        }
+        
         isLoading = true
-        APIManager.shared.request(url: ApiList.saveForms + logId + "/", method: .patch, parameters: params) { comp in
+        APIManager.shared.upload(url: ApiList.saveForms + logId + "/", method: .patch, parameters: params) { comp in
             // completion
         } success: { response in
             self.isLoading = false
             // Assuming SuccessModel structure based on typical response, but using generic check for now or just checking success
             // If SuccessModel is available use it. For now, creating a simple check.
-            if let success = response["success"] as? Bool, success == true {
-                 completion(true, response["message"] as? String ?? "Saved Successfully")
+                 completion(true, "Saved Successfully")
                  // Refresh logs to show updated data
                  self.fetchLogs(refresh: true)
-            } else {
-                 completion(false, response["message"] as? String ?? "Unknown error")
-            }
         } failure: { error in
             self.isLoading = false
             completion(false, error?.debugDescription ?? "Network error")
         }
     }
-    func certifyLog(signature: Data, completion: @escaping (Bool, String) -> Void) {
+    func certifyLog(signature: UIImage, completion: @escaping (Bool, String) -> Void) {
         guard let log = currentLog, let logId = log.log?.id else {
             completion(false, "No log selected")
             return
         }
         
         // Convert signature data to Base64
-        let signatureBase64 = signature.base64EncodedString()
+//        let signatureBase64 = signature.base64EncodedString()
+        let isoFormatter = ISO8601DateFormatter()
+        isoFormatter.formatOptions = [.withInternetDateTime]
+        let currentIsoStr = isoFormatter.string(from: Date())
         
         let params: [String: Any] = [
-            "log_id": logId,
-            "signature": signatureBase64,
-            "logdate": log.date ?? ""
+            "eventdatetime": currentIsoStr,
+            "signature": signature,
         ]
         
         isLoading = true
-        APIManager.shared.upload(url: ApiList.signatireVerify + logId + "/", method: .patch, parameters: params) { comp in
+        APIManager.shared.upload(url: ApiList.saveForms + logId + "/", method: .patch, parameters: params) { comp in
              // completion progress
         } success: { response in
             self.isLoading = false

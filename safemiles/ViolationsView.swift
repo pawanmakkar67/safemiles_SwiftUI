@@ -20,7 +20,7 @@ struct ViolationsView: View {
                 }) {
                     Image(systemName: "xmark")
                         .foregroundColor(AppColors.textGray)
-                        .font(.system(size: 18, weight: .medium))
+                        .font(AppFonts.buttonText)
                 }.padding(.top,20)
             }
             .padding()
@@ -32,7 +32,7 @@ struct ViolationsView: View {
             if violations.isEmpty {
                 VStack(spacing: 16) {
                     Image(systemName: "checkmark.circle")
-                        .font(.system(size: 60))
+                        .font(AppFonts.iconLarge)
                         .foregroundColor(AppColors.statusGreen)
                     
                     Text("No violations recorded")
@@ -74,7 +74,7 @@ struct ViolationRow: View {
                     .frame(width: 40, height: 40)
                 
                 Image(systemName: "exclamationmark.circle.fill")
-                    .font(.system(size: 24))
+                    .font(AppFonts.title2)
                     .foregroundColor(AppColors.statusRed)
             }
             

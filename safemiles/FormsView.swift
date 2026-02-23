@@ -59,7 +59,6 @@ struct FormsView: View {
                     items: $trailers,
                     isReadOnly: isCertified
                 )
-                .padding(.horizontal, -16) // Compensate for outer padding
                 
                 // SHIPPING DOCUMENTS
                 DynamicListField(
@@ -68,7 +67,6 @@ struct FormsView: View {
                     items: $shippingDocs,
                     isReadOnly: isCertified
                 )
-                .padding(.horizontal, -16) // Compensate for outer padding
                 
                 
                 // CO-DRIVER
@@ -124,18 +122,16 @@ struct FormsView: View {
     func loadInitialData() {
         guard let log = viewModel.currentLog else { return }
         
-//        vehicleId = log.vehicle?.id ?? ""
-//        vehicleNumber = log.vehicle?.unit_number ?? ""
-//        
-        // CoDriver logic might need explicit co_driver field from log if available, 
-        // currently assuming it's not directly in Logs struct but might be saved?
-        // Checking Logs struct... it has no explicit co_driver field in basic struct but save params use it.
-        // Assuming implementation might need to fetch or use what's available. 
-        // For now, initializing empty or if we had it.
-        // The reference shows 'selectedCoDriver' is internal state.
+//        vehicleId = log.log?.vehicle?.id ?? ""
+//        vehicleNumber = log.log?.vehicle?.unit_number ?? ""
         
-//        trailers = log.log?.trailers?.joined(separator: ", ") ?? ""
-//        shippingDocs = log.log?.shipping_docs?.joined(separator: ", ") ?? ""
+        shippingDocs = log.log?.shipping_docs?
+            .components(separatedBy: ",")
+            .map { $0.trimmingCharacters(in: .whitespaces) } ?? []
+        trailers = log.log?.trailers?
+            .components(separatedBy: ",")
+            .map { $0.trimmingCharacters(in: .whitespaces) } ?? []
+
     }
     
     func saveForm() {
@@ -322,7 +318,7 @@ struct DynamicListField: View {
                 // Input Row with ADD button
                 HStack(spacing: 8) {
                     TextField(placeholder, text: $inputText)
-                        .font(AppFonts.bodyText)
+                        .font(AppFonts.textField)
                         .padding(12)
                         .background(AppColors.inputGray)
                         .cornerRadius(8)
@@ -335,6 +331,7 @@ struct DynamicListField: View {
                             .padding(.vertical, 12)
                             .background(Color(red: 0.0, green: 0.7, blue: 0.7))
                             .cornerRadius(8)
+                            .background(AppColors.background)
                     }
                     .disabled(inputText.trimmingCharacters(in: .whitespaces).isEmpty)
                     .opacity(inputText.trimmingCharacters(in: .whitespaces).isEmpty ? 0.5 : 1.0)
@@ -347,7 +344,7 @@ struct DynamicListField: View {
                     ForEach(items.indices, id: \.self) { index in
                         HStack {
                             Text(items[index])
-                                .font(AppFonts.bodyText)
+                                .font(AppFonts.textField)
                                 .foregroundColor(AppColors.textBlack)
                             
                             Spacer()

@@ -33,7 +33,6 @@ struct AccountView: View {
                 
                 ScrollView {
                     VStack(spacing: 0) {
-                        
                         // List Items
                         AccountRow(title: "Email", value: viewModel.email)
                         AccountRow(title: "Name", value: viewModel.name)

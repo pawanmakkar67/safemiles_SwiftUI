@@ -38,7 +38,7 @@ struct CommonHeader: View {
                     onRightTap?()
                 }) {
                     // Check if it's a system icon
-                    if rightIcon == "plus" || rightIcon.contains("circle") || rightIcon.contains("chevron") {
+                    if rightIcon == "plus" || rightIcon.contains("circle") || rightIcon.contains("chevron") || rightIcon.contains("arrow") {
                         Image(systemName: rightIcon)
                             .font(AppFonts.iconMedium)
                             .foregroundColor(rightIconColor)
@@ -50,9 +50,9 @@ struct CommonHeader: View {
                     }
                 }
             } else {
-                 Image("Menu")
-                     .font(AppFonts.iconMedium)
-                     .foregroundColor(AppColors.clear)
+//                 Image("Menu")
+//                     .font(AppFonts.iconMedium)
+//                     .foregroundColor(AppColors.clear)
             }
         }
         .padding()

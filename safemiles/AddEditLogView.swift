@@ -4,6 +4,7 @@ struct AddEditLogView: View {
     @Binding var isPresented: Bool
     @StateObject private var viewModel: AddEditLogViewModel
     @State private var showVehiclePicker = false
+    @State private var showDatePicker = false
     
     init(isPresented: Binding<Bool>, event: Events? = nil, log: Logs? = nil) {
         _isPresented = isPresented
@@ -20,7 +21,7 @@ struct AddEditLogView: View {
                     }) {
                         Image(systemName: "chevron.left")
                             .foregroundColor(AppColors.textBlack)
-                            .font(.system(size: 20))
+                            .font(AppFonts.iconSmall)
                     }
                     
                     Spacer()
@@ -36,7 +37,7 @@ struct AddEditLogView: View {
                     }) {
                         Image(systemName: "xmark.circle.fill")
                             .foregroundColor(AppColors.textGray)
-                            .font(.system(size: 24))
+                            .font(AppFonts.iconMedium)
                     }
                 }
                 .padding()
@@ -45,6 +46,27 @@ struct AddEditLogView: View {
                 ScrollView {
                     VStack(spacing: 20) {
                         
+
+                        // Date/Time Picker
+                        VStack(alignment: .leading, spacing: 8) {
+                            Button(action: {
+                                showDatePicker = true
+                            }) {
+                                Text(formatDate(viewModel.selectedTime))
+                                    .font(AppFonts.textField)
+                                    .foregroundColor(AppColors.textBlack)
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                                    .padding(12)
+                                    .background(AppColors.white)
+                                    .cornerRadius(8)
+                                    .overlay(
+                                        RoundedRectangle(cornerRadius: 8)
+                                            .stroke(AppColors.textGray.opacity(0.3), lineWidth: 1)
+                                    )
+                            }
+                        }
+                        .padding(.horizontal)
+                        
                         // Company (Read-only)
                         VStack(alignment: .leading, spacing: 8) {
                             Text("Company")
@@ -52,7 +74,7 @@ struct AddEditLogView: View {
                                 .foregroundColor(AppColors.textGray)
                             
                             Text(viewModel.company)
-                                .font(AppFonts.bodyText)
+                                .font(AppFonts.textField)
                                 .foregroundColor(AppColors.textBlack)
                                 .frame(maxWidth: .infinity, alignment: .leading)
                                 .padding()
@@ -61,21 +83,6 @@ struct AddEditLogView: View {
                         }
                         .padding(.horizontal)
                         
-                        // Date/Time Picker
-                        VStack(alignment: .leading, spacing: 8) {
-                            DatePicker("", selection: $viewModel.selectedTime, displayedComponents: [.date, .hourAndMinute])
-                                .labelsHidden()
-                                .environment(\.timeZone, getAppTimeZone())
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                                .padding(12)
-                                .background(AppColors.white)
-                                .cornerRadius(8)
-                                .overlay(
-                                    RoundedRectangle(cornerRadius: 8)
-                                        .stroke(AppColors.textGray.opacity(0.3), lineWidth: 1)
-                                )
-                        }
-                        .padding(.horizontal)
                         
                         // Status Selection
                         VStack(alignment: .leading, spacing: 12) {
@@ -88,7 +95,7 @@ struct AddEditLogView: View {
                                             .foregroundColor(viewModel.selectedStatus == status ? AppColors.textBlack : AppColors.textGray)
                                         
                                         Text(status)
-                                            .font(AppFonts.bodyText)
+                                            .font(AppFonts.textField)
                                             .foregroundColor(AppColors.textBlack)
                                         
                                         Spacer()
@@ -112,7 +119,7 @@ struct AddEditLogView: View {
                             }) {
                                 HStack {
                                     Text(viewModel.selectedVehicle?.unit_number ?? "Select Vehicle")
-                                        .font(AppFonts.bodyText)
+                                        .font(AppFonts.textField)
                                         .foregroundColor(viewModel.selectedVehicle == nil ? AppColors.textGray : AppColors.textBlack)
                                     
                                     Spacer()
@@ -145,7 +152,7 @@ struct AddEditLogView: View {
                                     .foregroundColor(AppColors.blue)
                                 
                                 TextField("Location", text: $viewModel.location)
-                                    .font(AppFonts.bodyText)
+                                    .font(AppFonts.textField)
                                     .foregroundColor(AppColors.textBlack)
                                 
                                 Spacer()
@@ -167,7 +174,7 @@ struct AddEditLogView: View {
                                 .foregroundColor(AppColors.textGray)
                             
                             TextField("Notes", text: $viewModel.notes)
-                                .font(AppFonts.bodyText)
+                                .font(AppFonts.textField)
                                 .foregroundColor(AppColors.textBlack)
                                 .padding()
                                 .background(AppColors.white)
@@ -218,7 +225,30 @@ struct AddEditLogView: View {
                     isPresented: $showVehiclePicker
                 )
             }
+            .sheet(isPresented: $showDatePicker) {
+                VStack {
+                    DatePicker("", selection: $viewModel.selectedTime, displayedComponents: [.date, .hourAndMinute])
+                        .datePickerStyle(GraphicalDatePickerStyle())
+                        .labelsHidden()
+                        .environment(\.timeZone, getAppTimeZone())
+                        .padding()
+                    
+                    Button("Done") {
+                        showDatePicker = false
+                    }
+                    .font(AppFonts.buttonText)
+                    .padding()
+                }
+                .presentationDetents([.height(480)])
+            }
         }
+    }
+    
+    private func formatDate(_ date: Date) -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MMM d, yyyy h:mm a"
+        formatter.timeZone = getAppTimeZone()
+        return formatter.string(from: date)
     }
 }
 

@@ -60,11 +60,11 @@ struct StatusUpdateView: View {
                 HStack(alignment: .top, spacing: 12) {
                     Image(systemName: "mappin.and.ellipse")
                         .foregroundColor(AppColors.blue) // Assuming blue for location pin
-                        .font(.system(size: 20))
+                        .font(AppFonts.iconSmall)
                     
                     VStack(alignment: .leading, spacing: 4) {
                         TextField("Location", text: $viewModel.locationText)
-                            .font(AppFonts.bodyText)
+                            .font(AppFonts.textField)
                             .foregroundColor(AppColors.textBlack)
                             .disabled(true)
                         
@@ -79,6 +79,7 @@ struct StatusUpdateView: View {
                 // Notes Field
                 VStack {
                     TextField("Notes", text: $viewModel.notesText)
+                        .font(AppFonts.textField)
                         .padding()
                         .frame(height: 50)
                         .background(

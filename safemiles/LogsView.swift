@@ -14,30 +14,52 @@ struct LogsView: View {
             CommonHeader(
                 title: "Logs", // Dynamic title could be date
                 leftIcon: "Menu",
-                rightIcon: "plus",
+                rightIcon: "arrow.clockwise",
                 onLeftTap: {
                     withAnimation {
                         showSideMenu = true
                     }
                 },
                 onRightTap: {
-                    showAddLog = true
+                    viewModel.fetchLogs(refresh: true)
                 }
             )
             
             // Date Selector
             // DateSelectorView logic updated to use available dates
             DateSelectorView(selectedDate: $viewModel.selectedDate, availableDates: viewModel.availableDates, logs: viewModel.logsData?.logs)
-                .padding(.vertical, 8)
+                .padding(.vertical, 12)
             
             // Tabs (Event, Form, Certify)
-            Picker("Tabs", selection: $selectedTab) {
-                Text("Event").tag(0)
-                Text("Form").tag(1)
-                Text("Certify").tag(2)
+            // Custom Tabs (Event, Form, Certify)
+            HStack(spacing: 0) {
+                ForEach(["Event", "Form", "Certify"], id: \.self) { tab in
+                    Button(action: {
+                        withAnimation {
+                            if tab == "Event" { selectedTab = 0 }
+                            else if tab == "Form" { selectedTab = 1 }
+                            else { selectedTab = 2 }
+                        }
+                    }) {
+                        Text(tab)
+                            .font(AppFonts.buttonText)
+                            .foregroundColor(isSelected(tab) ? AppColors.textBlack : AppColors.textGray)
+                            .frame(maxWidth: .infinity)
+                            .frame(height: 40) // Increased height
+                            .background(
+                                isSelected(tab) ? AppColors.white : AppColors.clear
+                            )
+                            .cornerRadius(8)
+                            .shadow(color: isSelected(tab) ? Color.black.opacity(0.1) : Color.clear, radius: 2, x: 0, y: 1)
+                    }
+                }
             }
-            .pickerStyle(SegmentedPickerStyle())
-            .padding()
+            .padding(4)
+            .background(AppColors.grayOpacity20) // Background for the whole tab bar
+            .cornerRadius(12)
+            .padding(.horizontal)
+            .padding(.bottom, 10)
+
             
             // Content
             if selectedTab == 0 {
@@ -64,6 +86,13 @@ struct LogsView: View {
                 log: viewModel.currentLog
             )
         }
+    }
+    
+    private func isSelected(_ tab: String) -> Bool {
+        if tab == "Event" { return selectedTab == 0 }
+        if tab == "Form" { return selectedTab == 1 }
+        if tab == "Certify" { return selectedTab == 2 }
+        return false
     }
 }
 
@@ -108,7 +137,7 @@ struct DateCell: View {
         VStack {
             Text(getDay(date))
                 .font(AppFonts.captionText)
-                .foregroundColor(AppColors.textBlack)
+                .foregroundColor(AppColors.textBlack).padding(.bottom,5)
             
             Text(getDateNumber(date))
                 .font(AppFonts.headline)

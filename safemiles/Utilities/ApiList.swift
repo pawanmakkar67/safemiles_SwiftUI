@@ -28,7 +28,6 @@ struct ApiList {
     static let updateHardwareEvent = BASEURL + "hos/events/"                      // url changed
     static let manualPDF = MainBASEURL + "media/user_manuals/Mobile_app_user_manual.pdf"
     static let instructionsPDF = MainBASEURL + "media/information_packets/Safe_miles_inspection_mode.pdf"
-    static let signatireVerify = BASEURL + "hos/logs/"            // url + payload changed
     static let saveForms = BASEURL + "hos/logs/"               // url + payload changed
     static let RecapApi = BASEURL + "hos/recap/"
     static let sendLogs = BASEURL + "drivers/app/send-logs/"

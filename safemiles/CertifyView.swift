@@ -9,7 +9,7 @@ struct CertifyView: View {
     @State private var alertMessage = ""
     
     // Constants matching UIKit design approximate
-    private let drawingHeight: CGFloat = 300
+    private let drawingHeight: CGFloat = 200
     private let cornerRadius: CGFloat = 10
     
     var body: some View {
@@ -62,15 +62,16 @@ struct CertifyView: View {
                                 }
                         )
                     }
-                    .padding()
-                    
+                    .padding(.horizontal,20)
+                    .padding(.vertical,5)
+
                     Button("Clear signature") {
                         lines = []
                         currentLine = []
                     }
                     .font(AppFonts.bodyText)
                     .foregroundColor(AppColors.textGray)
-                    .padding(.bottom, 10)
+                    .padding(.vertical, 5)
                     
                     Text("I hereby certify that my data entries and my record of duty status for this 24-hour period are true and correct.")
                         .font(AppFonts.captionText)
@@ -89,7 +90,7 @@ struct CertifyView: View {
                             .cornerRadius(8)
                     }
                     .padding()
-                    
+                    .padding(.top, 5)
                 } else {
                     // Already Certified State
                     VStack(spacing: 20) {
@@ -140,7 +141,7 @@ struct CertifyView: View {
         )
         
         if let image = renderer.uiImage, let pngData = image.pngData() {
-            viewModel.certifyLog(signature: pngData) { success, message in
+            viewModel.certifyLog(signature: image) { success, message in
                 alertMessage = message
                 showAlert = true
                 if success {

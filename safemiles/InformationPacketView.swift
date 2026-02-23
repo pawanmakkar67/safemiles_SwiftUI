@@ -62,7 +62,7 @@ struct InformationPacketView: View {
                             VStack(alignment: .leading, spacing: 16) {
                                 Text("In addition to the above, a supply of blank driver's records of duty status (RODS) graph-grids sufficient to record the driver's duty status and other related information for a minimum of 8 days must be onboard the commercial motor vehicle (CMV).")
                                     .font(.body)
-                                    .foregroundColor(.gray)
+                                    .foregroundColor(AppColors.textGray)
                                     .fixedSize(horizontal: false, vertical: true)
                                 
                                 Button(action: {
@@ -70,11 +70,11 @@ struct InformationPacketView: View {
                                 }) {
                                     Text("VIEW INSTRUCTIONS")
                                         .font(.headline)
-                                        .foregroundColor(.white)
+                                        .foregroundColor(AppColors.white)
                                         .frame(maxWidth: .infinity)
                                         .padding()
                                 }
-                                .background(Color.black)
+                                .background(AppColors.black)
                                 .cornerRadius(8)
                             }
                         }
@@ -114,8 +114,8 @@ struct InfoPacketCard<Content: View>: View {
             
             HStack(spacing: 12) {
                 Image(systemName: icon)
-                    .font(.system(size: 20))
-                    .foregroundColor(Color(hex: "555555")) // Dark gray icon
+                    .font(AppFonts.iconSmall)
+                    .foregroundColor(AppColors.textGray)
                 
                 Text(title)
                     .font(.headline) // Larger title
@@ -132,9 +132,9 @@ struct InfoPacketCard<Content: View>: View {
             }
             .padding()
         }
-        .background(Color.white)
+        .background(AppColors.white)
         .cornerRadius(12)
-        .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 2)
+        .shadow(color: AppColors.blackOpacity10, radius: 5, x: 0, y: 2)
         .padding(.horizontal)
     }
 }

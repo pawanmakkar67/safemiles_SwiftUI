@@ -99,11 +99,11 @@ struct SideMenuView: View {
                     }) {
                         HStack(spacing: 16) {
                             Image("logout")
-                            .font(.system(size: 18))
+                            .font(AppFonts.buttonText)
                             .rotationEffect(.degrees(180)) // Flip to point out
                         
                         Text("Log Out")
-                            .font(.system(size: 16))
+                            .font(AppFonts.callout)
                         }
                         .foregroundColor(AppColors.textGray)
                         .padding(20)

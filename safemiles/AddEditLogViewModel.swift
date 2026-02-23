@@ -24,6 +24,12 @@ class AddEditLogViewModel: NSObject, ObservableObject, CLLocationManagerDelegate
         // Set company
         company = Global.shared.myProfile?.company?.name ?? ""
         
+        if let firstVehicle = Global.shared.vehicleList.first {
+            selectedVehicle = firstVehicle
+        }
+
+        
+        
         // If editing existing event
         if let event = event {
             isEditMode = true

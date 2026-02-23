@@ -225,7 +225,7 @@ struct DvirDetailView: View {
     
     func statusBadge(defects: Int) -> some View {
         Text(defects == 0 ? "No defect" : "Defects")
-            .font(.system(size: 12, weight: .medium))
+            .font(AppFonts.caption2)
             .foregroundColor(defects == 0 ? AppColors.textGray : AppColors.statusRed) // Or textWhite based on bg
             .padding(.horizontal, 12)
             .padding(.vertical, 6)
@@ -237,7 +237,7 @@ struct DvirDetailView: View {
         HStack {
             Image(systemName: "xmark.circle")
                 .foregroundColor(AppColors.statusRed)
-                .font(.system(size: 14))
+                .font(AppFonts.bodyText)
             Text(text)
                 .font(AppFonts.bodyText)
                 .foregroundColor(AppColors.statusRed) // Or dark gray

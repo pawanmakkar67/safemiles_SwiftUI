@@ -38,6 +38,7 @@ struct SendLogsView: View {
                             } label: {
                                 HStack {
                                     Text(viewModel.transferType)
+                                        .font(AppFonts.textField)
                                         .foregroundColor(AppColors.textBlack)
                                     Spacer()
                                     Image(systemName: "chevron.down")

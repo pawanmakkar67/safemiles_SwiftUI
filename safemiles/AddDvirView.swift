@@ -12,6 +12,7 @@ struct AddDvirView: View {
     // Sheet States
     @State private var showVehicleDefects = false
     @State private var showTrailerDefects = false
+    @State private var showDatePicker = false
     
     init(dvirData: DivrData? = nil, onDismiss: (() -> Void)? = nil) {
         _viewModel = StateObject(wrappedValue: AddDvirViewModel(dvirData: dvirData))
@@ -19,21 +20,78 @@ struct AddDvirView: View {
     }
     
     var body: some View {
-        VStack(spacing: 0) {
-            headerView
-            
-            ScrollView {
-                VStack(spacing: 20) {
-                    inspectionDetailsSection
-                    vehicleSection
-                    trailerSection
-                    signatureSection
-                    submitButton
+        ZStack {
+            VStack(spacing: 0) {
+                headerView
+                
+                ScrollView {
+                    VStack(spacing: 20) {
+                        inspectionDetailsSection
+                        vehicleSection
+                        trailerSection
+                        signatureSection
+                        submitButton
+                    }
+                    .padding()
                 }
-                .padding()
+            }
+            .background(AppColors.background)
+            
+            // Custom Overlays for Defects
+            if showVehicleDefects {
+                Color.black.opacity(0.4)
+                    .edgesIgnoringSafeArea(.all)
+                    .onTapGesture {
+                        withAnimation { showVehicleDefects = false }
+                    }
+                
+                VStack {
+                    Spacer()
+                    DefectSelectionView(
+                        title: "Vehicle Defects",
+                        allDefects: VEHICLE_DEFECTS.allCases.map { $0.rawValue },
+                        selectedDefects: $viewModel.vehicleDefects,
+                        onDismiss: {
+                            withAnimation { showVehicleDefects = false }
+                            viewModel.updateStatus()
+                        }
+                    )
+                    .frame(height: UIScreen.main.bounds.height * 0.8)
+                    .background(Color.white)
+                    .cornerRadius(16, corners: [.topLeft, .topRight])
+                }
+                .edgesIgnoringSafeArea(.bottom)
+                .transition(.move(edge: .bottom))
+                .zIndex(1)
+            }
+            
+            if showTrailerDefects {
+                Color.black.opacity(0.4)
+                    .edgesIgnoringSafeArea(.all)
+                    .onTapGesture {
+                        withAnimation { showTrailerDefects = false }
+                    }
+                
+                VStack {
+                    Spacer()
+                    DefectSelectionView(
+                        title: "Trailer Defects",
+                        allDefects: TRAILER_DEFECTS.allCases.map { $0.rawValue },
+                        selectedDefects: $viewModel.trailerDefects,
+                        onDismiss: {
+                            withAnimation { showTrailerDefects = false }
+                            viewModel.updateStatus()
+                        }
+                    )
+                    .frame(height: UIScreen.main.bounds.height * 0.8)
+                    .background(Color.white)
+                    .cornerRadius(16, corners: [.topLeft, .topRight])
+                }
+                .edgesIgnoringSafeArea(.bottom)
+                .transition(.move(edge: .bottom))
+                .zIndex(1)
             }
         }
-        .background(AppColors.background)
         .navigationBarHidden(true)
         .onAppear {
              // Initial check if we need to load anything
@@ -58,26 +116,33 @@ struct AddDvirView: View {
         )) { item in
             Alert(title: Text("Alert"), message: Text(item.message), dismissButton: .default(Text("OK")))
         }
-        // Sheets
-        .sheet(isPresented: $showVehicleDefects, onDismiss: { viewModel.updateStatus() }) {
-            DefectSelectionView(
-                title: "Vehicle Defects",
-                allDefects: VEHICLE_DEFECTS.allCases.map { $0.rawValue },
-                selectedDefects: $viewModel.vehicleDefects
-            )
-        }
-        .sheet(isPresented: $showTrailerDefects, onDismiss: { viewModel.updateStatus() }) {
-             DefectSelectionView(
-                title: "Trailer Defects",
-                allDefects: TRAILER_DEFECTS.allCases.map { $0.rawValue },
-                selectedDefects: $viewModel.trailerDefects
-            )
+        .alert(item: Binding<AlertItem?>(
+            get: { viewModel.errorMessage.map { AlertItem(message: $0) } },
+            set: { _ in viewModel.errorMessage = nil }
+        )) { item in
+            Alert(title: Text("Alert"), message: Text(item.message), dismissButton: .default(Text("OK")))
         }
         .onChange(of: showVehicleDefects) { isShowing in
             print("DEBUG: AddDvirView - showVehicleDefects changed to: \(isShowing)")
         }
         .onChange(of: showTrailerDefects) { isShowing in
             print("DEBUG: AddDvirView - showTrailerDefects changed to: \(isShowing)")
+        }
+        .sheet(isPresented: $showDatePicker) {
+            VStack {
+                DatePicker("", selection: $viewModel.time, displayedComponents: [.date, .hourAndMinute])
+                    .datePickerStyle(GraphicalDatePickerStyle())
+                    .labelsHidden()
+                    .environment(\.timeZone, getAppTimeZone())
+                    .padding()
+                
+                Button("Done") {
+                    showDatePicker = false
+                }
+                .font(AppFonts.buttonText)
+                .padding()
+            }
+            .presentationDetents([.height(480)])
         }
     }
     
@@ -108,13 +173,22 @@ struct AddDvirView: View {
                 Text("Time (Date)")
                     .font(AppFonts.captionText)
                     .foregroundColor(AppColors.textGray)
-                DatePicker("", selection: $viewModel.time, displayedComponents: [.date, .hourAndMinute])
-                    .labelsHidden()
-                    .environment(\.timeZone, getAppTimeZone())
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .padding(12)
-                    .background(AppColors.inputGray)
-                    .cornerRadius(8)
+                
+                Button(action: {
+                    showDatePicker = true
+                }) {
+                    Text(formatDate(viewModel.time))
+                        .font(AppFonts.textField)
+                        .foregroundColor(AppColors.textBlack)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .padding(12)
+                        .background(AppColors.inputGray)
+                        .cornerRadius(8)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 8)
+                                .stroke(AppColors.textFieldBorder, lineWidth: 1)
+                        )
+                }
             }
 
             // Location
@@ -136,6 +210,8 @@ struct AddDvirView: View {
                     .foregroundColor(AppColors.textGray)
                 TextEditor(text: $viewModel.remarks)
                     .frame(height: 80)
+                    .scrollContentBackground(.hidden)
+                    .font(AppFonts.textField)
                     .padding(8)
                     .background(AppColors.inputGray)
                     .cornerRadius(8)
@@ -162,6 +238,7 @@ struct AddDvirView: View {
             } label: {
                 HStack {
                     Text(viewModel.status)
+                        .font(AppFonts.textField)
                         .foregroundColor(AppColors.textBlack)
                     Spacer()
                     Image(systemName: "chevron.down")
@@ -195,6 +272,7 @@ struct AddDvirView: View {
                 } label: {
                     HStack {
                         Text(viewModel.selectedVehicle?.unit_number ?? "Select Vehicle")
+                            .font(AppFonts.textField)
                             .foregroundColor(viewModel.selectedVehicle == nil ? AppColors.textGray : AppColors.textBlack)
                         Spacer()
                         Image(systemName: "chevron.down")
@@ -206,8 +284,9 @@ struct AddDvirView: View {
                 }
             }
             
-            // Vehicle Defects
-            Button(action: { showVehicleDefects = true }) {
+            Button(action: {
+                withAnimation { showVehicleDefects = true }
+            }) {
                 VStack(alignment: .leading, spacing: 5) {
                     Text("Vehicle Defects")
                         .font(AppFonts.captionText)
@@ -215,6 +294,7 @@ struct AddDvirView: View {
                     
                     HStack {
                         Text(viewModel.vehicleDefects.isEmpty ? "Select defects..." : viewModel.vehicleDefects.joined(separator: ", "))
+                            .font(AppFonts.textField)
                             .lineLimit(1)
                             .foregroundColor(viewModel.vehicleDefects.isEmpty ? AppColors.textGray : AppColors.textBlack)
                         Spacer()
@@ -251,14 +331,15 @@ struct AddDvirView: View {
                         viewModel.trailers = newValue.components(separatedBy: ",").map { $0.trimmingCharacters(in: .whitespaces) }.filter { !$0.isEmpty }
                     }
                 ))
-                .font(AppFonts.bodyText)
+                .font(AppFonts.textField)
                 .padding(12)
                 .background(AppColors.inputGray)
                 .cornerRadius(8)
             }
             
-            // Trailer Defects
-            Button(action: { showTrailerDefects = true }) {
+            Button(action: {
+                withAnimation { showTrailerDefects = true }
+            }) {
                 VStack(alignment: .leading, spacing: 5) {
                     Text("Trailer Defects")
                         .font(AppFonts.captionText)
@@ -266,6 +347,7 @@ struct AddDvirView: View {
                     
                     HStack {
                         Text(viewModel.trailerDefects.isEmpty ? "Select defects..." : viewModel.trailerDefects.joined(separator: ", "))
+                            .font(AppFonts.textField)
                             .lineLimit(1)
                             .foregroundColor(viewModel.trailerDefects.isEmpty ? AppColors.textGray : AppColors.textBlack)
                         Spacer()
@@ -361,6 +443,13 @@ struct AddDvirView: View {
             )
         }
     }
+    
+    private func formatDate(_ date: Date) -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MMM d, yyyy h:mm a"
+        formatter.timeZone = getAppTimeZone()
+        return formatter.string(from: date)
+    }
 }
 
 // Alert Helper - Keep as is
@@ -374,7 +463,7 @@ struct DefectSelectionView: View {
     let title: String
     let allDefects: [String]
     @Binding var selectedDefects: [String]
-    @Environment(\.presentationMode) var presentationMode
+    let onDismiss: () -> Void
     
     @State private var workingSelection: [String] = []
     
@@ -389,7 +478,7 @@ struct DefectSelectionView: View {
                 Spacer()
                 Button("Done") {
                     selectedDefects = workingSelection
-                    presentationMode.wrappedValue.dismiss()
+                    onDismiss()
                 }
                 .font(AppFonts.buttonText)
                 .foregroundColor(AppColors.textBlack) // Or primary color
@@ -442,3 +531,4 @@ struct DefectSelectionView: View {
         }
     }
 }
+
