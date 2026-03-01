@@ -158,34 +158,28 @@ struct DateCell: View {
         if isSelected {
             return .selected
         } else if let log = log {
-            if let violations = log.violations, !violations.isEmpty {
+            if let certified = log.log?.certified, certified {
+                return .certified
+            }
+            else if let violations = log.violations, !violations.isEmpty {
                 return .hasViolations
-            } else if let certified = log.log?.certified, !certified {
+            } 
+            
+             else if let certified = log.log?.certified, !certified {
                 return .uncertified
             }
         }
         return .normal
     }
-    
-    var dayTextColor: Color {
-        switch dateStatus {
-        case .selected:
-            return AppColors.buttonActive
-        case .hasViolations:
-            return AppColors.statusRed
-        case .uncertified:
-            return AppColors.orange
-        case .normal:
-            return AppColors.textGray
-        }
-    }
-    
+        
     var dateTextColor: Color {
         switch dateStatus {
         case .selected:
             return AppColors.buttonTextWhite
         case .hasViolations:
             return AppColors.statusRed
+        case .certified:
+            return AppColors.statusGreen
         case .uncertified:
             return AppColors.orange
         case .normal:
@@ -203,6 +197,8 @@ struct DateCell: View {
             return AppColors.textBlack
         case .hasViolations:
             return AppColors.statusRed
+        case .certified:
+            return AppColors.statusGreen
         case .uncertified:
             return AppColors.orange
         case .normal:
@@ -228,6 +224,7 @@ struct DateCell: View {
 enum DateStatus {
     case selected
     case hasViolations
+    case certified
     case uncertified
     case normal
 }

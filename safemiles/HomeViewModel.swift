@@ -569,7 +569,12 @@ class HomeViewModel: ObservableObject {
         
         let latitude = eventData.geolocation.latitude
         let longitude = eventData.geolocation.longitude
-        let odometer = eventData.odometer
+        
+        let startOdometer = eventData.odometer
+        let offset = Global.shared.connectVehicleDetail?.offset ?? 0
+        let totalOdometer = (Double(startOdometer) ?? 0.0) + Double(offset)
+        let odometer = String(format: "%.0f", totalOdometer)
+        
         let engineHours = eventData.engineHours
         
         // Prepare ELD Data (trackerInfoV)

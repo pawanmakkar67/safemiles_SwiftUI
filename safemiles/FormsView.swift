@@ -132,6 +132,15 @@ struct FormsView: View {
             .components(separatedBy: ",")
             .map { $0.trimmingCharacters(in: .whitespaces) } ?? []
 
+        if let coDriver = log.log?.co_driver {
+            coDriverId = coDriver.id ?? ""
+            let first = coDriver.first_name ?? ""
+            let last = coDriver.last_name ?? ""
+            coDriverName = "\(first) \(last)".trimmingCharacters(in: .whitespaces)
+        } else {
+            coDriverId = ""
+            coDriverName = ""
+        }
     }
     
     func saveForm() {
@@ -376,10 +385,10 @@ struct DynamicListField: View {
                 Text("None")
                     .font(AppFonts.bodyText)
                     .foregroundColor(AppColors.textGray)
-                    .padding(12)
             }
         }
         .padding()
+        .frame(maxWidth: .infinity, alignment: .leading)
         .background(AppColors.white)
         .cornerRadius(12)
         .shadow(color: AppColors.blackOpacity05 ?? Color.black.opacity(0.05), radius: 2, x: 0, y: 1)

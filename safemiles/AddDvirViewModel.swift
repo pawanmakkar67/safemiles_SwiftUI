@@ -87,7 +87,11 @@ class AddDvirViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
     }
     
     private func setupInitialData() {
-        self.odometer = Global.shared.odometer
+        let baseOdometer = Double(Global.shared.odometer) ?? 0.0
+        let offset = Double(Global.shared.connectVehicleDetail?.offset ?? 0)
+        let totalOdometer = baseOdometer + offset
+        
+        self.odometer = totalOdometer > 0 ? String(format: "%.0f", totalOdometer) : ""
         self.company = Global.shared.myProfile?.company?.name ?? ""
     }
     

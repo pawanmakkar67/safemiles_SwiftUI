@@ -10,19 +10,19 @@ import SwiftUI
 struct SplashScreen: View {
     var body: some View {
         ZStack {
-            AppColors.background.ignoresSafeArea()
+            Color(red: 10/255, green: 10/255, blue: 10/255).ignoresSafeArea()
             
             VStack {
-                Image(systemName: "shield.fill") // Placeholder logo
+                Image("safemile_logo_ic")
                     .resizable()
                     .scaledToFit()
-                    .frame(width: 100, height: 100)
-                    .foregroundStyle(.blue)
+                    .frame(width: 150, height: 150)
                 
                 Text("SafeMiles")
                     .font(.largeTitle)
                     .fontWeight(.bold)
                     .padding(.top, 20)
+                    .foregroundStyle(AppColors.white)
             }
         }
     }

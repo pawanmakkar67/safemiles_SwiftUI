@@ -15,11 +15,13 @@ struct StatusCard: View {
                     .foregroundColor(AppColors.textBlack)
                     .fixedSize(horizontal: false, vertical: true)
                 Spacer()
-                Image(systemName: icon)
-                    .font(AppFonts.iconSmall)
+                Image(icon)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 22, height: 22)
                     .foregroundColor(AppColors.textBlack)
                     .padding(8)
-                    .background(AppColors.iconBackgroundLight) // Light blue bg for icon
+                    .background(isActive ? AppColors.iconBackgroundLight : AppColors.background) // Light blue bg for icon
                     .clipShape(RoundedRectangle(cornerRadius: 8))
             }
             
@@ -38,7 +40,7 @@ struct StatusCard: View {
                 )
         }
         .padding(16)
-        .frame(width: 140, height: 130)
+        .frame(width: 150, height: 130)
         .background(AppColors.white)
         .cornerRadius(16)
         .shadow(color: AppColors.blackOpacity10, radius: 5, x: 0, y: 2)

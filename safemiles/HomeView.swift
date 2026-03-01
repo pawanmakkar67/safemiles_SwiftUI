@@ -85,7 +85,7 @@ struct HomeView: View {
                                 HStack(spacing: 16) {
                                     StatusCard(
                                         title: "DRIVE",
-                                        icon: "truck.box.fill",
+                                        icon: "drive_ic",
                                         status: viewModel.currentCode == "d" ? "ACTIVE" : "START",
                                         isActive: viewModel.currentCode == "d",
                                         statusCode: "d"
@@ -101,7 +101,7 @@ struct HomeView: View {
                                     
                                     StatusCard(
                                         title: "OFF",
-                                        icon: "truck.box.fill",
+                                        icon: "off_ic",
                                         status: viewModel.currentCode == "off" ? "ACTIVE" : "START",
                                         isActive: viewModel.currentCode == "off",
                                         statusCode: "off"
@@ -116,7 +116,7 @@ struct HomeView: View {
                                     }
                                     StatusCard(
                                         title: "ON\nDuty",
-                                        icon: "truck.box.fill",
+                                        icon: "on_ic",
                                         status: viewModel.currentCode == "on" ? "ACTIVE" : "START",
                                         isActive: viewModel.currentCode == "on",
                                         statusCode: "on"
@@ -132,7 +132,7 @@ struct HomeView: View {
                                     
                                     StatusCard(
                                         title: "Yard\nMoves",
-                                        icon: "truck.box.fill",
+                                        icon: "ym_ic",
                                         status: viewModel.currentCode == "ym" ? "ACTIVE" : "START",
                                         isActive: viewModel.currentCode == "ym",
                                         statusCode: "ym"
@@ -148,7 +148,7 @@ struct HomeView: View {
                                     
                                     StatusCard(
                                         title: "Sleeper",
-                                        icon: "bed.double.fill",
+                                        icon: "sb_ic",
                                         status: viewModel.currentCode == "sb" ? "ACTIVE" : "START",
                                         isActive: viewModel.currentCode == "sb",
                                         statusCode: "sb"
@@ -164,7 +164,7 @@ struct HomeView: View {
                                     
                                     StatusCard(
                                         title: "Personal\nUse",
-                                        icon: "figure.walk",
+                                        icon: "pu_ic",
                                         status: viewModel.currentCode == "pu" ? "ACTIVE" : "START",
                                         isActive: viewModel.currentCode == "pu",
                                         statusCode: "pu"
@@ -221,7 +221,7 @@ struct HomeView: View {
                             
                             // HOS List
                             VStack(spacing: 0) {
-                                Text("Hours Of Service")
+                                Text("Hours Of Service - US (70 hours/ 8 Days)")
                                     .font(AppFonts.buttonText)
                                     .frame(maxWidth: .infinity, alignment: .center)
                                     .padding(.vertical, 8)

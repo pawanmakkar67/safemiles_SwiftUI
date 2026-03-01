@@ -48,6 +48,26 @@ class AddEditLogViewModel: NSObject, ObservableObject, CLLocationManagerDelegate
             if let firstVehicle = Global.shared.vehicleList.first {
                 selectedVehicle = firstVehicle
             }
+            
+            // Set selectedTime to the log date (at current time)
+            if let dateStr = log?.date {
+                let formatter = DateFormatter()
+                formatter.dateFormat = "yyyy-MM-dd"
+                formatter.timeZone = getAppTimeZone()
+                if let date = formatter.date(from: dateStr) {
+                    let now = Date()
+                    let calendar = Calendar.current
+                    var components = calendar.dateComponents(in: getAppTimeZone(), from: date)
+                    let nowComponents = calendar.dateComponents(in: getAppTimeZone(), from: now)
+                    components.hour = nowComponents.hour
+                    components.minute = nowComponents.minute
+                    components.second = nowComponents.second
+                    
+                    if let finalDate = calendar.date(from: components) {
+                        selectedTime = finalDate
+                    }
+                }
+            }
         }
     }
     

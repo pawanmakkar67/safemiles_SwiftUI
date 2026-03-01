@@ -76,6 +76,25 @@ struct logsModel : Mappable {
 }
 
 
+struct Co_driver : Mappable {
+    var id : String?
+    var first_name : String?
+    var last_name : String?
+
+    init?(map: Map) {
+
+    }
+
+    mutating func mapping(map: Map) {
+
+        id <- map["id"]
+        first_name <- map["first_name"]
+        last_name <- map["last_name"]
+    }
+
+}
+
+
 struct Metadata : Mappable {
     var driver_id : String?
     var timezone : String?
@@ -183,6 +202,7 @@ struct Log : Mappable {
     var certified : Bool?
     var trailers : String?
     var shipping_docs : String?
+    var co_driver : Co_driver?
 
     init?(map: Map) {
 
@@ -196,6 +216,7 @@ struct Log : Mappable {
         certified <- map["certified"]
         trailers <- map["trailers"]
         shipping_docs <- map["shipping_docs"]
+        co_driver <- map["co_driver"]
     }
 
 }

@@ -11,13 +11,21 @@ struct ForgotPasswordView: View {
             
             VStack(alignment: .leading, spacing: 25) {
                 
-                // Back Button (Custom Action or standard nav?)
-                // Since this will be pushed, we might benefit from navigationBarHidden and a custom back or just standard.
-                // Design shows "Back to login" button at bottom, so implies this screen is a destination.
-                // Let's assume custom header or no header for now to match clean look.
+                // Back Button
+                Button(action: {
+                    presentationMode.wrappedValue.dismiss()
+                }) {
+                    Image("left")
+                        .renderingMode(.template)
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 24, height: 24)
+                        .foregroundColor(AppColors.textBlack)
+                }
+                .padding(.top, 10)
                 
                 Spacer()
-                    .frame(height: 60)
+                    .frame(height: 16)
                 
                 // Title Area
                 VStack(alignment: .leading, spacing: 10) {
