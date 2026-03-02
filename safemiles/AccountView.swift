@@ -7,6 +7,7 @@ struct AccountView: View {
     @ObservedObject var bleManager = BLEManager.shared
     @ObservedObject var fontManager = FontManager.shared // Observe updates
     @State private var showBluetoothScan = false
+    @State private var isDriving = false
     
     var body: some View {
         ZStack {
@@ -20,7 +21,7 @@ struct AccountView: View {
                 // Common Header
                 CommonHeader(
                     title: "Account",
-                    leftIcon: "Menu",
+                    leftIcon: isDriving ? nil : "Menu",
                     onLeftTap: {
                         withAnimation {
                             showSideMenu = true
@@ -84,6 +85,16 @@ struct AccountView: View {
         .onAppear {
             showSideMenu = false // Ensure side menu is closed
             viewModel.fetchProfile()
+            if let code = Global.shared.recapvalues?.last_event?.code?.lowercased() {
+                isDriving = (code == "d")
+            }
+        }
+        .onReceive(NotificationCenter.default.publisher(for: .recapUpdate)) { _ in
+            if let code = Global.shared.recapvalues?.last_event?.code?.lowercased() {
+                withAnimation {
+                    isDriving = (code == "d")
+                }
+            }
         }
     }
 }

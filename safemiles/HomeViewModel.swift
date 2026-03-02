@@ -171,8 +171,20 @@ class HomeViewModel: ObservableObject {
         
     }
     
-    func fetchRecap() {
-        APIManager.shared.request(url: ApiList.RecapApi, method: .get, parameters: nil) { _ in
+    func refreshData() async {
+        await withCheckedContinuation { continuation in
+            fetchRecap {
+                continuation.resume()
+            }
+        }
+        await getLiveStatus()
+        await getVehciles()
+        await getCoDrivers()
+    }
+    
+    func fetchRecap(completion: (() -> Void)? = nil) {
+        APIManager.shared.request(url: ApiList.RecapApi, method: .get, parameters: nil) { comp in
+            completion?()
         } success: { response in
             if let obj = Mapper<RecapModel>().map(JSONObject: response) {
                 Global.shared.recapvalues = obj

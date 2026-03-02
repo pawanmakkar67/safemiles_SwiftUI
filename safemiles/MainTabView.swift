@@ -18,6 +18,8 @@ struct MainTabView: View {
         }
     }
     
+    @State private var isDriving = false
+    
     var body: some View {
         TabView(selection: $selection) {
             HomeView(showSideMenu: $showSideMenu)
@@ -45,8 +47,30 @@ struct MainTabView: View {
                 .tag(3)
         }
         .tint(AppColors.buttonActive) // Active tab color
-        .onChange(of: selection) { _ in
+        .toolbar(isDriving ? .hidden : .visible, for: .tabBar)
+        .onChange(of: selection) { newValue in
+            if isDriving && newValue != 0 {
+                selection = 0
+            }
             showSideMenu = false
+        }
+        .onReceive(NotificationCenter.default.publisher(for: .recapUpdate)) { _ in
+            if let code = Global.shared.recapvalues?.last_event?.code?.lowercased() {
+                withAnimation {
+                    isDriving = (code == "d")
+                    if isDriving {
+                        selection = 0
+                    }
+                }
+            }
+        }
+        .onAppear {
+            if let code = Global.shared.recapvalues?.last_event?.code?.lowercased() {
+                isDriving = (code == "d")
+                if isDriving {
+                    selection = 0
+                }
+            }
         }
     }
 }

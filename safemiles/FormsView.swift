@@ -36,7 +36,7 @@ struct FormsView: View {
                 FormCard(
                     title: "VEHICLES",
                     value: vehicleNumber.isEmpty ? "Select Vehicle" : vehicleNumber,
-                    isReadOnly: isCertified,
+//                    isReadOnly: isCertified,
                     onEdit: {
                         showVehiclePicker = true
                     }
@@ -57,7 +57,7 @@ struct FormsView: View {
                     title: "TRAILERS",
                     placeholder: "e.g. T123",
                     items: $trailers,
-                    isReadOnly: isCertified
+//                    isReadOnly: isCertified
                 )
                 
                 // SHIPPING DOCUMENTS
@@ -65,7 +65,7 @@ struct FormsView: View {
                     title: "SHIPPING DOCUMENTS",
                     placeholder: "e.g. BOL-12345",
                     items: $shippingDocs,
-                    isReadOnly: isCertified
+//                    isReadOnly: isCertified
                 )
                 
                 
@@ -73,7 +73,7 @@ struct FormsView: View {
                 FormCard(
                     title: "CO-DRIVER",
                     value: coDriverName.isEmpty ? "None" : coDriverName,
-                    isReadOnly: isCertified,
+//                    isReadOnly: isCertified,
                     onEdit: {
                         showCoDriverPicker = true
                     }
@@ -91,7 +91,7 @@ struct FormsView: View {
                     }
                 }
                 
-                if !isCertified {
+                // if !isCertified {
                     Button(action: saveForm) {
                         Text("Save")
                             .font(AppFonts.buttonText)
@@ -102,7 +102,7 @@ struct FormsView: View {
                             .cornerRadius(8)
                     }
                     .padding(.top, 20)
-                }
+                // }
                 
             }
             .padding()

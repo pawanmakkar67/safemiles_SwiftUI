@@ -97,7 +97,7 @@ class AddEditLogViewModel: NSObject, ObservableObject, CLLocationManagerDelegate
         // Map status to code
         let statusCode = getStatusCode(selectedStatus)
         
-        var params: [String: Any] = [
+        let params: [String: Any] = [
             "eventdatetime": combinedDateTime,
             "code": statusCode,
             "origin": "Driver",

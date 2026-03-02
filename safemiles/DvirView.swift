@@ -7,6 +7,7 @@ struct DvirView: View {
     @State private var showAddDvir = false
     @State private var showDetail = false
     @State private var selectedDvirData: DivrData?
+    @State private var isDriving = false
     
     var body: some View {
         ZStack {
@@ -51,7 +52,7 @@ struct DvirView: View {
             // Header
             CommonHeader(
                 title: "DVIR Detail",
-                leftIcon: "Menu",
+                leftIcon: isDriving ? nil : "Menu",
                 onLeftTap: {
                     withAnimation {
                         showSideMenu = true
@@ -129,6 +130,16 @@ struct DvirView: View {
             if viewModel.dvirData.isEmpty {
                  print("DEBUG: DvirView - Initial Fetch")
                  viewModel.fetchDivrs(refresh: true)
+            }
+            if let code = Global.shared.recapvalues?.last_event?.code?.lowercased() {
+                isDriving = (code == "d")
+            }
+        }
+        .onReceive(NotificationCenter.default.publisher(for: .recapUpdate)) { _ in
+            if let code = Global.shared.recapvalues?.last_event?.code?.lowercased() {
+                withAnimation {
+                    isDriving = (code == "d")
+                }
             }
         }
     }

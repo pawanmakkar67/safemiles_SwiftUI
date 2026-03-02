@@ -6,6 +6,7 @@ struct SelectVehicleView: View {
     @StateObject private var viewModel = SelectVehicleViewModel()
     @ObservedObject var bleManager = BLEManager.shared
     @State private var showBluetoothScan = false
+    @State private var isDriving = false
     @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
@@ -15,7 +16,7 @@ struct SelectVehicleView: View {
                 // Common Header
                 CommonHeader(
                     title: "Select Vehicle",
-                    leftIcon: "Menu",
+                    leftIcon: isDriving ? nil : "Menu",
                     onLeftTap: {
                         withAnimation {
                             showSideMenu = true
@@ -79,6 +80,16 @@ struct SelectVehicleView: View {
             // Start BLE scan if not connected
             if bleManager.connectedPeripheral == nil {
                 bleManager.startScan()
+            }
+            if let code = Global.shared.recapvalues?.last_event?.code?.lowercased() {
+                isDriving = (code == "d")
+            }
+        }
+        .onReceive(NotificationCenter.default.publisher(for: .recapUpdate)) { _ in
+            if let code = Global.shared.recapvalues?.last_event?.code?.lowercased() {
+                withAnimation {
+                    isDriving = (code == "d")
+                }
             }
         }
         .alert(isPresented: $viewModel.showAlert) {

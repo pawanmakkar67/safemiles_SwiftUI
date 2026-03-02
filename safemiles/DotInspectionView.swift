@@ -8,6 +8,7 @@ struct DotInspectionView: View {
     @State private var showBluetoothScan = false
     @State private var showSendLogs = false
     @State private var showEmailLogs = false
+    @State private var isDriving = false
     
     var body: some View {
         ZStack {
@@ -16,7 +17,7 @@ struct DotInspectionView: View {
                 // Common Header
                 CommonHeader(
                     title: "Dot Inspection",
-                    leftIcon: "Menu",
+                    leftIcon: isDriving ? nil : "Menu",
                     onLeftTap: {
                         withAnimation {
                             showSideMenu = true
@@ -148,6 +149,16 @@ struct DotInspectionView: View {
         }
         .onAppear {
             showSideMenu = false
+            if let code = Global.shared.recapvalues?.last_event?.code?.lowercased() {
+                isDriving = (code == "d")
+            }
+        }
+        .onReceive(NotificationCenter.default.publisher(for: .recapUpdate)) { _ in
+            if let code = Global.shared.recapvalues?.last_event?.code?.lowercased() {
+                withAnimation {
+                    isDriving = (code == "d")
+                }
+            }
         }
         .alert(isPresented: $viewModel.showAlert) {
             Alert(

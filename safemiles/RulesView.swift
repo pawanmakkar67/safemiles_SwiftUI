@@ -6,6 +6,7 @@ struct RulesView: View {
     @StateObject private var viewModel = RulesViewModel()
     @ObservedObject var bleManager = BLEManager.shared
     @State private var showBluetoothScan = false
+    @State private var isDriving = false
     
     var body: some View {
         ZStack {
@@ -14,7 +15,7 @@ struct RulesView: View {
                 // Common Header
                 CommonHeader(
                     title: "Rules",
-                    leftIcon: "Menu",
+                    leftIcon: isDriving ? nil : "Menu",
                     onLeftTap: {
                         withAnimation {
                             showSideMenu = true
@@ -88,6 +89,16 @@ struct RulesView: View {
         }
         .onAppear {
             viewModel.fetchRules()
+            if let code = Global.shared.recapvalues?.last_event?.code?.lowercased() {
+                isDriving = (code == "d")
+            }
+        }
+        .onReceive(NotificationCenter.default.publisher(for: .recapUpdate)) { _ in
+            if let code = Global.shared.recapvalues?.last_event?.code?.lowercased() {
+                withAnimation {
+                    isDriving = (code == "d")
+                }
+            }
         }
         .alert(isPresented: $viewModel.showAlert) {
             Alert(title: Text("Error"), message: Text(viewModel.alertMessage ?? ""), dismissButton: .default(Text("OK")))

@@ -32,6 +32,7 @@ struct safemilesApp: App {
     }
     
     @State private var appState: AppState = .splash
+    @State private var showSessionExpiredAlert = false
     
     var body: some Scene {
         WindowGroup {
@@ -67,6 +68,19 @@ struct safemilesApp: App {
                 withAnimation {
                     self.appState = .login
                 }
+            }
+            .onReceive(NotificationCenter.default.publisher(for: NSNotification.Name("SessionExpiredNotification"))) { _ in
+                showSessionExpiredAlert = true
+            }
+            .alert("Session Expired", isPresented: $showSessionExpiredAlert) {
+                Button("OK") {
+                    UserDefaults.removeAllKeys()
+                    withAnimation {
+                        appState = .login
+                    }
+                }
+            } message: {
+                Text("Your session has expired. Please log in again.")
             }
         }
     }

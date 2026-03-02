@@ -6,6 +6,7 @@ struct InformationPacketView: View {
     @ObservedObject var bleManager = BLEManager.shared
     @State private var showBluetoothScan = false
     @State private var showPDF = false
+    @State private var isDriving = false
     @State private var selectedPDFUrl = ""
     @State private var selectedPDFTitle = ""
     
@@ -22,7 +23,7 @@ struct InformationPacketView: View {
                 // Common Header
                 CommonHeader(
                     title: "Information Packet",
-                    leftIcon: "Menu",
+                    leftIcon: isDriving ? nil : "Menu",
                     onLeftTap: {
                         withAnimation {
                             showSideMenu = true
@@ -88,6 +89,16 @@ struct InformationPacketView: View {
         }
         .onAppear {
             showSideMenu = false
+            if let code = Global.shared.recapvalues?.last_event?.code?.lowercased() {
+                isDriving = (code == "d")
+            }
+        }
+        .onReceive(NotificationCenter.default.publisher(for: .recapUpdate)) { _ in
+            if let code = Global.shared.recapvalues?.last_event?.code?.lowercased() {
+                withAnimation {
+                    isDriving = (code == "d")
+                }
+            }
         }
     }
     

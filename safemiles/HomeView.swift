@@ -18,7 +18,7 @@ struct HomeView: View {
                 // Common Header
                 CommonHeader(
                     title: "Home",
-                    leftIcon: "Menu",
+                    leftIcon: viewModel.currentCode == "d" ? nil : "Menu",
                     rightIcon: "ble",
                     rightIconColor: bleManager.connectedPeripheral?.state == .connected ? AppColors.statusGreen : AppColors.white,
                     onLeftTap: {
@@ -257,6 +257,9 @@ struct HomeView: View {
                         .cornerRadius(8)
 //                        .padding(.bottom, 20)
                     }
+                }
+                .refreshable {
+                    await viewModel.refreshData()
                 }
                 .background(AppColors.background)
             }

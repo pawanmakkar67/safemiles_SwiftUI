@@ -39,6 +39,11 @@ class APIManager {
             
             print(response.value as Any)
             
+            if let dict = response.value as? [String: Any], dict["code"] as? String == "token_not_valid" {
+                NotificationCenter.default.post(name: NSNotification.Name("SessionExpiredNotification"), object: nil)
+                return
+            }
+            
             completionCallback(response as AnyObject)
             let controller = UIApplication.topViewController()
             
@@ -143,9 +148,15 @@ class APIManager {
 
             method: method,
             headers: headers)
-            .responseJSON { (response) in
-                
+        .responseJSON { (response) in
+
                 print(response.value as Any)
+                
+                if let dict = response.value as? [String: Any], dict["code"] as? String == "token_not_valid" {
+                    NotificationCenter.default.post(name: NSNotification.Name("SessionExpiredNotification"), object: nil)
+                    return
+                }
+                
                 completionCallback(response as AnyObject)
                 
                 if self.isResponseValid(response: response) {
@@ -233,6 +244,12 @@ class APIManager {
             .responseJSON { (response) in
                 
                 print(response.value as Any)
+                
+                if let dict = response.value as? [String: Any], dict["code"] as? String == "token_not_valid" {
+                    NotificationCenter.default.post(name: NSNotification.Name("SessionExpiredNotification"), object: nil)
+                    return
+                }
+                
                 completionCallback(response as AnyObject)
                 
                 if self.isResponseValid(response: response) {
@@ -295,6 +312,12 @@ class APIManager {
         .responseJSON { (response) in
 
             print(response.value as Any)
+            
+            if let dict = response.value as? [String: Any], dict["code"] as? String == "token_not_valid" {
+                NotificationCenter.default.post(name: NSNotification.Name("SessionExpiredNotification"), object: nil)
+                return
+            }
+            
             completionCallback(response as AnyObject)
 
             
@@ -378,6 +401,11 @@ class APIManager {
             
             print(response.value as Any)
             
+            if let dict = response.value as? [String: Any], dict["code"] as? String == "token_not_valid" {
+                NotificationCenter.default.post(name: NSNotification.Name("SessionExpiredNotification"), object: nil)
+                return
+            }
+            
             completionCallback(response as AnyObject)
             let controller = UIApplication.topViewController()
             
@@ -431,32 +459,3 @@ class APIManager {
 }
 
 
-
-//class APIManagerNew {
-//    static let shared = APIManagerNew()
-//    private init() {}
-//
-//    func request<T: Decodable>(
-//        url: String,
-//        method: HTTPMethod = .get,
-//        parameters: Parameters? = nil,
-//        completion: @escaping (Result<T, Error>) -> Void
-//    ) {
-//        let token = UserDefaults.getUserToken()
-//        var headers: HTTPHeaders = [:]
-//        if !token.isEmpty {
-//            headers.add(name: "Authorization", value: "Bearer \(token)")
-//        }
-//
-//        AF.request(url, method: method, parameters: parameters, encoding: URLEncoding.default, headers: headers)
-//            .validate()
-//            .responseDecodable(of: T.self) { response in
-//                switch response.result {
-//                case .success(let decoded):
-//                    completion(.success(decoded))
-//                case .failure(let error):
-//                    completion(.failure(error))
-//                }
-//            }
-//    }
-//}
