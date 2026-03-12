@@ -1,9 +1,9 @@
 import SwiftUI
+import PencilKit
 
 struct CertifyView: View {
     @ObservedObject var viewModel: LogsViewModel
-    @State private var lines: [[CGPoint]] = []
-    @State private var currentLine: [CGPoint] = []
+    @State private var canvasView = PKCanvasView()
     @State private var isCertified = false
     @State private var showAlert = false
     @State private var alertMessage = ""
@@ -24,50 +24,21 @@ struct CertifyView: View {
                         .padding(.top)
                     
                     // Signature Drawing Area
-                    ZStack {
-                        // Border View (mimicking signatureDrawingView1)
+                    SignatureView(canvasView: $canvasView) {
+                        // Signature updated
+                    }
+                    .frame(height: drawingHeight)
+                    .background(Color.white)
+                    .cornerRadius(cornerRadius)
+                    .overlay(
                         RoundedRectangle(cornerRadius: cornerRadius)
                             .stroke(Color.black, lineWidth: 1)
-                            .background(Color.white)
-                            .frame(height: drawingHeight + 10)
-                        
-                        // Drawing Canvas (mimicking signatureDrawingView)
-                        Canvas { context, size in
-                            for line in lines {
-                                var path = Path()
-                                path.addLines(line)
-                                context.stroke(path, with: .color(.black), lineWidth: 2)
-                            }
-                            // Draw current line
-                            var path = Path()
-                            path.addLines(currentLine)
-                            context.stroke(path, with: .color(.black), lineWidth: 2)
-                        }
-                        .frame(height: drawingHeight)
-                        .padding(5) // Inner padding
-                        .gesture(
-                            DragGesture(minimumDistance: 0)
-                                .onChanged { value in
-                                    let newPoint = value.location
-                                    if value.translation.width == 0 && value.translation.height == 0 {
-                                        // Start of line
-                                        currentLine = [newPoint]
-                                    } else {
-                                        currentLine.append(newPoint)
-                                    }
-                                }
-                                .onEnded { _ in
-                                    lines.append(currentLine)
-                                    currentLine = []
-                                }
-                        )
-                    }
-                    .padding(.horizontal,20)
-                    .padding(.vertical,5)
+                    )
+                    .padding(.horizontal, 20)
+                    .padding(.vertical, 5)
 
                     Button("Clear signature") {
-                        lines = []
-                        currentLine = []
+                        canvasView.drawing = PKDrawing()
                     }
                     .font(AppFonts.bodyText)
                     .foregroundColor(AppColors.textGray)
@@ -123,34 +94,20 @@ struct CertifyView: View {
     }
     
     func submitSignature() {
-        if lines.isEmpty {
+        if canvasView.drawing.bounds.isEmpty {
             alertMessage = "Please draw your signature first."
             showAlert = true
             return
         }
         
-        let renderer = ImageRenderer(content:
-            Canvas { context, size in
-                for line in lines {
-                    var path = Path()
-                    path.addLines(line)
-                    context.stroke(path, with: .color(.black), lineWidth: 2)
-                }
-            }
-            .frame(width: UIScreen.main.bounds.width - 60, height: drawingHeight)
-        )
+        let image = canvasView.asImage()
         
-        if let image = renderer.uiImage, let pngData = image.pngData() {
-            viewModel.certifyLog(signature: image) { success, message in
-                alertMessage = message
-                showAlert = true
-                if success {
-                    lines = [] // Clear after success
-                }
-            }
-        } else {
-            alertMessage = "Failed to capture signature."
+        viewModel.certifyLog(signature: image) { success, message in
+            alertMessage = message
             showAlert = true
+            if success {
+                canvasView.drawing = PKDrawing() // Clear after success
+            }
         }
     }
 }

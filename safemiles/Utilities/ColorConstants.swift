@@ -46,6 +46,10 @@ struct AppColors {
     // TextField Colors
     static let textFieldBackground = Color(hex: "F8FAFC")
     static let textFieldBorder = Color(hex: "E2E8F0")
+    
+    // Glassmorphism
+    static let glassBackground = Color.white.opacity(0.2)
+    static let glassButtonBackground = Color.black.opacity(0.4)
 
     // Common System Colors Encapsulated
     static let white = Color.white

@@ -116,12 +116,6 @@ struct AddDvirView: View {
         )) { item in
             Alert(title: Text("Alert"), message: Text(item.message), dismissButton: .default(Text("OK")))
         }
-        .alert(item: Binding<AlertItem?>(
-            get: { viewModel.errorMessage.map { AlertItem(message: $0) } },
-            set: { _ in viewModel.errorMessage = nil }
-        )) { item in
-            Alert(title: Text("Alert"), message: Text(item.message), dismissButton: .default(Text("OK")))
-        }
         .onChange(of: showVehicleDefects) { isShowing in
             print("DEBUG: AddDvirView - showVehicleDefects changed to: \(isShowing)")
         }
@@ -142,7 +136,7 @@ struct AddDvirView: View {
                 .font(AppFonts.buttonText)
                 .padding()
             }
-            .presentationDetents([.height(480)])
+            .sheetDetents(height: 480)
         }
     }
     
@@ -210,7 +204,7 @@ struct AddDvirView: View {
                     .foregroundColor(AppColors.textGray)
                 TextEditor(text: $viewModel.remarks)
                     .frame(height: 80)
-                    .scrollContentBackground(.hidden)
+                    .hideScrollContentBackground()
                     .font(AppFonts.textField)
                     .padding(8)
                     .background(AppColors.inputGray)

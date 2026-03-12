@@ -337,8 +337,9 @@ class LogsViewModel: ObservableObject {
              // completion progress
         } success: { response in
             self.isLoading = false
-            if let success = response["success"] as? Bool, success == true {
-                 completion(true, response["message"] as? String ?? "Certified Successfully")
+            let success = (response["success"] as? Bool == true) || (response["certified"] as? Bool == true)
+            if success {
+                 completion(true, "message successfully sent")
                  self.fetchLogs(refresh: true)
             } else {
                  completion(false, response["message"] as? String ?? "Unknown error")

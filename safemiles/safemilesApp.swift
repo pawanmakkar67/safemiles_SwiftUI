@@ -28,6 +28,7 @@ struct safemilesApp: App {
     enum AppState {
         case splash
         case login
+        case processing
         case content
     }
     
@@ -55,6 +56,12 @@ struct safemilesApp: App {
                 case .login:
                     LoginView {
                         // On login success
+                        withAnimation {
+                            appState = .processing
+                        }
+                    }
+                case .processing:
+                    ProcessingView {
                         withAnimation {
                             appState = .content
                         }

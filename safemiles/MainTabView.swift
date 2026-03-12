@@ -47,7 +47,7 @@ struct MainTabView: View {
                 .tag(3)
         }
         .tint(AppColors.buttonActive) // Active tab color
-        .toolbar(isDriving ? .hidden : .visible, for: .tabBar)
+        .hideTabBar(isDriving)
         .onChange(of: selection) { newValue in
             if isDriving && newValue != 0 {
                 selection = 0

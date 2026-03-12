@@ -220,6 +220,15 @@ class AddDvirViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
             errorMessage = "Please enter location"
             return false
         }
+        
+        // Defect validation
+        if status == "Has Defects" {
+            if vehicleDefects.isEmpty && trailerDefects.isEmpty {
+                errorMessage = "Please select at least one defect for vehicle or trailer"
+                return false
+            }
+        }
+        
         if signatureImage == nil {
             errorMessage = "Please sign the report"
             return false

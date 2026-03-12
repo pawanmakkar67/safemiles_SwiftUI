@@ -2,7 +2,14 @@ import SwiftUI
 
 struct ForgotPasswordView: View {
     @Environment(\.presentationMode) var presentationMode
-    @State private var email: String = ""
+    @StateObject private var viewModel = ForgotPasswordViewModel()
+    
+    enum Field: Hashable {
+        case email
+    }
+    
+    @FocusState private var focusedField: Field?
+    @State private var lastFocusedField: Field?
     
     var body: some View {
         ZStack {
@@ -42,25 +49,37 @@ struct ForgotPasswordView: View {
                 
                 // Email Field
                 CustomTextField(
-                    title: "example@gmail.com",
-                    text: $email,
+                    title: "Enter your email/username",
+                    text: $viewModel.email,
                     icon: "envelope",
                     keyboardType: .emailAddress,
-                    isError: false // Bind to validation state if/when implemented
+                    isError: viewModel.isEmailError
                 )
+                .focused($focusedField, equals: .email)
 
                 // Forgot Password Button
                 Button(action: {
-                    // Action to reset password
+                    viewModel.resetPassword()
                 }) {
-                    Text("Forgot Password")
-                        .font(AppFonts.buttonText)
-                        .foregroundStyle(AppColors.white)
-                        .frame(maxWidth: .infinity)
-                        .frame(height: 56)
-                        .background(AppColors.black)
-                        .cornerRadius(16)
+                    if viewModel.isLoading {
+                        ProgressView()
+                            .progressViewStyle(CircularProgressViewStyle(tint: AppColors.white))
+                            .frame(maxWidth: .infinity)
+                            .frame(height: 56)
+                            .background(AppColors.black)
+                            .cornerRadius(16)
+                    } else {
+                        Text("Forgot Password")
+                            .font(AppFonts.buttonText)
+                            .foregroundStyle(AppColors.white)
+                            .frame(maxWidth: .infinity)
+                            .frame(height: 56)
+                            .background(AppColors.black)
+                            .cornerRadius(16)
+                    }
                 }
+                .disabled(viewModel.isLoading || !viewModel.isFormValid)
+                .opacity(viewModel.isLoading || !viewModel.isFormValid ? 0.5 : 1.0)
                 .padding(.top, 10)
                 
                 // Back to Login Button
@@ -68,8 +87,8 @@ struct ForgotPasswordView: View {
                     presentationMode.wrappedValue.dismiss()
                 }) {
                     Text("Back to login")
-                        .font(AppFonts.buttonText) // Assuming same size or slightly smaller? Image shows similar.
-                        .foregroundStyle(AppColors.textGray) // Gray text based on image
+                        .font(AppFonts.buttonText)
+                        .foregroundStyle(AppColors.textGray)
                         .frame(maxWidth: .infinity)
                         .frame(height: 56)
                         .background(AppColors.clear)
@@ -85,6 +104,24 @@ struct ForgotPasswordView: View {
             .padding(.horizontal, 24)
         }
         .navigationBarHidden(true)
+        .onChange(of: focusedField) { newValue in
+            if lastFocusedField == .email && newValue != .email {
+                viewModel.validateEmail()
+            }
+            lastFocusedField = newValue
+        }
+        .alert(isPresented: $viewModel.showError) {
+            Alert(title: Text("Error"), message: Text(viewModel.errorMessage ?? "Unknown Error"), dismissButton: .default(Text("OK")))
+        }
+        .alert(isPresented: $viewModel.isSuccess) {
+            Alert(
+                title: Text("Success"),
+                message: Text(viewModel.alertMessage ?? "Successfully sent reset instructions"),
+                dismissButton: .default(Text("OK")) {
+                    presentationMode.wrappedValue.dismiss()
+                }
+            )
+        }
     }
 }
 

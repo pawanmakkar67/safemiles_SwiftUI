@@ -36,7 +36,7 @@ extension Color {
             opacity: Double(a) / 255
         )
     }
-    }
+}
 
 
 import UIKit
@@ -73,5 +73,62 @@ extension View {
                 RoundedRectangle(cornerRadius: 8)
                     .stroke(AppColors.textFieldBorder, lineWidth: 1)
             )
+    }
+    
+    @ViewBuilder
+    func hideTabBar(_ isHidden: Bool) -> some View {
+        if #available(iOS 16.0, *) {
+            self.toolbar(isHidden ? .hidden : .visible, for: .tabBar)
+        } else {
+            self
+        }
+    }
+    
+    @ViewBuilder
+    func multilineTextField() -> some View {
+        if #available(iOS 16.0, *) {
+            self
+        } else {
+            // On iOS 15, TextField doesn't support axis, but we can't easily swap to TextEditor here 
+            // without changing the call site significantly or losing TextField features like placeholder.
+            // For now, we just return self which will be a single line TextField.
+            self
+        }
+    }
+    
+    @ViewBuilder
+    func hideScrollContentBackground() -> some View {
+        if #available(iOS 16.0, *) {
+            self.scrollContentBackground(.hidden)
+        } else {
+            self
+        }
+    }
+    
+    @ViewBuilder
+    func sheetDetents(height: CGFloat) -> some View {
+        if #available(iOS 16.0, *) {
+            self.presentationDetents([.height(height)])
+        } else {
+            self
+        }
+    }
+    
+    @ViewBuilder
+    func sheetDetentsMedium() -> some View {
+        if #available(iOS 16.0, *) {
+            self.presentationDetents([.medium])
+        } else {
+            self
+        }
+    }
+    
+    @ViewBuilder
+    func presentationDragIndicatorVisible() -> some View {
+        if #available(iOS 16.0, *) {
+            self.presentationDragIndicator(.visible)
+        } else {
+            self
+        }
     }
 }

@@ -48,7 +48,7 @@ struct FontSizeRow: View {
                 }
             }
             .padding()
-            .background(AppColors.white)
+            .background(.clear)
             
             Divider()
                 .padding(.leading, 20)

@@ -8,16 +8,22 @@ struct DotInspectionView: View {
     @State private var showBluetoothScan = false
     @State private var showSendLogs = false
     @State private var showEmailLogs = false
-    @State private var isDriving = false
+    @State private var showDetail = false
+    @StateObject private var logsViewModel = LogsViewModel()
     
     var body: some View {
         ZStack {
             VStack(spacing: 0) {
                 
+                // Navigation to Detail
+                NavigationLink(destination: DotInspectionDetailView(logsViewModel: logsViewModel, showSideMenu: $showSideMenu), isActive: $showDetail) {
+                    EmptyView()
+                }
+
                 // Common Header
                 CommonHeader(
                     title: "Dot Inspection",
-                    leftIcon: isDriving ? nil : "Menu",
+                    leftIcon: "Menu",
                     onLeftTap: {
                         withAnimation {
                             showSideMenu = true
@@ -39,7 +45,7 @@ struct DotInspectionView: View {
                                     .foregroundColor(AppColors.textBlack)
                                 
                                 Button(action: {
-                                    viewModel.beginInspection()
+                                    showDetail = true
                                 }) {
                                     if viewModel.isLoading {
                                          ProgressView().tint(.white)
@@ -145,19 +151,6 @@ struct DotInspectionView: View {
                 ProgressView()
                     .progressViewStyle(CircularProgressViewStyle(tint: AppColors.white))
                     .scaleEffect(1.5)
-            }
-        }
-        .onAppear {
-            showSideMenu = false
-            if let code = Global.shared.recapvalues?.last_event?.code?.lowercased() {
-                isDriving = (code == "d")
-            }
-        }
-        .onReceive(NotificationCenter.default.publisher(for: .recapUpdate)) { _ in
-            if let code = Global.shared.recapvalues?.last_event?.code?.lowercased() {
-                withAnimation {
-                    isDriving = (code == "d")
-                }
             }
         }
         .alert(isPresented: $viewModel.showAlert) {

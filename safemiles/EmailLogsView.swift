@@ -37,7 +37,7 @@ struct EmailLogsView: View {
                         // Send Button
                         Button(action: {
                             viewModel.sendEmail {
-                                presentationMode.wrappedValue.dismiss()
+                                // No immediate dismissal, handled by alert
                             }
                         }) {
                             if viewModel.isLoading {
@@ -73,7 +73,11 @@ struct EmailLogsView: View {
             get: { viewModel.alertMessage.map { AlertItem(message: $0) } },
             set: { _ in viewModel.alertMessage = nil }
         )) { item in
-            Alert(title: Text("Alert"), message: Text(item.message), dismissButton: .default(Text("OK")))
+            Alert(title: Text("Alert"), message: Text(item.message), dismissButton: .default(Text("OK"), action: {
+                if viewModel.isSuccess {
+                    presentationMode.wrappedValue.dismiss()
+                }
+            }))
         }
     }
 }

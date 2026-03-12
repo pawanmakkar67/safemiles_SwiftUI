@@ -37,14 +37,22 @@ struct SideMenuView: View {
                     // --- Header ---
                     VStack(alignment: .leading, spacing: 12) {
                         HStack(alignment: .top) {
-                            // Profile Image Placeholder
+                            // Profile Image Placeholder with Initials
                             Circle()
                                 .fill(AppColors.grayOpacity50)
                                 .frame(width: 60, height: 60)
                                 .overlay(
-                                    Image(systemName: "person.fill")
-                                        .foregroundColor(AppColors.white.opacity(0.5))
-                                        .font(AppFonts.title)
+                                    Group {
+                                        if let initials = getInitials(), !initials.isEmpty {
+                                            Text(initials)
+                                                .font(AppFonts.title)
+                                                .foregroundColor(AppColors.white)
+                                        } else {
+                                            Image(systemName: "person.fill")
+                                                .foregroundColor(AppColors.white.opacity(0.5))
+                                                .font(AppFonts.title)
+                                        }
+                                    }
                                 )
                             
                             Spacer()
@@ -152,6 +160,16 @@ struct SideMenuView: View {
                 .foregroundColor(isSelected ? contentColor : AppColors.clear),
             alignment: .leading
         )
+    }
+    
+    private func getInitials() -> String? {
+        guard let user = Global.shared.myProfile?.user else { return nil }
+        
+        let firstInitial = user.first_name?.prefix(1) ?? ""
+        let lastInitial = user.last_name?.prefix(1) ?? ""
+        
+        let initials = "\(firstInitial)\(lastInitial)".uppercased()
+        return initials.isEmpty ? nil : initials
     }
 }
 

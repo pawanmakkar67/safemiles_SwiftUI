@@ -8,6 +8,7 @@ class EmailLogsViewModel: ObservableObject {
     @Published var email: String = ""
     @Published var isLoading = false
     @Published var alertMessage: String?
+    @Published var isSuccess = false
     
     func sendEmail(onSuccess: @escaping () -> Void) {
         if email.isEmpty || !isValidEmail(email) {
@@ -23,7 +24,8 @@ class EmailLogsViewModel: ObservableObject {
         } success: { [weak self] response in
             DispatchQueue.main.async {
                 self?.isLoading = false
-                // Handle success
+                self?.isSuccess = true
+                self?.alertMessage = "message successfully sent"
                 onSuccess()
             }
         } failure: { [weak self] error in

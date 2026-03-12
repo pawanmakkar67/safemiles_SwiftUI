@@ -9,6 +9,7 @@ class SendLogsViewModel: ObservableObject {
     @Published var comment: String = ""
     @Published var isLoading = false
     @Published var alertMessage: String?
+    @Published var isSuccess = false
     @Published var showSuccessInfo = false
     
     // Options for the picker
@@ -37,9 +38,8 @@ class SendLogsViewModel: ObservableObject {
         } success: { [weak self] response in
             DispatchQueue.main.async {
                 self?.isLoading = false
-                // Handle success - maybe show alert or just callback
-                // Ref code pops to previous.
-                // We'll trigger callback
+                self?.isSuccess = true
+                self?.alertMessage = "message successfully sent"
                 onSuccess()
             }
         } failure: { [weak self] error in

@@ -40,7 +40,7 @@ struct StatusCard: View {
                 )
         }
         .padding(16)
-        .frame(width: 150, height: 130)
+        .frame(width: 160, height: 130)
         .background(AppColors.white)
         .cornerRadius(16)
         .shadow(color: AppColors.blackOpacity10, radius: 5, x: 0, y: 2)

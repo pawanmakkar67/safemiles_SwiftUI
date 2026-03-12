@@ -9,6 +9,7 @@ struct DvirDetailView: View {
     @Environment(\.presentationMode) var presentationMode
     @State private var showEditView = false
     @State private var isNavigatingToEdit = false
+    @State private var showDeleteConfirmation = false
     var dismissToRoot: (() -> Void)?
     
     init(data: DivrData, dismissToRoot: (() -> Void)? = nil) {
@@ -55,7 +56,7 @@ struct DvirDetailView: View {
                                 }
                                 
                                 Button(role: .destructive, action: {
-                                    deleteDivr()
+                                    showDeleteConfirmation = true
                                 }) {
                                     Label("Delete", systemImage: "trash")
                                 }
@@ -206,6 +207,16 @@ struct DvirDetailView: View {
         .onAppear {
             fetchDetail()
         }
+        .alert(isPresented: $showDeleteConfirmation) {
+            Alert(
+                title: Text("Delete DVIR"),
+                message: Text("Are you sure you want to delete this DVIR?"),
+                primaryButton: .destructive(Text("Delete")) {
+                    deleteDivr()
+                },
+                secondaryButton: .cancel()
+            )
+        }
 
     }
     
@@ -314,7 +325,11 @@ struct DvirDetailView: View {
             
         } success: { response in
             DispatchQueue.main.async {
-                self.presentationMode.wrappedValue.dismiss()
+                if let dismissToRoot = self.dismissToRoot {
+                    dismissToRoot()
+                } else {
+                    self.presentationMode.wrappedValue.dismiss()
+                }
             }
         } failure: { error in
             print("Delete failed: \(String(describing: error))")

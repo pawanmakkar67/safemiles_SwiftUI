@@ -12,53 +12,83 @@ import ObjectMapper
 import Alamofire
 
 class LoginViewModel: ObservableObject {
-    @Published var email = "tourtravel@gmail.com"
-    @Published var password = "Tour@5588Travel#"
+    @Published var email = ""
+    @Published var password = ""
     @Published var isPasswordVisible = false
     @Published var isLoading = false
+    @Published var isEmailError = false
+    @Published var isPasswordError = false
     @Published var errorMessage: String?
     @Published var showError = false
     
-    @Published var isEmailError = false
-    @Published var isPasswordError = false
+    // Keychain constants
+    private let keychainService = "com.safemiles.auth"
+    private let emailAccount = "userEmail"
+    private let passwordAccount = "userPassword"
     
-    // Callback to notify parent (App) that login is successful
-    // In a real app, this might be handled via a global AppState or Coordinator
     var onLoginSuccess: (() -> Void)?
     
+    private var cancellables = Set<AnyCancellable>()
+    
+    init() {
+        // loadCredentials()
+        setupValidation()
+    }
+    
+    private func loadCredentials() {
+        if let savedEmail = KeychainHelper.shared.readString(service: keychainService, account: emailAccount) {
+            self.email = savedEmail
+        }
+        if let savedPassword = KeychainHelper.shared.readString(service: keychainService, account: passwordAccount) {
+            self.password = savedPassword
+        }
+    }
+    
+    private func saveCredentials() {
+        KeychainHelper.shared.saveString(email, service: keychainService, account: emailAccount)
+        KeychainHelper.shared.saveString(password, service: keychainService, account: passwordAccount)
+    }
+    
+    private func setupValidation() {
+        $email
+            .dropFirst()
+            .debounce(for: .milliseconds(500), scheduler: RunLoop.main)
+            .sink { [weak self] _ in self?.validateEmail() }
+            .store(in: &cancellables)
+            
+        $password
+            .dropFirst()
+            .debounce(for: .milliseconds(500), scheduler: RunLoop.main)
+            .sink { [weak self] _ in self?.validatePassword() }
+            .store(in: &cancellables)
+    }
+    
+    func validateEmail() {
+        isEmailError = !email.isEmpty && !isValidEmail(email) && !isValidUsername(email)
+    }
+    
+    func validatePassword() {
+        isPasswordError = !password.isEmpty && password.count < 6
+    }
+    
     var isFormValid: Bool {
-        return !email.isEmpty && !password.isEmpty
+        return !email.isEmpty && !password.isEmpty && !isEmailError && !isPasswordError
     }
     
     func login() {
         // Reset errors
-        isEmailError = false
-        isPasswordError = false
+        validateEmail()
+        validatePassword()
         
-        var hasError = false
-        
-        // Basic validation
-        if email.isEmpty {
-            self.errorMessage = "Please enter email or username"
+        if isEmailError || isPasswordError {
+            self.errorMessage = "Please fix the errors before logging in"
             self.showError = true
-            self.isEmailError = true
-            hasError = true
+            return
         }
         
-        if password.isEmpty {
-            self.errorMessage = "Please enter password"
+        if email.isEmpty || password.isEmpty {
+            self.errorMessage = "Please enter both email and password"
             self.showError = true
-            self.isPasswordError = true
-            hasError = true
-        }
-        
-        if hasError { return }
-        
-        // Validate specifically for Email OR Username
-        if !isValidEmail(email) && !isValidUsername(email) {
-            self.errorMessage = "Please enter a valid email or username"
-            self.showError = true
-            self.isEmailError = true
             return
         }
         
@@ -74,6 +104,9 @@ class LoginViewModel: ObservableObject {
                 
                 if let obj = Mapper<userModel>().map(JSONObject: response) {
                     if obj.success == true {
+                        // Save credentials to Keychain
+                        // self.saveCredentials()
+                        
                         // Save user data
                         UserDefaults.setLoginUser(obj)
                         UserDefaults.setUserID(token: obj.data?.id ?? "")

@@ -17,7 +17,7 @@ struct HomeView: View {
                 }
                 // Common Header
                 CommonHeader(
-                    title: "Home",
+                    title: viewModel.headerTitle,
                     leftIcon: viewModel.currentCode == "d" ? nil : "Menu",
                     rightIcon: "ble",
                     rightIconColor: bleManager.connectedPeripheral?.state == .connected ? AppColors.statusGreen : AppColors.white,
@@ -47,7 +47,7 @@ struct HomeView: View {
                                 // Background Ring
                                 Circle()
                                     .stroke(AppColors.ringBackground, lineWidth: 15)
-                                    .frame(width: 200, height: 200)
+                                    .frame(width: 210, height: 210)
                                 
                                 // Progress Ring
                                 Circle()
@@ -57,12 +57,12 @@ struct HomeView: View {
                                         style: StrokeStyle(lineWidth: 15, lineCap: .round)
                                     )
                                     .rotationEffect(.degrees(-90))
-                                    .frame(width: 200, height: 200)
+                                    .frame(width: 210, height: 210)
                                 
                                 // Inner Dark Circle
                                 Circle()
                                     .fill(AppColors.textBlack) // Dark background
-                                    .frame(width: 150, height: 150)
+                                    .frame(width: 180, height: 180)
                                     .shadow(color: AppColors.textBlack.opacity(0.3), radius: 10, x: 0, y: 4)
                                 
                                 VStack(spacing: 4) {
@@ -198,7 +198,7 @@ struct HomeView: View {
                                         
                                         Spacer()
                                         
-                                        Image(systemName: "square.and.arrow.up")
+                                        Image("violationArrow")
                                             .font(AppFonts.callout)
                                             .foregroundColor(AppColors.textGray)
                                     }
@@ -213,8 +213,8 @@ struct HomeView: View {
                                 .padding(.horizontal)
                                 .sheet(isPresented: $viewModel.showViolationsSheet) {
                                     ViolationsView(violations: viewModel.allViolations)
-                                        .presentationDetents([.medium])
-                                        .presentationDragIndicator(.visible)
+                                        .sheetDetentsMedium()
+                                        .presentationDragIndicatorVisible()
 
                                 }
                             }

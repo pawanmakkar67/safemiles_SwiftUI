@@ -122,7 +122,7 @@ class AddEditLogViewModel: NSObject, ObservableObject, CLLocationManagerDelegate
             }
         } else {
             // POST request for adding new event
-            APIManager.shared.request(url: ApiList.updateHardwareEvent, method: .post, parameters: params) { [weak self] _ in
+            APIManager.shared.request(url: ApiList.addHardwareEvent, method: .post, parameters: params) { [weak self] _ in
                 self?.isLoading = false
             } success: { [weak self] response in
                 self?.isLoading = false

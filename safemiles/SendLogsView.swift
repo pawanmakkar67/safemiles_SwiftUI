@@ -60,16 +60,22 @@ struct SendLogsView: View {
                                 .font(AppFonts.captionText)
                                 .foregroundColor(AppColors.textGray)
                             
-                            TextField("Add any notes for the officer...", text: $viewModel.comment, axis: .vertical)
-                                .frame(height: 100, alignment: .topLeading)
-                                .standardTextField()
+                            if #available(iOS 16.0, *) {
+                                TextField("Add any notes for the officer...", text: $viewModel.comment, axis: .vertical)
+                                    .frame(height: 100, alignment: .topLeading)
+                                    .standardTextField()
+                            } else {
+                                TextField("Add any notes for the officer...", text: $viewModel.comment)
+                                    .frame(height: 100, alignment: .topLeading)
+                                    .standardTextField()
+                            }
                               
                         }
                         
                         // Send Button
                         Button(action: {
                             viewModel.sendLogs {
-                                presentationMode.wrappedValue.dismiss()
+                                // No immediate dismissal, handled by alert
                             }
                         }) {
                             if viewModel.isLoading {
@@ -105,7 +111,11 @@ struct SendLogsView: View {
             get: { viewModel.alertMessage.map { AlertItem(message: $0) } },
             set: { _ in viewModel.alertMessage = nil }
         )) { item in
-            Alert(title: Text("Alert"), message: Text(item.message), dismissButton: .default(Text("OK")))
+            Alert(title: Text("Alert"), message: Text(item.message), dismissButton: .default(Text("OK"), action: {
+                if viewModel.isSuccess {
+                    presentationMode.wrappedValue.dismiss()
+                }
+            }))
         }
     }
 }

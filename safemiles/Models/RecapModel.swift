@@ -87,6 +87,7 @@ struct User : Mappable {
     var first_name : String?
     var last_name : String?
     var id : String?
+    var phone_number : String?
 
     init?(map: Map) {
 
@@ -99,6 +100,7 @@ struct User : Mappable {
         first_name <- map["first_name"]
         last_name <- map["last_name"]
         id <- map["id"]
+        phone_number <- map["phone_number"]
     }
 
 }
@@ -197,6 +199,8 @@ struct Last_event : Mappable {
     var vehicle : String?
     var eldevice : String?
     var sb_break : Int?
+    var time_diff : Int?
+    var is_last_event : Bool?
 
     
     init?(map: Map) {
@@ -228,7 +232,8 @@ struct Last_event : Mappable {
         vehicle <- map["vehicle"]
         eldevice <- map["eldevice"]
         sb_break <- map["sb_break"]
-
+        time_diff <- map["time_diff"]
+        is_last_event <- map["is_last_event"]
     }
 
 }

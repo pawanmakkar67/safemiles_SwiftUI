@@ -26,14 +26,19 @@ struct ApiList {
     static let statusLogs = BASEURL + "drivers/app/logs/"
     static let allvehicles = BASEURL + "company/vehicles/"
     static let updateHardwareEvent = BASEURL + "hos/events/"                      // url changed
-    static let manualPDF = MainBASEURL + "media/user_manuals/Mobile_app_user_manual.pdf"
+    static let addHardwareEvent = BASEURL + "hos/events/add/"                      // url changed
+    static let manualPDF = MainBASEURL + "media/user_manuals/Safemiles_User_Manual.pdf"
     static let instructionsPDF = MainBASEURL + "media/information_packets/Safe_miles_inspection_mode.pdf"
     static let saveForms = BASEURL + "hos/logs/"               // url + payload changed
     static let RecapApi = BASEURL + "hos/recap/"
     static let sendLogs = BASEURL + "drivers/app/send-logs/"
     static let sendEmail = BASEURL + "drivers/app/email-logs/"
     static let getVehicleDetails = BASEURL + "company/get-vehicle/"
+    static let forgotPassword = BASEURL + "accounts/forget-password/"
+
     
+    
+
 }
 
 
@@ -51,8 +56,16 @@ final class Global {
         }
     var vehicleList = [VehicleData]()
     var coDriverList : [CoDriverData]?
-    var connectVehicleDetail : VehicleDetailsModel?
-    var myProfile : ProfileData?
+    var connectVehicleDetail : VehicleDetailsModel? {
+        didSet {
+            NotificationCenter.default.post(name: .vehicleUpdate, object: nil)
+        }
+    }
+    var myProfile : ProfileData? {
+        didSet {
+            NotificationCenter.default.post(name: .profileUpdate, object: nil)
+        }
+    }
     var odometer = ""
     var logsTotalCount = 0
     var virtualDashboardData : PacificTrack.VirtualDashboardData? {
@@ -85,4 +98,6 @@ extension Notification.Name {
     static let logsUpdate = Notification.Name("logsUpdate")
     static let telematicsUpdated = Notification.Name("telematicsUpdated")
     static let dvirUpdated = Notification.Name("dvirUpdated")
+    static let vehicleUpdate = Notification.Name("vehicleUpdate")
+    static let profileUpdate = Notification.Name("profileUpdate")
 }

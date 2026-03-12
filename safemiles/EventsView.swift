@@ -39,7 +39,7 @@ struct EventsView: View {
                             Spacer()
                             
                             // Refresh/Arrow Icon
-                            Image("Vector")
+                            Image("violationArrow")
                                 .resizable()
                                 .frame(width: 18, height: 18)
                                 .foregroundColor(AppColors.statusRed)
@@ -107,8 +107,8 @@ struct EventsView: View {
         .background(AppColors.background)
         .sheet(isPresented: $showViolations) {
             ViolationsView(violations: viewModel.currentLog?.violations ?? [])
-                .presentationDetents([.medium])
-                .presentationDragIndicator(.visible)
+                .sheetDetentsMedium()
+                .presentationDragIndicatorVisible()
         }
         .sheet(isPresented: $showEditLog) {
             AddEditLogView(

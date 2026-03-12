@@ -239,7 +239,7 @@ struct AddEditLogView: View {
                     .font(AppFonts.buttonText)
                     .padding()
                 }
-                .presentationDetents([.height(480)])
+                .sheetDetents(height: 480)
             }
         }
     }

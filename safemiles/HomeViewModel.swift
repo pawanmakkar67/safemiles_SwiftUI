@@ -26,6 +26,7 @@ class HomeViewModel: ObservableObject {
     @Published var currentCode: String = "off"
     @Published var vehicle: String = ""
     @Published var driver: String = ""
+    @Published var headerTitle: String = "Home"
     
     // Drive Progress (0.0 to 1.0 for circular progress bar)
     @Published var driveProgress: Double = 0.0
@@ -69,6 +70,16 @@ class HomeViewModel: ObservableObject {
         
         // Notification Observers
         NotificationCenter.default.addObserver(self, selector: #selector(handleRecapUpdate), name: .recapUpdate, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(handleVehicleUpdate), name: .vehicleUpdate, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(handleProfileUpdate), name: .profileUpdate, object: nil)
+    }
+    
+    @objc func handleVehicleUpdate() {
+        updateHeaderTitle()
+    }
+    
+    @objc func handleProfileUpdate() {
+        updateHeaderTitle()
     }
     
     @objc func handleRecapUpdate() {
@@ -89,6 +100,7 @@ class HomeViewModel: ObservableObject {
     func onAppear() {
         fetchRecap()
         getMyProfile()
+        updateHeaderTitle()
         Task {
             await getLiveStatus()
             await getVehciles()
@@ -164,6 +176,7 @@ class HomeViewModel: ObservableObject {
             Global.shared.myProfile = obj?.data
             DispatchQueue.main.async {
                 self.driver = Global.shared.myProfile?.id ?? ""
+                self.updateHeaderTitle()
             }
         } failure: { error in
             
@@ -211,6 +224,7 @@ class HomeViewModel: ObservableObject {
         if let lastEventVehicle = data.last_event?.vehicle {
             self.vehicle = lastEventVehicle
         }
+        self.updateHeaderTitle()
         
         // Populate Summary
         
@@ -678,6 +692,35 @@ class HomeViewModel: ObservableObject {
     
     func clearManualStatusChange() {
         self.manualChange = ""
+    }
+    
+    func updateHeaderTitle() {
+        var firstName = Global.shared.myProfile?.user?.first_name ?? ""
+        var lastName = Global.shared.myProfile?.user?.last_name ?? ""
+        var vehicleUnit = Global.shared.connectVehicleDetail?.unit_number ?? ""
+        
+        // Use recap values as fallback or additional source
+        if let recapDriver = Global.shared.recapvalues?.hos_status?.driver {
+            if firstName.isEmpty { firstName = recapDriver.user?.first_name ?? "" }
+            if lastName.isEmpty { lastName = recapDriver.user?.last_name ?? "" }
+            if vehicleUnit.isEmpty { vehicleUnit = recapDriver.vehicle?.unit_number ?? "" }
+        }
+        
+        let driverName = "\(firstName) \(lastName)".trimmingCharacters(in: .whitespaces)
+        
+        var title = "Home"
+        if !driverName.isEmpty {
+            title = driverName
+            if !vehicleUnit.isEmpty {
+                title += " - \(vehicleUnit)"
+            }
+        } else if !vehicleUnit.isEmpty {
+            title = vehicleUnit
+        }
+        
+        DispatchQueue.main.async {
+            self.headerTitle = title
+        }
     }
 }
 
