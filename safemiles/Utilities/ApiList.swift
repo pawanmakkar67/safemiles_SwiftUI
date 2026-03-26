@@ -28,7 +28,7 @@ struct ApiList {
     static let updateHardwareEvent = BASEURL + "hos/events/"                      // url changed
     static let addHardwareEvent = BASEURL + "hos/events/add/"                      // url changed
     static let manualPDF = MainBASEURL + "media/user_manuals/Safemiles_User_Manual.pdf"
-    static let instructionsPDF = MainBASEURL + "media/information_packets/Safe_miles_inspection_mode.pdf"
+    static let instructionsPDF = MainBASEURL + "media/information_packets/Safemiles_instruction_manual.pdf"
     static let saveForms = BASEURL + "hos/logs/"               // url + payload changed
     static let RecapApi = BASEURL + "hos/recap/"
     static let sendLogs = BASEURL + "drivers/app/send-logs/"
@@ -36,7 +36,6 @@ struct ApiList {
     static let getVehicleDetails = BASEURL + "company/get-vehicle/"
     static let forgotPassword = BASEURL + "accounts/forget-password/"
 
-    
     
 
 }

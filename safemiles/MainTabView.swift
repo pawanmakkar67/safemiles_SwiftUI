@@ -4,6 +4,28 @@ struct MainTabView: View {
     @Binding var showSideMenu: Bool
     @State private var selection = 0
     
+    init(showSideMenu: Binding<Bool>) {
+        self._showSideMenu = showSideMenu
+        
+        let appearance = UITabBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = .white
+        
+        // Adjust item positioning to make the tab bar feel larger/less cramped
+        let itemAppearance = UITabBarItemAppearance()
+        itemAppearance.normal.titlePositionAdjustment = UIOffset(horizontal: 0, vertical: -4)
+        itemAppearance.selected.titlePositionAdjustment = UIOffset(horizontal: 0, vertical: -4)
+        
+        appearance.stackedLayoutAppearance = itemAppearance
+        appearance.inlineLayoutAppearance = itemAppearance
+        appearance.compactInlineLayoutAppearance = itemAppearance
+        
+        UITabBar.appearance().standardAppearance = appearance
+        if #available(iOS 15.0, *) {
+            UITabBar.appearance().scrollEdgeAppearance = appearance
+        }
+    }
+    
     // Placeholder View for Tabs
     struct PlaceHolderView: View {
         let title: String

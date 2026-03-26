@@ -174,7 +174,7 @@ struct DotInspectionDetailView: View {
         }
         .onAppear {
             if viewModel.logsViewModel.availableDates.isEmpty {
-                viewModel.logsViewModel.fetchLogs()
+                viewModel.logsViewModel.fetchLogs(refresh: true)
             }
         }
         .navigationBarHidden(true)

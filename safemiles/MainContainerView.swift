@@ -13,7 +13,7 @@ struct MainContainerView: View {
                 ZStack {
                     // Main Content
                     MainTabView(showSideMenu: $showSideMenu)
-                    
+
                     // Hidden Navigation Links for Side Menu
                     VStack {
                         NavigationLink(tag: .dotInspection, selection: $selectedMenuOption, destination: {

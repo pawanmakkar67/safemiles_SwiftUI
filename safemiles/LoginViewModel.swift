@@ -52,13 +52,13 @@ class LoginViewModel: ObservableObject {
     private func setupValidation() {
         $email
             .dropFirst()
-            .debounce(for: .milliseconds(500), scheduler: RunLoop.main)
+            .debounce(for: .milliseconds(1500), scheduler: RunLoop.main)
             .sink { [weak self] _ in self?.validateEmail() }
             .store(in: &cancellables)
             
         $password
             .dropFirst()
-            .debounce(for: .milliseconds(500), scheduler: RunLoop.main)
+            .debounce(for: .milliseconds(1500), scheduler: RunLoop.main)
             .sink { [weak self] _ in self?.validatePassword() }
             .store(in: &cancellables)
     }

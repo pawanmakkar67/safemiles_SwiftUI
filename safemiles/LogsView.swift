@@ -76,7 +76,7 @@ struct LogsView: View {
         .background(AppColors.background)
         .onAppear {
             showSideMenu = false
-            viewModel.fetchLogs()
+            viewModel.fetchLogs(refresh: true)
             if let code = Global.shared.recapvalues?.last_event?.code?.lowercased() {
                 isDriving = (code == "d")
             }

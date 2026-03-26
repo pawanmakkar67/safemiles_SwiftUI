@@ -26,7 +26,7 @@ class CoDriverViewModel: ObservableObject {
         }
         
         isLoading = true
-        let param = ["driver": driverID]
+        let param = ["codriver_id": driverID]
         
         APIManager.shared.request(url: ApiList.getCoDrivers, method: .post, parameters: param) { [weak self] _ in
             

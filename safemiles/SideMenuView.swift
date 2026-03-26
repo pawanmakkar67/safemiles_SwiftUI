@@ -14,6 +14,7 @@ enum SideMenuOption {
 struct SideMenuView: View {
     @Binding var isShowing: Bool
     @Binding var selectedOption: SideMenuOption?
+    @State private var showLogoutAlert = false
     
     // Custom Colors for this view matching the screenshot
     // Using AppColors from ColorConstants.swift
@@ -21,7 +22,7 @@ struct SideMenuView: View {
     var body: some View {
         ZStack {
             // Dimmed background - Always present but only visible/interactive when showing
-            Color.black.opacity(isShowing ? 0.5 : 0) // Keep standard opacity logic or use AppColors.black.opacity
+            AppColors.ThemeBlack.opacity(isShowing ? 1 : 0) // Keep standard opacity logic or use AppColors.black.opacity
                 .ignoresSafeArea()
                 .onTapGesture {
                     withAnimation {
@@ -39,7 +40,7 @@ struct SideMenuView: View {
                         HStack(alignment: .top) {
                             // Profile Image Placeholder with Initials
                             Circle()
-                                .fill(AppColors.grayOpacity50)
+                                .fill(AppColors.initialBackground)
                                 .frame(width: 60, height: 60)
                                 .overlay(
                                     Group {
@@ -102,8 +103,7 @@ struct SideMenuView: View {
                     
                     // --- Footer ---
                     Button(action: {
-                        selectedOption = .logout
-                        // Logout Logic handled by parent or here if needed, but keeping consistent with enum
+                        showLogoutAlert = true
                     }) {
                         HStack(spacing: 16) {
                             Image("logout")
@@ -117,6 +117,19 @@ struct SideMenuView: View {
                         .padding(20)
                     }
                     .padding(.bottom, 30)
+                    .alert(isPresented: $showLogoutAlert) {
+                        Alert(
+                            title: Text("Log Out"),
+                            message: Text("Are you sure you want to log out?"),
+                            primaryButton: .destructive(Text("Log Out")) {
+                                withAnimation {
+                                    isShowing = false
+                                }
+                                selectedOption = .logout
+                            },
+                            secondaryButton: .cancel()
+                        )
+                    }
                 }
                 .frame(width: 300) // Fixed width for menu
                 .background(AppColors.sideMenuBackground)
@@ -166,9 +179,9 @@ struct SideMenuView: View {
         guard let user = Global.shared.myProfile?.user else { return nil }
         
         let firstInitial = user.first_name?.prefix(1) ?? ""
-        let lastInitial = user.last_name?.prefix(1) ?? ""
+//        let lastInitial = user.last_name?.prefix(1) ?? ""
         
-        let initials = "\(firstInitial)\(lastInitial)".uppercased()
+        let initials = "\(firstInitial)".uppercased()
         return initials.isEmpty ? nil : initials
     }
 }

@@ -72,6 +72,7 @@ class HomeViewModel: ObservableObject {
         NotificationCenter.default.addObserver(self, selector: #selector(handleRecapUpdate), name: .recapUpdate, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(handleVehicleUpdate), name: .vehicleUpdate, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(handleProfileUpdate), name: .profileUpdate, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(handleLogout), name: NSNotification.Name("LogoutNotification"), object: nil)
     }
     
     @objc func handleVehicleUpdate() {
@@ -522,6 +523,22 @@ class HomeViewModel: ObservableObject {
     func stopAutoRefresh() {
         refreshTimer?.invalidate()
         refreshTimer = nil
+    }
+    
+    // MARK: - Logout
+    @objc private func handleLogout() {
+        stopAllTimers()
+    }
+    
+    func stopAllTimers() {
+        // Stop polling timer
+        timer?.invalidate()
+        timer = nil
+        // Stop auto-refresh timer
+        refreshTimer?.invalidate()
+        refreshTimer = nil
+        // Stop FlexibleTimer countdown
+        countdown.reset()
     }
 
     private func updateEvents() {

@@ -87,7 +87,7 @@ struct LoginView: View {
                     HStack {
                         Spacer()
                         NavigationLink(destination: ForgotPasswordView()) {
-                            Text("Forget Password ?")
+                            Text("Forgot Password ?")
                                 .font(AppFonts.footnote)
                                 .foregroundStyle(AppColors.white.opacity(0.8))
                         }

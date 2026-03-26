@@ -8,6 +8,16 @@ struct CommonHeader: View {
     var onLeftTap: (() -> Void)?
     var onRightTap: (() -> Void)?
     
+    private var safeAreaTop: CGFloat {
+        let keyWindow = UIApplication.shared.connectedScenes
+            .filter({$0.activationState == .foregroundActive})
+            .compactMap({$0 as? UIWindowScene})
+            .first?.windows
+            .filter({$0.isKeyWindow}).first
+        
+        return keyWindow?.safeAreaInsets.top ?? 0
+    }
+    
     var body: some View {
         HStack {
             if let leftIcon = leftIcon {
@@ -17,12 +27,14 @@ struct CommonHeader: View {
                     Image(leftIcon)
                         .font(AppFonts.iconMedium)
                         .foregroundColor(AppColors.white)
+                        .padding(8)
+                        .contentShape(Rectangle())
                 }
             } else {
-                // Keep spacing balanced if needed, or remove
                 Image("Menu")
                     .font(AppFonts.iconMedium)
                     .foregroundColor(AppColors.clear)
+                    .padding(8)
             }
             
             Spacer()
@@ -37,7 +49,6 @@ struct CommonHeader: View {
                 Button(action: {
                     onRightTap?()
                 }) {
-                    // Check if it's a system icon
                     if rightIcon == "plus" || rightIcon.contains("circle") || rightIcon.contains("chevron") || rightIcon.contains("arrow") {
                         Image(systemName: rightIcon)
                             .font(AppFonts.iconMedium)
@@ -49,13 +60,14 @@ struct CommonHeader: View {
                             .foregroundColor(rightIconColor)
                     }
                 }
-            } else {
-//                 Image("Menu")
-//                     .font(AppFonts.iconMedium)
-//                     .foregroundColor(AppColors.clear)
+                .padding(8)
+                .contentShape(Rectangle())
             }
         }
-        .padding()
-        .background(AppColors.black)
+        .padding(.horizontal)
+        .padding(.top, safeAreaTop)
+        .padding(.bottom, 12)
+        .background(AppColors.ThemeBlack)
+        .ignoresSafeArea(.all, edges: .top)
     }
 }
