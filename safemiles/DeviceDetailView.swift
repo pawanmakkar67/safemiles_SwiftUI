@@ -1,5 +1,7 @@
 import SwiftUI
+#if !targetEnvironment(simulator)
 import PacificTrack
+#endif
 
 struct DeviceDetailView: View {
     @Environment(\.presentationMode) var presentationMode

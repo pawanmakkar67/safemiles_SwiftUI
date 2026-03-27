@@ -1,6 +1,9 @@
 import SwiftUI
 import CoreBluetooth
-import PacificTrack // Assuming this is needed for TrackerPeripheral if public
+#if !targetEnvironment(simulator)
+import PacificTrack
+#endif
+
 
 struct BluetoothScanningView: View {
     @Environment(\.presentationMode) var presentationMode

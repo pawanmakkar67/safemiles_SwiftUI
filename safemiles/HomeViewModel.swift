@@ -3,7 +3,10 @@ import Combine
 import ObjectMapper
 import CoreBluetooth
 import Alamofire
+#if !targetEnvironment(simulator)
 import PacificTrack
+#endif
+
 
 class HomeViewModel: ObservableObject {
     @Published var circleBorderColor: Color = .gray.opacity(0.2)
@@ -741,6 +744,7 @@ class HomeViewModel: ObservableObject {
     }
 }
 
+#if !targetEnvironment(simulator)
 extension PacificTrack.VirtualDashboardData {
     func toJSONString() -> String? {
         var dict: [String: Any] = [:]
@@ -788,3 +792,4 @@ extension PacificTrack.VirtualDashboardData {
         }
     }
 }
+#endif

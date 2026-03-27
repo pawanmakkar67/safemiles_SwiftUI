@@ -2,7 +2,10 @@ import Foundation
 import CoreBluetooth
 import Combine
 import SwiftUI
+#if !targetEnvironment(simulator)
 import PacificTrack
+#endif
+
 import ObjectMapper
 import Alamofire
 

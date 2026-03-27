@@ -6,7 +6,10 @@
 //
 
 import SwiftUI
+#if !targetEnvironment(simulator)
 import PacificTrack
+#endif
+
 
 //let BASEURL = "https://api.thesafemiles.com/api/v1/"
 //let MainBASEURL = "https://thesafemiles.com/"
@@ -68,6 +71,7 @@ final class Global {
     var odometer = ""
     var logsTotalCount = 0
     var virtualDashboardData : PacificTrack.VirtualDashboardData? {
+
         didSet {
             NotificationCenter.default.post(
                 name: .telematicsUpdated,
