@@ -15,9 +15,22 @@ import PacificTrack
 //let MainBASEURL = "https://thesafemiles.com/"
 //let MainBASEURL1 = "https://thesafemiles.com/"
 
-let BASEURL = "https://sgapi.thesafemiles.com/api/v1/"
-let MainBASEURL = "https://sgapi.thesafemiles.com/"
-let MainBASEURL1 = "https://sgapi.thesafemiles.com/"
+//let MainBASEURL = "https://sgapi.thesafemiles.com/"
+//let MainBASEURL1 = "https://sgapi.thesafemiles.com/"
+
+let MainBASEURL = "http://38.137.14.92:5001/"
+let MainBASEURL1 = "http://38.137.14.92:5001/"
+
+
+let BASEURL = "\(MainBASEURL)api/v1/"
+
+
+
+
+struct AlertItem: Identifiable {
+    var id = UUID()
+    var message: String
+}
 
 struct ApiList {
     static let loginAPI = BASEURL + "accounts/login/"

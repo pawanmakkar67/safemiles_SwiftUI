@@ -111,11 +111,8 @@ struct AddDvirView: View {
                 }
             }
         }
-        .alert(item: Binding<AlertItem?>(
-            get: { viewModel.errorMessage.map { AlertItem(message: $0) } },
-            set: { _ in viewModel.errorMessage = nil }
-        )) { item in
-            Alert(title: Text("Alert"), message: Text(item.message), dismissButton: .default(Text("OK")))
+        .alert(isPresented: $viewModel.showAlert) {
+            Alert(title: Text("Alert"), message: Text(viewModel.alertMessage), dismissButton: .default(Text("OK")))
         }
         .onChange(of: showVehicleDefects) { isShowing in
             print("DEBUG: AddDvirView - showVehicleDefects changed to: \(isShowing)")
@@ -137,7 +134,6 @@ struct AddDvirView: View {
                 .font(AppFonts.buttonText)
                 .padding()
             }
-            .sheetDetents(height: 480)
         }
     }
     
@@ -190,7 +186,7 @@ struct AddDvirView: View {
             customTextField(title: "Location", placeholder: "Enter location", text: $viewModel.location, icon: "location")
             
             // Odometer
-            customTextField(title: "Odometer", placeholder: "Enter odometer", text: $viewModel.odometer, keyboardType: .numberPad)
+            customTextField(title: "Odometer", placeholder: "Enter odometer", text: $viewModel.odometer, keyboardType: .numberPad, isError: viewModel.isOdometerError)
             
             // Company
             customTextField(title: "Company", placeholder: "Enter company name", text: $viewModel.company, isDisabled: true)
@@ -210,6 +206,10 @@ struct AddDvirView: View {
                     .padding(8)
                     .background(AppColors.inputGray)
                     .cornerRadius(8)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 8)
+                            .stroke(viewModel.isRemarksError ? AppColors.statusRed : Color.clear, lineWidth: 1)
+                    )
             }
         }
         .padding()
@@ -259,7 +259,7 @@ struct AddDvirView: View {
                     .foregroundColor(AppColors.textGray)
                 
                 Menu {
-                    ForEach(Global.shared.vehicleList, id: \.id) { vehicle in
+                    ForEach(Global.shared.vehicleList, id: \.vehicle_id) { vehicle in
                         Button(vehicle.unit_number ?? "") {
                             viewModel.selectedVehicle = vehicle
                         }
@@ -276,6 +276,10 @@ struct AddDvirView: View {
                     .padding(12)
                     .background(AppColors.inputGray)
                     .cornerRadius(8)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 8)
+                            .stroke(viewModel.isVehicleError ? AppColors.statusRed : Color.clear, lineWidth: 1)
+                    )
                 }
             }
             
@@ -374,7 +378,7 @@ struct AddDvirView: View {
             .cornerRadius(8)
             .overlay(
                 RoundedRectangle(cornerRadius: 8)
-                    .stroke(AppColors.textGray.opacity(0.3), lineWidth: 1)
+                    .stroke(viewModel.isSignatureError ? AppColors.statusRed : AppColors.textGray.opacity(0.3), lineWidth: 1)
             )
             
             Button("Clear Signature") {
@@ -408,11 +412,12 @@ struct AddDvirView: View {
         .background(AppColors.buttonActive)
         .foregroundColor(.white)
         .cornerRadius(8)
+        .disabled(viewModel.isLoading)
         .padding(.bottom, 20)
     }
     
     // Helper View Builder
-    func customTextField(title: String, placeholder: String, text: Binding<String>, icon: String? = nil, keyboardType: UIKeyboardType = .default, isDisabled: Bool = false) -> some View {
+    func customTextField(title: String, placeholder: String, text: Binding<String>, icon: String? = nil, keyboardType: UIKeyboardType = .default, isDisabled: Bool = false, isError: Bool = false) -> some View {
         VStack(alignment: .leading, spacing: 5) {
             Text(title)
                 .font(AppFonts.captionText)
@@ -434,7 +439,7 @@ struct AddDvirView: View {
             .cornerRadius(8)
             .overlay(
                 RoundedRectangle(cornerRadius: 8)
-                    .stroke(AppColors.textFieldBorder, lineWidth: 1)
+                    .stroke(isError ? AppColors.statusRed : AppColors.textFieldBorder, lineWidth: 1)
             )
         }
     }
@@ -448,10 +453,6 @@ struct AddDvirView: View {
 }
 
 // Alert Helper - Keep as is
-struct AlertItem: Identifiable {
-    var id = UUID()
-    var message: String
-}
 
 // Defect Selection View - Keep as is
 struct DefectSelectionView: View {

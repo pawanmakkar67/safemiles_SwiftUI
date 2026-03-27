@@ -47,7 +47,7 @@ struct FormsView: View {
                         items: Global.shared.vehicleList,
                         currentItemId: vehicleId
                     ) { selected in
-                        vehicleId = selected.id ?? ""
+                        vehicleId = selected.vehicle_id ?? ""
                         vehicleNumber = selected.unit_number ?? ""
                     }
                 }
@@ -254,7 +254,7 @@ struct SelectionPicker: View {
     
     var body: some View {
         NavigationView {
-            List(items, id: \.id) { item in
+            List(items, id: \.vehicle_id) { item in
                 Button(action: {
                     onSelect(item)
                     presentationMode.wrappedValue.dismiss()
@@ -263,7 +263,7 @@ struct SelectionPicker: View {
                         Text(item.unit_number ?? "Unknown")
                             .foregroundColor(AppColors.textBlack)
                         Spacer()
-                        if item.id == currentItemId {
+                        if item.vehicle_id == currentItemId {
                             Image(systemName: "checkmark")
                                 .foregroundColor(AppColors.buttonActive)
                         }

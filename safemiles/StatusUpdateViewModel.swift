@@ -47,7 +47,7 @@ class StatusUpdateViewModel: NSObject, ObservableObject, CLLocationManagerDelega
         
         let dateT = dateFormatter.string(from: Date()) 
         
-        let vehicleiD = Global.shared.myProfile?.vehicle?.id ?? ""
+        let vehicleiD = Global.shared.myProfile?.vehicle?.vehicle_id ?? ""
         
         var params: [String: Any] = [
             "eventdatetime": dateT,

@@ -52,7 +52,7 @@ struct SelectVehicleView: View {
                 // List
                 ScrollView {
                     LazyVStack(spacing: 12) {
-                        ForEach(viewModel.filteredVehicles, id: \.id) { vehicle in
+                        ForEach(viewModel.filteredVehicles, id: \.vehicle_id) { vehicle in
                             VehicleRowCard(vehicle: vehicle)
                                 .onTapGesture {
                                     viewModel.connect(to: vehicle)

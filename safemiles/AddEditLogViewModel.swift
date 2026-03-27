@@ -11,6 +11,15 @@ class AddEditLogViewModel: NSObject, ObservableObject, CLLocationManagerDelegate
     @Published var notes: String = ""
     @Published var company: String = ""
     @Published var isLoading: Bool = false
+    @Published var odometer: String = ""
+    @Published var engineHours: String = ""
+    
+    @Published var isLocationError: Bool = false
+    @Published var isVehicleError: Bool = false
+    @Published var isOdometerError: Bool = false
+    @Published var isEngineHoursError: Bool = false
+    @Published var alertMessage: String = ""
+    @Published var showAlert: Bool = false
     
     var isEditMode: Bool = false
     private var currentEventID: String = ""
@@ -40,6 +49,14 @@ class AddEditLogViewModel: NSObject, ObservableObject, CLLocationManagerDelegate
             // Parse time from event datetime
             if let eventDateTime = event.eventdatetime {
                 selectedTime = parseTimeFromISO(eventDateTime)
+            }
+            
+            if let odo = event.odometer {
+                odometer = "\(Int(odo))"
+            }
+            
+            if let engH = event.engine_hours {
+                engineHours = "\(engH)"
             }
         } else {
             // New event - setup location and default vehicle
@@ -79,15 +96,7 @@ class AddEditLogViewModel: NSObject, ObservableObject, CLLocationManagerDelegate
     }
     
     func saveLog(onSuccess: @escaping () -> Void) {
-        guard !location.isEmpty else {
-            print("Location is required")
-            return
-        }
-        
-        guard let selectedVehicle = selectedVehicle else {
-            print("Vehicle is required")
-            return
-        }
+        guard validate() else { return }
         
         isLoading = true
         
@@ -102,10 +111,13 @@ class AddEditLogViewModel: NSObject, ObservableObject, CLLocationManagerDelegate
             "code": statusCode,
             "origin": "Driver",
             "status": "Active",
-            "vehicle": selectedVehicle.id ?? "",
+            "vehicle": selectedVehicle?.vehicle_id ?? "",
             "positioning": "Location generated when connected to ECM",
             "event_notes": notes,
-            "location_cal": location
+            "location_cal": location,
+            "odometer": Double(odometer) ?? 0.0,
+            "engine_hours": Double(engineHours) ?? 0.0,
+            "driver_id": Global.shared.logsDataVal?.metadata?.driver_id ?? ""
         ]
         
         if isEditMode {
@@ -211,5 +223,41 @@ class AddEditLogViewModel: NSObject, ObservableObject, CLLocationManagerDelegate
         let date = formatter.string(from: timeStr)
         print(date)
         return date
+    }
+    
+    func validate() -> Bool {
+        isLocationError = false
+        isVehicleError = false
+        isOdometerError = false
+        isEngineHoursError = false
+        
+        var isValid = true
+        
+        if location.trimmingCharacters(in: .whitespaces).isEmpty {
+            isLocationError = true
+            isValid = false
+        }
+        
+        if selectedVehicle == nil {
+            isVehicleError = true
+            isValid = false
+        }
+        
+        if odometer.trimmingCharacters(in: .whitespaces).isEmpty {
+            isOdometerError = true
+            isValid = false
+        }
+        
+        if engineHours.trimmingCharacters(in: .whitespaces).isEmpty {
+            isEngineHoursError = true
+            isValid = false
+        }
+        
+        if !isValid {
+            alertMessage = "Please fill in all mandatory fields highlighted in red."
+            showAlert = true
+        }
+        
+        return isValid
     }
 }

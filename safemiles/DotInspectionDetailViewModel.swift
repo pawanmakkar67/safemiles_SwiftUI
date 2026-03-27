@@ -41,7 +41,7 @@ class DotInspectionDetailViewModel: ObservableObject {
             if let zip = addr?.postal_code, !zip.isEmpty { address += (address.isEmpty ? "" : " ") + zip }
             self.officeAddress = address
             
-            self.truckTractor = profile.vehicle?.id ?? "-"
+            self.truckTractor = profile.vehicle?.vehicle_id ?? "-"
             self.licenseNumber = profile.license_number ?? ""
             self.licenseState = profile.license_state ?? ""
         }

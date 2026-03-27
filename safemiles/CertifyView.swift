@@ -16,71 +16,92 @@ struct CertifyView: View {
         ScrollView {
             VStack(spacing: 20) {
                 
-                if let log = viewModel.currentLog, log.log?.certified == false {
-                    
-                    Text("Draw your signature here")
+                if let log = viewModel.currentLog {
+                    if log.log?.certified == true {
+                        // Already Certified State
+                        VStack(spacing: 20) {
+                            Image(systemName: "checkmark.seal.fill")
+                                 .resizable()
+                                 .scaledToFit()
+                                 .frame(width: 80, height: 80)
+                                 .foregroundColor(AppColors.statusGreen)
+                            
+                            Text("Already Certified")
+                                .font(AppFonts.cardTitle)
+                                .bold()
+                            
+                            if let signatureUrl = log.log?.signature, !signatureUrl.isEmpty {
+                                Text("Signature on file")
+                                    .font(AppFonts.captionText)
+                                    .foregroundColor(.gray)
+                            }
+                        }
+                        .padding(.top, 50)
+                    } else {
+                        // Sign and Submit State
+                        Text("Draw your signature here")
+                            .font(AppFonts.bodyText)
+                            .foregroundColor(AppColors.textGray)
+                            .padding(.top)
+                        
+                        // Signature Drawing Area
+                        SignatureView(canvasView: $canvasView) {
+                            // Signature updated
+                        }
+                        .frame(height: drawingHeight)
+                        .background(Color.white)
+                        .cornerRadius(cornerRadius)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: cornerRadius)
+                                .stroke(Color.black, lineWidth: 1)
+                        )
+                        .padding(.horizontal, 20)
+                        .padding(.vertical, 5)
+
+                        Button("Clear signature") {
+                            canvasView.drawing = PKDrawing()
+                        }
                         .font(AppFonts.bodyText)
                         .foregroundColor(AppColors.textGray)
-                        .padding(.top)
-                    
-                    // Signature Drawing Area
-                    SignatureView(canvasView: $canvasView) {
-                        // Signature updated
+                        .padding(.vertical, 5)
+                        
+                        Text("I hereby certify that my data entries and my record of duty status for this 24-hour period are true and correct.")
+                            .font(AppFonts.captionText)
+                            .foregroundColor(AppColors.textGray)
+                            .multilineTextAlignment(.center)
+                            .padding(.horizontal)
+                        
+                        // Buttons
+                        Button(action: submitSignature) {
+                            Text("Submit")
+                                .font(AppFonts.buttonText)
+                                .foregroundColor(.white)
+                                .frame(maxWidth: .infinity)
+                                .frame(height: 50)
+                                .background(AppColors.buttonActive)
+                                .cornerRadius(8)
+                        }
+                        .padding()
+                        .padding(.top, 5)
                     }
-                    .frame(height: drawingHeight)
-                    .background(Color.white)
-                    .cornerRadius(cornerRadius)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: cornerRadius)
-                            .stroke(Color.black, lineWidth: 1)
-                    )
-                    .padding(.horizontal, 20)
-                    .padding(.vertical, 5)
-
-                    Button("Clear signature") {
-                        canvasView.drawing = PKDrawing()
-                    }
-                    .font(AppFonts.bodyText)
-                    .foregroundColor(AppColors.textGray)
-                    .padding(.vertical, 5)
-                    
-                    Text("I hereby certify that my data entries and my record of duty status for this 24-hour period are true and correct.")
-                        .font(AppFonts.captionText)
-                        .foregroundColor(AppColors.textGray)
-                        .multilineTextAlignment(.center)
-                        .padding(.horizontal)
-                    
-                    // Buttons
-                    Button(action: submitSignature) {
-                        Text("Submit")
-                            .font(AppFonts.buttonText)
-                            .foregroundColor(.white)
-                            .frame(maxWidth: .infinity)
-                            .frame(height: 50)
-                            .background(AppColors.buttonActive)
-                            .cornerRadius(8)
-                    }
-                    .padding()
-                    .padding(.top, 5)
                 } else {
-                    // Already Certified State
+                    // No Logs State
                     VStack(spacing: 20) {
-                        Image(systemName: "checkmark.seal.fill")
+                        Image(systemName: "doc.text.magnifyingglass")
                              .resizable()
                              .scaledToFit()
                              .frame(width: 80, height: 80)
-                             .foregroundColor(AppColors.statusGreen)
+                             .foregroundColor(AppColors.textGray)
                         
-                        Text("Already Certified")
+                        Text("No activities to certify")
                             .font(AppFonts.cardTitle)
                             .bold()
                         
-                        if let signatureUrl = viewModel.currentLog?.log?.signature, !signatureUrl.isEmpty {
-                            // Show signature if URL is available (optional enhancement)
-                            Text("Signature on file")
-                                .font(AppFonts.captionText)
-                                .foregroundColor(.gray)
-                        }
+                        Text("There are no log entries recorded for this date.")
+                            .font(AppFonts.bodyText)
+                            .foregroundColor(AppColors.textGray)
+                            .multilineTextAlignment(.center)
+                            .padding(.horizontal)
                     }
                     .padding(.top, 50)
                 }

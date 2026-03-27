@@ -5,12 +5,12 @@ struct AddEditLogView: View {
     @StateObject private var viewModel: AddEditLogViewModel
     @State private var showVehiclePicker = false
     @State private var showDatePicker = false
-    
+
     init(isPresented: Binding<Bool>, event: Events? = nil, log: Logs? = nil) {
         _isPresented = isPresented
         _viewModel = StateObject(wrappedValue: AddEditLogViewModel(event: event, log: log))
     }
-    
+
     var body: some View {
         NavigationView {
             VStack(spacing: 0) {
@@ -23,15 +23,15 @@ struct AddEditLogView: View {
                             .foregroundColor(AppColors.textBlack)
                             .font(AppFonts.iconSmall)
                     }
-                    
+
                     Spacer()
-                    
+
                     Text(viewModel.isEditMode ? "Edit Log" : "Add Log")
                         .font(AppFonts.headline)
                         .foregroundColor(AppColors.textBlack)
-                    
+
                     Spacer()
-                    
+
                     Button(action: {
                         isPresented = false
                     }) {
@@ -42,10 +42,9 @@ struct AddEditLogView: View {
                 }
                 .padding()
                 .background(AppColors.white)
-                
+
                 ScrollView {
                     VStack(spacing: 20) {
-                        
 
                         // Date/Time Picker
                         VStack(alignment: .leading, spacing: 8) {
@@ -66,13 +65,13 @@ struct AddEditLogView: View {
                             }
                         }
                         .padding(.horizontal)
-                        
+
                         // Company (Read-only)
                         VStack(alignment: .leading, spacing: 8) {
                             Text("Company")
                                 .font(AppFonts.captionText)
                                 .foregroundColor(AppColors.textGray)
-                            
+
                             Text(viewModel.company)
                                 .font(AppFonts.textField)
                                 .foregroundColor(AppColors.textBlack)
@@ -82,8 +81,7 @@ struct AddEditLogView: View {
                                 .cornerRadius(8)
                         }
                         .padding(.horizontal)
-                        
-                        
+
                         // Status Selection
                         VStack(alignment: .leading, spacing: 12) {
                             ForEach(viewModel.statusOptions, id: \.self) { status in
@@ -91,13 +89,18 @@ struct AddEditLogView: View {
                                     viewModel.selectedStatus = status
                                 }) {
                                     HStack {
-                                        Image(systemName: viewModel.selectedStatus == status ? "checkmark.circle.fill" : "circle")
-                                            .foregroundColor(viewModel.selectedStatus == status ? AppColors.textBlack : AppColors.textGray)
-                                        
+                                        Image(
+                                            systemName: viewModel.selectedStatus == status
+                                                ? "checkmark.circle.fill" : "circle"
+                                        )
+                                        .foregroundColor(
+                                            viewModel.selectedStatus == status
+                                                ? AppColors.textBlack : AppColors.textGray)
+
                                         Text(status)
                                             .font(AppFonts.textField)
                                             .foregroundColor(AppColors.textBlack)
-                                        
+
                                         Spacer()
                                     }
                                     .padding(.vertical, 8)
@@ -105,13 +108,13 @@ struct AddEditLogView: View {
                             }
                         }
                         .padding(.horizontal)
-                        
+
                         // Vehicle Dropdown
                         VStack(alignment: .leading, spacing: 8) {
                             Text("Vehicle")
                                 .font(AppFonts.captionText)
                                 .foregroundColor(AppColors.textGray)
-                            
+
                             Button(action: {
                                 if !viewModel.isEditMode {
                                     showVehiclePicker = true
@@ -120,41 +123,45 @@ struct AddEditLogView: View {
                                 HStack {
                                     Text(viewModel.selectedVehicle?.unit_number ?? "Select Vehicle")
                                         .font(AppFonts.textField)
-                                        .foregroundColor(viewModel.selectedVehicle == nil ? AppColors.textGray : AppColors.textBlack)
-                                    
+                                        .foregroundColor(
+                                            viewModel.selectedVehicle == nil
+                                                ? AppColors.textGray : AppColors.textBlack)
+
                                     Spacer()
-                                    
+
                                     if !viewModel.isEditMode {
                                         Image(systemName: "chevron.down")
                                             .foregroundColor(AppColors.textGray)
                                     }
                                 }
                                 .padding()
-                                .background(viewModel.isEditMode ? AppColors.inputGray : AppColors.white)
+                                .background(
+                                    viewModel.isEditMode ? AppColors.inputGray : AppColors.white
+                                )
                                 .cornerRadius(8)
                                 .overlay(
                                     RoundedRectangle(cornerRadius: 8)
-                                        .stroke(AppColors.textGray.opacity(0.3), lineWidth: 1)
+                                        .stroke(viewModel.isVehicleError ? AppColors.statusRed : AppColors.textGray.opacity(0.3), lineWidth: 1)
                                 )
                             }
                             .disabled(viewModel.isEditMode)
                         }
                         .padding(.horizontal)
-                        
+
                         // Location Field
                         VStack(alignment: .leading, spacing: 8) {
                             Text("Location")
                                 .font(AppFonts.captionText)
                                 .foregroundColor(AppColors.textGray)
-                            
+
                             HStack {
                                 Image(systemName: "mappin.and.ellipse")
                                     .foregroundColor(AppColors.blue)
-                                
+
                                 TextField("Location", text: $viewModel.location)
                                     .font(AppFonts.textField)
                                     .foregroundColor(AppColors.textBlack)
-                                
+
                                 Spacer()
                             }
                             .padding()
@@ -162,17 +169,57 @@ struct AddEditLogView: View {
                             .cornerRadius(8)
                             .overlay(
                                 RoundedRectangle(cornerRadius: 8)
-                                    .stroke(AppColors.textGray.opacity(0.3), lineWidth: 1)
+                                    .stroke(viewModel.isLocationError ? AppColors.statusRed : AppColors.textGray.opacity(0.3), lineWidth: 1)
                             )
                         }
                         .padding(.horizontal)
-                        
+
+                        // Odometer Field
+                        VStack(alignment: .leading, spacing: 8) {
+                            Text("Odometer")
+                                .font(AppFonts.captionText)
+                                .foregroundColor(AppColors.textGray)
+
+                            TextField("Odometer", text: $viewModel.odometer)
+                                .font(AppFonts.textField)
+                                .foregroundColor(AppColors.textBlack)
+                                .keyboardType(.decimalPad)
+                                .padding()
+                                .background(AppColors.white)
+                                .cornerRadius(8)
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 8)
+                                        .stroke(viewModel.isOdometerError ? AppColors.statusRed : AppColors.textGray.opacity(0.3), lineWidth: 1)
+                                )
+                        }
+                        .padding(.horizontal)
+
+                        // Engine Hours Field
+                        VStack(alignment: .leading, spacing: 8) {
+                            Text("Engine Hours")
+                                .font(AppFonts.captionText)
+                                .foregroundColor(AppColors.textGray)
+
+                            TextField("Engine Hours", text: $viewModel.engineHours)
+                                .font(AppFonts.textField)
+                                .foregroundColor(AppColors.textBlack)
+                                .keyboardType(.decimalPad)
+                                .padding()
+                                .background(AppColors.white)
+                                .cornerRadius(8)
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 8)
+                                        .stroke(viewModel.isEngineHoursError ? AppColors.statusRed : AppColors.textGray.opacity(0.3), lineWidth: 1)
+                                )
+                        }
+                        .padding(.horizontal)
+
                         // Notes Field
                         VStack(alignment: .leading, spacing: 8) {
                             Text("Notes")
                                 .font(AppFonts.captionText)
                                 .foregroundColor(AppColors.textGray)
-                            
+
                             TextField("Notes", text: $viewModel.notes)
                                 .font(AppFonts.textField)
                                 .foregroundColor(AppColors.textBlack)
@@ -185,9 +232,9 @@ struct AddEditLogView: View {
                                 )
                         }
                         .padding(.horizontal)
-                        
+
                         Spacer()
-                        
+
                         // Update Button
                         Button(action: {
                             viewModel.saveLog {
@@ -227,23 +274,32 @@ struct AddEditLogView: View {
             }
             .sheet(isPresented: $showDatePicker) {
                 VStack {
-                    DatePicker("", selection: $viewModel.selectedTime, displayedComponents: [.date, .hourAndMinute])
-                        .datePickerStyle(GraphicalDatePickerStyle())
-                        .labelsHidden()
-                        .environment(\.timeZone, getAppTimeZone())
-                        .padding()
-                    
+                    DatePicker(
+                        "", selection: $viewModel.selectedTime,
+                        displayedComponents: [.date, .hourAndMinute]
+                    )
+                    .datePickerStyle(GraphicalDatePickerStyle())
+                    .labelsHidden()
+                    .environment(\.timeZone, getAppTimeZone())
+                    .padding()
+
                     Button("Done") {
                         showDatePicker = false
                     }
                     .font(AppFonts.buttonText)
                     .padding()
                 }
-                .sheetDetents(height: 480)
+            }
+            .alert(isPresented: $viewModel.showAlert) {
+                Alert(
+                    title: Text("Mandatory Fields"),
+                    message: Text(viewModel.alertMessage),
+                    dismissButton: .default(Text("OK"))
+                )
             }
         }
     }
-    
+
     private func formatDate(_ date: Date) -> String {
         let formatter = DateFormatter()
         formatter.dateFormat = "MMM d, yyyy h:mm a"
@@ -256,10 +312,10 @@ struct AddEditLogView: View {
 struct VehiclePickerView: View {
     @Binding var selectedVehicle: VehicleData?
     @Binding var isPresented: Bool
-    
+
     var body: some View {
         NavigationView {
-            List(Global.shared.vehicleList, id: \.id) { vehicle in
+            List(Global.shared.vehicleList, id: \VehicleData.vehicle_id) { vehicle in
                 Button(action: {
                     selectedVehicle = vehicle
                     isPresented = false
@@ -268,7 +324,7 @@ struct VehiclePickerView: View {
                         Text(vehicle.unit_number ?? "Unknown")
                             .foregroundColor(AppColors.textBlack)
                         Spacer()
-                        if vehicle.id == selectedVehicle?.id {
+                        if vehicle.vehicle_id == selectedVehicle?.vehicle_id {
                             Image(systemName: "checkmark")
                                 .foregroundColor(AppColors.buttonActive)
                         }
@@ -276,9 +332,10 @@ struct VehiclePickerView: View {
                 }
             }
             .navigationTitle("Select Vehicle")
-            .navigationBarItems(trailing: Button("Close") {
-                isPresented = false
-            })
+            .navigationBarItems(
+                trailing: Button("Close") {
+                    isPresented = false
+                })
         }
     }
 }

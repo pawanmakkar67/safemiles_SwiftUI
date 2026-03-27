@@ -22,8 +22,15 @@ class AddDvirViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
     @Published var signatureImage: UIImage?
     
     @Published var isLoading: Bool = false
-    @Published var errorMessage: String?
+    @Published var alertMessage: String = ""
+    @Published var showAlert: Bool = false
     @Published var submitSuccess: Bool = false
+    
+    // Error Flags
+    @Published var isVehicleError: Bool = false
+    @Published var isOdometerError: Bool = false
+    @Published var isRemarksError: Bool = false
+    @Published var isSignatureError: Bool = false
     
     // Data Sources
     let statusOptions = ["Vehicle Condition Satisfactory", "Has Defects", "Defects Corrected", "Defects Need Not Be Corrected"]
@@ -72,8 +79,8 @@ class AddDvirViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
         self.remarks = data.remarks ?? ""
         self.trailers = data.trailers ?? []
         
-        if let vehicleId = data.vehicle?.id {
-            self.selectedVehicle = Global.shared.vehicleList.first(where: { $0.id == vehicleId })
+        if let vehicleId = data.vehicle?.vehicle_id {
+            self.selectedVehicle = Global.shared.vehicleList.first(where: { $0.vehicle_id == vehicleId })
         }
         
         self.vehicleDefects = data.vehicle_defects ?? []
@@ -175,7 +182,7 @@ class AddDvirViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
             "status": status,
             "remarks": remarks,
             "trailer_defects": trailerDefects,
-            "vehicle": selectedVehicle?.id ?? "",
+            "vehicle": selectedVehicle?.vehicle_id ?? "",
             "vehicle_defects": vehicleDefects,
             "trailers": trailers
         ]
@@ -206,34 +213,46 @@ class AddDvirViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
         } failure: { [weak self] error in
             DispatchQueue.main.async {
                 self?.isLoading = false
-                self?.errorMessage = error?.description ?? "Unknown error"
+                self?.alertMessage = error?.description ?? "Unknown error"
+                self?.showAlert = true
             }
         }
     }
     
     func validate() -> Bool {
+        // Reset Error Flags
+        isVehicleError = false
+        isOdometerError = false
+        isRemarksError = false
+        isSignatureError = false
+        
+        var isValid = true
+        
         if selectedVehicle == nil {
-            errorMessage = "Please select a vehicle"
-            return false
-        }
-        if location.isEmpty {
-            errorMessage = "Please enter location"
-            return false
+            isVehicleError = true
+            isValid = false
         }
         
-        // Defect validation
-        if status == "Has Defects" {
-            if vehicleDefects.isEmpty && trailerDefects.isEmpty {
-                errorMessage = "Please select at least one defect for vehicle or trailer"
-                return false
-            }
+        if odometer.isEmpty {
+            isOdometerError = true
+            isValid = false
+        }
+        
+        if remarks.trimmingCharacters(in: .whitespaces).isEmpty {
+            isRemarksError = true
+            isValid = false
         }
         
         if signatureImage == nil {
-            errorMessage = "Please sign the report"
-            return false
+            isSignatureError = true
+            isValid = false
         }
-        // Add other validations as needed
-        return true
+        
+        if !isValid {
+            alertMessage = "Please fill in all mandatory fields highlighted in red."
+            showAlert = true
+        }
+        
+        return isValid
     }
 }

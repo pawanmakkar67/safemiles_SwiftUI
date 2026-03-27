@@ -24,7 +24,7 @@ struct HomeView: View {
                     onLeftTap: {
                         withAnimation {
                             showSideMenu = true
-                        }
+                        } 
                     },
                     onRightTap: {
                         // Bluetooth action
