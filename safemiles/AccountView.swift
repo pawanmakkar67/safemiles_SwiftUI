@@ -74,6 +74,7 @@ struct AccountView: View {
                 }
                 .background(AppColors.background)
             }
+            .ignoresSafeArea(.all, edges: .top)
             
             if viewModel.isLoading {
                 AppColors.blackOpacity30.ignoresSafeArea()

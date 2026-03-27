@@ -64,11 +64,11 @@ struct DvirView: View {
             )
             
             // Content
-            ZStack {
+            ZStack(alignment: .top) {
                 AppColors.background
-                    .edgesIgnoringSafeArea(.all)
+                    .ignoresSafeArea(.all)
                 
-                VStack(spacing: 16) {
+                VStack(spacing: 0) {
                     // Add DVIR Button
                     Button(action: {
                         withAnimation {
@@ -87,8 +87,9 @@ struct DvirView: View {
                         .cornerRadius(8)
                         .shadow(color: AppColors.blackOpacity10, radius: 2, x: 0, y: 1)
                     }
-                    .padding()
-                    // .padding(.top, 10)
+                    .padding(.horizontal)
+                    .padding(.top, 16)
+                    .padding(.bottom, 8)
                     
                     // List
                     ScrollView {
@@ -123,6 +124,7 @@ struct DvirView: View {
                 }
             }
         }
+        .ignoresSafeArea(.all, edges: .top)
         .onAppear {
             print("DEBUG: DvirView - onAppear")
             showSideMenu = false

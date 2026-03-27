@@ -47,6 +47,8 @@ struct PDFViewer: View {
                     Spacer()
                 }
             }
+            .background(AppColors.background)
+            .ignoresSafeArea(.all, edges: .top)
             .navigationBarHidden(true)
             
             if isDownloading {

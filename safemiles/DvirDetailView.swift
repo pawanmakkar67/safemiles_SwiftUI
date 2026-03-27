@@ -202,6 +202,7 @@ struct DvirDetailView: View {
             }
             .hidden()
         }
+        .ignoresSafeArea(.all, edges: .top)
         .background(AppColors.background)
         .navigationBarHidden(true)
         .onAppear {

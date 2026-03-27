@@ -179,6 +179,7 @@ struct DotInspectionDetailView: View {
         }
         .navigationBarHidden(true)
         .background(AppColors.background)
+        .ignoresSafeArea(.all, edges: .top)
     }
     
     func formatDisplayDate(_ date: Date) -> String {

@@ -117,6 +117,7 @@ struct CoDriverView: View {
                 }
                 .background(Color(UIColor.systemGroupedBackground))
             }
+            .ignoresSafeArea(.all, edges: .top)
         }
         .onReceive(viewModel.$shouldLogout) { shouldLogout in
             if shouldLogout {

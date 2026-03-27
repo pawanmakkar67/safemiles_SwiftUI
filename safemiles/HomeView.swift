@@ -275,7 +275,7 @@ struct HomeView: View {
                     }
                 }
             )
-
+            .ignoresSafeArea(.all, edges: .top)
     }
     
     func formatRecapTime(_ time: String?) -> String {

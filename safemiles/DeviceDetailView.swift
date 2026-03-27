@@ -61,6 +61,7 @@ struct DeviceDetailView: View {
             }
             .background(AppColors.background)
         }
+        .ignoresSafeArea(.all, edges: .top)
         .navigationBarHidden(true)
         .onAppear {
             startUpdating()
@@ -86,6 +87,7 @@ struct DeviceDetailView: View {
         self.eventData = Global.shared.EventData
         self.virtualDashboardData = Global.shared.virtualDashboardData
         self.trackerInfo = Global.shared.trackerInfoV
+
     }
 }
 
