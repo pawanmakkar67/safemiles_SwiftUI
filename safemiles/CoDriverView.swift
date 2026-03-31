@@ -129,7 +129,17 @@ struct CoDriverView: View {
             set: { _ in viewModel.errorMsg = nil }
         )) {
             Alert(title: Text("Error"), message: Text(viewModel.errorMsg ?? "Unknown error"), dismissButton: .default(Text("OK")))
-            
+        }
+        .alert(isPresented: Binding<Bool>(
+            get: { viewModel.successMsg != nil },
+            set: { _ in
+                if viewModel.successMsg != nil {
+                    viewModel.successMsg = nil
+                    viewModel.shouldLogout = true
+                }
+            }
+        )) {
+            Alert(title: Text("Success"), message: Text(viewModel.successMsg ?? ""), dismissButton: .default(Text("OK")))
         }
         .onAppear {
             showSideMenu = false

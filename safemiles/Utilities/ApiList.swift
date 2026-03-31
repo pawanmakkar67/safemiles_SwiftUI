@@ -28,7 +28,7 @@ let BASEURL = "\(MainBASEURL)api/v1/"
 
 
 struct AlertItem: Identifiable {
-    var id = UUID()
+    var id: String { message }
     var message: String
 }
 
@@ -43,16 +43,15 @@ struct ApiList {
     static let allvehicles = BASEURL + "company/vehicles/"
     static let updateHardwareEvent = BASEURL + "hos/events/"                      // url changed
     static let addHardwareEvent = BASEURL + "hos/events/add/"                      // url changed
-    static let manualPDF = MainBASEURL + "media/user_manuals/Safemiles_User_Manual.pdf"
-    static let instructionsPDF = MainBASEURL + "media/information_packets/Safemiles_instruction_manual.pdf"
     static let saveForms = BASEURL + "hos/logs/"               // url + payload changed
     static let RecapApi = BASEURL + "hos/recap/"
-    static let sendLogs = BASEURL + "drivers/app/send-logs/"
+    static let sendLogs = BASEURL + "hos/eld/transfer/"
     static let sendEmail = BASEURL + "drivers/app/email-logs/"
     static let getVehicleDetails = BASEURL + "company/get-vehicle/"
     static let forgotPassword = BASEURL + "accounts/forget-password/"
+    static let instructionsPDF = "https://safemilesbucket.s3.us-east-1.amazonaws.com/information_packets/Safemiles_instruction_manual.pdf"
+    static let manualPDF = "https://safemilesbucket.s3.us-east-1.amazonaws.com/user_manuals/Safemiles_User_Manual.pdf"
 
-    
 
 }
 
@@ -60,7 +59,11 @@ struct ApiList {
 
 final class Global {
     static let shared = Global()
-    var recapvalues : RecapModel?
+    var recapvalues : RecapModel? {
+        didSet {
+            NotificationCenter.default.post(name: .recapUpdate, object: nil)
+        }
+    }
     var logsDataVal: logsModel? {
             didSet {
                 NotificationCenter.default.post(

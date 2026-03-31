@@ -9,6 +9,7 @@ class CoDriverViewModel: ObservableObject {
     @Published var selectedCoDriver: CoDriverData?
     @Published var isLoading = false
     @Published var errorMsg: String?
+    @Published var successMsg: String?
     @Published var shouldLogout = false
     
     init() {
@@ -33,9 +34,8 @@ class CoDriverViewModel: ObservableObject {
         } success: { [weak self] response in
             DispatchQueue.main.async {
                 self?.isLoading = false
-                let obj = Mapper<CoDriverModel>().map(JSONObject: response)
-                // Proceed to logout or state change as per requirement
-                self?.shouldLogout = true
+                let _ = Mapper<CoDriverModel>().map(JSONObject: response)
+                self?.successMsg = "Successfully switched"
             }
         } failure: { [weak self] error in
             DispatchQueue.main.async {

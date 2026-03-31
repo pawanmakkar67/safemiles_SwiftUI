@@ -43,33 +43,45 @@ struct MainTabView: View {
     @State private var isDriving = false
     
     var body: some View {
-        TabView(selection: $selection) {
-            HomeView(showSideMenu: $showSideMenu)
-                .tabItem {
-                    Label("Home", image: "Home")
-                }
-                .tag(0)
+        ZStack(alignment: .bottom) {
+            TabView(selection: $selection) {
+                HomeView(showSideMenu: $showSideMenu)
+                    .tabItem {
+                        Label("Home", image: "Home")
+                    }
+                    .tag(0)
+                
+                DvirView(showSideMenu: $showSideMenu)
+                    .tabItem {
+                        Label("DVIR", image: "DVIR")
+                    }
+                    .tag(1)
+                
+                LogsView(showSideMenu: $showSideMenu)
+                    .tabItem {
+                        Label("Logs", image: "Logs")
+                    }
+                    .tag(2)
+                
+                AccountView(showSideMenu: $showSideMenu)
+                    .tabItem {
+                        Label("Account", image: "user_ic")
+                    }
+                    .tag(3)
+            }
+            .tint(AppColors.buttonActive) // Active tab color
+            .hideTabBar(isDriving)
             
-            DvirView(showSideMenu: $showSideMenu)
-                .tabItem {
-                    Label("DVIR", image: "DVIR")
-                }
-                .tag(1)
-            
-            LogsView(showSideMenu: $showSideMenu)
-                .tabItem {
-                    Label("Logs", image: "Logs")
-                }
-                .tag(2)
-            
-            AccountView(showSideMenu: $showSideMenu)
-                .tabItem {
-                    Label("Account", image: "user_ic")
-                }
-                .tag(3)
+            if isDriving {
+                // Transparent overlay to block interaction with the tab bar
+                Color.clear
+                    .frame(height: 60) // Approximate tab bar height
+                    .contentShape(Rectangle())
+                    .onTapGesture {
+                        // Consume tap, do nothing
+                    }
+            }
         }
-        .tint(AppColors.buttonActive) // Active tab color
-        .hideTabBar(isDriving)
         .onChange(of: selection) { newValue in
             if isDriving && newValue != 0 {
                 selection = 0

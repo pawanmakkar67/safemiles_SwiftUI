@@ -1,6 +1,6 @@
-
 import SwiftUI
 import Combine
+import Foundation
 
 class DotInspectionDetailViewModel: ObservableObject {
     @ObservedObject var logsViewModel: LogsViewModel
@@ -48,7 +48,8 @@ class DotInspectionDetailViewModel: ObservableObject {
     }
     
     private func setupLogsObservation() {
-        logsViewModel.$currentLog
+        logsViewModel.$dutySegments
+            .receive(on: RunLoop.main)
             .sink { [weak self] _ in
                 self?.calculateTotals()
             }
@@ -56,27 +57,49 @@ class DotInspectionDetailViewModel: ObservableObject {
     }
     
     func calculateTotals() {
-        var totals: [DutyStatus: Int] = [.off: 0, .sleeper: 0, .driving: 0, .on: 0]
+        var totals: [DutyStatus: Int] = [
+            .off: 0,
+            .sleeper: 0,
+            .driving: 0,
+            .on: 0,
+            .login: 0,
+            .yardMove: 0
+        ]
         var totalDistance: Double = 0.0
         
+        // Duration Calculation using precise seconds from events if possible
+        // but dutySegments already covers the whole day including gaps.
         for segment in logsViewModel.dutySegments {
-            let durationSeconds = Int((segment.endHour - segment.startHour) * 3600)
-            totals[segment.status, default: 0] += durationSeconds
+            let durationSeconds = Int(round((segment.endHour - segment.startHour) * 3600))
+            if segment.status.rawValue == "ym" {
+                totals[DutyStatus.on, default: 0] += durationSeconds
+            } else {
+                totals[segment.status, default: 0] += durationSeconds
+            }
         }
         
-        // Distance Calculation (requires odometer difference from events)
-        if let events = logsViewModel.currentLog?.events {
-            // Usually, distance is calculated from odometer diffs between consecutive events
-            // but for a day it's often total odometer at end - total at start
-            if let firstOdo = events.first?.odometer, let lastOdo = events.last?.odometer {
-                totalDistance = lastOdo - firstOdo
+        // Distance Calculation
+        if let events = logsViewModel.currentLog?.events, let firstEvent = events.first {
+            let startOdo = firstEvent.last_odometer ?? firstEvent.odometer ?? 0
+            var currentOdo: Double = 0
+            
+            if Calendar.current.isDateInToday(logsViewModel.selectedDate) {
+                currentOdo = Double(Global.shared.odometer ?? "0") ?? 0
+                // If currentOdo is 0 or less than startOdo, fallback to last event odometer
+                if currentOdo <= startOdo {
+                    currentOdo = events.last?.odometer ?? startOdo
+                }
+            } else {
+                currentOdo = events.last?.odometer ?? startOdo
             }
+            
+            totalDistance = max(0, currentOdo - startOdo)
         }
         
         self.statusTotals = totals
         self.totalMiles = String(format: "%.1f", totalDistance)
         
-        let totalCycleSeconds = totals.values.reduce(0, +)
+        let totalCycleSeconds = totals[.driving, default: 0] + totals[.on, default: 0] + totals[.sleeper, default: 0] + totals[.off, default: 0]
         self.cycleTotal = secondsToHoursMinutes(totalCycleSeconds)
     }
     
@@ -88,10 +111,32 @@ class DotInspectionDetailViewModel: ObservableObject {
     
     func getStatusTitle(_ status: DutyStatus) -> String {
         switch status {
-        case .off: return "Off Duty"
-        case .sleeper: return "Sleeper"
-        case .driving: return "Driving"
-        case .on: return "On Duty"
+        case DutyStatus.off: return "Off Duty"
+        case DutyStatus.sleeper: return "Sleeper"
+        case DutyStatus.driving: return "Driving"
+        case DutyStatus.on: return "On Duty"
+        case DutyStatus.login: return "Login"
+        case DutyStatus.yardMove: return "Yard Move"
         }
+    }
+    
+    func formatDisplayDate(_ date: Date) -> String {
+        let formatter = DateFormatter()
+        formatter.timeZone = getAppTimeZone()
+        formatter.dateFormat = "EEEE, MMM d"
+        return formatter.string(from: date)
+    }
+    
+    func formatTime(_ isoString: String?) -> String {
+        guard let isoString = isoString else { return "-" }
+        let formatter = ISO8601DateFormatter()
+        formatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
+        if let date = formatter.date(from: isoString) ?? ISO8601DateFormatter().date(from: isoString) {
+            let df = DateFormatter()
+            df.timeZone = getAppTimeZone()
+            df.dateFormat = "hh:mm a"
+            return df.string(from: date)
+        }
+        return "-"
     }
 }

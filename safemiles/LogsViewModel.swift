@@ -9,6 +9,8 @@ enum DutyStatus: String {
     case sleeper = "sb"
     case driving = "d"
     case on = "on"
+    case login = "login"
+    case yardMove = "ym"
 }
 
 struct DutySegment: Identifiable {
@@ -189,7 +191,7 @@ class LogsViewModel: ObservableObject {
             case "on", "login", "Active":
                 status = .on
             case "ym":
-                status = .on
+                status = .yardMove
                 isDotted = true
             case "sb":
                 status = .sleeper
@@ -223,7 +225,7 @@ class LogsViewModel: ObservableObject {
         case "on", "login", "Active":
             status = .on
         case "ym":
-            status = .on
+            status = .yardMove
             isDotted = true
         case "sb":
             status = .sleeper

@@ -28,8 +28,9 @@ class SendLogsViewModel: ObservableObject {
         }
         
         isLoading = true
+        let method = (transferType == "Web Services") ? "web" : transferType.lowercased()
         let params: [String: Any] = [
-            "transfer_type": transferType,
+            "method": method,
             "comment": comment
         ]
         
