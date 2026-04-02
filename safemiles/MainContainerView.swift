@@ -28,6 +28,7 @@ struct MainContainerView: View {
                             CoDriverView(showSideMenu: $showSideMenu, onLogout: {
                                 // Handle Logout / App State Reset
                                 UserDefaults.removeAllKeys()
+                                Global.shared.reset()
                                 if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
                                    let window = windowScene.windows.first {
                                     NotificationCenter.default.post(name: NSNotification.Name("LogoutNotification"), object: nil)
@@ -57,6 +58,7 @@ struct MainContainerView: View {
                 // Handle Logout
                 selectedMenuOption = nil // Reset
                 UserDefaults.removeAllKeys()
+                Global.shared.reset()
                 NotificationCenter.default.post(name: NSNotification.Name("LogoutNotification"), object: nil)
             }
         }

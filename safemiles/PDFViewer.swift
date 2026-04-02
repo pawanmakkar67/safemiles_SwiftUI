@@ -81,10 +81,10 @@ struct PDFViewer: View {
                         try FileManager.default.copyItem(at: localURL, to: tempURL)
                         presentDocumentPicker(for: tempURL)
                     } catch {
-                        print("Error saving temp file: \(error)")
+                        AppLog.debug("Error saving temp file: \(error)")
                     }
                 } else {
-                    print("Download failed: \(error?.localizedDescription ?? "Unknown error")")
+                    AppLog.debug("Download failed: \(error?.localizedDescription ?? "Unknown error")")
                 }
             }
         }.resume()

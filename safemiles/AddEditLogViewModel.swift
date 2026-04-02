@@ -130,7 +130,7 @@ class AddEditLogViewModel: NSObject, ObservableObject, CLLocationManagerDelegate
                 onSuccess()
             } failure: { [weak self] error in
                 self?.isLoading = false
-                print("Error updating log: \(error ?? "Unknown error")")
+                AppLog.debug("Error updating log: \(error ?? "Unknown error")")
             }
         } else {
             // POST request for adding new event
@@ -142,7 +142,7 @@ class AddEditLogViewModel: NSObject, ObservableObject, CLLocationManagerDelegate
                 onSuccess()
             } failure: { [weak self] error in
                 self?.isLoading = false
-                print("Error adding log: \(error ?? "Unknown error")")
+                AppLog.debug("Error adding log: \(error ?? "Unknown error")")
             }
         }
     }
@@ -212,7 +212,7 @@ class AddEditLogViewModel: NSObject, ObservableObject, CLLocationManagerDelegate
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print("Location Manager failed: \(error)")
+        AppLog.debug("Location Manager failed: \(error)")
     }
     
     // MARK: - Helper Functions
@@ -221,7 +221,7 @@ class AddEditLogViewModel: NSObject, ObservableObject, CLLocationManagerDelegate
         formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
         formatter.timeZone = TimeZone(secondsFromGMT: 0)
         let date = formatter.string(from: timeStr)
-        print(date)
+        AppLog.debug(date)
         return date
     }
     

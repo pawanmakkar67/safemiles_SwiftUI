@@ -41,7 +41,7 @@ class AccountViewModel: ObservableObject {
         } failure: { [weak self] error in
             DispatchQueue.main.async {
                 self?.isLoading = false
-                print("Error fetching profile: \(String(describing: error))")
+                AppLog.debug("Error fetching profile: \(String(describing: error))")
             }
         }
     }

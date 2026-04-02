@@ -96,10 +96,10 @@ struct AddDvirView: View {
         .navigationBarHidden(true)
         .onAppear {
              // Initial check if we need to load anything
-             print("DEBUG: AddDvirView - onAppear")
+             AppLog.debug("DEBUG: AddDvirView - onAppear")
         }
         .onDisappear {
-             print("DEBUG: AddDvirView - onDisappear")
+             AppLog.debug("DEBUG: AddDvirView - onDisappear")
         }
 
         .onChange(of: viewModel.submitSuccess) { success in
@@ -115,10 +115,10 @@ struct AddDvirView: View {
             Alert(title: Text("Alert"), message: Text(viewModel.alertMessage), dismissButton: .default(Text("OK")))
         }
         .onChange(of: showVehicleDefects) { isShowing in
-            print("DEBUG: AddDvirView - showVehicleDefects changed to: \(isShowing)")
+            AppLog.debug("DEBUG: AddDvirView - showVehicleDefects changed to: \(isShowing)")
         }
         .onChange(of: showTrailerDefects) { isShowing in
-            print("DEBUG: AddDvirView - showTrailerDefects changed to: \(isShowing)")
+            AppLog.debug("DEBUG: AddDvirView - showTrailerDefects changed to: \(isShowing)")
         }
         .sheet(isPresented: $showDatePicker) {
             VStack {
@@ -511,11 +511,11 @@ struct DefectSelectionView: View {
             }
         }
         .onAppear {
-            print("DEBUG: DefectSelectionView - onAppear")
+            AppLog.debug("DEBUG: DefectSelectionView - onAppear")
             workingSelection = selectedDefects
         }
         .onDisappear {
-            print("DEBUG: DefectSelectionView - onDisappear")
+            AppLog.debug("DEBUG: DefectSelectionView - onDisappear")
         }
     }
     

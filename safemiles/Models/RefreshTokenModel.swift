@@ -1,5 +1,5 @@
-/*
-Copyright (c) 2025 Swift Models Generated from JSON powered by http://www.json4swift.com
+/* 
+Copyright (c) 2026 Swift Models Generated from JSON powered by http://www.json4swift.com
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
@@ -14,42 +14,34 @@ For support, please feel free to contact me at https://www.linkedin.com/in/syeda
 import Foundation
 import ObjectMapper
 
-struct userModel: Mappable {
-    var data: userData?
-    var success: Bool?
-    var message: String?
+struct RefreshTokenModel : Mappable {
+    var data : RefreshTokenData?
+    var success : Int?
+    var message : String?
 
     init?(map: Map) {
 
     }
 
     mutating func mapping(map: Map) {
-
         data <- map["data"]
         success <- map["success"]
         message <- map["message"]
     }
-
 }
 
-struct userData: Mappable {
-    var id: String?
-    var access_token: String?
-    var refresh_token: String?
-    var role: String?
-    var timezone: String?
+struct RefreshTokenData : Mappable {
+    var access : String?
+    var refresh : String?
+    var user_id : String?
 
     init?(map: Map) {
 
     }
 
     mutating func mapping(map: Map) {
-
-        id <- map["id"]
-        access_token <- map["access_token"]
-        refresh_token <- map["refresh_token"]
-        role <- map["role"]
-        timezone <- map["timezone"]
+        access <- map["access"]
+        refresh <- map["refresh"]
+        user_id <- map["user_id"]
     }
-
 }

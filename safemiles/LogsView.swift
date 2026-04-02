@@ -7,15 +7,13 @@ struct LogsView: View {
     @State private var showAddLog = false
     // Removed local state @State private var showSideMenu = false
     
-    @State private var isDriving = false
-    
     var body: some View {
         // NavigationView removed to rely on parent NavigationView
         VStack(spacing: 0) {
             // Header
             CommonHeader(
                 title: "Logs", // Dynamic title could be date
-                leftIcon: isDriving ? nil : "Menu",
+                leftIcon: "Menu",
                 rightIcon: "arrow.clockwise",
                 onLeftTap: {
                     withAnimation {
@@ -78,16 +76,6 @@ struct LogsView: View {
         .onAppear {
             showSideMenu = false
             viewModel.fetchLogs(refresh: true)
-            if let code = Global.shared.recapvalues?.last_event?.code?.lowercased() {
-                isDriving = (code == "d")
-            }
-        }
-        .onReceive(NotificationCenter.default.publisher(for: .recapUpdate)) { _ in
-            if let code = Global.shared.recapvalues?.last_event?.code?.lowercased() {
-                withAnimation {
-                    isDriving = (code == "d")
-                }
-            }
         }
         .onChange(of: viewModel.selectedDate) { _ in
             viewModel.updateCurrentLog()

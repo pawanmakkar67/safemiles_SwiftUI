@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct CommonHeader: View {
-    let title: String
+    var title: String
     var leftIcon: String? = "Menu"
     var rightIcon: String? = ""
     var rightIconColor: Color = .white

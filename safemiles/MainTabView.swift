@@ -73,13 +73,14 @@ struct MainTabView: View {
             .hideTabBar(isDriving)
             
             if isDriving {
-                // Transparent overlay to block interaction with the tab bar
-                Color.clear
-                    .frame(height: 60) // Approximate tab bar height
+                // Robust overlay to block interaction with the tab bar area
+                Color.black.opacity(0.001) // Nearly transparent but interaction-catching
+                    .frame(height: 100) // Ensure it covers the entire tab bar and safe area
                     .contentShape(Rectangle())
                     .onTapGesture {
-                        // Consume tap, do nothing
+                        // Explicitly consume taps to prevent them from reaching the tab bar
                     }
+                    .allowsHitTesting(true)
             }
         }
         .onChange(of: selection) { newValue in
@@ -88,22 +89,26 @@ struct MainTabView: View {
             }
             showSideMenu = false
         }
-        .onReceive(NotificationCenter.default.publisher(for: .recapUpdate)) { _ in
-            if let code = Global.shared.recapvalues?.last_event?.code?.lowercased() {
+        .onReceive(NotificationCenter.default.publisher(for: .drivingStatusChanged)) { note in
+            if let status = note.object as? Bool {
                 withAnimation {
-                    isDriving = (code == "d")
+                    isDriving = status
                     if isDriving {
                         selection = 0
                     }
                 }
             }
         }
+        .onReceive(NotificationCenter.default.publisher(for: .recapUpdate)) { _ in
+            if let code = Global.shared.recapvalues?.last_event?.code?.lowercased() {
+                withAnimation {
+                    isDriving = (code == "d")
+                }
+            }
+        }
         .onAppear {
             if let code = Global.shared.recapvalues?.last_event?.code?.lowercased() {
                 isDriving = (code == "d")
-                if isDriving {
-                    selection = 0
-                }
             }
         }
     }

@@ -98,36 +98,6 @@
             endingLineNumber = "198"
             landmarkName = "submitDvir()"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "3CE250F2-2817-4B84-80FC-DC4A886789DB - 317d984aaa187539"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "safemiles.AddDvirViewModel.submitDvir() -&gt; ()"
-                  moduleName = "safemiles.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/pc/Documents/safemiles_SwiftUI/safemiles/AddDvirViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "199"
-                  endingLineNumber = "199">
-               </Location>
-               <Location
-                  uuid = "3CE250F2-2817-4B84-80FC-DC4A886789DB - 317d984aaa187539"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "safemiles.AddDvirViewModel.submitDvir() -&gt; ()"
-                  moduleName = "safemiles.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/pc/Documents/safemiles_SwiftUI/safemiles/AddDvirViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "199"
-                  endingLineNumber = "199">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -197,61 +167,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "6894CA36-AE37-4677-8FCE-A9928683023F"
+            uuid = "C8892E1A-D630-4876-A21D-7B02A34D9297"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "safemiles/Utilities/APIManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "593"
-            endingLineNumber = "593"
-            landmarkName = "refreshToken(completion:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "6894CA36-AE37-4677-8FCE-A9928683023F - 81caf6520743b417"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "safemiles.APIManager.refreshToken(completion: (Swift.Bool) -&gt; ()) -&gt; ()"
-                  moduleName = "safemiles.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/pc/Documents/safemiles_SwiftUI/safemiles/Utilities/APIManager.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "595"
-                  endingLineNumber = "595">
-               </Location>
-               <Location
-                  uuid = "6894CA36-AE37-4677-8FCE-A9928683023F - 24e0fdc090917e9"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 @Sendable (Alamofire.DataResponse&lt;Any, Alamofire.AFError&gt;) -&gt; () in safemiles.APIManager.refreshToken(completion: (Swift.Bool) -&gt; ()) -&gt; ()"
-                  moduleName = "safemiles.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/pc/Documents/safemiles_SwiftUI/safemiles/Utilities/APIManager.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "593"
-                  endingLineNumber = "593">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "52E6F464-DA43-4882-8F52-695AD843EDEE"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "safemiles/Utilities/APIManager.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "591"
-            endingLineNumber = "591"
+            startingLineNumber = "603"
+            endingLineNumber = "603"
             landmarkName = "refreshToken(completion:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -259,107 +183,113 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "FFA5C027-F99E-49BE-BDD7-8E258E53454E"
+            uuid = "D5C58D43-A6CC-4F37-BD60-1BD2B39B0915"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "safemiles/Utilities/APIManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "583"
-            endingLineNumber = "583"
+            startingLineNumber = "607"
+            endingLineNumber = "607"
             landmarkName = "refreshToken(completion:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "FFA5C027-F99E-49BE-BDD7-8E258E53454E - 2d1d6393ff665642"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 @Sendable (Alamofire.DataResponse&lt;Any, Alamofire.AFError&gt;) -&gt; () in safemiles.APIManager.requestAuthorization(url: Swift.String, method: Alamofire.HTTPMethod, parameters: Swift.Optional&lt;Swift.Dictionary&lt;Swift.String, Any&gt;&gt;, authorizationn: Swift.String, tryAgain: Swift.Bool, completionCallback: (Swift.AnyObject) -&gt; (), success: (Swift.AnyObject) -&gt; (), failure: (Swift.Optional&lt;Swift.String&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "safemiles.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/pc/Documents/safemiles_SwiftUI/safemiles/Utilities/APIManager.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "584"
-                  endingLineNumber = "584">
-               </Location>
-               <Location
-                  uuid = "FFA5C027-F99E-49BE-BDD7-8E258E53454E - 81caf6520743b66b"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "safemiles.APIManager.refreshToken(completion: (Swift.Bool) -&gt; ()) -&gt; ()"
-                  moduleName = "safemiles.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/pc/Documents/safemiles_SwiftUI/safemiles/Utilities/APIManager.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "583"
-                  endingLineNumber = "583">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "4AE9C167-622F-41AB-81DA-1B59DD91EF26"
+            uuid = "BD9EC400-352C-42E3-B80C-07C807769F4F"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "safemiles/Utilities/APIManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "85"
-            endingLineNumber = "85"
+            startingLineNumber = "84"
+            endingLineNumber = "84"
             landmarkName = "request(url:method:parameters:tryAgain:completionCallback:success:failure:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "4AE9C167-622F-41AB-81DA-1B59DD91EF26 - a6c5b1b7673133ba"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 @Sendable (Alamofire.DataResponse&lt;Any, Alamofire.AFError&gt;) -&gt; () in safemiles.APIManager.request(url: Swift.String, method: Alamofire.HTTPMethod, parameters: Swift.Optional&lt;Swift.Dictionary&lt;Swift.String, Any&gt;&gt;, tryAgain: Swift.Bool, completionCallback: (Swift.AnyObject) -&gt; (), success: (Swift.AnyObject) -&gt; (), failure: (Swift.Optional&lt;Swift.String&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "safemiles.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/pc/Documents/safemiles_SwiftUI/safemiles/Utilities/APIManager.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "88"
-                  endingLineNumber = "88">
-               </Location>
-               <Location
-                  uuid = "4AE9C167-622F-41AB-81DA-1B59DD91EF26 - a6c5b1b767313255"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 @Sendable (Alamofire.DataResponse&lt;Any, Alamofire.AFError&gt;) -&gt; () in safemiles.APIManager.request(url: Swift.String, method: Alamofire.HTTPMethod, parameters: Swift.Optional&lt;Swift.Dictionary&lt;Swift.String, Any&gt;&gt;, tryAgain: Swift.Bool, completionCallback: (Swift.AnyObject) -&gt; (), success: (Swift.AnyObject) -&gt; (), failure: (Swift.Optional&lt;Swift.String&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "safemiles.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/pc/Documents/safemiles_SwiftUI/safemiles/Utilities/APIManager.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "85"
-                  endingLineNumber = "85">
-               </Location>
-               <Location
-                  uuid = "4AE9C167-622F-41AB-81DA-1B59DD91EF26 - daf79faa9e17ec9d"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Bool) -&gt; () in closure #1 @Sendable (Alamofire.DataResponse&lt;Any, Alamofire.AFError&gt;) -&gt; () in safemiles.APIManager.request(url: Swift.String, method: Alamofire.HTTPMethod, parameters: Swift.Optional&lt;Swift.Dictionary&lt;Swift.String, Any&gt;&gt;, tryAgain: Swift.Bool, completionCallback: (Swift.AnyObject) -&gt; (), success: (Swift.AnyObject) -&gt; (), failure: (Swift.Optional&lt;Swift.String&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "safemiles.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/pc/Documents/safemiles_SwiftUI/safemiles/Utilities/APIManager.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "85"
-                  endingLineNumber = "85">
-               </Location>
-            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "235065F2-CCD3-408F-989B-53A57539B2F9"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "safemiles/Utilities/APIManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "595"
+            endingLineNumber = "595"
+            landmarkName = "refreshToken(completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E578D817-784B-4AC7-8A4E-41B8D1056046"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "safemiles/Utilities/APIManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "592"
+            endingLineNumber = "592"
+            landmarkName = "refreshToken(completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "4A8A8C6D-CA39-4143-A744-67EFA54D2551"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "safemiles/Utilities/APIManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "584"
+            endingLineNumber = "584"
+            landmarkName = "refreshToken(completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "75EA246B-1FDC-4FC5-A441-98709C350787"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "safemiles/HomeViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "784"
+            endingLineNumber = "784"
+            landmarkName = "toJSONString()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C35BD173-C028-427D-80DF-D3BF7DBB7082"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "safemiles/Utilities/ApiList.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "123"
+            endingLineNumber = "123"
+            landmarkName = "getHeaderTitle()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

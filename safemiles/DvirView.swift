@@ -7,7 +7,8 @@ struct DvirView: View {
     @State private var showAddDvir = false
     @State private var showDetail = false
     @State private var selectedDvirData: DivrData?
-    @State private var isDriving = false
+    @ObservedObject var bleManager = BLEManager.shared
+    @State private var showBluetoothScan = false
     
     var body: some View {
         ZStack {
@@ -25,7 +26,7 @@ struct DvirView: View {
                 .transition(.move(edge: .trailing))
                 .zIndex(1)
                 .onDisappear {
-                    print("DEBUG: DvirView - AddDvirView disappeared, refreshing")
+                    AppLog.debug("DEBUG: DvirView - AddDvirView disappeared, refreshing")
                     viewModel.fetchDivrs(refresh: true)
                 }
             }
@@ -37,7 +38,7 @@ struct DvirView: View {
                         showDetail = false
                         selectedDvirData = nil
                     }
-                    print("DEBUG: DvirView - Dismiss to root, refreshing")
+                    AppLog.debug("DEBUG: DvirView - Dismiss to root, refreshing")
                     viewModel.fetchDivrs(refresh: true)
                 })
                 .transition(.move(edge: .trailing))
@@ -52,7 +53,7 @@ struct DvirView: View {
             // Header
             CommonHeader(
                 title: "DVIR Detail",
-                leftIcon: isDriving ? nil : "Menu",
+                leftIcon: "Menu",
                 onLeftTap: {
                     withAnimation {
                         showSideMenu = true
@@ -126,22 +127,12 @@ struct DvirView: View {
         }
         .ignoresSafeArea(.all, edges: .top)
         .onAppear {
-            print("DEBUG: DvirView - onAppear")
+            AppLog.debug("DEBUG: DvirView - onAppear")
             showSideMenu = false
             
             if viewModel.dvirData.isEmpty {
-                 print("DEBUG: DvirView - Initial Fetch")
+                 AppLog.debug("DEBUG: DvirView - Initial Fetch")
                  viewModel.fetchDivrs(refresh: true)
-            }
-            if let code = Global.shared.recapvalues?.last_event?.code?.lowercased() {
-                isDriving = (code == "d")
-            }
-        }
-        .onReceive(NotificationCenter.default.publisher(for: .recapUpdate)) { _ in
-            if let code = Global.shared.recapvalues?.last_event?.code?.lowercased() {
-                withAnimation {
-                    isDriving = (code == "d")
-                }
             }
         }
     }

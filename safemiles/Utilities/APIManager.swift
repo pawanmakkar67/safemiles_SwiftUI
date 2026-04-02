@@ -9,6 +9,7 @@
 import Alamofire
 import Foundation
 import UIKit
+import ObjectMapper
 
 class APIManager {
 
@@ -34,9 +35,9 @@ class APIManager {
             ]
         }
 
-        print(url1)
-        print("c ", strToken)
-        print(parameters as Any)
+        AppLog.debug(url1)
+        AppLog.debug("c ", strToken)
+        AppLog.debug(parameters as Any)
         URLCache.shared.removeAllCachedResponses()
 
         AF.request(
@@ -44,8 +45,8 @@ class APIManager {
             headers: headers
         ).responseJSON { (response) in
 
-            print(response.value as Any)
-            print("Status Code: \(response.response?.statusCode ?? 0)")
+            AppLog.debug(response.value as Any)
+            AppLog.debug("Status Code: \(response.response?.statusCode ?? 0)")
 
 
             completionCallback(response as AnyObject)
@@ -136,9 +137,9 @@ class APIManager {
             "Authorization": "Bearer " + strToken,
         ]
         var url1 = url
-        print(parameters as Any)
-        print(url1)
-        print(strToken)
+        AppLog.debug(parameters as Any)
+        AppLog.debug(url1)
+        AppLog.debug(strToken)
 
       
 
@@ -174,8 +175,8 @@ class APIManager {
         )
         .responseJSON { (response) in
 
-            print(response.value as Any)
-            print("Status Code: \(response.response?.statusCode ?? 0)")
+            AppLog.debug(response.value as Any)
+            AppLog.debug("Status Code: \(response.response?.statusCode ?? 0)")
 
             if let dict = response.value as? [String: Any],
                 dict["code"] as? String == "token_not_valid"
@@ -242,9 +243,9 @@ class APIManager {
             "Authorization": "Bearer " + strToken,
         ]
         var url1 = url
-        print(parameters as Any)
-        print(url1)
-        print(strToken)
+        AppLog.debug(parameters as Any)
+        AppLog.debug(url1)
+        AppLog.debug(strToken)
 
         AF.upload(
             multipartFormData: { multipartFormData in
@@ -286,8 +287,8 @@ class APIManager {
         )
         .responseJSON { (response) in
 
-            print(response.value as Any)
-            print("Status Code: \(response.response?.statusCode ?? 0)")
+            AppLog.debug(response.value as Any)
+            AppLog.debug("Status Code: \(response.response?.statusCode ?? 0)")
 
             if let dict = response.value as? [String: Any],
                 dict["code"] as? String == "token_not_valid"
@@ -397,8 +398,8 @@ class APIManager {
         )
         .responseJSON { (response) in
 
-            print(response.value as Any)
-            print("Status Code: \(response.response?.statusCode ?? 0)")
+            AppLog.debug(response.value as Any)
+            AppLog.debug("Status Code: \(response.response?.statusCode ?? 0)")
 
             if let dict = response.value as? [String: Any],
                 dict["code"] as? String == "token_not_valid"
@@ -511,9 +512,9 @@ class APIManager {
             "Authorization": authorizationn
         ]
 
-        print(url1)
-        print("token: ", strToken)
-        print(parameters as Any)
+        AppLog.debug(url1)
+        AppLog.debug("token: ", strToken)
+        AppLog.debug(parameters as Any)
 
         URLCache.shared.removeAllCachedResponses()
 
@@ -522,8 +523,8 @@ class APIManager {
             headers: headers
         ).responseJSON { (response) in
 
-            print(response.value as Any)
-            print("Status Code: \(response.response?.statusCode ?? 0)")
+            AppLog.debug(response.value as Any)
+            AppLog.debug("Status Code: \(response.response?.statusCode ?? 0)")
 
             if let dict = response.value as? [String: Any],
                 dict["code"] as? String == "token_not_valid"
@@ -587,27 +588,37 @@ class APIManager {
 
         let params: [String: Any] = ["refresh": refreshToken]
         let url = ApiList.refreshTokenAPI
-
+        
         AF.request(url, method: .post, parameters: params, encoding: JSONEncoding.default)
             .responseJSON { response in
-                print("Refresh Token Status Code: \(response.response?.statusCode ?? 0)")
+                
                 if let statusCode = response.response?.statusCode,
                     statusCode >= 200 && statusCode < 300
                 {
-                    if let dict = response.value as? [String: Any],
-                        let accessToken = dict["access"] as? String
-                    {
-                        UserDefaults.setUserToken(token: accessToken)
-                        if let newRefreshToken = dict["refresh"] as? String {
+                    if let responseValue = response.value as? [String: Any],
+                       let model = Mapper<RefreshTokenModel>().map(JSON: responseValue),
+                       let data = model.data {
+                        
+                        if let accessToken = data.access {
+                            UserDefaults.setUserToken(token: accessToken)
+                        }
+                        
+                        if let newRefreshToken = data.refresh {
                             UserDefaults.setUserRefreshToken(token: newRefreshToken)
                         }
+                        
+                        
+                        AppLog.debug("Token refreshed successfully and saved.")
                         completion(true)
                         return
                     }
                 } else if response.response?.statusCode == 401 {
+                    AppLog.debug("Refresh token expired or invalid. Posting SessionExpiredNotification.")
                     NotificationCenter.default.post(
                         name: NSNotification.Name("SessionExpiredNotification"), object: nil)
                 }
+                
+                AppLog.debug("Refresh token failed with status: \(response.response?.statusCode ?? 0)")
                 completion(false)
             }
     }

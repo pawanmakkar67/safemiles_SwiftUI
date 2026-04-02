@@ -113,6 +113,6 @@ class StatusUpdateViewModel: NSObject, ObservableObject, CLLocationManagerDelega
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print("Location Manager failed: \(error)")
+        AppLog.debug("Location Manager failed: \(error)")
     }
 }

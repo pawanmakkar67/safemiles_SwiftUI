@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Combine
 
 #if !targetEnvironment(simulator)
     import PacificTrack
@@ -53,14 +54,16 @@ struct ApiList {
 
 }
 
-final class Global {
+final class Global: ObservableObject {
     static let shared = Global()
-    var recapvalues: RecapModel? {
+    @Published var recapvalues: RecapModel? {
         didSet {
-            NotificationCenter.default.post(name: .recapUpdate, object: nil)
+            DispatchQueue.main.async {
+                NotificationCenter.default.post(name: .recapUpdate, object: nil)
+            }
         }
     }
-    var logsDataVal: logsModel? {
+var logsDataVal: logsModel? {
         didSet {
             NotificationCenter.default.post(
                 name: .logsDataUpdated,
@@ -70,14 +73,18 @@ final class Global {
     }
     var vehicleList = [VehicleData]()
     var coDriverList: [CoDriverData]?
-    var connectVehicleDetail: VehicleDetailsModel? {
+    @Published var connectVehicleDetail: VehicleDetailsModel? {
         didSet {
-            NotificationCenter.default.post(name: .vehicleUpdate, object: nil)
+            DispatchQueue.main.async {
+                NotificationCenter.default.post(name: .vehicleUpdate, object: nil)
+            }
         }
     }
-    var myProfile: ProfileData? {
+    @Published var myProfile: ProfileData? {
         didSet {
-            NotificationCenter.default.post(name: .profileUpdate, object: nil)
+            DispatchQueue.main.async {
+                NotificationCenter.default.post(name: .profileUpdate, object: nil)
+            }
         }
     }
     var odometer = ""
@@ -103,6 +110,57 @@ final class Global {
 
     var trackerInfoV: TrackerInfo?
 
+    func reset() {
+        recapvalues = nil
+        logsDataVal = nil
+        vehicleList = []
+        coDriverList = nil
+        connectVehicleDetail = nil
+        myProfile = nil
+        odometer = ""
+        logsTotalCount = 0
+        virtualDashboardData = nil
+        EventData = nil
+        trackerInfoV = nil
+    }
+
+    func getHeaderTitle() -> String {
+        // Source 1: Recap API Response (Recap-first as requested)
+        if let recap = recapvalues {
+            let firstName = recap.hos_status?.driver?.user?.first_name ?? ""
+            let lastName = recap.hos_status?.driver?.user?.last_name ?? ""
+            let unitNumber = recap.hos_status?.driver?.vehicle?.unit_number ?? ""
+
+            let fullName = "\(firstName) \(lastName)".trimmingCharacters(in: .whitespaces)
+            if !fullName.isEmpty {
+                return unitNumber.isEmpty ? fullName : "\(fullName) - \(unitNumber)"
+            } else if !unitNumber.isEmpty {
+                return unitNumber
+            }
+        }
+
+        // Source 2: Profile Fallback
+        if let profile = myProfile {
+            let firstName = profile.user?.first_name ?? ""
+            let lastName = profile.user?.last_name ?? ""
+            let unitNumber = profile.vehicle?.unit_number ?? ""
+
+            let fullName = "\(firstName) \(lastName)".trimmingCharacters(in: .whitespaces)
+            if !fullName.isEmpty {
+                return unitNumber.isEmpty ? fullName : "\(fullName) - \(unitNumber)"
+            } else if !unitNumber.isEmpty {
+                return unitNumber
+            }
+        }
+        
+        // Source 3: Connected Vehicle Only
+        if let vehicleUnit = connectVehicleDetail?.unit_number, !vehicleUnit.isEmpty {
+            return vehicleUnit
+        }
+
+        return "Home"
+    }
+
     private init() {}
 }
 
@@ -110,6 +168,7 @@ extension Notification.Name {
     static let logsDataUpdated = Notification.Name("logsDataUpdated")
     static let recapUpdate = Notification.Name("recapUpdate")
     static let requestRecapRefresh = Notification.Name("requestRecapRefresh")
+    static let drivingStatusChanged = Notification.Name("drivingStatusChanged")
     static let logsUpdate = Notification.Name("logsUpdate")
     static let telematicsUpdated = Notification.Name("telematicsUpdated")
     static let dvirUpdated = Notification.Name("dvirUpdated")

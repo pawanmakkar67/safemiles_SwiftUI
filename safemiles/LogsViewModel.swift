@@ -87,7 +87,7 @@ class LogsViewModel: ObservableObject {
             
         } failure: { error in
             self.isLoading = false
-            print("Fetch logs failed: \(String(describing: error))")
+            AppLog.debug("Fetch logs failed: \(String(describing: error))")
         }
     }
     

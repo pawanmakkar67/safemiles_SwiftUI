@@ -105,7 +105,7 @@ extension BLEManager: CBCentralManagerDelegate {
     }
     
     func centralManager(_ central: CBCentralManager, willRestoreState dict: [String : Any]) {
-        print("Restoring state: \(dict)")
+        AppLog.debug("Restoring state: \(dict)")
         
         if let peripherals = dict[CBCentralManagerRestoredStatePeripheralsKey] as? [CBPeripheral],
            let first = peripherals.first {
@@ -114,16 +114,16 @@ extension BLEManager: CBCentralManagerDelegate {
                 self.updateTrackerDelegate()
                 TrackerService.sharedInstance.handle(trackerPeripheral: first)
             }
-            print("Restored connected peripheral: \(first.identifier)")
+            AppLog.debug("Restored connected peripheral: \(first.identifier)")
         } else if let services = dict["kCBRestoredScanServices"] as? [CBUUID] {
-             print("Restored scan services: \(services)")
+             AppLog.debug("Restored scan services: \(services)")
              central.scanForPeripherals(withServices: services, options: nil)
              
              let serviceUUID = CBUUID(string: "6E400001-B5A3-F393-E0A9-E50E24DCCA9E")
              let peripherals = centralManager.retrieveConnectedPeripherals(withServices: [serviceUUID])
              
              if let peripheral = peripherals.first {
-                 print("Retrieved already connected peripheral: \(peripheral.identifier)")
+                 AppLog.debug("Retrieved already connected peripheral: \(peripheral.identifier)")
                  // Ensure we stop handling before disconnecting/reconnecting logic
                  _ = TrackerService.sharedInstance.stopHandling()
                  centralManager.cancelPeripheralConnection(peripheral)
@@ -198,7 +198,7 @@ extension BLEManager {
 extension BLEManager {
     
     func trackerService(_ trackerService: TrackerService, didSync trackerInfo: TrackerInfo) {
-        print("Tracker Synced: \(trackerInfo.productName)")
+        AppLog.debug("Tracker Synced: \(trackerInfo.productName)")
         refreshDeviceInfo(withTrackerInfo: trackerInfo)
     }
     
@@ -215,7 +215,7 @@ extension BLEManager {
             }
         }
         
-        print("Virtual Dashboard Updated: Speed: \(virtualDashboardData.speed ?? 0), RPM: \(virtualDashboardData.rpm ?? 0)")
+        AppLog.debug("Virtual Dashboard Updated: Speed: \(virtualDashboardData.speed ?? 0), RPM: \(virtualDashboardData.rpm ?? 0)")
         
         // Note: The user's snippet had a lot of dictionary updates (eldevice, virtualDashboard). 
         // Assuming those are legacy or external dictionaries. 
@@ -233,7 +233,7 @@ extension BLEManager {
         }
         
         let eventTypeTag = event.getValue(forTag: "E") ?? ""
-        print("Event Received: #\(event.sequenceNumber) \(eventTypeTag)")
+        AppLog.debug("Event Received: #\(event.sequenceNumber) \(eventTypeTag)")
         
         // Fetch vehicle details when event data is received
         Task {
@@ -249,7 +249,7 @@ extension BLEManager {
     }
     
     func trackerService(_ trackerService: TrackerService, onError error: TrackerServiceError) {
-        print("Tracker Service Error: \(error)")
+        AppLog.debug("Tracker Service Error: \(error)")
     }
     
     func trackerService(_ trackerService: TrackerService, onFirmwareUpgradeProgress progress: Float) {
@@ -271,7 +271,7 @@ extension BLEManager {
             Global.shared.trackerInfoV = trackerInfo
         }
         
-        print("Device Info Updated: \(trackerInfo.serialNumber)")
+        AppLog.debug("Device Info Updated: \(trackerInfo.serialNumber)")
         
         // If there are other specific dictionary updates required (like 'eldevice' or 'virtualDashboard' dictionaries 
         // mentioned in the snippet), they should be added here if those variables are accessible.
@@ -299,9 +299,9 @@ extension BLEManager {
             let obj = Mapper<VehicleDetailsModel>().map(JSONObject: response)
             Global.shared.connectVehicleDetail = obj
             UserDefaults.setConnectvehicle(obj)
-            print("Vehicle details fetched successfully for VIN: \(vehicleVinNo)")
+            AppLog.debug("Vehicle details fetched successfully for VIN: \(vehicleVinNo)")
         } failure: { error in
-            print("Failed to fetch vehicle details: \(error)")
+            AppLog.debug("Failed to fetch vehicle details: \(error)")
         }
     }
 }

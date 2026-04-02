@@ -19,7 +19,7 @@ class DvirViewModel: ObservableObject {
         let page = refresh ? 1 : ((dvirData.count / 10) + 1)
         let params: [String: Any] = ["page": page]
         
-        print("Fetching DVIRs page: \(page)")
+        AppLog.debug("Fetching DVIRs page: \(page)")
         
         APIManager.shared.request(url: ApiList.Divrs, method: .get, parameters: params) { [weak self] completion in
             // Handle completion if needed or just use success/failure blocks
@@ -40,7 +40,7 @@ class DvirViewModel: ObservableObject {
                 }
             }
         } failure: { [weak self] error in
-            print("DVIR fetch failed: \(String(describing: error))")
+            AppLog.debug("DVIR fetch failed: \(String(describing: error))")
             DispatchQueue.main.async {
                 self?.isLoading = false
             }

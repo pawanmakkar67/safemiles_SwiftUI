@@ -42,14 +42,14 @@ class AddDvirViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
     private let locationManager = CLLocationManager()
     
     init(dvirData: DivrData? = nil) {
-        print("DEBUG: AddDvirViewModel - init")
+        AppLog.debug("DEBUG: AddDvirViewModel - init")
         super.init()
         if let data = dvirData {
-            print("DEBUG: AddDvirViewModel - init with existing data: \(data.id ?? "unknown")")
+            AppLog.debug("DEBUG: AddDvirViewModel - init with existing data: \(data.id ?? "unknown")")
             self.editingDvirId = data.id
             preFillData(data)
         } else {
-            print("DEBUG: AddDvirViewModel - init new report")
+            AppLog.debug("DEBUG: AddDvirViewModel - init new report")
             setupInitialData()
             setupLocation() // Only auto-detect location for new reports
         }
@@ -103,7 +103,7 @@ class AddDvirViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
     }
     
     private func setupLocation() {
-        print("DEBUG: AddDvirViewModel - setupLocation started")
+        AppLog.debug("DEBUG: AddDvirViewModel - setupLocation started")
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestWhenInUseAuthorization()
@@ -114,7 +114,7 @@ class AddDvirViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let loc = locations.last, !hasResolvedLocation else { return }
-        print("DEBUG: AddDvirViewModel - didUpdateLocations: \(loc.coordinate)")
+        AppLog.debug("DEBUG: AddDvirViewModel - didUpdateLocations: \(loc.coordinate)")
         
         // Stop updating immediately to prevent further delegate calls
         locationManager.stopUpdatingLocation()
@@ -132,7 +132,7 @@ class AddDvirViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
                 if let administrativeArea = place.administrativeArea { addressString += administrativeArea }
                 
                 DispatchQueue.main.async {
-                    print("DEBUG: AddDvirViewModel - Location resolved: \(addressString)")
+                    AppLog.debug("DEBUG: AddDvirViewModel - Location resolved: \(addressString)")
                     if self.location.isEmpty { // Only set if empty
                          self.location = addressString
                     }
@@ -142,14 +142,14 @@ class AddDvirViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
     }
     
     func updateStatus() {
-        print("DEBUG: AddDvirViewModel - updateStatus called")
+        AppLog.debug("DEBUG: AddDvirViewModel - updateStatus called")
         let hasDefects = !vehicleDefects.isEmpty || !trailerDefects.isEmpty
-        print("DEBUG: AddDvirViewModel - hasDefects: \(hasDefects) (Vehicle: \(vehicleDefects.count), Trailer: \(trailerDefects.count))")
+        AppLog.debug("DEBUG: AddDvirViewModel - hasDefects: \(hasDefects) (Vehicle: \(vehicleDefects.count), Trailer: \(trailerDefects.count))")
         
         // Remove "Vehicle Condition Satisfactory" if defects exist
         if hasDefects {
             if status == "Vehicle Condition Satisfactory" {
-                print("DEBUG: AddDvirViewModel - Changing status to 'Has Defects'")
+                AppLog.debug("DEBUG: AddDvirViewModel - Changing status to 'Has Defects'")
                 status = "Has Defects"
             }
         } else {
@@ -157,7 +157,7 @@ class AddDvirViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
             // The logic in snippet:
             // if (DefectsField.text == "" && Defect2Field.text == "") -> "Vehicle Condition Satisfactory"
             if status == "Has Defects" {
-                print("DEBUG: AddDvirViewModel - Changing status back to 'Vehicle Condition Satisfactory'")
+                AppLog.debug("DEBUG: AddDvirViewModel - Changing status back to 'Vehicle Condition Satisfactory'")
                 status = "Vehicle Condition Satisfactory"
             }
         }
@@ -191,7 +191,7 @@ class AddDvirViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
         // But our validate() requires signature. User must re-sign.
         params["signature_image"] = signatureImage ?? UIImage()
         
-        print("Submitting DVIR Params: \(params)")
+        AppLog.debug("Submitting DVIR Params: \(params)")
 
         var url = ApiList.Divrs
         var method: HTTPMethod = .post

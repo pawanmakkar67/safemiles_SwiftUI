@@ -89,7 +89,7 @@ struct ProcessingView: View {
             // We call refreshData which handles fetchRecap, getLiveStatus, getVehicles, getCoDrivers
             // And we also need getMyProfile separately as it's not in refreshData currently
             
-            viewModel.getMyProfile()
+            await viewModel.getMyProfileAsync()
             await viewModel.refreshData()
             
             // Small delay to ensure smooth transition

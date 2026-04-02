@@ -316,7 +316,7 @@ struct DvirDetailView: View {
                  self.data = refreshedData
              }
         } failure: { error in
-            print("Fetch detail failed: \(String(describing: error))")
+            AppLog.debug("Fetch detail failed: \(String(describing: error))")
         }
     }
     
@@ -333,7 +333,7 @@ struct DvirDetailView: View {
                 }
             }
         } failure: { error in
-            print("Delete failed: \(String(describing: error))")
+            AppLog.debug("Delete failed: \(String(describing: error))")
         }
     }
 }
