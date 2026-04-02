@@ -6,57 +6,60 @@
 //  Copyright © 2019 Raman Kant. All rights reserved.
 //
 
+import Alamofire
 import Foundation
-import  Alamofire
 import UIKit
 
 class APIManager {
-    
+
     static let shared = APIManager()
 
     private init() {}
-    
-    
-    func request(url:String,method:HTTPMethod,parameters:Parameters?=nil,tryAgain:Bool=true,completionCallback:@escaping (AnyObject) -> Void ,success successCallback: @escaping (AnyObject) -> Void ,failure failureCallback: @escaping (String?) -> Void) {
-        
+
+    func request(
+        url: String, method: HTTPMethod, parameters: Parameters? = nil, tryAgain: Bool = true,
+        completionCallback: @escaping (AnyObject) -> Void,
+        success successCallback: @escaping (AnyObject) -> Void,
+        failure failureCallback: @escaping (String?) -> Void
+    ) {
+
         var url1 = url
 
         let strToken = UserDefaults.getUserToken()
-        
+
         var headers: HTTPHeaders = [:]
-        if (strToken != "") {
+        if strToken != "" {
             headers = [
                 "Authorization": "Bearer " + strToken
             ]
         }
-        
+
         print(url1)
         print("c ", strToken)
         print(parameters as Any)
         URLCache.shared.removeAllCachedResponses()
-        
-        AF.request(url1, method: method, parameters: parameters, encoding: URLEncoding.default, headers: headers).responseJSON { (response) in
-            
+
+        AF.request(
+            url1, method: method, parameters: parameters, encoding: URLEncoding.default,
+            headers: headers
+        ).responseJSON { (response) in
+
             print(response.value as Any)
-            
-            if let dict = response.value as? [String: Any], dict["code"] as? String == "token_not_valid" {
-                NotificationCenter.default.post(name: NSNotification.Name("SessionExpiredNotification"), object: nil)
-                return
-            }
-            
+            print("Status Code: \(response.response?.statusCode ?? 0)")
+
+
             completionCallback(response as AnyObject)
             let controller = UIApplication.topViewController()
-            
+
             if self.isResponseValid(response: response) {
-//                if controller is MaintanceModeVC {
-//                    controller?.dismiss(animated: false, completion: nil)
-//                }
-                if (response.value as AnyObject)["api_status"] as? String  == "404" {
-//                    UserDefaults.removeAllKeys()
-//                    MoveToController.sharedInstance.logoutVC()
-                }
-                else {
-                    
+                //                if controller is MaintanceModeVC {
+                //                    controller?.dismiss(animated: false, completion: nil)
+                //                }
+                if (response.value as AnyObject)["api_status"] as? String == "404" {
+                    //                    UserDefaults.removeAllKeys()
+                    //                    MoveToController.sharedInstance.logoutVC()
+                } else {
+
                     switch response.result {
                     case .success(let responseJSON):
                         successCallback(responseJSON as AnyObject)
@@ -66,261 +69,124 @@ class APIManager {
                 }
             } else {
                 let maintenanceMsg = (response.value as AnyObject)["message"] as? String ?? ""
-                let error =  self.getErrorForResponse(response: response)
+                let error = self.getErrorForResponse(response: response)
                 if response.response?.statusCode == 503 {
-//                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//                    let maintenanceVC = storyboard.instantiateViewController(withIdentifier: "MaintanceModeVC") as? MaintanceModeVC
-//                    maintenanceVC?.msg = maintenanceMsg
-//                    maintenanceVC?.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
-//                    maintenanceVC?.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
-//                    maintenanceVC?.showOnTop()
-//                    return
+                    //                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                    //                    let maintenanceVC = storyboard.instantiateViewController(withIdentifier: "MaintanceModeVC") as? MaintanceModeVC
+                    //                    maintenanceVC?.msg = maintenanceMsg
+                    //                    maintenanceVC?.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+                    //                    maintenanceVC?.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
+                    //                    maintenanceVC?.showOnTop()
+                    //                    return
                 }
-                
-                
-                if response.response?.statusCode == 401 {
-//                    if GlobalUserDetail != nil {
-//                        AppDelegate().authenticationAlert(error: error ?? "")
-//                        return
-//                    }
+
+                if response.response?.statusCode == 401 || response.response?.statusCode == 402 {
+                    if url != ApiList.loginAPI {
+                        self.refreshToken { success in
+                            if success {
+                                self.request(
+                                    url: url, method: method, parameters: parameters,
+                                    tryAgain: tryAgain, completionCallback: completionCallback,
+                                    success: successCallback, failure: failureCallback)
+                            } else {
+                                failureCallback(error)
+                            }
+                        }
+                        return
+                    }
+                    failureCallback(error)
+                    return
                 }
+
                 if response.response?.statusCode == 404 {
-//                    UserDefaults.removeAllKeys()
-//                    MoveToController.sharedInstance.logOut(UIApplication.topViewController()!)
+                    NotificationCenter.default.post(
+                        name: NSNotification.Name("SessionExpiredNotification"), object: nil)
+                    failureCallback(error)
+                    return
                 }
-                
+
                 if tryAgain {
-//                    if let statusCode = response.response?.statusCode,
-//                        statusCode < 200 || statusCode >= 300 {
-//                        AppDelegate().alertSimpleShowWithTryAgainCompletion {
-//                            failureCallback("TryAgain")
-//                        }
-//                        return
-//                    }
+                    //                    if let statusCode = response.response?.statusCode,
+                    //                        statusCode < 200 || statusCode >= 300 {
+                    //                        AppDelegate().alertSimpleShowWithTryAgainCompletion {
+                    //                            failureCallback("TryAgain")
+                    //                        }
+                    //                        return
+                    //                    }
                 }
-                
-                
+
                 failureCallback(error)
-                
+
             }
         }
     }
 
-    
-    func upload(url:String,method:HTTPMethod,parameters:Parameters?=nil,completionCallback:@escaping (AnyObject) -> Void ,success successCallback: @escaping (AnyObject) -> Void ,failure failureCallback: @escaping (String?) -> Void) {
-        
+    func upload(
+        url: String, method: HTTPMethod, parameters: Parameters? = nil,
+        completionCallback: @escaping (AnyObject) -> Void,
+        success successCallback: @escaping (AnyObject) -> Void,
+        failure failureCallback: @escaping (String?) -> Void
+    ) {
+
         let strToken = UserDefaults.getUserToken()
 
         let headers: HTTPHeaders = [
             //   "Content-Type": "application/json",
             "Connection": "Keep-Alive",
-            "Authorization": "Bearer " + strToken
+            "Authorization": "Bearer " + strToken,
         ]
         var url1 = url
         print(parameters as Any)
         print(url1)
         print(strToken)
+
+      
+
         AF.upload(
             multipartFormData: { multipartFormData in
-                
+
                 if let parameters = parameters {
                     for (key, value) in parameters {
-                        
+
                         if value is UIImage {
                             let item = value as! UIImage
                             //                            for  item in value as! [UIImage] {
                             if let imageData = item.jpegData(compressionQuality: 0.6) {
                                 let timestamp = Date().timeIntervalSince1970
 
-                                multipartFormData.append(imageData, withName: key, fileName: "\(timestamp).png", mimeType: "image/png")
+                                multipartFormData.append(
+                                    imageData, withName: key, fileName: "\(timestamp).png",
+                                    mimeType: "image/png")
                             }
                             //                            }
                         }
-                        
+
                         let stringValue = "\(value)"
                         multipartFormData.append((stringValue.data(using: .utf8))!, withName: key)
                     }
                 }
-                
-                
-        },
+
+            },
             to: url1,
 
             method: method,
-            headers: headers)
-        .responseJSON { (response) in
-
-                print(response.value as Any)
-                
-                if let dict = response.value as? [String: Any], dict["code"] as? String == "token_not_valid" {
-                    NotificationCenter.default.post(name: NSNotification.Name("SessionExpiredNotification"), object: nil)
-                    return
-                }
-                
-                completionCallback(response as AnyObject)
-                
-                if self.isResponseValid(response: response) {
-                    switch response.result {
-                    case .success(let responseJSON):
-                        successCallback(responseJSON as AnyObject)
-                    case .failure(let error):
-                        failureCallback(error.localizedDescription)
-                    }
-                } else {
-                    let error =  self.getErrorForResponse(response: response)
-                    failureCallback(error)
-                }
-        }
-    }
-    
-    
-    
-    func uploadMultiple(url:String,method:HTTPMethod,parameters:Parameters?=nil,completionCallback:@escaping (AnyObject) -> Void ,success successCallback: @escaping (AnyObject) -> Void ,failure failureCallback: @escaping (String?) -> Void) {
-        
-        let strToken = UserDefaults.getUserToken()
-
-        let headers: HTTPHeaders = [
-            //   "Content-Type": "application/json",
-            "Connection": "Keep-Alive",
-            "Authorization": "Bearer " + strToken
-        ]
-        var url1 = url
-        print(parameters as Any)
-        print(url1)
-        print(strToken)
-        AF.upload(
-            multipartFormData: { multipartFormData in
-                
-//                if let parameters = parameters {
-//                    for (key, value) in parameters {
-//
-//                        if value is UIImage {
-//                            let item = value as! UIImage
-//                            //                            for  item in value as! [UIImage] {
-//                            if let imageData = item.jpegData(compressionQuality: 0.6) {
-//
-//                                multipartFormData.append(imageData, withName: key, fileName: "\(Date()).jpg", mimeType: "image/jpeg")
-//                            }
-//                            //                            }
-//                        }
-//
-//                        let stringValue = "\(value)"
-//                        multipartFormData.append((stringValue.data(using: .utf8))!, withName: key)
-//                    }
-//                }
-                
-                if let parameters = parameters {
-                    for (key, value) in parameters {
-
-                      if value is Array<UIImage> {
-                           // let item = value as! UIImage
-                           for  item in value as! [UIImage] {
-                            if let imageData = item.jpegData(compressionQuality: 0.6) {
-
-                                multipartFormData.append(imageData, withName: key + "[]", fileName: "\(Date()).jpg", mimeType: "image/jpeg")
-                            }
-                       }
-                        }
-                      else if value is UIImage {
-                          let item = value as! UIImage
-                          //                            for  item in value as! [UIImage] {
-                          if let imageData = item.jpegData(compressionQuality: 0.6) {
-
-                              multipartFormData.append(imageData, withName: key, fileName: "filename.jpg", mimeType: "image/jpeg")
-                          }
-                          //                            }
-                      }
-                        let stringValue = "\(value)"
-                        multipartFormData.append((stringValue.data(using: .utf8))!, withName: key)
-                    }
-                }
-                
-                
-        },
-            to: url1,
-
-            method: method,
-            headers: headers)
-            .responseJSON { (response) in
-                
-                print(response.value as Any)
-                
-                if let dict = response.value as? [String: Any], dict["code"] as? String == "token_not_valid" {
-                    NotificationCenter.default.post(name: NSNotification.Name("SessionExpiredNotification"), object: nil)
-                    return
-                }
-                
-                completionCallback(response as AnyObject)
-                
-                if self.isResponseValid(response: response) {
-                    switch response.result {
-                    case .success(let responseJSON):
-                        successCallback(responseJSON as AnyObject)
-                    case .failure(let error):
-                        failureCallback(error.localizedDescription)
-                    }
-                } else {
-                    let error =  self.getErrorForResponse(response: response)
-                    failureCallback(error)
-                }
-        }
-    }
-    
-    func uploadMutlipleImages(url:String,method:HTTPMethod,parameters:Parameters?=nil,completionCallback:@escaping (AnyObject) -> Void ,success successCallback: @escaping (AnyObject) -> Void ,failure failureCallback: @escaping (String?) -> Void) {
-
-        let strToken = UserDefaults.getUserToken()
-
-        let headers: HTTPHeaders = [
-            //   "Content-Type": "application/json",
-            "Connection": "Keep-Alive",
-            "Authorization": "Bearer " + strToken
-        ]
-        
-//          AMProgressHUD.show()
-        let queue = DispatchQueue(label: "com.cnoon.manager-response-queue", attributes: DispatchQueue.Attributes.concurrent)
-        
-        AF.upload(multipartFormData: { (multipartFormData) in
-
-                  if let parameters = parameters {
-                      for (key, value) in parameters {
-
-                        if value is Array<UIImage> {
-                             // let item = value as! UIImage
-                             for  item in value as! [UIImage] {
-                              if let imageData = item.jpegData(compressionQuality: 0.6) {
-
-                                  multipartFormData.append(imageData, withName: key + "[]", fileName: "\(Date()).jpg", mimeType: "image/jpeg")
-                              }
-                         }
-                          }
-                        else if value is UIImage {
-                            let item = value as! UIImage
-                            //                            for  item in value as! [UIImage] {
-                            if let imageData = item.jpegData(compressionQuality: 0.6) {
-
-                                multipartFormData.append(imageData, withName: key, fileName: "filename.jpg", mimeType: "image/jpeg")
-                            }
-                            //                            }
-                        }
-                          let stringValue = "\(value)"
-                          multipartFormData.append((stringValue.data(using: .utf8))!, withName: key)
-                      }
-                  }
-        },             to: url,
-        method: method,
-        headers: headers)
+            headers: headers
+        )
         .responseJSON { (response) in
 
             print(response.value as Any)
-            
-            if let dict = response.value as? [String: Any], dict["code"] as? String == "token_not_valid" {
-                NotificationCenter.default.post(name: NSNotification.Name("SessionExpiredNotification"), object: nil)
+            print("Status Code: \(response.response?.statusCode ?? 0)")
+
+            if let dict = response.value as? [String: Any],
+                dict["code"] as? String == "token_not_valid"
+            {
+                NotificationCenter.default.post(
+                    name: NSNotification.Name("SessionExpiredNotification"), object: nil)
                 return
             }
-            
+
             completionCallback(response as AnyObject)
 
-            
             if self.isResponseValid(response: response) {
                 switch response.result {
                 case .success(let responseJSON):
@@ -329,21 +195,270 @@ class APIManager {
                     failureCallback(error.localizedDescription)
                 }
             } else {
-                let error =  self.getErrorForResponse(response: response)
+                let error = self.getErrorForResponse(response: response)
+
+                if response.response?.statusCode == 401 || response.response?.statusCode == 402 {
+                    if url != ApiList.loginAPI {
+                        self.refreshToken { success in
+                            if success {
+                                self.upload(
+                                    url: url, method: method, parameters: parameters,
+                                    completionCallback: completionCallback,
+                                    success: successCallback, failure: failureCallback)
+                            } else {
+                                failureCallback(error)
+                            }
+                        }
+                        return
+                    }
+                    failureCallback(error)
+                    return
+                }
+
+                if response.response?.statusCode == 404 {
+                    NotificationCenter.default.post(
+                        name: NSNotification.Name("SessionExpiredNotification"), object: nil)
+                    failureCallback(error)
+                    return
+                }
+
+                failureCallback(error)
+            }
+        }
+    }
+
+    func uploadMultiple(
+        url: String, method: HTTPMethod, parameters: Parameters? = nil,
+        completionCallback: @escaping (AnyObject) -> Void,
+        success successCallback: @escaping (AnyObject) -> Void,
+        failure failureCallback: @escaping (String?) -> Void
+    ) {
+
+        let strToken = UserDefaults.getUserToken()
+
+        let headers: HTTPHeaders = [
+            //   "Content-Type": "application/json",
+            "Connection": "Keep-Alive",
+            "Authorization": "Bearer " + strToken,
+        ]
+        var url1 = url
+        print(parameters as Any)
+        print(url1)
+        print(strToken)
+
+        AF.upload(
+            multipartFormData: { multipartFormData in
+
+                if let parameters = parameters {
+                    for (key, value) in parameters {
+
+                        if value is [UIImage] {
+                            // let item = value as! UIImage
+                            for item in value as! [UIImage] {
+                                if let imageData = item.jpegData(compressionQuality: 0.6) {
+
+                                    multipartFormData.append(
+                                        imageData, withName: key + "[]", fileName: "\(Date()).jpg",
+                                        mimeType: "image/jpeg")
+                                }
+                            }
+                        } else if value is UIImage {
+                            let item = value as! UIImage
+                            //                            for  item in value as! [UIImage] {
+                            if let imageData = item.jpegData(compressionQuality: 0.6) {
+
+                                multipartFormData.append(
+                                    imageData, withName: key, fileName: "filename.jpg",
+                                    mimeType: "image/jpeg")
+                            }
+                            //                            }
+                        }
+                        let stringValue = "\(value)"
+                        multipartFormData.append((stringValue.data(using: .utf8))!, withName: key)
+                    }
+                }
+
+            },
+            to: url1,
+
+            method: method,
+            headers: headers
+        )
+        .responseJSON { (response) in
+
+            print(response.value as Any)
+            print("Status Code: \(response.response?.statusCode ?? 0)")
+
+            if let dict = response.value as? [String: Any],
+                dict["code"] as? String == "token_not_valid"
+            {
+                NotificationCenter.default.post(
+                    name: NSNotification.Name("SessionExpiredNotification"), object: nil)
+                return
+            }
+
+            completionCallback(response as AnyObject)
+
+            if self.isResponseValid(response: response) {
+                switch response.result {
+                case .success(let responseJSON):
+                    successCallback(responseJSON as AnyObject)
+                case .failure(let error):
+                    failureCallback(error.localizedDescription)
+                }
+            } else {
+                let error = self.getErrorForResponse(response: response)
+
+                if response.response?.statusCode == 401 || response.response?.statusCode == 402 {
+                    if url != ApiList.loginAPI {
+                        self.refreshToken { success in
+                            if success {
+                                self.uploadMultiple(
+                                    url: url, method: method, parameters: parameters,
+                                    completionCallback: completionCallback,
+                                    success: successCallback, failure: failureCallback)
+                            } else {
+                                failureCallback(error)
+                            }
+                        }
+                        return
+                    }
+                    failureCallback(error)
+                    return
+                }
+
+                if response.response?.statusCode == 404 {
+                    NotificationCenter.default.post(
+                        name: NSNotification.Name("SessionExpiredNotification"), object: nil)
+                    failureCallback(error)
+                    return
+                }
+
+                failureCallback(error)
+            }
+        }
+    }
+
+    func uploadMutlipleImages(
+        url: String, method: HTTPMethod, parameters: Parameters? = nil,
+        completionCallback: @escaping (AnyObject) -> Void,
+        success successCallback: @escaping (AnyObject) -> Void,
+        failure failureCallback: @escaping (String?) -> Void
+    ) {
+
+        let strToken = UserDefaults.getUserToken()
+
+        let headers: HTTPHeaders = [
+            //   "Content-Type": "application/json",
+            "Connection": "Keep-Alive",
+            "Authorization": "Bearer " + strToken,
+        ]
+
+
+        //          AMProgressHUD.show()
+        let queue = DispatchQueue(
+            label: "com.cnoon.manager-response-queue",
+            attributes: DispatchQueue.Attributes.concurrent)
+
+        AF.upload(
+            multipartFormData: { (multipartFormData) in
+
+                if let parameters = parameters {
+                    for (key, value) in parameters {
+
+                        if value is [UIImage] {
+                            // let item = value as! UIImage
+                            for item in value as! [UIImage] {
+                                if let imageData = item.jpegData(compressionQuality: 0.6) {
+
+                                    multipartFormData.append(
+                                        imageData, withName: key + "[]", fileName: "\(Date()).jpg",
+                                        mimeType: "image/jpeg")
+                                }
+                            }
+                        } else if value is UIImage {
+                            let item = value as! UIImage
+                            //                            for  item in value as! [UIImage] {
+                            if let imageData = item.jpegData(compressionQuality: 0.6) {
+
+                                multipartFormData.append(
+                                    imageData, withName: key, fileName: "filename.jpg",
+                                    mimeType: "image/jpeg")
+                            }
+                            //                            }
+                        }
+                        let stringValue = "\(value)"
+                        multipartFormData.append((stringValue.data(using: .utf8))!, withName: key)
+                    }
+                }
+            }, to: url,
+            method: method,
+            headers: headers
+        )
+        .responseJSON { (response) in
+
+            print(response.value as Any)
+            print("Status Code: \(response.response?.statusCode ?? 0)")
+
+            if let dict = response.value as? [String: Any],
+                dict["code"] as? String == "token_not_valid"
+            {
+                NotificationCenter.default.post(
+                    name: NSNotification.Name("SessionExpiredNotification"), object: nil)
+                return
+            }
+
+            completionCallback(response as AnyObject)
+
+            if self.isResponseValid(response: response) {
+                switch response.result {
+                case .success(let responseJSON):
+                    successCallback(responseJSON as AnyObject)
+                case .failure(let error):
+                    failureCallback(error.localizedDescription)
+                }
+            } else {
+                let error = self.getErrorForResponse(response: response)
+
+                if response.response?.statusCode == 401 || response.response?.statusCode == 402 {
+                    if url != ApiList.loginAPI {
+                        self.refreshToken { success in
+                            if success {
+                                self.uploadMutlipleImages(
+                                    url: url, method: method, parameters: parameters,
+                                    completionCallback: completionCallback,
+                                    success: successCallback, failure: failureCallback)
+                            } else {
+                                failureCallback(error)
+                            }
+                        }
+                        return
+                    }
+                    failureCallback(error)
+                    return
+                }
+
+                if response.response?.statusCode == 404 {
+                    NotificationCenter.default.post(
+                        name: NSNotification.Name("SessionExpiredNotification"), object: nil)
+                    failureCallback(error)
+                    return
+                }
+
                 failureCallback(error)
 
             }
-            
+
         }
-      }
-    
+    }
+
     //MARK:- Validation (Check response is valid or not)
     //MARK:-
-     private func isResponseValid(response: AFDataResponse<Any>) -> Bool {
+    private func isResponseValid(response: AFDataResponse<Any>) -> Bool {
         if let statusCode = response.response?.statusCode, statusCode < 200 || statusCode >= 300 {
             return false
         }
-        
+
         if let isSuccess = (response.value as AnyObject)["success"] as? Bool {
             return isSuccess
         } else if let isSuccess = (response.value as AnyObject)["success"] as? String {
@@ -352,8 +467,7 @@ class APIManager {
             } else {
                 return false
             }
-        }
-        else if let isSuccess = (response.value as AnyObject)["success"] as? Int {
+        } else if let isSuccess = (response.value as AnyObject)["success"] as? Int {
             if isSuccess == 1 {
                 return true
             } else {
@@ -362,15 +476,15 @@ class APIManager {
         }
         return true
     }
-    
-     func getErrorForResponse(response: AFDataResponse<Any>) -> String? {
+
+    func getErrorForResponse(response: AFDataResponse<Any>) -> String? {
         switch response.result {
         case .success(let responseJSON):
             if let responseDictionary = responseJSON as? [String: Any] {
                 if let errorMessage = responseDictionary["message"] as? String {
-                      return errorMessage
+                    return errorMessage
                 }
-                
+
                 if let errorMessage = responseDictionary["response"] as? String {
                     return errorMessage
                 }
@@ -382,37 +496,47 @@ class APIManager {
             return errorObj.localizedDescription
         }
     }
- 
-    func requestAuthorization(url:String,method:HTTPMethod,parameters:Parameters?=nil,authorizationn: String,tryAgain:Bool=true,completionCallback:@escaping (AnyObject) -> Void ,success successCallback: @escaping (AnyObject) -> Void ,failure failureCallback: @escaping (String?) -> Void) {
-        
+
+    func requestAuthorization(
+        url: String, method: HTTPMethod, parameters: Parameters? = nil, authorizationn: String,
+        tryAgain: Bool = true, completionCallback: @escaping (AnyObject) -> Void,
+        success successCallback: @escaping (AnyObject) -> Void,
+        failure failureCallback: @escaping (String?) -> Void
+    ) {
+
         var url1 = url
-        
+
         let strToken = UserDefaults.getUserToken() ?? ""
         let headers: HTTPHeaders = [
             "Authorization": authorizationn
         ]
-        
+
         print(url1)
         print("token: ", strToken)
         print(parameters as Any)
+
         URLCache.shared.removeAllCachedResponses()
-        
-        AF.request(url1, method: method, parameters: parameters, encoding: URLEncoding.default, headers: headers).responseJSON { (response) in
-            
+
+        AF.request(
+            url1, method: method, parameters: parameters, encoding: URLEncoding.default,
+            headers: headers
+        ).responseJSON { (response) in
+
             print(response.value as Any)
-            
-            if let dict = response.value as? [String: Any], dict["code"] as? String == "token_not_valid" {
-                NotificationCenter.default.post(name: NSNotification.Name("SessionExpiredNotification"), object: nil)
+            print("Status Code: \(response.response?.statusCode ?? 0)")
+
+            if let dict = response.value as? [String: Any],
+                dict["code"] as? String == "token_not_valid"
+            {
+                NotificationCenter.default.post(
+                    name: NSNotification.Name("SessionExpiredNotification"), object: nil)
                 return
             }
-            
+
             completionCallback(response as AnyObject)
             let controller = UIApplication.topViewController()
-            
+
             if self.isResponseValid(response: response) {
-//                if controller is MaintanceModeVC {
-//                    controller?.dismiss(animated: false, completion: nil)
-//                }
                 switch response.result {
                 case .success(let responseJSON):
                     successCallback(responseJSON as AnyObject)
@@ -420,42 +544,71 @@ class APIManager {
                     failureCallback(error.localizedDescription)
                 }
             } else {
-                let maintenanceMsg = (response.value as AnyObject)["message"] as? String ?? ""
-                let error =  self.getErrorForResponse(response: response)
-                if response.response?.statusCode == 503 {
-//                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//                    let maintenanceVC = storyboard.instantiateViewController(withIdentifier: "MaintanceModeVC") as? MaintanceModeVC
-//                    maintenanceVC?.msg = maintenanceMsg
-//                    maintenanceVC?.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
-//                    maintenanceVC?.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
-//                    maintenanceVC?.showOnTop()
-//                    return
+                let error = self.getErrorForResponse(response: response)
+
+                if response.response?.statusCode == 401 || response.response?.statusCode == 402 {
+                    if url != ApiList.loginAPI {
+                        self.refreshToken { success in
+                            if success {
+                                self.requestAuthorization(
+                                    url: url, method: method, parameters: parameters,
+                                    authorizationn: authorizationn, tryAgain: tryAgain,
+                                    completionCallback: completionCallback,
+                                    success: successCallback, failure: failureCallback)
+                            } else {
+                                failureCallback(error)
+                            }
+                        }
+                        return
+                    }
+                    failureCallback(error)
+                    return
                 }
-                
-                
-                if response.response?.statusCode == 401 {
-//                    if GlobalUserDetail != nil {
-//                        AppDelegate().authenticationAlert(error: error ?? "")
-//                        return
-//                    }
+
+                if response.response?.statusCode == 404 {
+                    NotificationCenter.default.post(
+                        name: NSNotification.Name("SessionExpiredNotification"), object: nil)
+                    failureCallback(error)
+                    return
                 }
-                
-                if tryAgain {
-//                    if let statusCode = response.response?.statusCode,
-//                        statusCode < 200 || statusCode >= 300 {
-//                        AppDelegate().alertSimpleShowWithTryAgainCompletion {
-//                            failureCallback("TryAgain")
-//                        }
-//                        return
-//                    }
-                }
-                
-                
+
                 failureCallback(error)
-                
+
             }
         }
     }
+
+    private func refreshToken(completion: @escaping (Bool) -> Void) {
+        let refreshToken = UserDefaults.getUserRefreshToken()
+        if refreshToken.isEmpty {
+            completion(false)
+            return
+        }
+
+        let params: [String: Any] = ["refresh": refreshToken]
+        let url = ApiList.refreshTokenAPI
+
+        AF.request(url, method: .post, parameters: params, encoding: JSONEncoding.default)
+            .responseJSON { response in
+                print("Refresh Token Status Code: \(response.response?.statusCode ?? 0)")
+                if let statusCode = response.response?.statusCode,
+                    statusCode >= 200 && statusCode < 300
+                {
+                    if let dict = response.value as? [String: Any],
+                        let accessToken = dict["access"] as? String
+                    {
+                        UserDefaults.setUserToken(token: accessToken)
+                        if let newRefreshToken = dict["refresh"] as? String {
+                            UserDefaults.setUserRefreshToken(token: newRefreshToken)
+                        }
+                        completion(true)
+                        return
+                    }
+                } else if response.response?.statusCode == 401 {
+                    NotificationCenter.default.post(
+                        name: NSNotification.Name("SessionExpiredNotification"), object: nil)
+                }
+                completion(false)
+            }
+    }
 }
-
-

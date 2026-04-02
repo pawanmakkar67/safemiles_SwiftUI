@@ -27,6 +27,11 @@ class SendLogsViewModel: ObservableObject {
             return
         }
         
+        if comment.isEmpty {
+            alertMessage = "Please enter a comment."
+            return
+        }
+        
         isLoading = true
         let method = (transferType == "Web Services") ? "web" : transferType.lowercased()
         let params: [String: Any] = [
@@ -34,8 +39,19 @@ class SendLogsViewModel: ObservableObject {
             "comment": comment
         ]
         
-        APIManager.shared.request(url: ApiList.sendLogs, method: .post, parameters: params) { [weak self] _ in
-            
+        APIManager.shared.request(url: ApiList.sendLogs, method: .post, parameters: params) { [weak self] completion in
+            // Extract uncertified dates if present in the raw response
+            if let response = completion as? AFDataResponse<Any>,
+               let dict = response.value as? [String: Any],
+               let uncertifiedDates = dict["uncertified_dates"] as? [String],
+               !uncertifiedDates.isEmpty {
+                let datesString = uncertifiedDates.joined(separator: ", ")
+                let baseMessage = dict["message"] as? String ?? dict["error"] as? String ?? "Please certify the logs before generating the ELD file."
+                
+                DispatchQueue.main.async {
+                    self?.alertMessage = "\(baseMessage)\nUncertified dates: \(datesString)"
+                }
+            }
         } success: { [weak self] response in
             DispatchQueue.main.async {
                 self?.isLoading = false
@@ -46,7 +62,10 @@ class SendLogsViewModel: ObservableObject {
         } failure: { [weak self] error in
             DispatchQueue.main.async {
                 self?.isLoading = false
-                self?.alertMessage = error ?? "Unknown error occurred"
+                // Only set alertMessage if it hasn't been set by completionCallback for dates
+                if self?.alertMessage == nil || !(self?.alertMessage?.contains("Uncertified dates") ?? false) {
+                    self?.alertMessage = error ?? "Unknown error occurred"
+                }
             }
         }
     }

@@ -72,6 +72,7 @@ class HomeViewModel: ObservableObject {
         })
         
         // Notification Observers
+        NotificationCenter.default.addObserver(self, selector: #selector(handleRecapRefresh), name: .requestRecapRefresh, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(handleRecapUpdate), name: .recapUpdate, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(handleVehicleUpdate), name: .vehicleUpdate, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(handleProfileUpdate), name: .profileUpdate, object: nil)
@@ -86,9 +87,23 @@ class HomeViewModel: ObservableObject {
         updateHeaderTitle()
     }
     
+    @objc func handleRecapRefresh() {
+        print("HomeViewModel: Received requestRecapRefresh notification")
+        fetchRecap()
+    }
+    
     @objc func handleRecapUpdate() {
         print("HomeViewModel: Received recapUpdate notification")
-        fetchRecap()
+        // No fetchRecap() here to avoid loop. 
+        // Just update local UI from Global if needed, 
+        // though fetchRecap already calls updateData.
+        // This handles updates from other ViewModels.
+        if let obj = Global.shared.recapvalues {
+            DispatchQueue.main.async {
+                self.updateData(obj)
+            }
+        }
+        
         Task {
             await getLiveStatus()
             await getVehciles() // Refresh vehicles too if needed, but status is key

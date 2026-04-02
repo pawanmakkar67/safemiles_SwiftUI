@@ -112,6 +112,7 @@ class LoginViewModel: ObservableObject {
                         UserDefaults.setUserID(token: obj.data?.id ?? "")
                         UserDefaults.setUserToken(token: obj.data?.access_token ?? "")
                         UserDefaults.setTimezone(token: obj.data?.timezone ?? "")
+                        UserDefaults.setUserRefreshToken(token: obj.data?.refresh_token ?? "")
                         UserDefaults.AlreadyLogin(login: true)
                         UserDefaults.standard.synchronize()
                         

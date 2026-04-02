@@ -56,7 +56,7 @@ struct SendLogsView: View {
                         
                         // Comment
                         VStack(alignment: .leading, spacing: 8) {
-                            Text("Comment (Optional)")
+                            Text("Comment")
                                 .font(AppFonts.captionText)
                                 .foregroundColor(AppColors.textGray)
                             

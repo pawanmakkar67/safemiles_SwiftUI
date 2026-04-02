@@ -51,7 +51,7 @@ class AccountViewModel: ObservableObject {
         self.name = "\(profile.user?.first_name ?? "") \(profile.user?.last_name ?? "")".trimmingCharacters(in: .whitespaces)
         self.phone = profile.phone ?? ""
         self.license = profile.license_number ?? ""
-        self.carrier = profile.sim_card ?? "" // Legacy code used sim_card for carrier label
+        self.carrier = profile.company?.name ?? "" // Legacy code used company for carrier label. confirmed by harsh 1 april 2026 2:13 pm
         self.officeAddress = profile.home_terminal_addr?.city ?? "" // Legacy used city for Office Address
         self.terminalAddress = getAddress(profile.home_terminal_addr)
         //self.timezone = profile.home_terminal_addr?.time_zone ?? ""

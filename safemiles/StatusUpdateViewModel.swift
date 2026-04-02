@@ -72,7 +72,7 @@ class StatusUpdateViewModel: NSObject, ObservableObject, CLLocationManagerDelega
             self?.isLoading = false
         } success: { [weak self] response in
             self?.isLoading = false
-            NotificationCenter.default.post(name: .recapUpdate, object: nil)
+            NotificationCenter.default.post(name: .requestRecapRefresh, object: nil)
             onSuccess()
         } failure: { [weak self] error in
             self?.isLoading = false

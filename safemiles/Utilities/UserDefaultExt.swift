@@ -6,19 +6,15 @@
 //  Copyright © 2019 Qode Maker. All rights reserved.
 //
 
+import CoreLocation
 import Foundation
 import ObjectMapper
-import CoreLocation
 
-
-
-
-private enum SettingsKey:String {
+private enum SettingsKey: String {
     case user = "SettingsKey"
 }
 
-
-private enum userDefaultKeys:String {
+private enum userDefaultKeys: String {
     case user = "userDetail"
     case userToken = "userToken"
     case userAlreadyLogin = "isAlreadyLogin"
@@ -29,29 +25,27 @@ private enum userDefaultKeys:String {
     case bleUUID = "bleUUID"
     case timezone = "timeZone"
     case connectedvehicle = "connectedvehicle"
-
+    case userRefreshToken = "userRefreshToken"
 }
 
-private func getArchived(data:Any) -> Data {
-    
+private func getArchived(data: Any) -> Data {
+
     var encodedData = Data()
     if let data = data as? String {
         encodedData = NSKeyedArchiver.archivedData(withRootObject: data)
-    } else  if let data = data as? Int {
+    } else if let data = data as? Int {
         encodedData = NSKeyedArchiver.archivedData(withRootObject: data)
-    }
-    else  if let data = data as? [String:Any] {
+    } else if let data = data as? [String: Any] {
         encodedData = NSKeyedArchiver.archivedData(withRootObject: data)
-    }
-    else  if let data = data as? [String:AnyObject] {
+    } else if let data = data as? [String: AnyObject] {
         encodedData = NSKeyedArchiver.archivedData(withRootObject: data)
     }
 
     return encodedData
 }
 
-private func getUnArchived(data:Data?) -> Any? {
-    
+private func getUnArchived(data: Data?) -> Any? {
+
     if data != nil {
         let decodedData = NSKeyedUnarchiver.unarchiveObject(with: data!)
         return decodedData
@@ -60,30 +54,37 @@ private func getUnArchived(data:Data?) -> Any? {
 }
 
 extension UserDefaults {
-    static func setUserToken(token:String) {
+    static func setUserToken(token: String) {
         standard.set(token, forKey: userDefaultKeys.userToken.rawValue)
     }
-    static func setTimezone(token:String) {
+    static func setTimezone(token: String) {
         standard.set(token, forKey: userDefaultKeys.timezone.rawValue)
     }
     static func getTimezone() -> String {
-        return standard.value(forKey: userDefaultKeys.timezone.rawValue) as? String ?? "America/Chicago"
+        return standard.value(forKey: userDefaultKeys.timezone.rawValue) as? String
+            ?? "America/Chicago"
     }
-    
-    
+
     static func getUserToken() -> String {
         return standard.value(forKey: userDefaultKeys.userToken.rawValue) as? String ?? ""
     }
-    
-    static func setUserID(token:String) {
+
+    static func setUserID(token: String) {
         standard.set(token, forKey: userDefaultKeys.userID.rawValue)
     }
-    
-    
+
     static func getUserID() -> String {
         return standard.value(forKey: userDefaultKeys.userID.rawValue) as? String ?? ""
     }
-    
+
+    static func setUserRefreshToken(token: String) {
+        standard.set(token, forKey: userDefaultKeys.userRefreshToken.rawValue)
+    }
+
+    static func getUserRefreshToken() -> String {
+        return standard.value(forKey: userDefaultKeys.userRefreshToken.rawValue) as? String ?? ""
+    }
+
     static func setLoginUser(_ user: userModel?) {
         if user != nil {
             if let userJSON = Mapper<userModel>().toJSONString(user!) {
@@ -91,32 +92,35 @@ extension UserDefaults {
             }
         }
     }
-    
+
     static func getLoginUser() -> userModel? {
-        if let userJSON =  getUnArchived(data: standard.value(forKey: userDefaultKeys.user.rawValue) as? Data) as? String {
+        if let userJSON = getUnArchived(
+            data: standard.value(forKey: userDefaultKeys.user.rawValue) as? Data) as? String
+        {
             return Mapper<userModel>().map(JSONString: userJSON)
         }
         return nil
     }
-    
+
     static func setConnectvehicle(_ user: VehicleDetailsModel?) {
         if user != nil {
             if let userJSON = Mapper<VehicleDetailsModel>().toJSONString(user!) {
-                standard.set(getArchived(data: userJSON), forKey: userDefaultKeys.connectedvehicle.rawValue)
+                standard.set(
+                    getArchived(data: userJSON), forKey: userDefaultKeys.connectedvehicle.rawValue)
             }
         }
     }
-    
+
     static func getConnectvehicle() -> VehicleDetailsModel? {
-        if let userJSON =  getUnArchived(data: standard.value(forKey: userDefaultKeys.connectedvehicle.rawValue) as? Data) as? String {
+        if let userJSON = getUnArchived(
+            data: standard.value(forKey: userDefaultKeys.connectedvehicle.rawValue) as? Data)
+            as? String
+        {
             return Mapper<VehicleDetailsModel>().map(JSONString: userJSON)
         }
         return nil
     }
-    
-    
-    
-    
+
     static func removeLoginUser() {
         UserDefaults.standard.removeObject(forKey: userDefaultKeys.user.rawValue)
         UserDefaults.standard.removeObject(forKey: userDefaultKeys.userToken.rawValue)
@@ -126,122 +130,110 @@ extension UserDefaults {
         UserDefaults.standard.removeObject(forKey: userDefaultKeys.userLocation.rawValue)
         UserDefaults.standard.removeObject(forKey: userDefaultKeys.userTheme.rawValue)
         UserDefaults.standard.removeObject(forKey: userDefaultKeys.bleUUID.rawValue)
+        UserDefaults.standard.removeObject(forKey: userDefaultKeys.userRefreshToken.rawValue)
 
-
-        
         UserDefaults.AlreadyLogin(login: false)
         UserDefaults.standard.synchronize()
     }
-    
 
-    static func setUserLocation(_ user :CLLocation?)  {
+    static func setUserLocation(_ user: CLLocation?) {
         if user != nil {
-            let jsonn =  ["lat": user!.coordinate.latitude, "lon": user!.coordinate.longitude]
+            let jsonn = ["lat": user!.coordinate.latitude, "lon": user!.coordinate.longitude]
 
             standard.set(getArchived(data: jsonn), forKey: userDefaultKeys.userLocation.rawValue)
 
         }
     }
-    static func getUserLocation() -> [String:Any]? {
-        if let userJSON =  getUnArchived(data: standard.value(forKey: userDefaultKeys.userLocation.rawValue) as? Data) as? [String:Any], userJSON != nil {
+    static func getUserLocation() -> [String: Any]? {
+        if let userJSON = getUnArchived(
+            data: standard.value(forKey: userDefaultKeys.userLocation.rawValue) as? Data)
+            as? [String: Any], userJSON != nil
+        {
             return userJSON
         }
         return nil
     }
-    
 
-//    static func saveLanguage(name: String) {
-//        standard.set(name, forKey: "language")
-//    }
-//
-//    static func getLanguage() -> String {
-//        return standard.value(forKey: "language") as? String ?? "en"
-//    }
-    
-    static func saveTheme(theme:String) {
+    //    static func saveLanguage(name: String) {
+    //        standard.set(name, forKey: "language")
+    //    }
+    //
+    //    static func getLanguage() -> String {
+    //        return standard.value(forKey: "language") as? String ?? "en"
+    //    }
+
+    static func saveTheme(theme: String) {
         standard.set(theme, forKey: userDefaultKeys.userTheme.rawValue)
     }
-    
+
     static func getTheme() -> String {
         return standard.value(forKey: userDefaultKeys.userTheme.rawValue) as? String ?? ""
     }
-    
 
-  
-    
-    static func setSettings(_ user: [[String:String]]) {
+    static func setSettings(_ user: [[String: String]]) {
         standard.set(user, forKey: SettingsKey.user.rawValue)
-        
+
     }
-    
-    
-    static func getSettingsArray() -> [[String:String]]? {
-        if let arr =  standard.value(forKey: SettingsKey.user.rawValue) as? [[String:String]] {
+
+    static func getSettingsArray() -> [[String: String]]? {
+        if let arr = standard.value(forKey: SettingsKey.user.rawValue) as? [[String: String]] {
             return arr
         }
         return nil
     }
-    
+
     static func removeAllKeys() {
         if let bundleID = Bundle.main.bundleIdentifier {
             UserDefaults.standard.removePersistentDomain(forName: bundleID)
         }
         UserDefaults.standard.synchronize()
     }
-    
+
     static func removeSettings() {
         standard.removeObject(forKey: SettingsKey.user.rawValue)
     }
-    
-    
 
-    
-    
-    static func AlreadyLogin(login:Bool) {
+    static func AlreadyLogin(login: Bool) {
         standard.set(login, forKey: userDefaultKeys.userAlreadyLogin.rawValue)
-        
+
     }
     static func isAlreadyLogin() -> Bool {
         return standard.bool(forKey: userDefaultKeys.userAlreadyLogin.rawValue)
-        
+
     }
-    
-    
-    static func AlreadyConnected(login:Bool) {
+
+    static func AlreadyConnected(login: Bool) {
         standard.set(login, forKey: userDefaultKeys.alreadyConnected.rawValue)
-        
+
     }
     static func isAlreadyConnected() -> Bool {
         return standard.bool(forKey: userDefaultKeys.alreadyConnected.rawValue)
-        
+
     }
     //Cuurent Lat Long
-    static func saveBleUUID(lat:String) {
+    static func saveBleUUID(lat: String) {
         standard.set(lat, forKey: userDefaultKeys.bleUUID.rawValue)
     }
-    
+
     static func getBleUUID() -> String {
         return standard.value(forKey: userDefaultKeys.bleUUID.rawValue) as? String ?? ""
     }
 
     //Cuurent Lat Long
-    static func saveCurrentLat(lat:String) {
+    static func saveCurrentLat(lat: String) {
         standard.set(lat, forKey: "currentlat")
     }
-    
+
     static func getCurrentLat() -> String {
         return standard.value(forKey: "currentlat") as? String ?? ""
     }
-    
-    static func saveCurrentLong(long:String) {
+
+    static func saveCurrentLong(long: String) {
         standard.set(long, forKey: "currentLong")
     }
-    
+
     static func getCurrentLong() -> String {
         return standard.value(forKey: "currentLong") as? String ?? ""
     }
-    
 
 }
-
-
