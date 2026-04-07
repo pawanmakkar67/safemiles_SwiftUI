@@ -63,7 +63,6 @@ struct DeviceDetailView: View {
             }
             .background(AppColors.background)
         }
-        .ignoresSafeArea(.all, edges: .top)
         .navigationBarHidden(true)
         .onAppear {
             startUpdating()

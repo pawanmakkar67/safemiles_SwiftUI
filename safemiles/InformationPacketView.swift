@@ -85,7 +85,6 @@ struct InformationPacketView: View {
                 }
                 .background(Color(UIColor.systemGroupedBackground))
             }
-            .ignoresSafeArea(.all, edges: .top)
         }
         .onAppear {
             showSideMenu = false

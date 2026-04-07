@@ -106,7 +106,6 @@ struct SendLogsView: View {
             }
             .background(AppColors.background)
         }
-        .ignoresSafeArea(.all, edges: .top)
         .navigationBarHidden(true)
         .alert(item: Binding<AlertItem?>(
             get: { viewModel.alertMessage.map { AlertItem(message: $0) } },

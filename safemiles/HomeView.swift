@@ -63,7 +63,6 @@ struct HomeView: View {
             )
         }
         .id(refreshID) // Key to forcing body re-evaluation
-        .ignoresSafeArea(.all, edges: .top)
         .onAppear {
             showSideMenu = false
             showBluetoothScan = false

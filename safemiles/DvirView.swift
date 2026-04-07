@@ -125,7 +125,6 @@ struct DvirView: View {
                 }
             }
         }
-        .ignoresSafeArea(.all, edges: .top)
         .onAppear {
             AppLog.debug("DEBUG: DvirView - onAppear")
             showSideMenu = false

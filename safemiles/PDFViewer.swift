@@ -47,8 +47,8 @@ struct PDFViewer: View {
                     Spacer()
                 }
             }
-            .background(AppColors.background)
-            .ignoresSafeArea(.all, edges: .top)
+                .background(AppColors.background)
+            }
             .navigationBarHidden(true)
             
             if isDownloading {
@@ -62,7 +62,7 @@ struct PDFViewer: View {
                     .shadow(radius: 10)
             }
         }
-    }
+    
     
     func downloadAndSavePDF() {
         guard let url = URL(string: urlString) else { return }

@@ -8,16 +8,6 @@ struct CommonHeader: View {
     var onLeftTap: (() -> Void)?
     var onRightTap: (() -> Void)?
     
-    private var safeAreaTop: CGFloat {
-        let keyWindow = UIApplication.shared.connectedScenes
-            .filter({$0.activationState == .foregroundActive})
-            .compactMap({$0 as? UIWindowScene})
-            .first?.windows
-            .filter({$0.isKeyWindow}).first
-        
-        return keyWindow?.safeAreaInsets.top ?? 0
-    }
-    
     var body: some View {
         ZStack {
             // Title (Centered in the screen width)
@@ -69,9 +59,10 @@ struct CommonHeader: View {
             }
         }
         .padding(.horizontal)
-        .padding(.top, safeAreaTop)
-        .padding(.bottom, 12)
-        .background(AppColors.ThemeBlack)
-        .ignoresSafeArea(.all, edges: .top)
+        .padding(.vertical, 12)
+        .background(
+            AppColors.ThemeBlack
+                .ignoresSafeArea(.all, edges: .top)
+        )
     }
 }

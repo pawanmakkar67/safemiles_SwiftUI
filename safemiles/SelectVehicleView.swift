@@ -63,7 +63,6 @@ struct SelectVehicleView: View {
                 }
                 .background(Color(UIColor.systemGroupedBackground))
             }
-            .ignoresSafeArea(.all, edges: .top)
             
             if viewModel.isLoading {
                 Color.black.opacity(0.3).ignoresSafeArea()

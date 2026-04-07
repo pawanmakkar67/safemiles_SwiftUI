@@ -196,7 +196,6 @@ struct DotInspectionDetailView: View {
         }
         .navigationBarHidden(true)
         .background(AppColors.background)
-        .ignoresSafeArea(.all, edges: .top)
     }
     
     func mapCodeToStatus(_ code: String?) -> DutyStatus {

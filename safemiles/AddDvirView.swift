@@ -36,7 +36,6 @@ struct AddDvirView: View {
                 }
             }
             .background(AppColors.background)
-            .ignoresSafeArea(.all, edges: .top)
             
             // Custom Overlays for Defects
             if showVehicleDefects {

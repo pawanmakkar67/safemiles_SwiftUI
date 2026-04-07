@@ -70,7 +70,6 @@ struct LogsView: View {
                 CertifyView(viewModel: viewModel)
             }
         }
-        .ignoresSafeArea(.all, edges: .top)
         .navigationBarHidden(true)
         .background(AppColors.background)
         .onAppear {

@@ -115,6 +115,7 @@ class AddEditLogViewModel: NSObject, ObservableObject, CLLocationManagerDelegate
             "positioning": "Location generated when connected to ECM",
             "event_notes": notes,
             "location_cal": location,
+            "location_notes": location,
             "odometer": Double(odometer) ?? 0.0,
             "engine_hours": Double(engineHours) ?? 0.0,
             "driver_id": Global.shared.logsDataVal?.metadata?.driver_id ?? ""
