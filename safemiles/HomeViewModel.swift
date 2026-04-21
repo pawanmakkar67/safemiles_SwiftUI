@@ -3,6 +3,7 @@ import Combine
 import CoreBluetooth
 import ObjectMapper
 import SwiftUI
+import CoreLocation
 
 #if !targetEnvironment(simulator)
     import PacificTrack
@@ -62,6 +63,7 @@ class HomeViewModel: ObservableObject {
     }
 
     init() {
+        LocationManager.shared.startUpdatingLocation()
         startPolling()
         startAutoRefresh()
 
@@ -647,8 +649,8 @@ class HomeViewModel: ObservableObject {
             return
         }
 
-        let latitude = eventData.geolocation.latitude
-        let longitude = eventData.geolocation.longitude
+        let latitude = LocationManager.shared.lastLocation?.coordinate.latitude ?? Double(eventData.geolocation.latitude)
+        let longitude = LocationManager.shared.lastLocation?.coordinate.longitude ?? Double(eventData.geolocation.longitude)
 
         let startOdometer = eventData.odometer
         let offset = Global.shared.connectVehicleDetail?.offset ?? 0

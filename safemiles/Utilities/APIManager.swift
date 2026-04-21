@@ -99,12 +99,13 @@ class APIManager {
                     return
                 }
 
-                if response.response?.statusCode == 404 {
+                else if response.response?.statusCode == 404 {
                     NotificationCenter.default.post(
                         name: NSNotification.Name("SessionExpiredNotification"), object: nil)
                     failureCallback(error)
                     return
                 }
+                
 
                 if tryAgain {
                     //                    if let statusCode = response.response?.statusCode,

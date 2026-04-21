@@ -153,9 +153,6 @@ struct DotInspectionView: View {
                     .scaleEffect(1.5)
             }
         }
-        .onAppear {
-            showSideMenu = false
-        }
         .alert(isPresented: $viewModel.showAlert) {
             Alert(
                 title: Text(viewModel.alertTitle),

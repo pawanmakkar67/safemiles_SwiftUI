@@ -19,6 +19,7 @@ class AddEditLogViewModel: NSObject, ObservableObject, CLLocationManagerDelegate
     @Published var isOdometerError: Bool = false
     @Published var isEngineHoursError: Bool = false
     @Published var alertMessage: String = ""
+    @Published var alertTitle: String = ""
     @Published var showAlert: Bool = false
     
     var isEditMode: Bool = false
@@ -44,6 +45,7 @@ class AddEditLogViewModel: NSObject, ObservableObject, CLLocationManagerDelegate
             isEditMode = true
             currentEventID = event.id ?? ""
             location = event.location_notes ?? ""
+            notes = event.event_notes ?? ""
             selectedStatus = getStatusName(event.code ?? "off")
             
             // Parse time from event datetime
@@ -131,6 +133,9 @@ class AddEditLogViewModel: NSObject, ObservableObject, CLLocationManagerDelegate
                 onSuccess()
             } failure: { [weak self] error in
                 self?.isLoading = false
+                self?.alertTitle = "Error"
+                self?.alertMessage = error ?? "Failed to update log."
+                self?.showAlert = true
                 AppLog.debug("Error updating log: \(error ?? "Unknown error")")
             }
         } else {
@@ -143,6 +148,9 @@ class AddEditLogViewModel: NSObject, ObservableObject, CLLocationManagerDelegate
                 onSuccess()
             } failure: { [weak self] error in
                 self?.isLoading = false
+                self?.alertTitle = "Error"
+                self?.alertMessage = error ?? "Failed to add log."
+                self?.showAlert = true
                 AppLog.debug("Error adding log: \(error ?? "Unknown error")")
             }
         }
@@ -255,6 +263,7 @@ class AddEditLogViewModel: NSObject, ObservableObject, CLLocationManagerDelegate
         }
         
         if !isValid {
+            alertTitle = "Mandatory Fields"
             alertMessage = "Please fill in all mandatory fields highlighted in red."
             showAlert = true
         }

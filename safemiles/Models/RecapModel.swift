@@ -105,6 +105,7 @@ struct User : Mappable {
 
 }
 
+
 struct Driver : Mappable {
     var id : String?
     var user : User?
@@ -116,6 +117,9 @@ struct Driver : Mappable {
     var license_number : String?
     var license_state : String?
     var log_setting_exempt : Bool?
+    var first_name : String?
+    var last_name : String?
+    var email : String?
 
     init?(map: Map) {
 
@@ -133,6 +137,10 @@ struct Driver : Mappable {
         license_number <- map["license_number"]
         license_state <- map["license_state"]
         log_setting_exempt <- map["log_setting_exempt"]
+        first_name <- map["first_name"]
+        last_name <- map["last_name"]
+        email <- map["email"]
+
     }
 
 }

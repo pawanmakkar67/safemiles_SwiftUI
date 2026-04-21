@@ -127,7 +127,6 @@ struct DvirView: View {
         }
         .onAppear {
             AppLog.debug("DEBUG: DvirView - onAppear")
-            showSideMenu = false
             
             if viewModel.dvirData.isEmpty {
                  AppLog.debug("DEBUG: DvirView - Initial Fetch")

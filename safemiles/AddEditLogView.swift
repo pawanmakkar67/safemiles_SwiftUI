@@ -292,7 +292,7 @@ struct AddEditLogView: View {
             }
             .alert(isPresented: $viewModel.showAlert) {
                 Alert(
-                    title: Text("Mandatory Fields"),
+                    title: Text(viewModel.alertTitle),
                     message: Text(viewModel.alertMessage),
                     dismissButton: .default(Text("OK"))
                 )

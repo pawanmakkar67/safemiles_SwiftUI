@@ -58,7 +58,9 @@ class StatusUpdateViewModel: NSObject, ObservableObject, CLLocationManagerDelega
             "event_notes": notesText,
             "location_notes": locationText,
             "location_cal": locationText,
-            "cert_date": getOnlyDate(Date())
+            "cert_date": getOnlyDate(Date()),
+            "latitude": LocationManager.shared.lastLocation?.coordinate.latitude ?? 0.0,
+            "longitude": LocationManager.shared.lastLocation?.coordinate.longitude ?? 0.0
         ]
 
         

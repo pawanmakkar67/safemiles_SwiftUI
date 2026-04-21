@@ -100,6 +100,7 @@ struct Metadata : Mappable {
     var timezone : String?
     var start_date : String?
     var end_date : String?
+    var company : Company?
 
     init?(map: Map) {
 
@@ -111,10 +112,10 @@ struct Metadata : Mappable {
         timezone <- map["timezone"]
         start_date <- map["start_date"]
         end_date <- map["end_date"]
+        company <- map["company"]
     }
 
 }
-
 
 struct Logs : Mappable {
     var date : String?
@@ -123,6 +124,20 @@ struct Logs : Mappable {
     var violations : [Violation]?
     var log : Log?
     var last_code : String?
+    var vehicle : VehicleData?
+    var odometer : Int?
+    var engine_hours : Int?
+    var distance : Int?
+    var mac_address : String?
+    var provider : String?
+    var home_terminal : Home_terminal?
+    var eld_identifier : String?
+    var eld_registration : String?
+    var unidentified_records : String?
+    var diagnose_indicator : String?
+    var malfunctioning : String?
+    var period_starting_time_24 : String?
+
     init?(map: Map) {
 
     }
@@ -135,6 +150,19 @@ struct Logs : Mappable {
         violations <- map["violations"]
         log <- map["log"]
         last_code <- map["last_code"]
+        vehicle <- map["vehicle"]
+        odometer <- map["odometer"]
+        engine_hours <- map["engine_hours"]
+        distance <- map["distance"]
+        mac_address <- map["mac_address"]
+        provider <- map["provider"]
+        home_terminal <- map["home_terminal"]
+        eld_identifier <- map["eld_identifier"]
+        eld_registration <- map["eld_registration"]
+        unidentified_records <- map["unidentified_records"]
+        diagnose_indicator <- map["diagnose_indicator"]
+        malfunctioning <- map["malfunctioning"]
+        period_starting_time_24 <- map["24_period_starting_time"]
     }
 
 }
@@ -163,16 +191,21 @@ struct Violation : Mappable {
 struct Events : Mappable {
     var id : String?
     var code : String?
+    var origin : String?
     var eventdatetime : String?
-    var latitude : Double?
-    var longitude : Double?
+    var latitude : String?
+    var longitude : String?
     var location_notes : String?
+    var event_notes : String?
     var odometer : Double?
     var last_odometer : Double?
-    var engine_hours : Double?
-    var last_engine_hours : Double?
+    var engine_hours : String?
+    var last_engine_hours : String?
+    var sb_break : Int?
     var time_diff : Int?
     var is_last_event : Bool?
+    var vehicle : String?
+
     init?(map: Map) {
 
     }
@@ -181,16 +214,20 @@ struct Events : Mappable {
 
         id <- map["id"]
         code <- map["code"]
+        origin <- map["origin"]
         eventdatetime <- map["eventdatetime"]
         latitude <- map["latitude"]
         longitude <- map["longitude"]
         location_notes <- map["location_notes"]
+        event_notes <- map["event_notes"]
         odometer <- map["odometer"]
         last_odometer <- map["last_odometer"]
         engine_hours <- map["engine_hours"]
         last_engine_hours <- map["last_engine_hours"]
+        sb_break <- map["sb_break"]
         time_diff <- map["time_diff"]
         is_last_event <- map["is_last_event"]
+        vehicle <- map["vehicle"]
     }
 
 }
@@ -198,10 +235,12 @@ struct Events : Mappable {
 struct Log : Mappable {
     var id : String?
     var logdate : String?
-    var signature : String?
-    var certified : Bool?
-    var trailers : String?
     var shipping_docs : String?
+    var trailers : String?
+    var timezone : String?
+    var certified : Bool?
+    var signature : String?
+    var driver : Driver?
     var co_driver : Co_driver?
 
     init?(map: Map) {
@@ -212,11 +251,43 @@ struct Log : Mappable {
 
         id <- map["id"]
         logdate <- map["logdate"]
-        signature <- map["signature"]
-        certified <- map["certified"]
-        trailers <- map["trailers"]
         shipping_docs <- map["shipping_docs"]
+        trailers <- map["trailers"]
+        timezone <- map["timezone"]
+        certified <- map["certified"]
+        signature <- map["signature"]
+        driver <- map["driver"]
         co_driver <- map["co_driver"]
+    }
+
+}
+
+struct Home_terminal : Mappable {
+    var id : String?
+    var company : String?
+    var time_zone : String?
+    var period_start_time : String?
+    var address_line : String?
+    var city : String?
+    var state : String?
+    var country : String?
+    var postal_code : String?
+
+    init?(map: Map) {
+
+    }
+
+    mutating func mapping(map: Map) {
+
+        id <- map["id"]
+        company <- map["company"]
+        time_zone <- map["time_zone"]
+        period_start_time <- map["period_start_time"]
+        address_line <- map["address_line"]
+        city <- map["city"]
+        state <- map["state"]
+        country <- map["country"]
+        postal_code <- map["postal_code"]
     }
 
 }

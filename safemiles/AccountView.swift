@@ -82,7 +82,6 @@ struct AccountView: View {
             }
         }
         .onAppear {
-            showSideMenu = false // Ensure side menu is closed
             viewModel.fetchProfile()
         }
     }

@@ -64,7 +64,6 @@ struct HomeView: View {
         }
         .id(refreshID) // Key to forcing body re-evaluation
         .onAppear {
-            showSideMenu = false
             showBluetoothScan = false
             if let obj = Global.shared.recapvalues {
                 viewModel.updateData(obj)

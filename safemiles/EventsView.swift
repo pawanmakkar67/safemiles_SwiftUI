@@ -356,19 +356,23 @@ struct EventRow: View {
     func getStatusColor(_ code: String?) -> Color {
         switch code?.lowercased() {
         case "d", "driving": return AppColors.statusGreen
-        case "on", "login": return AppColors.buttonActive
+        case "on", "login", "active": return AppColors.buttonActive
+        case "ym": return AppColors.buttonActive  // Dotted ON style
         case "sb": return AppColors.orange
         case "off", "off duty": return AppColors.textGray
+        case "pu": return AppColors.textGray  // Dotted OFF style
         default: return AppColors.textGray
         }
     }
 
     func getDisplayCode(_ code: String?) -> String {
         switch code?.lowercased() {
-        case "d": return "D"  // Or just Drive? Screenshot says "ON", "OFF".
+        case "d", "driving": return "D"
         case "sb": return "SB"
         case "on": return "ON"
         case "off": return "OFF"
+        case "ym": return "YM"
+        case "pu": return "PU"  // Often called Personal Conveyance
         default: return code?.uppercased() ?? "-"
         }
     }

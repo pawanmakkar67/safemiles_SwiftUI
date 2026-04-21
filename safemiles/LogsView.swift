@@ -73,7 +73,6 @@ struct LogsView: View {
         .navigationBarHidden(true)
         .background(AppColors.background)
         .onAppear {
-            showSideMenu = false
             viewModel.fetchLogs(refresh: true)
         }
         .onChange(of: viewModel.selectedDate) { _ in

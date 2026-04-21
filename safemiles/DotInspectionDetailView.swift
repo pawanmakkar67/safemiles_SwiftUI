@@ -37,7 +37,7 @@ struct DotInspectionDetailView: View {
                 
                 // Date Picker Button
                 Menu {
-                    ForEach(viewModel.logsViewModel.availableDates, id: \.self) { date in
+                    ForEach(viewModel.dotInspectionDates, id: \.self) { date in
                         Button(action: {
                             viewModel.logsViewModel.selectedDate = date
                             viewModel.logsViewModel.updateCurrentLog()
@@ -69,16 +69,70 @@ struct DotInspectionDetailView: View {
             
             ScrollView {
                 VStack(spacing: 20) {
-                    // Driver Info Section
-                    VStack(alignment: .leading, spacing: 10) {
-                        InfoRow(label: "Driver:", value: viewModel.driverName)
-                        InfoRow(label: "Co-Driver:", value: viewModel.coDriverName)
-                        InfoRow(label: "Main Office Address:", value: viewModel.officeAddress)
-                        InfoRow(label: "Truck/Tractor:", value: viewModel.truckTractor)
-                        InfoRow(label: "Driver License:", value: viewModel.licenseNumber)
-                        InfoRow(label: "Driver License State:", value: viewModel.licenseState)
-                        InfoRow(label: "ELD Registration ID:", value: viewModel.eldRegistrationId)
-                        InfoRow(label: "Provider:", value: viewModel.provider)
+                    // Information Sections
+                    VStack(alignment: .leading, spacing: 20) {
+                        
+                        // Driver Info
+                        VStack(alignment: .leading, spacing: 10) {
+                            InfoRow(label: "Driver:", value: viewModel.driverName)
+                            InfoRow(label: "Driver ID:", value: viewModel.driverId)
+                            InfoRow(label: "Driver License:", value: viewModel.licenseNumber)
+                            InfoRow(label: "Driver License State:", value: viewModel.licenseState)
+                            InfoRow(label: "Exempt Driver Status:", value: viewModel.exemptDriverStatus)
+                            InfoRow(label: "Unidentified Driving Records:", value: viewModel.unidentifiedDrivingRecords)
+                            InfoRow(label: "Co-Driver:", value: viewModel.coDriverName)
+                            InfoRow(label: "Co-Driver ID:", value: viewModel.coDriverId)
+                        }
+                        
+                        Divider()
+                        
+                        // Log Info
+                        VStack(alignment: .leading, spacing: 10) {
+                            InfoRow(label: "Log Date:", value: viewModel.logDate)
+                            InfoRow(label: "Display Date:", value: viewModel.displayDate)
+                            InfoRow(label: "Display Location:", value: viewModel.displayLocation)
+                            InfoRow(label: "Display Certified:", value: viewModel.displayCertified)
+                        }
+                        
+                        Divider()
+                        
+                        // ELD Info
+                        VStack(alignment: .leading, spacing: 10) {
+                            InfoRow(label: "ELD Registration ID:", value: viewModel.eldRegistrationId)
+                            InfoRow(label: "ELD Identifier:", value: viewModel.eldIdentifier)
+                            InfoRow(label: "Provider:", value: viewModel.provider)
+                        }
+                        
+                        Divider()
+                        
+                        // Period & Status
+                        VStack(alignment: .leading, spacing: 10) {
+                            InfoRow(label: "24 Period Starting Time:", value: viewModel.periodStartTime)
+                            InfoRow(label: "Data Diag. Indicators:", value: viewModel.dataDiagIndicators)
+                            InfoRow(label: "Device Malfn. Indicators:", value: viewModel.deviceMalfnIndicators)
+                        }
+                        
+                        Divider()
+                        
+                        // Vehicle Info
+                        VStack(alignment: .leading, spacing: 10) {
+                            InfoRow(label: "Vehicle:", value: viewModel.truckTractor)
+                            InfoRow(label: "VIN:", value: viewModel.vin)
+                            InfoRow(label: "Odometer:", value: viewModel.odometer)
+                            InfoRow(label: "Distance:", value: viewModel.totalMiles)
+                            InfoRow(label: "Engine Hours:", value: viewModel.engineHours)
+                        }
+                        
+                        Divider()
+                        
+                        // Additional Info
+                        VStack(alignment: .leading, spacing: 10) {
+                            InfoRow(label: "Trailers:", value: viewModel.trailers)
+                            InfoRow(label: "Shipping Docs:", value: viewModel.shippingDocs)
+                            InfoRow(label: "Carrier:", value: viewModel.carrier)
+                            InfoRow(label: "Main Office Address:", value: viewModel.officeAddress)
+                            InfoRow(label: "Home Terminal:", value: viewModel.homeTerminal)
+                        }
                     }
                     .padding()
                     .background(AppColors.white)
@@ -200,12 +254,11 @@ struct DotInspectionDetailView: View {
     
     func mapCodeToStatus(_ code: String?) -> DutyStatus {
         switch code?.lowercased() {
-        case "d": return .driving
-        case "on": return .on
+        case "d", "driving": return .driving
+        case "on", "login", "active": return .on
         case "sb": return .sleeper
-        case "off": return .off
-        case "login": return .login
-        case "ym": return .yardMove
+        case "off", "off duty", "pu": return .off
+        case "ym": return .on
         default: return .off
         }
     }

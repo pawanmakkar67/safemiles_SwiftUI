@@ -72,7 +72,6 @@ struct SelectVehicleView: View {
             }
         }
         .onAppear {
-            showSideMenu = false
             if Global.shared.vehicleList.isEmpty {
                 viewModel.fetchVehicles()
             }

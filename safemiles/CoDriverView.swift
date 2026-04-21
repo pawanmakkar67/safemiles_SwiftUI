@@ -139,8 +139,5 @@ struct CoDriverView: View {
         )) {
             Alert(title: Text("Success"), message: Text(viewModel.successMsg ?? ""), dismissButton: .default(Text("OK")))
         }
-        .onAppear {
-            showSideMenu = false
-        }
     }
 }

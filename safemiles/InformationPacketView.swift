@@ -86,9 +86,6 @@ struct InformationPacketView: View {
                 .background(Color(UIColor.systemGroupedBackground))
             }
         }
-        .onAppear {
-            showSideMenu = false
-        }
     }
     
     func openPDF(url: String, title: String) {
