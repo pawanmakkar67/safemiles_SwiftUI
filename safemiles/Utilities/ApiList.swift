@@ -13,14 +13,14 @@ import Combine
 #endif
 
 //let BASEURL = "https://api.thesafemiles.com/api/v1/"
-//let MainBASEURL = "https://thesafemiles.com/"
-//let MainBASEURL1 = "https://thesafemiles.com/"
+let MainBASEURL = "https://api.thesafemiles.com/"
+let MainBASEURL1 = "https://thesafemiles.com/"
 
 //let MainBASEURL = "https://sgapi.thesafemiles.com/"
 //let MainBASEURL1 = "https://sgapi.thesafemiles.com/"
 
-let MainBASEURL = "http://38.137.14.92:5001/"
-let MainBASEURL1 = "http://38.137.14.92:5001/"
+//let MainBASEURL = "http://38.137.14.92:5001/"
+//let MainBASEURL1 = "http://38.137.14.92:5001/"
 
 let BASEURL = "\(MainBASEURL)api/v1/"
 

@@ -133,8 +133,9 @@ class LogsViewModel: ObservableObject {
     private func calculateDutySegments() {
         dutySegments.removeAll()
         guard let log = currentLog else {
-            // Default: OFF for 24h if no log
-            dutySegments = [DutySegment(status: .off, startHour: 0, endHour: 24, isDotted: false)]
+            // Default: OFF for 24h if no log, or till now if today
+            let end: Float = isSelectedDateToday() ? getCurrentHourInAppTZ() : 24.0
+            dutySegments = [DutySegment(status: .off, startHour: 0, endHour: end, isDotted: false)]
             return
         }
 
@@ -177,9 +178,9 @@ class LogsViewModel: ObservableObject {
 
             // Determine End Hour
             if index == events.count - 1 {
-                endHour = 24.0  // Or current time if Today? simplified to 24 for now, can refine.
-                if Calendar.current.isDateInToday(selectedDate) {
-                    endHour = getCurrentHourInCDT()
+                endHour = 24.0
+                if isSelectedDateToday() {
+                    endHour = getCurrentHourInAppTZ()
                 }
             } else {
                 endHour = getHourWithMinutes(from: nextValue?.eventdatetime)
@@ -187,8 +188,8 @@ class LogsViewModel: ObservableObject {
 
             if events.count == 1 {
                 endHour = 24.0
-                if Calendar.current.isDateInToday(selectedDate) {
-                    endHour = getCurrentHourInCDT()
+                if isSelectedDateToday() {
+                    endHour = getCurrentHourInAppTZ()
                 }
             }
 
@@ -223,9 +224,10 @@ class LogsViewModel: ObservableObject {
 
     private func addInitialEvents(code: String, initialTime: String, noEvents: Bool = false) {
         let startHour: Float = 0.0
-        var endHour: Float = 24.0
-
-        if !noEvents {
+        var endHour: Float = 0.0
+        if noEvents {
+            endHour = isSelectedDateToday() ? getCurrentHourInAppTZ() : 24.0
+        } else {
             endHour = getHourWithMinutes(from: initialTime)
         }
 
@@ -282,13 +284,19 @@ class LogsViewModel: ObservableObject {
         return Float(hour) + (Float(minute) / 60.0)
     }
 
-    private func getCurrentHourInCDT() -> Float {
+    private func getCurrentHourInAppTZ() -> Float {
         let date = Date()
         var calendar = Calendar.current
         calendar.timeZone = getAppTimeZone()
         let hour = calendar.component(.hour, from: date)
         let minute = calendar.component(.minute, from: date)
         return Float(hour) + (Float(minute) / 60.0)
+    }
+
+    private func isSelectedDateToday() -> Bool {
+        var calendar = Calendar.current
+        calendar.timeZone = getAppTimeZone()
+        return calendar.isDateInToday(selectedDate)
     }
     func saveForm(
         vehicleId: String, coDriverId: String, trailers: [String], shippingDocs: [String],

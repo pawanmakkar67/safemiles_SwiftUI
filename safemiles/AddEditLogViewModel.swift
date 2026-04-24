@@ -247,6 +247,16 @@ class AddEditLogViewModel: NSObject, ObservableObject, CLLocationManagerDelegate
             isValid = false
         }
         
+        var calendar = Calendar.current
+        calendar.timeZone = getAppTimeZone()
+        
+        if calendar.compare(selectedTime, to: Date(), toGranularity: .minute) == .orderedDescending {
+            alertTitle = "Invalid Time"
+            alertMessage = "Event time cannot be in the future."
+            showAlert = true
+            return false
+        }
+        
         if selectedVehicle == nil {
             isVehicleError = true
             isValid = false

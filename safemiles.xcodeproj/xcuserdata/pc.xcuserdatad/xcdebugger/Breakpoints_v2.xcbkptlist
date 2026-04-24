@@ -80,7 +80,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "336"
             endingLineNumber = "336"
-            landmarkName = "certifyLog(signature:completion:)"
+            landmarkName = "saveForm(vehicleId:coDriverId:trailers:shippingDocs:completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -96,7 +96,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "280"
             endingLineNumber = "280"
-            landmarkName = "getCurrentHourInCDT()"
+            landmarkName = "getHourWithMinutes(from:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
