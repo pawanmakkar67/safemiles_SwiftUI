@@ -102,6 +102,9 @@ struct DeviceInfoCard: View {
             Group {
                 DataRow(label: "Event:", value: "#\(event.sequenceNumber) \(event.getValue(forKey: "E") ?? "")")
                 Divider()
+                DataRow(label: "EventType:", value: "#\(event.eventType)")
+                Divider()
+
                 DataRow(label: "Date/Time:", value: formatDate(event.datetime))
                 Divider()
                 DataRow(label: "Lat/Long:", value: String(format: "%.4f / %.4f", event.geolocation.latitude, event.geolocation.longitude))
@@ -112,9 +115,9 @@ struct DeviceInfoCard: View {
                 Divider()
             }
             Group {
-                DataRow(label: "Odometer:", value: "\(event.odometer) km")
+                DataRow(label: "Odometer:", value: String(format: "%.1f miles", Double(event.odometer) * 0.621371))
                 Divider()
-                DataRow(label: "Velocity:", value: "\(event.velocity) km/h")
+                DataRow(label: "Velocity:", value: String(format: "%.1f mph", Double(event.velocity) * 0.621371))
                 Divider()
                 DataRow(label: "Engine Hours:", value: String(format: "%.1f", event.engineHours))
                 Divider()
@@ -187,7 +190,7 @@ struct DashboardParametersCard: View {
                 ParamRow(label: "Gear", value: data.currentGear.map { "\($0)" } ?? "-")
                 ParamRow(label: "SeatBelt", value: data.seatbeltOn == true ? "Yes" : "No")
                 ParamRow(label: "Brake Pedal", value: "-") // Not in snippet
-                ParamRow(label: "Speed", value: data.speed.map { "\($0) km/h" } ?? "-")
+                ParamRow(label: "Speed", value: data.speed.map { String(format: "%.1f mph", Double($0) * 0.621371) } ?? "-")
                 ParamRow(label: "Retarder", value: "-") // Not in snippet
                 ParamRow(label: "RPM", value: data.rpm.map { "\($0)" } ?? "-")
                 ParamRow(label: "DTC#", value: data.numberOfDTCPending.map { "\($0)" } ?? "-")
@@ -202,7 +205,7 @@ struct DashboardParametersCard: View {
                 ParamRow(label: "Engine Load", value: data.engineLoad.map { "\($0) %" } ?? "-")
                 ParamRow(label: "Fuel Rate", value: data.fuelRate.map { "\($0) L/h" } ?? "-")
                 ParamRow(label: "Total Fuel Used", value: data.totalFuelUsed.map { "\($0) L" } ?? "-")
-                ParamRow(label: "Odometer", value: data.odometer.map { "\($0) km" } ?? "-")
+                ParamRow(label: "Odometer", value: data.odometer.map { String(format: "%.1f miles", Double($0) * 0.621371) } ?? "-")
                 ParamRow(label: "Engine Hours", value: data.engineHours.map { "\($0) h" } ?? "-")
             }
         }

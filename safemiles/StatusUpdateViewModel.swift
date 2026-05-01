@@ -12,6 +12,7 @@ class StatusUpdateViewModel: NSObject, ObservableObject, CLLocationManagerDelega
     @Published var alertMessage: String = ""
     @Published var showAlert: Bool = false
     
+    private var lastUpdateStatusTime: Date?
     private var locationManager = CLLocationManager()
     
     init(selectedCode: String) {
@@ -28,6 +29,13 @@ class StatusUpdateViewModel: NSObject, ObservableObject, CLLocationManagerDelega
     }
     
     func updateStatus(onSuccess: @escaping () -> Void) {
+        if let lastTime = lastUpdateStatusTime, Date().timeIntervalSince(lastTime) < 10 {
+            alertMessage = "Please wait 10 seconds before updating status again."
+            showAlert = true
+            return
+        }
+        lastUpdateStatusTime = Date()
+
         guard !selectedCode.isEmpty else {
             alertMessage = "please select status to update"
             showAlert = true
@@ -70,8 +78,8 @@ class StatusUpdateViewModel: NSObject, ObservableObject, CLLocationManagerDelega
         
         isLoading = true
         
-        APIManager.shared.request(url: ApiList.updateHardwareEvent, method: .post, parameters: params) { [weak self] _ in
-            self?.isLoading = false
+        APIManager.shared.request(url: ApiList.updateHardwareEvent, method: .post, parameters: params) { _ in
+            // Handle loader in success/failure to ensure it stays until the very end
         } success: { [weak self] response in
             self?.isLoading = false
             NotificationCenter.default.post(name: .requestRecapRefresh, object: nil)

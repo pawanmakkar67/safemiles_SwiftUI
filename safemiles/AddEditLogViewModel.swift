@@ -54,7 +54,7 @@ class AddEditLogViewModel: NSObject, ObservableObject, CLLocationManagerDelegate
             }
             
             if let odo = event.odometer {
-                odometer = "\(Int(odo))"
+                odometer = String(format: "%.1f", odo * 0.621371)
             }
             
             if let engH = event.engine_hours {
@@ -118,7 +118,7 @@ class AddEditLogViewModel: NSObject, ObservableObject, CLLocationManagerDelegate
             "event_notes": notes,
             "location_cal": location,
             "location_notes": location,
-            "odometer": Double(odometer) ?? 0.0,
+            "odometer": (Double(odometer) ?? 0.0) / 0.621371,
             "engine_hours": Double(engineHours) ?? 0.0,
             "driver_id": Global.shared.logsDataVal?.metadata?.driver_id ?? ""
         ]

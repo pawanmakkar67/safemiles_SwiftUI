@@ -73,7 +73,7 @@ class AddDvirViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
         }
         
         self.location = data.location ?? ""
-        self.odometer = data.odometer ?? ""
+        self.odometer = data.odometer.map { String(format: "%.1f", (Double($0) ?? 0.0) * 0.621371) } ?? ""
         self.company = Global.shared.myProfile?.company?.name ?? ""
         self.status = data.status ?? "Vehicle Condition Satisfactory"
         self.remarks = data.remarks ?? ""
@@ -98,7 +98,7 @@ class AddDvirViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
         let offset = Double(Global.shared.connectVehicleDetail?.offset ?? 0)
         let totalOdometer = baseOdometer + offset
         
-        self.odometer = totalOdometer > 0 ? String(format: "%.0f", totalOdometer) : ""
+        self.odometer = totalOdometer > 0 ? String(format: "%.1f", totalOdometer * 0.621371) : ""
         self.company = Global.shared.myProfile?.company?.name ?? ""
     }
     
@@ -178,7 +178,7 @@ class AddDvirViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
         var params: [String: Any] = [
             "dvir_date_time": dateSelected,
             "location": location,
-            "odometer": odometer,
+            "odometer": String(format: "%.0f", (Double(odometer) ?? 0.0) / 0.621371),
             "status": status,
             "remarks": remarks,
             "trailer_defects": trailerDefects,

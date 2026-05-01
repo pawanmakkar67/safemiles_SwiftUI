@@ -176,11 +176,11 @@ struct AddEditLogView: View {
 
                         // Odometer Field
                         VStack(alignment: .leading, spacing: 8) {
-                            Text("Odometer")
+                            Text("Odometer (miles)")
                                 .font(AppFonts.captionText)
                                 .foregroundColor(AppColors.textGray)
 
-                            TextField("Odometer", text: $viewModel.odometer)
+                            TextField("Odometer in miles", text: $viewModel.odometer)
                                 .font(AppFonts.textField)
                                 .foregroundColor(AppColors.textBlack)
                                 .keyboardType(.decimalPad)

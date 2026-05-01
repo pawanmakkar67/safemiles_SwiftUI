@@ -96,9 +96,14 @@ struct HomeView: View {
 // MARK: - Overview Tab
 struct OverviewTabView: View {
     @ObservedObject var viewModel: HomeViewModel
+    @ObservedObject private var global = Global.shared
     
     var body: some View {
         VStack(spacing: 20) {
+            // BLE Event Type Ticker
+            EventTypeTicker(activeRawValue: global.latestEventRawValue)
+                .padding(.top, 16)
+            
             // Circular Progress Ring
             ZStack {
                 Circle()
@@ -132,7 +137,7 @@ struct OverviewTabView: View {
                         .foregroundStyle(AppColors.white)
                 }
             }
-            .padding(.top, 40)
+            .padding(.top, 16)
             
             // Status Cards
             ScrollView(.horizontal, showsIndicators: false) {
@@ -190,6 +195,84 @@ struct OverviewTabView: View {
             .background(AppColors.white)
         }
         .padding(.bottom, 20)
+    }
+}
+
+// MARK: - BLE Event Type Ticker
+/// Scrolling horizontal ticker showing all 16 PacificTrack EventType cases.
+/// The item matching `activeRawValue` (latest BLE event) is highlighted in green
+/// and auto-scrolled into view. When idle, items cycle automatically.
+struct EventTypeTicker: View {
+    let activeRawValue: Int?
+
+    /// All 16 EventType cases keyed by raw value.
+    private let eventLabels: [(raw: Int, name: String)] = [
+        (0,  "Power On"),
+        (1,  "Power Off"),
+        (2,  "Ignition On"),
+        (3,  "Ignition Off"),
+        (4,  "Engine On"),
+        (5,  "Engine Off"),
+        (6,  "Trip Start"),
+        (7,  "Trip Stop"),
+        (8,  "Periodic"),
+        (9,  "BT Connected"),
+        (10, "BT Disconnected"),
+        (11, "BUS Connected"),
+        (12, "BUS Disconnected"),
+        (13, "Harsh Accel"),
+        (14, "Harsh Braking"),
+        (15, "Harsh Cornering"),
+    ]
+
+    @State private var tickerIndex: Int = 0
+    @State private var idleTimer: Timer? = nil
+
+    /// The item currently shown — active BLE event takes priority, otherwise idle cycle.
+    private var displayedItem: (raw: Int, name: String) {
+        if let raw = activeRawValue, let match = eventLabels.first(where: { $0.raw == raw }) {
+            return match
+        }
+        return eventLabels[tickerIndex]
+    }
+
+    var body: some View {
+        let item = displayedItem
+        let isLive = activeRawValue != nil
+
+        HStack(spacing: 6) {
+            Text("#\(item.raw)")
+                .font(.system(size: 11, weight: .bold, design: .monospaced))
+                .foregroundColor(isLive ? AppColors.statusGreen : AppColors.textGray)
+            Text(item.name)
+                .font(.system(size: 12, weight: .medium))
+                .foregroundColor(isLive ? AppColors.textBlack : AppColors.textGray)
+        }
+        .id(item.raw)                              // triggers transition on change
+        .transition(.asymmetric(
+            insertion: .move(edge: .trailing).combined(with: .opacity),
+            removal:   .move(edge: .leading).combined(with: .opacity)
+        ))
+        .animation(.easeInOut(duration: 0.35), value: item.raw)
+        .frame(maxWidth: .infinity, alignment: .center)
+        .onAppear { startIdleTicker() }
+        .onChange(of: activeRawValue) { newVal in
+            if newVal != nil {
+                idleTimer?.invalidate()
+                idleTimer = nil
+            } else {
+                startIdleTicker()
+            }
+        }
+    }
+
+    private func startIdleTicker() {
+        idleTimer?.invalidate()
+        idleTimer = Timer.scheduledTimer(withTimeInterval: 1.2, repeats: true) { _ in
+            withAnimation(.easeInOut(duration: 0.35)) {
+                tickerIndex = (tickerIndex + 1) % eventLabels.count
+            }
+        }
     }
 }
 

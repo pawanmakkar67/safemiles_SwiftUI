@@ -16,8 +16,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "82"
             endingLineNumber = "82"
-            landmarkName = "DeviceDetailView"
-            landmarkType = "14">
+            landmarkName = "stopUpdating()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -224,7 +224,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "784"
             endingLineNumber = "784"
-            landmarkName = "toJSONString()"
+            landmarkName = "getOnlyDate(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -238,8 +238,8 @@
             filePath = "safemiles/Utilities/ApiList.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "123"
-            endingLineNumber = "123"
+            startingLineNumber = "125"
+            endingLineNumber = "125"
             landmarkName = "reset()"
             landmarkType = "7">
          </BreakpointContent>
@@ -256,7 +256,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "652"
             endingLineNumber = "652"
-            landmarkName = "sendHardwareUpdate(code:)"
+            landmarkName = "updateEvents()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -272,7 +272,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "647"
             endingLineNumber = "647"
-            landmarkName = "sendHardwareUpdate(code:)"
+            landmarkName = "updateEvents()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -289,6 +289,38 @@
             startingLineNumber = "327"
             endingLineNumber = "327"
             landmarkName = "deleteDivr()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C043B4AE-E108-4AEB-BC8A-0AC3F304B9C9"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "safemiles/Utilities/BLEManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "274"
+            endingLineNumber = "274"
+            landmarkName = "refreshDeviceInfo(withTrackerInfo:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "FA9A1912-2D2B-49F3-B181-856C66BCD10A"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "safemiles/Utilities/BLEManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "271"
+            endingLineNumber = "271"
+            landmarkName = "refreshDeviceInfo(withTrackerInfo:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

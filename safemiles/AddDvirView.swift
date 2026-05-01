@@ -185,7 +185,7 @@ struct AddDvirView: View {
             customTextField(title: "Location", placeholder: "Enter location", text: $viewModel.location, icon: "location")
             
             // Odometer
-            customTextField(title: "Odometer", placeholder: "Enter odometer", text: $viewModel.odometer, keyboardType: .numberPad, isError: viewModel.isOdometerError)
+            customTextField(title: "Odometer (miles)", placeholder: "Enter odometer in miles", text: $viewModel.odometer, keyboardType: .decimalPad, isError: viewModel.isOdometerError)
             
             // Company
             customTextField(title: "Company", placeholder: "Enter company name", text: $viewModel.company, isDisabled: true)

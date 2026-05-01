@@ -82,7 +82,7 @@ struct DvirDetailView: View {
                         
                         detailRow(title: "Date & Time", value: formatDateTime(data.dvir_date_time))
                         Divider()
-                        detailRow(title: "Odometer", value: "\(data.odometer ?? "-") \("miles")") // Unit placeholder
+                        detailRow(title: "Odometer", value: data.odometer.map { String(format: "%.1f miles", (Double($0) ?? 0) * 0.621371) } ?? "-")
                         Divider()
                         detailRow(title: "Location", value: data.location ?? "-")
                     }

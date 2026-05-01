@@ -15,6 +15,8 @@ import Combine
 //let BASEURL = "https://api.thesafemiles.com/api/v1/"
 let MainBASEURL = "https://api.thesafemiles.com/"
 let MainBASEURL1 = "https://thesafemiles.com/"
+//let MainBASEURL = "https://manuel-fleysome-ophelia.ngrok-free.dev/"
+
 
 //let MainBASEURL = "https://sgapi.thesafemiles.com/"
 //let MainBASEURL1 = "https://sgapi.thesafemiles.com/"
@@ -101,12 +103,15 @@ var logsDataVal: logsModel? {
 
     var EventData: EventFrame? {
         didSet {
+            latestEventRawValue = EventData?.eventType.rawValue
             NotificationCenter.default.post(
                 name: .telematicsUpdated,
                 object: virtualDashboardData
             )
         }
     }
+    /// Raw value of the most recent PacificTrack EventType received over BLE.
+    @Published var latestEventRawValue: Int? = nil
 
     var trackerInfoV: TrackerInfo?
 

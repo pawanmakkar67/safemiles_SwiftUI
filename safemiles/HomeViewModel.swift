@@ -42,13 +42,27 @@ class HomeViewModel: ObservableObject {
 
     // Timer Logic
     private var timer: Timer?
-    private var refreshTimer: Timer?
     private var countdown = FlexibleTimer(totalSeconds: 0)
+    /// Pending deferred fetchRecap after a hardware update. Cancelled if another update arrives.
+    private var pendingRecapWorkItem: DispatchWorkItem?
 
     // Status Logic
     private var speedStateCounter = 0
     private var lastSpeedState: SpeedState?
     private var manualChange: String = ""
+    private var lastHardwareUpdateTime: Date?
+    private var lastHardwareUpdateCode: String?
+    private var lastApiCallTimes: [String: Date] = [:]
+
+    /// Minimum seconds that must pass before the same API can be called again.
+    /// Adjust per-endpoint here — no need to hunt through individual functions.
+    private let apiThrottleIntervals: [String: TimeInterval] = [
+        ApiList.RecapApi:          30,   // recap — heavy, once per 30s is enough
+        ApiList.getLogs:           60,   // live status/logs — driven by polling timer
+        ApiList.allvehicles:       60,   // vehicles list rarely changes
+        ApiList.getCoDrivers:      60,   // co-drivers list rarely changes
+        ApiList.getMyprofile:      60,   // profile — almost never changes
+    ]
 
     // Speed tracking
     @Published var speed: String = "0"
@@ -65,7 +79,6 @@ class HomeViewModel: ObservableObject {
     init() {
         LocationManager.shared.startUpdatingLocation()
         startPolling()
-        startAutoRefresh()
 
         // Initialize Countdown Tick Handler
         countdown.start(tick: { [weak self] remaining in
@@ -110,14 +123,14 @@ class HomeViewModel: ObservableObject {
         }
 
         Task {
-            await getLiveStatus()
-            await getVehciles()  // Refresh vehicles too if needed, but status is key
+//            await getLiveStatus()
+//            await getVehciles()  // Refresh vehicles too if needed, but status is key
         }
     }
 
     deinit {
         stopPolling()
-        stopAutoRefresh()
+        pendingRecapWorkItem?.cancel()
         NotificationCenter.default.removeObserver(self)
     }
 
@@ -139,21 +152,25 @@ class HomeViewModel: ObservableObject {
     // ... (rest of the file) ...
 
     func getLiveStatus() {
+        let urlStr = ApiList.getLogs
+        let throttle = apiThrottleIntervals[urlStr] ?? 60
+        if let lastTime = lastApiCallTimes[urlStr], Date().timeIntervalSince(lastTime) < throttle { return }
+        lastApiCallTimes[urlStr] = Date()
 
-        let page = ((Global.shared.logsDataVal?.logs?.count ?? 0) / 10) + 1
-        let params = ["page": page]
+//        let page = ((Global.shared.logsDataVal?.logs?.count ?? 0) / 10) + 1
+//        let params = ["page": page]
 
-        APIManager.shared.request(url: ApiList.getLogs, method: .get, parameters: params) { comp in
+        APIManager.shared.request(url: ApiList.getLogs, method: .get) { comp in
             // completion
         } success: { response in
 
             guard let obj = Mapper<logsModel>().map(JSONObject: response) else { return }
 
-            if page != 1, let newLogs = obj.logs {
-                Global.shared.logsDataVal?.logs?.append(contentsOf: newLogs)
-            } else {
+//            if page != 1, let newLogs = obj.logs {
+//                Global.shared.logsDataVal?.logs?.append(contentsOf: newLogs)
+//            } else {
                 Global.shared.logsDataVal = obj
-            }
+//            }
 
         } failure: { error in
 
@@ -161,6 +178,10 @@ class HomeViewModel: ObservableObject {
     }
 
     func getVehciles() async {
+        let urlStr = ApiList.allvehicles
+        let throttle = apiThrottleIntervals[urlStr] ?? 60
+        if let lastTime = lastApiCallTimes[urlStr], Date().timeIntervalSince(lastTime) < throttle { return }
+        lastApiCallTimes[urlStr] = Date()
 
         APIManager.shared.request(url: ApiList.allvehicles, method: .get) { comp in
 
@@ -179,6 +200,11 @@ class HomeViewModel: ObservableObject {
     }
 
     func getCoDrivers() async {
+        let urlStr = ApiList.getCoDrivers
+        let throttle = apiThrottleIntervals[urlStr] ?? 60
+        if let lastTime = lastApiCallTimes[urlStr], Date().timeIntervalSince(lastTime) < throttle { return }
+        lastApiCallTimes[urlStr] = Date()
+
         APIManager.shared.request(url: ApiList.getCoDrivers, method: .get) { comp in
 
         } success: { response in
@@ -190,6 +216,13 @@ class HomeViewModel: ObservableObject {
     }
 
     func getMyProfile(completion: (() -> Void)? = nil) {
+        let urlStr = ApiList.getMyprofile
+        let throttle = apiThrottleIntervals[urlStr] ?? 60
+        if let lastTime = lastApiCallTimes[urlStr], Date().timeIntervalSince(lastTime) < throttle {
+            completion?()
+            return
+        }
+        lastApiCallTimes[urlStr] = Date()
 
         APIManager.shared.request(url: ApiList.getMyprofile, method: .get) { comp in
             completion?()
@@ -225,15 +258,24 @@ class HomeViewModel: ObservableObject {
         await getCoDrivers()
     }
 
-    func fetchRecap(completion: (() -> Void)? = nil) {
+    func fetchRecap(force: Bool = false, completion: (() -> Void)? = nil) {
+        let urlStr = ApiList.RecapApi
+        let throttle = apiThrottleIntervals[urlStr] ?? 30
+        if !force, let lastTime = lastApiCallTimes[urlStr], Date().timeIntervalSince(lastTime) < throttle {
+            completion?()
+            return
+        }
+        // Stamp now so all subsequent callers measure from this point.
+        lastApiCallTimes[urlStr] = Date()
+
         APIManager.shared.request(url: ApiList.RecapApi, method: .get, parameters: nil) { comp in
             completion?()
         } success: { response in
             if let obj = Mapper<RecapModel>().map(JSONObject: response) {
                 Global.shared.recapvalues = obj
-                DispatchQueue.main.async {
-                    self.updateData(obj)
-                }
+//                DispatchQueue.main.async {
+//                    self.updateData(obj)
+//                }
                 NotificationCenter.default.post(name: .recapUpdate, object: nil)
             }
         } failure: { error in
@@ -538,17 +580,7 @@ class HomeViewModel: ObservableObject {
         timer = nil
     }
 
-    func startAutoRefresh() {
-        refreshTimer = Timer.scheduledTimer(withTimeInterval: 60.0, repeats: true) {
-            [weak self] _ in
-            self?.fetchRecap()
-        }
-    }
 
-    func stopAutoRefresh() {
-        refreshTimer?.invalidate()
-        refreshTimer = nil
-    }
 
     // MARK: - Logout
     @objc private func handleLogout() {
@@ -556,13 +588,10 @@ class HomeViewModel: ObservableObject {
     }
 
     func stopAllTimers() {
-        // Stop polling timer
         timer?.invalidate()
         timer = nil
-        // Stop auto-refresh timer
-        refreshTimer?.invalidate()
-        refreshTimer = nil
-        // Stop FlexibleTimer countdown
+        pendingRecapWorkItem?.cancel()
+        pendingRecapWorkItem = nil
         countdown.reset()
     }
 
@@ -642,8 +671,14 @@ class HomeViewModel: ObservableObject {
     }
 
     // MARK: - Hardware Update
-    // MARK: - Hardware Update
     func sendHardwareUpdate(code: String) {
+        if let lastTime = lastHardwareUpdateTime, Date().timeIntervalSince(lastTime) < 3, lastHardwareUpdateCode == code {
+            AppLog.debug("Discarding hardware update, called within 5 seconds with same code")
+            return
+        }
+        lastHardwareUpdateTime = Date()
+        lastHardwareUpdateCode = code
+
         guard let eventData = Global.shared.EventData else {
             AppLog.debug("No event data available for hardware update")
             return
@@ -725,12 +760,18 @@ class HomeViewModel: ObservableObject {
             url: ApiList.updateHardwareEvent, method: .post, parameters: params
         ) { comp in
             // Completion handler
-        } success: { response in
+        } success: { [weak self] response in
             AppLog.debug("Hardware update successful: \(response)")
-            // Refresh recap after successful update
-            DispatchQueue.main.async {
-                self.fetchRecap()
+            // Cancel any previous pending recap and schedule a fresh one 5s from now.
+            // This collapses rapid back-to-back hardware updates into a single fetchRecap.
+            self?.pendingRecapWorkItem?.cancel()
+            let work = DispatchWorkItem { [weak self] in
+                // force:true — bypass throttle so this post-update fetch always executes
+                // and resets the throttle clock from now.
+                self?.fetchRecap(force: true)
             }
+            self?.pendingRecapWorkItem = work
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3, execute: work)
         } failure: { error in
             AppLog.debug("Hardware update failed: \(error)")
         }
