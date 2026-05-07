@@ -224,7 +224,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "784"
             endingLineNumber = "784"
-            landmarkName = "getOnlyDate(_:)"
+            landmarkName = "sendHardwareUpdate(code:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -240,8 +240,108 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "125"
             endingLineNumber = "125"
-            landmarkName = "reset()"
-            landmarkType = "7">
+            landmarkName = "Global"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "C35BD173-C028-427D-80DF-D3BF7DBB7082 - 6fbe95856e135fa9"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "safemiles.Global.latestEventRawValue.setter : Swift.Optional&lt;Swift.Int&gt;"
+                  moduleName = "safemiles.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/pc/Documents/safemiles_SwiftUI/safemiles/Utilities/ApiList.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0">
+               </Location>
+               <Location
+                  uuid = "C35BD173-C028-427D-80DF-D3BF7DBB7082 - 6fa73863c6be2eb9"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "property wrapper backing initializer of safemiles.Global.latestEventRawValue : Swift.Optional&lt;Swift.Int&gt;"
+                  moduleName = "safemiles.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/pc/Documents/safemiles_SwiftUI/safemiles/Utilities/ApiList.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0">
+               </Location>
+               <Location
+                  uuid = "C35BD173-C028-427D-80DF-D3BF7DBB7082 - e4a614dea99bcd5d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "safemiles.Global.latestEventRawValue.getter : Swift.Optional&lt;Swift.Int&gt;"
+                  moduleName = "safemiles.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/pc/Documents/safemiles_SwiftUI/safemiles/Utilities/ApiList.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0">
+               </Location>
+               <Location
+                  uuid = "C35BD173-C028-427D-80DF-D3BF7DBB7082 - 95ca129cb05a903d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "safemiles.Global.latestEventRawValue.modify : Swift.Optional&lt;Swift.Int&gt;"
+                  moduleName = "safemiles.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/pc/Documents/safemiles_SwiftUI/safemiles/Utilities/ApiList.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "125"
+                  endingLineNumber = "125">
+               </Location>
+               <Location
+                  uuid = "C35BD173-C028-427D-80DF-D3BF7DBB7082 - 82d02d0c6fe71597"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "safemiles.Global.$latestEventRawValue.getter : Combine.Published&lt;Swift.Optional&lt;Swift.Int&gt;&gt;.Publisher"
+                  moduleName = "safemiles.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/pc/Documents/safemiles_SwiftUI/safemiles/Utilities/ApiList.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0">
+               </Location>
+               <Location
+                  uuid = "C35BD173-C028-427D-80DF-D3BF7DBB7082 - 3844944b75cec9c3"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "safemiles.Global.$latestEventRawValue.setter : Combine.Published&lt;Swift.Optional&lt;Swift.Int&gt;&gt;.Publisher"
+                  moduleName = "safemiles.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/pc/Documents/safemiles_SwiftUI/%3Cstdin%3E"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0">
+               </Location>
+               <Location
+                  uuid = "C35BD173-C028-427D-80DF-D3BF7DBB7082 - f21bb1d38d4ed470"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "safemiles.Global.$latestEventRawValue.modify : Combine.Published&lt;Swift.Optional&lt;Swift.Int&gt;&gt;.Publisher"
+                  moduleName = "safemiles.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/pc/Documents/safemiles_SwiftUI/safemiles/Utilities/ApiList.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -290,6 +390,36 @@
             endingLineNumber = "327"
             landmarkName = "deleteDivr()"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "6166F720-BBC1-4F48-9FB1-D780C5D4636F - 51fd6f7cc3cf0c9e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 (Swift.AnyObject) -&gt; () in safemiles.DvirDetailView.deleteDivr() -&gt; ()"
+                  moduleName = "safemiles.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/pc/Documents/safemiles_SwiftUI/safemiles/DvirDetailView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "327"
+                  endingLineNumber = "327">
+               </Location>
+               <Location
+                  uuid = "6166F720-BBC1-4F48-9FB1-D780C5D4636F - 93c960f699a71584"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Swift.MainActor () -&gt; () in closure #2 (Swift.AnyObject) -&gt; () in safemiles.DvirDetailView.deleteDivr() -&gt; ()"
+                  moduleName = "safemiles.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/pc/Documents/safemiles_SwiftUI/safemiles/DvirDetailView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "327"
+                  endingLineNumber = "327">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -321,6 +451,22 @@
             startingLineNumber = "271"
             endingLineNumber = "271"
             landmarkName = "refreshDeviceInfo(withTrackerInfo:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6BEFF02E-50EC-4F3C-9611-8E7EF78E74DC"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "safemiles/HomeViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "708"
+            endingLineNumber = "708"
+            landmarkName = "sendHardwareUpdate(code:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

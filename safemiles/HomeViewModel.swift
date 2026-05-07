@@ -39,6 +39,7 @@ class HomeViewModel: ObservableObject {
     // Status Update Modal
     @Published var showStatusUpdateModal: Bool = false
     @Published var selectedStatusUpdateCode: String = ""
+    @Published var event_notes: String = ""
 
     // Timer Logic
     private var timer: Timer?
@@ -49,6 +50,7 @@ class HomeViewModel: ObservableObject {
     // Status Logic
     private var speedStateCounter = 0
     private var lastSpeedState: SpeedState?
+    private var lastIMEventTime: Date?
     private var manualChange: String = ""
     private var lastHardwareUpdateTime: Date?
     private var lastHardwareUpdateCode: String?
@@ -621,8 +623,8 @@ class HomeViewModel: ObservableObject {
                     speedStateCounter += 1  // Increment if state persists
                 }
 
-                // If the state has been consistent for 2 checks, trigger the change
-                if speedStateCounter == 2 {
+                // If the state has been consistent for 1 checks, trigger the change
+                if speedStateCounter == 1 {
                     var shouldUpdate = false
                     switch currentState {
                     case .low:
@@ -657,6 +659,19 @@ class HomeViewModel: ObservableObject {
                 }
             }
 
+            // Intermediate Event (IM) Logic: Send "IM" every 1 hour while driving
+            if codeRecap.lowercased() == "d" {
+                if lastIMEventTime == nil {
+                    lastIMEventTime = Date() // Initialize when driving starts
+                } else if let lastTime = lastIMEventTime, Date().timeIntervalSince(lastTime) >= 3600 {
+                    code = "IM"
+                    lastIMEventTime = Date() // Reset for next hour
+                    AppLog.debug("1 hour driving detected, triggering IM event")
+                }
+            } else {
+                lastIMEventTime = nil // Reset if status changed from driving
+            }
+
             if manualChange != "" {
                 code = manualChange
             } else if code == "" {
@@ -689,8 +704,9 @@ class HomeViewModel: ObservableObject {
 
         let startOdometer = eventData.odometer
         let offset = Global.shared.connectVehicleDetail?.offset ?? 0
-        let totalOdometer = (Double(startOdometer) ?? 0.0) + Double(offset)
-        let odometer = String(format: "%.0f", totalOdometer)
+        let totalOdometerKM = (Double(startOdometer) ?? 0.0) + Double(offset)
+        let odometerMiles = String(format: "%.0f", totalOdometerKM * 0.621371)
+        let odometerKM = String(format: "%.0f", totalOdometerKM)
 
         let engineHours = eventData.engineHours
 
@@ -729,10 +745,10 @@ class HomeViewModel: ObservableObject {
         let vehicleId = Global.shared.connectVehicleDetail?.id ?? self.vehicle
         let vehicleVinNo = Global.shared.trackerInfoV?.vin ?? ""
         let seqID = eventData.sequenceNumber
-        let location_notes = "Automatic"  // Placeholder or resolved address
+        let location_notes = LocationManager.shared.currentAddress
         let positioning = "Location generated when connected to ECM"
 
-        let params: [String: Any] = [
+        var params: [String: Any] = [
             "eventdatetime": "\(Date())",
             "code": code,
             "cert_date": getOnlyDate(Date()),
@@ -741,7 +757,8 @@ class HomeViewModel: ObservableObject {
             "status": "Active",
             "driver": driverId,
             "vehicle": vehicleId,
-            "odometer": odometer,
+            "odometer": odometerMiles,
+            "odometer_km": odometerKM,
             "engine_hours": engineHours,
             "eld_data": eldevice,
             "positioning": positioning,
@@ -749,10 +766,16 @@ class HomeViewModel: ObservableObject {
             "longitude": longitude,
             "location_notes": location_notes,
             "location_cal": location_notes,
+            "event_notes": self.event_notes,
             "location_source": "Automatic",
             "eventjson": virtualDashboardJSON,
             "vin": vehicleVinNo,
         ]
+
+        // Append event_codes from buffered BLE events
+        if ble.connectedPeripheral != nil, !Global.shared.eventCodeBuffer.isEmpty {
+            params["event_code"] = Global.shared.eventCodeBuffer
+        }
 
         AppLog.debug("Sending hardware update with params: \(params)")
 
@@ -762,6 +785,7 @@ class HomeViewModel: ObservableObject {
             // Completion handler
         } success: { [weak self] response in
             AppLog.debug("Hardware update successful: \(response)")
+            Global.shared.eventCodeBuffer.removeAll()
             // Cancel any previous pending recap and schedule a fresh one 5s from now.
             // This collapses rapid back-to-back hardware updates into a single fetchRecap.
             self?.pendingRecapWorkItem?.cancel()

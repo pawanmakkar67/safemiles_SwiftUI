@@ -178,7 +178,8 @@ class AddDvirViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
         var params: [String: Any] = [
             "dvir_date_time": dateSelected,
             "location": location,
-            "odometer": String(format: "%.0f", (Double(odometer) ?? 0.0) / 0.621371),
+            "odometer": odometer,
+            "odometer_km": String(format: "%.0f", (Double(odometer) ?? 0.0) / 0.621371),
             "status": status,
             "remarks": remarks,
             "trailer_defects": trailerDefects,

@@ -103,14 +103,25 @@ var logsDataVal: logsModel? {
 
     var EventData: EventFrame? {
         didSet {
-            latestEventRawValue = EventData?.eventType.rawValue
+            if let raw = EventData?.eventType.rawValue {
+                let dateStr = ISO8601DateFormatter().string(from: Date())
+                if let index = eventCodeBuffer.firstIndex(where: { ($0["code"] as? Int) == raw }) {
+                    eventCodeBuffer[index]["date"] = dateStr
+                } else {
+                    eventCodeBuffer.append(["code": raw, "date": dateStr])
+                }
+                latestEventRawValue = raw
+            }
             NotificationCenter.default.post(
                 name: .telematicsUpdated,
                 object: virtualDashboardData
             )
         }
     }
-    /// Raw value of the most recent PacificTrack EventType received over BLE.
+    /// Buffer of recent BLE events: [["code": eventCode, "date": "isoDate"]]
+    @Published var eventCodeBuffer: [[String: Any]] = []
+    
+    /// The raw value of the single most recent event (for UI display)
     @Published var latestEventRawValue: Int? = nil
 
     var trackerInfoV: TrackerInfo?
@@ -127,6 +138,8 @@ var logsDataVal: logsModel? {
         virtualDashboardData = nil
         EventData = nil
         trackerInfoV = nil
+        eventCodeBuffer = []
+        latestEventRawValue = nil
     }
 
     func getHeaderTitle() -> String {

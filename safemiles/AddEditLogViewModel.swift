@@ -118,7 +118,8 @@ class AddEditLogViewModel: NSObject, ObservableObject, CLLocationManagerDelegate
             "event_notes": notes,
             "location_cal": location,
             "location_notes": location,
-            "odometer": (Double(odometer) ?? 0.0) / 0.621371,
+            "odometer": String(format: "%.0f", Double(odometer) ?? 0.0),
+            "odometer_km": String(format: "%.0f", (Double(odometer) ?? 0.0) / 0.621371),
             "engine_hours": Double(engineHours) ?? 0.0,
             "driver_id": Global.shared.logsDataVal?.metadata?.driver_id ?? ""
         ]

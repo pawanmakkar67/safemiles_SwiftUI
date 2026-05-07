@@ -68,7 +68,9 @@ class StatusUpdateViewModel: NSObject, ObservableObject, CLLocationManagerDelega
             "location_cal": locationText,
             "cert_date": getOnlyDate(Date()),
             "latitude": LocationManager.shared.lastLocation?.coordinate.latitude ?? 0.0,
-            "longitude": LocationManager.shared.lastLocation?.coordinate.longitude ?? 0.0
+            "longitude": LocationManager.shared.lastLocation?.coordinate.longitude ?? 0.0,
+            "odometer": String(format: "%.0f", ((Double(Global.shared.odometer) ?? 0.0) + Double(Global.shared.connectVehicleDetail?.offset ?? 0)) * 0.621371),
+            "odometer_km": String(format: "%.0f", (Double(Global.shared.odometer) ?? 0.0) + Double(Global.shared.connectVehicleDetail?.offset ?? 0))
         ]
 
         
