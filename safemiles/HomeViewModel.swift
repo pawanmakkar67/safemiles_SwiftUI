@@ -109,7 +109,7 @@ class HomeViewModel: ObservableObject {
 
     @objc func handleRecapRefresh() {
         AppLog.debug("HomeViewModel: Received requestRecapRefresh notification")
-        fetchRecap()
+        fetchRecap(force: true)
     }
 
     @objc func handleRecapUpdate() {
@@ -121,6 +121,7 @@ class HomeViewModel: ObservableObject {
         if let obj = Global.shared.recapvalues {
             DispatchQueue.main.async {
                 self.updateData(obj)
+                self.updateEvents()
             }
         }
 
@@ -498,18 +499,36 @@ class HomeViewModel: ObservableObject {
 
         // Break Calculation
         var breakCal = 0
+        var DrivebreakCal = 0
+
         if code.lowercased() == "sb" {
             breakCal = diffsec
         }
+        if code.lowercased() == "d" {
+            DrivebreakCal = diffsec
+        }
+
+        let objBreak_comsumed = data.hos_status?.break_consumed ?? 0
+
         let objBreak = data.last_event?.sb_break ?? 0
         let currentSec = convertTimeToSeconds(timeString: driveValueLocal) ?? 0
         var IntSec = 0
         if currentSec > 28800 {
-            IntSec = 28800 - Int(objBreak) - breakCal
+            if ((objBreak_comsumed > 0) || (code.lowercased() == "d")) {
+                IntSec = 28800 - objBreak_comsumed - DrivebreakCal
+            }
+            else {
+                IntSec = 28800 - Int(objBreak) - breakCal
+            }
         } else {
-            IntSec = currentSec - Int(objBreak) - breakCal
+            if ((objBreak_comsumed > 0) || (code.lowercased() == "d")) {
+                IntSec = currentSec - objBreak_comsumed - DrivebreakCal
+            }
+            else {
+                IntSec = currentSec - Int(objBreak) - breakCal
+            }
         }
-
+        print("driveValueLocal ::", driveValueLocal)
         if IntSec < 0 {
             IntSec = 0
         }
@@ -571,7 +590,7 @@ class HomeViewModel: ObservableObject {
     // MARK: - Polling
     func startPolling() {
         timer = Timer.scheduledTimer(withTimeInterval: 60, repeats: true) { [weak self] _ in
-            self?.updateEvents()  // logic to check speed/status change
+            // logic to check speed/status change
             // Also refresh UI timer display if needed
             self?.fetchRecap()  // Re-fetch to keep synced
         }
@@ -658,7 +677,11 @@ class HomeViewModel: ObservableObject {
                     }
                 }
             }
-
+            DispatchQueue.main.async {
+                self.currentCode = code.lowercased()
+                self.currentStatus = self.getTitles(code)
+                self.updateCircleStatus(code: code)
+            }
             // Intermediate Event (IM) Logic: Send "IM" every 1 hour while driving
             if codeRecap.lowercased() == "d" {
                 if lastIMEventTime == nil {
@@ -702,9 +725,9 @@ class HomeViewModel: ObservableObject {
         let latitude = LocationManager.shared.lastLocation?.coordinate.latitude ?? Double(eventData.geolocation.latitude)
         let longitude = LocationManager.shared.lastLocation?.coordinate.longitude ?? Double(eventData.geolocation.longitude)
 
-        let startOdometer = eventData.odometer
-        let offset = Global.shared.connectVehicleDetail?.offset ?? 0
-        let totalOdometerKM = (Double(startOdometer) ?? 0.0) + Double(offset)
+        let rawOdoKM = Double(eventData.odometer)
+        let offsetKM = Double(Global.shared.connectedVehicleOffset) / 0.621371
+        let totalOdometerKM = rawOdoKM + offsetKM
         let odometerMiles = String(format: "%.0f", totalOdometerKM * 0.621371)
         let odometerKM = String(format: "%.0f", totalOdometerKM)
 

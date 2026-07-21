@@ -93,9 +93,6 @@ struct MainTabView: View {
             if let status = note.object as? Bool {
                 withAnimation {
                     isDriving = status
-                    if isDriving {
-                        selection = 0
-                    }
                 }
             }
         }

@@ -105,10 +105,10 @@ var logsDataVal: logsModel? {
         didSet {
             if let raw = EventData?.eventType.rawValue {
                 let dateStr = ISO8601DateFormatter().string(from: Date())
-                if let index = eventCodeBuffer.firstIndex(where: { ($0["code"] as? Int) == raw }) {
-                    eventCodeBuffer[index]["date"] = dateStr
+                if let index = eventCodeBuffer.firstIndex(where: { ($0["code"] as? String) == "\(raw)" }) {
+                    eventCodeBuffer[index]["date"] = "\(dateStr)"
                 } else {
-                    eventCodeBuffer.append(["code": raw, "date": dateStr])
+                    eventCodeBuffer.append(["code": "\(raw)", "date": "\(dateStr)"])
                 }
                 latestEventRawValue = raw
             }
@@ -124,7 +124,27 @@ var logsDataVal: logsModel? {
     /// The raw value of the single most recent event (for UI display)
     @Published var latestEventRawValue: Int? = nil
 
+    /// Last time a status update was attempted (for 10-second throttle)
+    var lastStatusUpdateTimestamp: Date?
+
     var trackerInfoV: TrackerInfo?
+
+    var connectedVehicleOffset: Int {
+        if let connectedId = connectVehicleDetail?.id {
+            if let matchingVehicle = vehicleList.first(where: { $0.vehicle_id == connectedId }) {
+                return matchingVehicle.offset ?? 0
+            }
+        }
+        
+        // Fallback to unit number if ID doesn't match
+        if let connectedUnit = connectVehicleDetail?.unit_number {
+            if let matchingVehicle = vehicleList.first(where: { $0.unit_number == connectedUnit }) {
+                return matchingVehicle.offset ?? 0
+            }
+        }
+        
+        return 0
+    }
 
     func reset() {
         recapvalues = nil
@@ -140,6 +160,7 @@ var logsDataVal: logsModel? {
         trackerInfoV = nil
         eventCodeBuffer = []
         latestEventRawValue = nil
+        lastStatusUpdateTimestamp = nil
     }
 
     func getHeaderTitle() -> String {

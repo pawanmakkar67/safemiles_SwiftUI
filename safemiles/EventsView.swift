@@ -294,7 +294,7 @@ struct EventRow: View {
                 Text(getDisplayCode(event.code))
                     .font(AppFonts.cardTitle)
                     .foregroundColor(getStatusColor(event.code))
-                    .frame(width: 70, alignment: .leading)
+                    .frame(width: 90, alignment: .leading)
 
                 Text(formatTime(event.eventdatetime))
                     .font(AppFonts.bodyText)
@@ -309,11 +309,13 @@ struct EventRow: View {
                 .font(AppFonts.bodyText)
                 .foregroundColor(AppColors.textGray)
 
-            // Edit Icon
-            Button(action: onEdit) {
-                Image(systemName: "pencil")
-                    .foregroundColor(AppColors.iconGray)
-                    .padding(.leading, 8)
+            // Edit Icon (Hidden for telematic events)
+            if !isTelematicEvent(event.code) {
+                Button(action: onEdit) {
+                    Image(systemName: "pencil")
+                        .foregroundColor(AppColors.iconGray)
+                        .padding(.leading, 8)
+                }
             }
         }
         .padding(.vertical, 12)
@@ -354,27 +356,58 @@ struct EventRow: View {
     }
 
     func getStatusColor(_ code: String?) -> Color {
-        switch code?.lowercased() {
+        guard let code = code?.lowercased() else { return AppColors.textGray }
+        
+        switch code {
         case "d", "driving": return AppColors.statusGreen
         case "on", "login", "active": return AppColors.buttonActive
         case "ym": return AppColors.buttonActive  // Dotted ON style
         case "sb": return AppColors.orange
         case "off", "off duty": return AppColors.textGray
         case "pu": return AppColors.textGray  // Dotted OFF style
-        default: return AppColors.textGray
+        case "13", "14", "15": return AppColors.statusRed // Harsh events
+        default:
+            if isTelematicEvent(code) {
+                return AppColors.textGray
+            }
+            return AppColors.textGray
         }
     }
 
     func getDisplayCode(_ code: String?) -> String {
-        switch code?.lowercased() {
+        guard let code = code?.lowercased() else { return "-" }
+        
+        switch code {
         case "d", "driving": return "D"
         case "sb": return "SB"
         case "on": return "ON"
         case "off": return "OFF"
         case "ym": return "YM"
-        case "pu": return "PU"  // Often called Personal Conveyance
-        default: return code?.uppercased() ?? "-"
+        case "pu": return "PU"
+        case "0": return "Power On"
+        case "1": return "Power Off"
+        case "2": return "Ignition On"
+        case "3": return "Ignition Off"
+        case "4": return "Engine On"
+        case "5": return "Engine Off"
+        case "6": return "Trip Start"
+        case "7": return "Trip Stop"
+        case "8": return "Periodic"
+        case "9": return "Bluetooth Connected"
+        case "10": return "Bluetooth Disconnected"
+        case "11": return "Bus Connected"
+        case "12": return "Bus Disconnected"
+        case "13": return "Harsh Accelerating"
+        case "14": return "Harsh Braking"
+        case "15": return "Harsh Cornering"
+        default: return code.uppercased()
         }
+    }
+
+    func isTelematicEvent(_ code: String?) -> Bool {
+        guard let code = code else { return false }
+        let telematicCodes = Set(["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15"])
+        return telematicCodes.contains(code)
     }
 
     func formatTime(_ dateStr: String?) -> String {

@@ -182,7 +182,7 @@ func getFormattedDate(from dateString: String) -> String {
     for format in formats {
         formatter.dateFormat = format
         if let date = formatter.date(from: dateString) {
-            formatter.dateFormat = "dd-MMM" // Desired output format
+            formatter.dateFormat = "MMM dd" // Desired output format
             return formatter.string(from: date)
         }
     }

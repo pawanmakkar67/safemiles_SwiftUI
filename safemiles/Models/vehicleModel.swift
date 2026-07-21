@@ -45,6 +45,7 @@ struct VehicleData: Mappable {
     var license_plate_state: String?
     var license_plate_number: String?
     var status: String?
+    var offset: Int?
     var company: String?
     var eld: ELDDATA?
 
@@ -66,6 +67,7 @@ struct VehicleData: Mappable {
         license_plate_state <- map["license_plate_state"]
         license_plate_number <- map["license_plate_number"]
         status <- map["status"]
+        offset <- map["offset"]
         company <- map["company"]
         eld <- map["eld_data"]
     }

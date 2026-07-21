@@ -159,6 +159,7 @@ struct Hos_status : Mappable {
     var drive : String?
     var break1 : String?
     var shift : String?
+    var break_consumed : Int?
 
     init?(map: Map) {
 
@@ -178,6 +179,7 @@ struct Hos_status : Mappable {
         drive <- map["drive"]
         break1 <- map["break"]
         shift <- map["shift"]
+        break_consumed <- map["break_consumed"]
     }
 
 }

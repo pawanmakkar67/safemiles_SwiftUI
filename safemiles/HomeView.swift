@@ -11,7 +11,6 @@ struct HomeView: View {
     @State private var selectedSegment = 0 // 0: Overview, 1: Recap
     @State private var showBluetoothScan = false
     @State private var isDriving = false
-    @State private var refreshID = UUID() // Force redraw on updates
     
     var body: some View {
         ZStack {
@@ -62,7 +61,6 @@ struct HomeView: View {
                 }
             )
         }
-        .id(refreshID) // Key to forcing body re-evaluation
         .onAppear {
             showBluetoothScan = false
             if let obj = Global.shared.recapvalues {
@@ -82,13 +80,10 @@ struct HomeView: View {
             if let code = Global.shared.recapvalues?.last_event?.code?.lowercased() {
                 withAnimation { isDriving = (code == "d") }
             }
-            refreshID = UUID() // Force title update
         }
         .onReceive(NotificationCenter.default.publisher(for: .profileUpdate).receive(on: RunLoop.main)) { _ in
-            refreshID = UUID() // Force title update
         }
         .onReceive(NotificationCenter.default.publisher(for: .vehicleUpdate).receive(on: RunLoop.main)) { _ in
-            refreshID = UUID() // Force title update
         }
     }
 }
@@ -143,21 +138,27 @@ struct OverviewTabView: View {
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 16) {
                     StatusCard(title: "DRIVE", icon: "drive_ic", status: viewModel.currentCode == "d" ? "ACTIVE" : "START", isActive: viewModel.currentCode == "d", statusCode: "d")
+                        .contentShape(Rectangle())
                         .onTapGesture { if viewModel.currentCode != "d" { viewModel.selectedStatusUpdateCode = "d"; withAnimation { viewModel.showStatusUpdateModal = true } } }
                     
                     StatusCard(title: "OFF", icon: "off_ic", status: viewModel.currentCode == "off" ? "ACTIVE" : "START", isActive: viewModel.currentCode == "off", statusCode: "off")
+                        .contentShape(Rectangle())
                         .onTapGesture { if viewModel.currentCode != "off" { viewModel.selectedStatusUpdateCode = "off"; withAnimation { viewModel.showStatusUpdateModal = true } } }
                     
                     StatusCard(title: "ON\nDuty", icon: "on_ic", status: viewModel.currentCode == "on" ? "ACTIVE" : "START", isActive: viewModel.currentCode == "on", statusCode: "on")
+                        .contentShape(Rectangle())
                         .onTapGesture { if viewModel.currentCode != "on" { viewModel.selectedStatusUpdateCode = "on"; withAnimation { viewModel.showStatusUpdateModal = true } } }
                     
                     StatusCard(title: "Yard\nMoves", icon: "ym_ic", status: viewModel.currentCode == "ym" ? "ACTIVE" : "START", isActive: viewModel.currentCode == "ym", statusCode: "ym")
+                        .contentShape(Rectangle())
                         .onTapGesture { if viewModel.currentCode != "ym" { viewModel.selectedStatusUpdateCode = "ym"; withAnimation { viewModel.showStatusUpdateModal = true } } }
                     
                     StatusCard(title: "Sleeper", icon: "sb_ic", status: viewModel.currentCode == "sb" ? "ACTIVE" : "START", isActive: viewModel.currentCode == "sb", statusCode: "sb")
+                        .contentShape(Rectangle())
                         .onTapGesture { if viewModel.currentCode != "sb" { viewModel.selectedStatusUpdateCode = "sb"; withAnimation { viewModel.showStatusUpdateModal = true } } }
                     
                     StatusCard(title: "Personal\nUse", icon: "pu_ic", status: viewModel.currentCode == "pu" ? "ACTIVE" : "START", isActive: viewModel.currentCode == "pu", statusCode: "pu")
+                        .contentShape(Rectangle())
                         .onTapGesture { if viewModel.currentCode != "pu" { viewModel.selectedStatusUpdateCode = "pu"; withAnimation { viewModel.showStatusUpdateModal = true } } }
                 }
                 .padding(.horizontal)

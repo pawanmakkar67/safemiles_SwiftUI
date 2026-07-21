@@ -43,7 +43,9 @@ class APIManager {
         AF.request(
             url1, method: method, parameters: parameters, encoding: URLEncoding.default,
             headers: headers
-        ).responseJSON { (response) in
+        ).cURLDescription { curl in
+            AppLog.debug("cURL Request:\n\(curl)")
+        }.responseJSON { (response) in
 
             AppLog.debug(response.value as Any)
             AppLog.debug("Status Code: \(response.response?.statusCode ?? 0)")
@@ -146,25 +148,9 @@ class APIManager {
 
         AF.upload(
             multipartFormData: { multipartFormData in
-
                 if let parameters = parameters {
                     for (key, value) in parameters {
-
-                        if value is UIImage {
-                            let item = value as! UIImage
-                            //                            for  item in value as! [UIImage] {
-                            if let imageData = item.jpegData(compressionQuality: 0.6) {
-                                let timestamp = Date().timeIntervalSince1970
-
-                                multipartFormData.append(
-                                    imageData, withName: key, fileName: "\(timestamp).png",
-                                    mimeType: "image/png")
-                            }
-                            //                            }
-                        }
-
-                        let stringValue = "\(value)"
-                        multipartFormData.append((stringValue.data(using: .utf8))!, withName: key)
+                        self.appendMultipart(formData: multipartFormData, key: key, value: value)
                     }
                 }
 
@@ -173,7 +159,9 @@ class APIManager {
 
             method: method,
             headers: headers
-        )
+        ).cURLDescription { curl in
+            AppLog.debug("cURL Upload Request:\n\(curl)")
+        }
         .responseJSON { (response) in
 
             AppLog.debug(response.value as Any)
@@ -250,33 +238,9 @@ class APIManager {
 
         AF.upload(
             multipartFormData: { multipartFormData in
-
                 if let parameters = parameters {
                     for (key, value) in parameters {
-
-                        if value is [UIImage] {
-                            // let item = value as! UIImage
-                            for item in value as! [UIImage] {
-                                if let imageData = item.jpegData(compressionQuality: 0.6) {
-
-                                    multipartFormData.append(
-                                        imageData, withName: key + "[]", fileName: "\(Date()).jpg",
-                                        mimeType: "image/jpeg")
-                                }
-                            }
-                        } else if value is UIImage {
-                            let item = value as! UIImage
-                            //                            for  item in value as! [UIImage] {
-                            if let imageData = item.jpegData(compressionQuality: 0.6) {
-
-                                multipartFormData.append(
-                                    imageData, withName: key, fileName: "filename.jpg",
-                                    mimeType: "image/jpeg")
-                            }
-                            //                            }
-                        }
-                        let stringValue = "\(value)"
-                        multipartFormData.append((stringValue.data(using: .utf8))!, withName: key)
+                        self.appendMultipart(formData: multipartFormData, key: key, value: value)
                     }
                 }
 
@@ -285,7 +249,9 @@ class APIManager {
 
             method: method,
             headers: headers
-        )
+        ).cURLDescription { curl in
+            AppLog.debug("cURL Multiple Upload Request:\n\(curl)")
+        }
         .responseJSON { (response) in
 
             AppLog.debug(response.value as Any)
@@ -367,36 +333,15 @@ class APIManager {
 
                 if let parameters = parameters {
                     for (key, value) in parameters {
-
-                        if value is [UIImage] {
-                            // let item = value as! UIImage
-                            for item in value as! [UIImage] {
-                                if let imageData = item.jpegData(compressionQuality: 0.6) {
-
-                                    multipartFormData.append(
-                                        imageData, withName: key + "[]", fileName: "\(Date()).jpg",
-                                        mimeType: "image/jpeg")
-                                }
-                            }
-                        } else if value is UIImage {
-                            let item = value as! UIImage
-                            //                            for  item in value as! [UIImage] {
-                            if let imageData = item.jpegData(compressionQuality: 0.6) {
-
-                                multipartFormData.append(
-                                    imageData, withName: key, fileName: "filename.jpg",
-                                    mimeType: "image/jpeg")
-                            }
-                            //                            }
-                        }
-                        let stringValue = "\(value)"
-                        multipartFormData.append((stringValue.data(using: .utf8))!, withName: key)
+                        self.appendMultipart(formData: multipartFormData, key: key, value: value)
                     }
                 }
             }, to: url,
             method: method,
             headers: headers
-        )
+        ).cURLDescription { curl in
+            AppLog.debug("cURL Multiple Images Upload Request:\n\(curl)")
+        }
         .responseJSON { (response) in
 
             AppLog.debug(response.value as Any)
@@ -522,7 +467,9 @@ class APIManager {
         AF.request(
             url1, method: method, parameters: parameters, encoding: URLEncoding.default,
             headers: headers
-        ).responseJSON { (response) in
+        ).cURLDescription { curl in
+            AppLog.debug("cURL Authorization Request:\n\(curl)")
+        }.responseJSON { (response) in
 
             AppLog.debug(response.value as Any)
             AppLog.debug("Status Code: \(response.response?.statusCode ?? 0)")
@@ -622,5 +569,33 @@ class APIManager {
                 AppLog.debug("Refresh token failed with status: \(response.response?.statusCode ?? 0)")
                 completion(false)
             }
+    }
+
+    private func appendMultipart(formData: MultipartFormData, key: String, value: Any) {
+        if let image = value as? UIImage {
+            if let imageData = image.jpegData(compressionQuality: 0.6) {
+                let timestamp = Date().timeIntervalSince1970
+                formData.append(imageData, withName: key, fileName: "\(timestamp).jpg", mimeType: "image/jpeg")
+            }
+        } else if let images = value as? [UIImage] {
+            for (index, image) in images.enumerated() {
+                if let imageData = image.jpegData(compressionQuality: 0.6) {
+                    formData.append(imageData, withName: "\(key)[]", fileName: "\(Date().timeIntervalSince1970)_\(index).jpg", mimeType: "image/jpeg")
+                }
+            }
+        } else if let dict = value as? [String: Any] {
+            for (subKey, subValue) in dict {
+                appendMultipart(formData: formData, key: "\(key)[\(subKey)]", value: subValue)
+            }
+        } else if let array = value as? [Any] {
+            for (index, element) in array.enumerated() {
+                appendMultipart(formData: formData, key: "\(key)[\(index)]", value: element)
+            }
+        } else {
+            let stringValue = "\(value)"
+            if let data = stringValue.data(using: .utf8) {
+                formData.append(data, withName: key)
+            }
+        }
     }
 }

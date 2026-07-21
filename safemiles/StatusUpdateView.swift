@@ -40,16 +40,17 @@ struct StatusUpdateView: View {
                         Image(systemName: "xmark")
                             .foregroundColor(AppColors.textBlack)
                             .font(AppFonts.iconSmall)
+                            .padding(8)
+                            .contentShape(Rectangle())
                     }
+                    .buttonStyle(.scale)
                 }
                 .padding()
-                .padding(.top,20)
+                .padding(.top, 10)
                 
-                // Progress/Limit (Placeholder based on screenshot "5/11 Hours")
-                // Assuming this is static or derived. For now hardcoding or leaving as placeholder UI
-                // The screenshot shows "5/11 Hours" under the title.
+                // Progress/Limit
                 HStack {
-                    Text("") // This needs to be dynamic based on rules if required, but user didn't specify.
+                    Text("") 
                         .font(AppFonts.footnote)
                         .foregroundColor(AppColors.textGray)
                     Spacer()
@@ -59,7 +60,7 @@ struct StatusUpdateView: View {
                 // Location Row
                 HStack(alignment: .top, spacing: 12) {
                     Image(systemName: "mappin.and.ellipse")
-                        .foregroundColor(AppColors.blue) // Assuming blue for location pin
+                        .foregroundColor(AppColors.blue) 
                         .font(AppFonts.iconSmall)
                     
                     VStack(alignment: .leading, spacing: 4) {
@@ -70,8 +71,6 @@ struct StatusUpdateView: View {
                         
                         Divider()
                     }
-                    
-
                 }
                 .padding(.horizontal)
                 .padding(.bottom, 20)
@@ -88,7 +87,7 @@ struct StatusUpdateView: View {
                         )
                 }
                 .padding(.horizontal)
-                .padding(.bottom, 24)
+                .padding(.bottom, 20)
                 
                 // Update Button
                 Button(action: {
@@ -98,27 +97,27 @@ struct StatusUpdateView: View {
                         }
                     })
                 }) {
-                    if viewModel.isLoading {
-                        ProgressView()
-                            .progressViewStyle(CircularProgressViewStyle(tint: .white))
-                            .frame(maxWidth: .infinity)
-                            .padding()
-                            .background(AppColors.buttonActive)
-                            .cornerRadius(10)
-                    } else {
-                        Text("Update")
-                            .font(AppFonts.buttonTitle)
-                            .foregroundColor(AppColors.white)
-                            .frame(maxWidth: .infinity)
-                            .padding()
-                            .background(AppColors.buttonActive)
-                            .cornerRadius(10)
+                    ZStack {
+                        if viewModel.isLoading {
+                            ProgressView()
+                                .progressViewStyle(CircularProgressViewStyle(tint: .white))
+                        } else {
+                            Text("Update")
+                                .font(AppFonts.buttonTitle)
+                                .foregroundColor(AppColors.white)
+                        }
                     }
+                    .frame(maxWidth: .infinity, minHeight: 60)
+                    .background(AppColors.buttonActive)
+                    .cornerRadius(12)
+                    .padding(.horizontal)
+                    .padding(.bottom, 110) // Hit area expansion
+                    .background(Color.white.opacity(0.001)) // Reliable hit-testing
                 }
-                .padding(.horizontal)
-                .padding(.bottom, 100)
+                .buttonStyle(.scale)
                 
             }
+            .frame(maxWidth: .infinity, maxHeight: 380) // Set specific maximum height as requested
             .background(AppColors.white)
             .cornerRadius(20, corners: [.topLeft, .topRight])
             .shadow(radius: 10)

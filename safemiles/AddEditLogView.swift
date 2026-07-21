@@ -244,16 +244,14 @@ struct AddEditLogView: View {
                             if viewModel.isLoading {
                                 ProgressView()
                                     .progressViewStyle(CircularProgressViewStyle(tint: .white))
-                                    .frame(maxWidth: .infinity)
-                                    .frame(height: 50)
+                                    .frame(maxWidth: .infinity, minHeight: 50)
                                     .background(AppColors.textBlack)
                                     .cornerRadius(8)
                             } else {
                                 Text("Update")
                                     .font(AppFonts.buttonTitle)
                                     .foregroundColor(.white)
-                                    .frame(maxWidth: .infinity)
-                                    .frame(height: 50)
+                                    .frame(maxWidth: .infinity, minHeight: 50)
                                     .background(AppColors.textBlack)
                                     .cornerRadius(8)
                             }

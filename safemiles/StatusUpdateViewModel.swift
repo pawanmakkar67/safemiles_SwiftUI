@@ -12,7 +12,6 @@ class StatusUpdateViewModel: NSObject, ObservableObject, CLLocationManagerDelega
     @Published var alertMessage: String = ""
     @Published var showAlert: Bool = false
     
-    private var lastUpdateStatusTime: Date?
     private var locationManager = CLLocationManager()
     
     init(selectedCode: String) {
@@ -29,12 +28,14 @@ class StatusUpdateViewModel: NSObject, ObservableObject, CLLocationManagerDelega
     }
     
     func updateStatus(onSuccess: @escaping () -> Void) {
-        if let lastTime = lastUpdateStatusTime, Date().timeIntervalSince(lastTime) < 10 {
+        
+        print("update Status called")
+        if let lastTime = Global.shared.lastStatusUpdateTimestamp, Date().timeIntervalSince(lastTime) < 10 {
             alertMessage = "Please wait 10 seconds before updating status again."
             showAlert = true
             return
         }
-        lastUpdateStatusTime = Date()
+        Global.shared.lastStatusUpdateTimestamp = Date()
 
         guard !selectedCode.isEmpty else {
             alertMessage = "please select status to update"
@@ -69,13 +70,17 @@ class StatusUpdateViewModel: NSObject, ObservableObject, CLLocationManagerDelega
             "cert_date": getOnlyDate(Date()),
             "latitude": LocationManager.shared.lastLocation?.coordinate.latitude ?? 0.0,
             "longitude": LocationManager.shared.lastLocation?.coordinate.longitude ?? 0.0,
-            "odometer": String(format: "%.0f", ((Double(Global.shared.odometer) ?? 0.0) + Double(Global.shared.connectVehicleDetail?.offset ?? 0)) * 0.621371),
-            "odometer_km": String(format: "%.0f", (Double(Global.shared.odometer) ?? 0.0) + Double(Global.shared.connectVehicleDetail?.offset ?? 0))
+            "odometer": String(format: "%.0f", (Double(Global.shared.odometer) ?? 0.0) * 0.621371),
+            "odometer_km": String(format: "%.0f", Double(Global.shared.odometer) ?? 0.0)
         ]
 
         
         if let connectedVehicle = vehicleiD as? String, vehicleiD != "" {
             params["vehicle"] = connectedVehicle
+        }
+        
+        if !Global.shared.eventCodeBuffer.isEmpty {
+            params["event_code"] = Global.shared.eventCodeBuffer
         }
         
         isLoading = true
@@ -84,6 +89,7 @@ class StatusUpdateViewModel: NSObject, ObservableObject, CLLocationManagerDelega
             // Handle loader in success/failure to ensure it stays until the very end
         } success: { [weak self] response in
             self?.isLoading = false
+            Global.shared.eventCodeBuffer.removeAll()
             NotificationCenter.default.post(name: .requestRecapRefresh, object: nil)
             onSuccess()
         } failure: { [weak self] error in

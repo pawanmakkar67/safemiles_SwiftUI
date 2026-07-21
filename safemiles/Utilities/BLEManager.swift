@@ -210,8 +210,10 @@ extension BLEManager {
             Global.shared.virtualDashboardData = virtualDashboardData
             
             // Also update odometer as per user snippet
-            if let odometer = virtualDashboardData.odometer {
-                 Global.shared.odometer = "\(odometer)"
+            if let odometerKM = virtualDashboardData.odometer {
+                 let offsetMiles = Double(Global.shared.connectedVehicleOffset)
+                 let offsetKM = offsetMiles / 0.621371
+                 Global.shared.odometer = String(format: "%.2f", odometerKM + offsetKM)
             }
         }
         

@@ -3,6 +3,7 @@ import Combine
 import ObjectMapper
 import Alamofire
 import CoreLocation
+import PacificTrack
 
 class AddDvirViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
     // Form Fields
@@ -13,7 +14,18 @@ class AddDvirViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
     @Published var status: String = "Vehicle Condition Satisfactory"
     @Published var remarks: String = ""
     
-    @Published var selectedVehicle: VehicleData?
+    var vehicleOffset: String {
+        let offset = selectedVehicle?.offset ?? Global.shared.connectedVehicleOffset
+        return offset != 0 ? "(\(offset))" : ""
+    }
+    
+    @Published var selectedVehicle: VehicleData? {
+        didSet {
+            if editingDvirId == nil {
+                setupInitialData()
+            }
+        }
+    }
     @Published var vehicleDefects: [String] = []
     
     @Published var trailers: [String] = []
@@ -94,11 +106,11 @@ class AddDvirViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
     }
     
     private func setupInitialData() {
-        let baseOdometer = Double(Global.shared.odometer) ?? 0.0
-        let offset = Double(Global.shared.connectVehicleDetail?.offset ?? 0)
-        let totalOdometer = baseOdometer + offset
-        
-        self.odometer = totalOdometer > 0 ? String(format: "%.1f", totalOdometer * 0.621371) : ""
+        let rawOdoKM = Global.shared.virtualDashboardData?.odometer ?? 0.0
+        let offsetMiles = Double(selectedVehicle?.offset ?? Global.shared.connectedVehicleOffset)
+        let offsetKM = offsetMiles / 0.621371
+        let totalOdometerKM = rawOdoKM + offsetKM
+        self.odometer = String(format: "%.1f", totalOdometerKM * 0.621371)
         self.company = Global.shared.myProfile?.company?.name ?? ""
     }
     
@@ -174,12 +186,17 @@ class AddDvirViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
         dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
         let dateSelected = dateFormatter.string(from: time)
 
+        // Odometer is entered in miles in UI, which already includes offset if it was auto-populated
+        let finalOdoMiles = odometer
+        let odoKM = (Double(odometer) ?? 0.0) / 0.621371
+        let finalOdoKM = String(format: "%.0f", odoKM)
+
         // Params
         var params: [String: Any] = [
             "dvir_date_time": dateSelected,
             "location": location,
-            "odometer": odometer,
-            "odometer_km": String(format: "%.0f", (Double(odometer) ?? 0.0) / 0.621371),
+            "odometer": finalOdoMiles,
+            "odometer_km": finalOdoKM,
             "status": status,
             "remarks": remarks,
             "trailer_defects": trailerDefects,

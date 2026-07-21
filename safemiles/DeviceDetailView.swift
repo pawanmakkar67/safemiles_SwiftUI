@@ -117,6 +117,8 @@ struct DeviceInfoCard: View {
             Group {
                 DataRow(label: "Odometer:", value: String(format: "%.1f miles", Double(event.odometer) * 0.621371))
                 Divider()
+                DataRow(label: "Odometer (with Offset):", value: String(format: "%.1f miles", (Double(event.odometer) * 0.621371) + Double(Global.shared.connectedVehicleOffset)))
+                Divider()
                 DataRow(label: "Velocity:", value: String(format: "%.1f mph", Double(event.velocity) * 0.621371))
                 Divider()
                 DataRow(label: "Engine Hours:", value: String(format: "%.1f", event.engineHours))
