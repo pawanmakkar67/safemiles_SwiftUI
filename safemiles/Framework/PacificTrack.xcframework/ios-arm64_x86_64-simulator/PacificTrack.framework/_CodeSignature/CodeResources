@@ -6,7 +6,7 @@
 	<dict>
 		<key>Headers/PacificTrack-Swift.h</key>
 		<data>
-		278T104kB7FwuZ4N83jGPNFEMOM=
+		KM5n5VkM+sar+qPmHB8eU/AZmxE=
 		</data>
 		<key>Headers/PacificTrack.h</key>
 		<data>
@@ -14,31 +14,51 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		Z7cfYWV6T/Pe4S98bCuTd/uCRLw=
+		JZy1Mh1jyQxUvZo+PHojy14PvgM=
 		</data>
 		<key>Modules/PacificTrack.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
 		<data>
-		behXzz6rtMAILLiqPzJYzYTAU/4=
+		5shYJEw99wdPxLiOeKmRfLyCLU8=
 		</data>
 		<key>Modules/PacificTrack.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
-		19wr9G6CCu7sxUT91E28qYq2WRk=
+		K/AbNKco/RTXOBb/NgzzmZefJ08=
 		</data>
 		<key>Modules/PacificTrack.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		1Xa8ZUDZCfFOg97zSr+rMoUvFIg=
+		+MQp25MBnFVYxOlAcObpg9ERIEc=
 		</data>
 		<key>Modules/PacificTrack.swiftmodule/arm64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		19wr9G6CCu7sxUT91E28qYq2WRk=
+		K/AbNKco/RTXOBb/NgzzmZefJ08=
 		</data>
 		<key>Modules/PacificTrack.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		/Gy6L1PLc+TgbLNkCtkoEYCP80U=
+		r3LYlAnf56hlDNElFgAB2xRx7YY=
+		</data>
+		<key>Modules/PacificTrack.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
+		<data>
+		5shYJEw99wdPxLiOeKmRfLyCLU8=
+		</data>
+		<key>Modules/PacificTrack.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
+		<data>
+		Rm2crzM7eSqRCuRtgAcOnlo9hpA=
+		</data>
+		<key>Modules/PacificTrack.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
+		<data>
+		hGuB8FL1bTJ0FyqWwNH6qWPorsY=
+		</data>
+		<key>Modules/PacificTrack.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
+		<data>
+		Rm2crzM7eSqRCuRtgAcOnlo9hpA=
+		</data>
+		<key>Modules/PacificTrack.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
+		<data>
+		o8c1+b8121eUwhb52M+RbqaOKTI=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
-		KsKmwpJqcaDq6qeFXGVfRfiWkIc=
+		urahi7OmRDW55UmWORnWudmqcec=
 		</data>
 	</dict>
 	<key>files2</key>
@@ -47,7 +67,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			k9Fkpnn1cUV9mRXhHrygWg2aj1R0YQCYx58n9EWqh3Y=
+			vQgaNW7hbl1IhNcvpPwGxlNeB0oAYB/eDLGF1/bjGs0=
 			</data>
 		</dict>
 		<key>Headers/PacificTrack.h</key>
@@ -61,42 +81,77 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			dyNkENhgUQwWg954GZc5fYcAOJVagS71iqetpjzYh60=
+			tIisQL5nDsYvOCROLCCmfCoWzw1aQSWRIwipchYT6ZM=
 			</data>
 		</dict>
 		<key>Modules/PacificTrack.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			slREyNpflttsTbist+NzUyKOEWzGxE4EYUREPnTacRI=
+			mS4RXPDSoKLz56CdSzxz7MkwuaJc8JKqOHyGniaUfsg=
 			</data>
 		</dict>
 		<key>Modules/PacificTrack.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			VFyVTj/eN1g6JV6Yq+zilB2cHlkVphCPecGVu6xvYJg=
+			gfa5gP7I7ITbVUwg1M0MNnuYrVvV0i4g656Ir3jyDY8=
 			</data>
 		</dict>
 		<key>Modules/PacificTrack.swiftmodule/arm64-apple-ios-simulator.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			slREyNpflttsTbist+NzUyKOEWzGxE4EYUREPnTacRI=
+			mS4RXPDSoKLz56CdSzxz7MkwuaJc8JKqOHyGniaUfsg=
 			</data>
 		</dict>
 		<key>Modules/PacificTrack.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			E42MpJLB2YuRbgiPBrxAJdeyIy7xfV7NS2ta5NF61pk=
+			pZuEUMv2dwoqzaTbXveM7CoWR8JnJoBz+GpuJkYwdSI=
+			</data>
+		</dict>
+		<key>Modules/PacificTrack.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			tIisQL5nDsYvOCROLCCmfCoWzw1aQSWRIwipchYT6ZM=
+			</data>
+		</dict>
+		<key>Modules/PacificTrack.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			xQmFJYEcxJqxidiWewQCbJWgi1UfiSNIkgrQN3UEr5A=
+			</data>
+		</dict>
+		<key>Modules/PacificTrack.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			ItqYEzYPRScR20wU3qqQzs3yXmaRZhS+CcxvQ+653Ck=
+			</data>
+		</dict>
+		<key>Modules/PacificTrack.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			xQmFJYEcxJqxidiWewQCbJWgi1UfiSNIkgrQN3UEr5A=
+			</data>
+		</dict>
+		<key>Modules/PacificTrack.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			Q/ds1d2097SM2QesJeuaOE6az9OGAAnZPjrFv0I/WIY=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			B0jTHAU3t3c9cr/w60BLirkBs9EHfjwBVCEsefef1+M=
+			xL9bO7YCEA3tVqitWxxKD86ud48j9OE6XQJ17h3qTzo=
 			</data>
 		</dict>
 	</dict>

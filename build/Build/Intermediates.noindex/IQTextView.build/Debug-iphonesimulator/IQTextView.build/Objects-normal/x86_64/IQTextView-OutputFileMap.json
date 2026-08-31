@@ -1,0 +1,39 @@
+{
+  "" : {
+    "diagnostics" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/IQTextView.build/Debug-iphonesimulator/IQTextView.build/Objects-normal/x86_64/IQTextView-primary.dia",
+    "emit-module-dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/IQTextView.build/Debug-iphonesimulator/IQTextView.build/Objects-normal/x86_64/IQTextView-primary-emit-module.d",
+    "emit-module-diagnostics" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/IQTextView.build/Debug-iphonesimulator/IQTextView.build/Objects-normal/x86_64/IQTextView-primary-emit-module.dia",
+    "pch" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/IQTextView.build/Debug-iphonesimulator/IQTextView.build/Objects-normal/x86_64/IQTextView-primary-Bridging-header.pch",
+    "swift-dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/IQTextView.build/Debug-iphonesimulator/IQTextView.build/Objects-normal/x86_64/IQTextView-primary.swiftdeps"
+  },
+  "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/IQTextView.build/Debug-iphonesimulator/IQTextView.build/DerivedSources/resource_bundle_accessor.swift" : {
+    "const-values" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/IQTextView.build/Debug-iphonesimulator/IQTextView.build/Objects-normal/x86_64/resource_bundle_accessor.swiftconstvalues",
+    "dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/IQTextView.build/Debug-iphonesimulator/IQTextView.build/Objects-normal/x86_64/resource_bundle_accessor.d",
+    "diagnostics" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/IQTextView.build/Debug-iphonesimulator/IQTextView.build/Objects-normal/x86_64/resource_bundle_accessor.dia",
+    "index-unit-output-path" : "/IQTextView.build/Debug-iphonesimulator/IQTextView.build/Objects-normal/x86_64/resource_bundle_accessor.o",
+    "llvm-bc" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/IQTextView.build/Debug-iphonesimulator/IQTextView.build/Objects-normal/x86_64/resource_bundle_accessor.bc",
+    "object" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/IQTextView.build/Debug-iphonesimulator/IQTextView.build/Objects-normal/x86_64/resource_bundle_accessor.o",
+    "swift-dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/IQTextView.build/Debug-iphonesimulator/IQTextView.build/Objects-normal/x86_64/resource_bundle_accessor.swiftdeps",
+    "swiftmodule" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/IQTextView.build/Debug-iphonesimulator/IQTextView.build/Objects-normal/x86_64/resource_bundle_accessor~partial.swiftmodule"
+  },
+  "/Users/pc/Documents/safemiles_SwiftUI/build/SourcePackages/checkouts/IQTextView/IQTextView/Classes/IQTextView+Placeholderable.swift" : {
+    "const-values" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/IQTextView.build/Debug-iphonesimulator/IQTextView.build/Objects-normal/x86_64/IQTextView+Placeholderable.swiftconstvalues",
+    "dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/IQTextView.build/Debug-iphonesimulator/IQTextView.build/Objects-normal/x86_64/IQTextView+Placeholderable.d",
+    "diagnostics" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/IQTextView.build/Debug-iphonesimulator/IQTextView.build/Objects-normal/x86_64/IQTextView+Placeholderable.dia",
+    "index-unit-output-path" : "/IQTextView.build/Debug-iphonesimulator/IQTextView.build/Objects-normal/x86_64/IQTextView+Placeholderable.o",
+    "llvm-bc" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/IQTextView.build/Debug-iphonesimulator/IQTextView.build/Objects-normal/x86_64/IQTextView+Placeholderable.bc",
+    "object" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/IQTextView.build/Debug-iphonesimulator/IQTextView.build/Objects-normal/x86_64/IQTextView+Placeholderable.o",
+    "swift-dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/IQTextView.build/Debug-iphonesimulator/IQTextView.build/Objects-normal/x86_64/IQTextView+Placeholderable.swiftdeps",
+    "swiftmodule" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/IQTextView.build/Debug-iphonesimulator/IQTextView.build/Objects-normal/x86_64/IQTextView+Placeholderable~partial.swiftmodule"
+  },
+  "/Users/pc/Documents/safemiles_SwiftUI/build/SourcePackages/checkouts/IQTextView/IQTextView/Classes/IQTextView.swift" : {
+    "const-values" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/IQTextView.build/Debug-iphonesimulator/IQTextView.build/Objects-normal/x86_64/IQTextView.swiftconstvalues",
+    "dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/IQTextView.build/Debug-iphonesimulator/IQTextView.build/Objects-normal/x86_64/IQTextView.d",
+    "diagnostics" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/IQTextView.build/Debug-iphonesimulator/IQTextView.build/Objects-normal/x86_64/IQTextView.dia",
+    "index-unit-output-path" : "/IQTextView.build/Debug-iphonesimulator/IQTextView.build/Objects-normal/x86_64/IQTextView.o",
+    "llvm-bc" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/IQTextView.build/Debug-iphonesimulator/IQTextView.build/Objects-normal/x86_64/IQTextView.bc",
+    "object" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/IQTextView.build/Debug-iphonesimulator/IQTextView.build/Objects-normal/x86_64/IQTextView.o",
+    "swift-dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/IQTextView.build/Debug-iphonesimulator/IQTextView.build/Objects-normal/x86_64/IQTextView.swiftdeps",
+    "swiftmodule" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/IQTextView.build/Debug-iphonesimulator/IQTextView.build/Objects-normal/x86_64/IQTextView~partial.swiftmodule"
+  }
+}

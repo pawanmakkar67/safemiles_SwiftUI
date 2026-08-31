@@ -1,0 +1,37 @@
+{
+  "/Users/pc/Documents/safemiles_SwiftUI/safemiles/Utilities/APIManager.swift" : {
+    "const-values" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/APIManager.swiftconstvalues",
+    "dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/APIManager.d",
+    "diagnostics" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/APIManager.dia",
+    "object" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/APIManager.o",
+    "swift-dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/APIManager.swiftdeps"
+  },
+  "/Users/pc/Documents/safemiles_SwiftUI/safemiles/Utilities/ApiList.swift" : {
+    "const-values" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/ApiList.swiftconstvalues",
+    "dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/ApiList.d",
+    "diagnostics" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/ApiList.dia",
+    "object" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/ApiList.o",
+    "swift-dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/ApiList.swiftdeps"
+  },
+  "/Users/pc/Documents/safemiles_SwiftUI/safemiles/Utilities/BLEManager.swift" : {
+    "const-values" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/BLEManager.swiftconstvalues",
+    "dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/BLEManager.d",
+    "diagnostics" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/BLEManager.dia",
+    "object" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/BLEManager.o",
+    "swift-dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/BLEManager.swiftdeps"
+  },
+  "/Users/pc/Documents/safemiles_SwiftUI/safemiles/Utilities/ColorConstants.swift" : {
+    "const-values" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/ColorConstants.swiftconstvalues",
+    "dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/ColorConstants.d",
+    "diagnostics" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/ColorConstants.dia",
+    "object" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/ColorConstants.o",
+    "swift-dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/ColorConstants.swiftdeps"
+  },
+  "/Users/pc/Documents/safemiles_SwiftUI/safemiles/Utilities/DvirConstants.swift" : {
+    "const-values" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/DvirConstants.swiftconstvalues",
+    "dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/DvirConstants.d",
+    "diagnostics" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/DvirConstants.dia",
+    "object" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/DvirConstants.o",
+    "swift-dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/DvirConstants.swiftdeps"
+  }
+}

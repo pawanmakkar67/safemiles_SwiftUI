@@ -34,36 +34,6 @@
             endingLineNumber = "290"
             landmarkName = "updateData(_:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "F32B1B6A-51CF-4993-B1B2-453C031726D2 - 6dcc3c73cdbc9c30"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "safemiles.HomeViewModel.updateData(Swift.Optional&lt;safemiles.RecapModel&gt;) -&gt; ()"
-                  moduleName = "safemiles.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/pc/Documents/untill%201%20june%202026/safemiles_SwiftUI/safemiles/HomeViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "290"
-                  endingLineNumber = "290">
-               </Location>
-               <Location
-                  uuid = "F32B1B6A-51CF-4993-B1B2-453C031726D2 - 6dcc3c73cdbc9c30"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "safemiles.HomeViewModel.updateData(Swift.Optional&lt;safemiles.RecapModel&gt;) -&gt; ()"
-                  moduleName = "safemiles.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/pc/Documents/untill%201%20june%202026/safemiles_SwiftUI/safemiles/HomeViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "290"
-                  endingLineNumber = "290">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

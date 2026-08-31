@@ -7,5 +7,4 @@ framework module PacificTrack {
 
 module PacificTrack.Swift {
   header "PacificTrack-Swift.h"
-  requires objc
 }

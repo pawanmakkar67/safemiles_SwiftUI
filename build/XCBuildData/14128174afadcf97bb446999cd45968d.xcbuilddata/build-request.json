@@ -1,0 +1,43 @@
+{
+  "buildCommand" : {
+    "command" : "build",
+    "skipDependencies" : false,
+    "style" : "buildAndRun"
+  },
+  "configuredTargets" : [
+    {
+      "guid" : "b1c88cbff074a65c298a9f490789838c1370b186f0be7d3063d26e0a74866f4a"
+    }
+  ],
+  "containerPath" : "/Users/pc/Documents/safemiles_SwiftUI/safemiles.xcodeproj",
+  "continueBuildingAfterErrors" : false,
+  "dependencyScope" : "workspace",
+  "enableIndexBuildArena" : false,
+  "hideShellScriptEnvironment" : false,
+  "parameters" : {
+    "action" : "build",
+    "configurationName" : "Debug",
+    "overrides" : {
+      "commandLine" : {
+        "table" : {
+          "ARCHS" : "x86_64",
+          "ONLY_ACTIVE_ARCH" : "YES",
+          "SDKROOT" : "iphonesimulator26.1"
+        }
+      },
+      "synthesized" : {
+        "table" : {
+          "ACTION" : "build",
+          "ENABLE_PREVIEWS" : "NO",
+          "ENABLE_XOJIT_PREVIEWS" : "NO",
+          "TOOLCHAINS" : "com.apple.dt.toolchain.Metal.32023 $(inherited)"
+        }
+      }
+    }
+  },
+  "showNonLoggedProgress" : true,
+  "useDryRun" : false,
+  "useImplicitDependencies" : false,
+  "useLegacyBuildLocations" : false,
+  "useParallelTargets" : true
+}

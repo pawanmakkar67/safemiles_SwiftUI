@@ -1,0 +1,23 @@
+{
+  "/Users/pc/Documents/safemiles_SwiftUI/build/SourcePackages/checkouts/Alamofire/Source/Core/Session.swift" : {
+    "const-values" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/Alamofire.build/Debug-iphonesimulator/Alamofire.build/Objects-normal/x86_64/Session.swiftconstvalues",
+    "dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/Alamofire.build/Debug-iphonesimulator/Alamofire.build/Objects-normal/x86_64/Session.d",
+    "diagnostics" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/Alamofire.build/Debug-iphonesimulator/Alamofire.build/Objects-normal/x86_64/Session.dia",
+    "object" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/Alamofire.build/Debug-iphonesimulator/Alamofire.build/Objects-normal/x86_64/Session.o",
+    "swift-dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/Alamofire.build/Debug-iphonesimulator/Alamofire.build/Objects-normal/x86_64/Session.swiftdeps"
+  },
+  "/Users/pc/Documents/safemiles_SwiftUI/build/SourcePackages/checkouts/Alamofire/Source/Core/SessionDelegate.swift" : {
+    "const-values" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/Alamofire.build/Debug-iphonesimulator/Alamofire.build/Objects-normal/x86_64/SessionDelegate.swiftconstvalues",
+    "dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/Alamofire.build/Debug-iphonesimulator/Alamofire.build/Objects-normal/x86_64/SessionDelegate.d",
+    "diagnostics" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/Alamofire.build/Debug-iphonesimulator/Alamofire.build/Objects-normal/x86_64/SessionDelegate.dia",
+    "object" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/Alamofire.build/Debug-iphonesimulator/Alamofire.build/Objects-normal/x86_64/SessionDelegate.o",
+    "swift-dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/Alamofire.build/Debug-iphonesimulator/Alamofire.build/Objects-normal/x86_64/SessionDelegate.swiftdeps"
+  },
+  "/Users/pc/Documents/safemiles_SwiftUI/build/SourcePackages/checkouts/Alamofire/Source/Core/URLConvertible+URLRequestConvertible.swift" : {
+    "const-values" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/Alamofire.build/Debug-iphonesimulator/Alamofire.build/Objects-normal/x86_64/URLConvertible+URLRequestConvertible.swiftconstvalues",
+    "dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/Alamofire.build/Debug-iphonesimulator/Alamofire.build/Objects-normal/x86_64/URLConvertible+URLRequestConvertible.d",
+    "diagnostics" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/Alamofire.build/Debug-iphonesimulator/Alamofire.build/Objects-normal/x86_64/URLConvertible+URLRequestConvertible.dia",
+    "object" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/Alamofire.build/Debug-iphonesimulator/Alamofire.build/Objects-normal/x86_64/URLConvertible+URLRequestConvertible.o",
+    "swift-dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/Alamofire.build/Debug-iphonesimulator/Alamofire.build/Objects-normal/x86_64/URLConvertible+URLRequestConvertible.swiftdeps"
+  }
+}

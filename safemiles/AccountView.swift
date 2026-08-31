@@ -1,5 +1,6 @@
 
 import SwiftUI
+import FirebaseCrashlytics
 
 struct AccountView: View {
     @Binding var showSideMenu: Bool
@@ -66,6 +67,33 @@ struct AccountView: View {
                                 .stroke(AppColors.grayOpacity20, lineWidth: 1)
                         )
                         .padding(20)
+                        
+                        #if DEBUG
+                        Button(action: {
+                            Crashlytics.crashlytics().log("User tapped Test Crashlytics Crash button")
+                            Crashlytics.crashlytics().setCustomValue("AccountView", forKey: "crash_origin")
+                            fatalError("Crashlytics Test Crash triggered from AccountView")
+                        }) {
+                            HStack {
+                                Image(systemName: "exclamationmark.triangle.fill")
+                                    .foregroundColor(.red)
+                                Text("Test Crashlytics Crash")
+                                    .font(AppFonts.subheadline)
+                                    .fontWeight(.semibold)
+                                    .foregroundColor(.red)
+                            }
+                            .padding()
+                            .frame(maxWidth: .infinity)
+                            .background(Color.red.opacity(0.1))
+                            .cornerRadius(8)
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 8)
+                                    .stroke(Color.red.opacity(0.3), lineWidth: 1)
+                            )
+                            .padding(.horizontal, 20)
+                            .padding(.bottom, 20)
+                        }
+                        #endif
                         
                         Spacer()
                     }

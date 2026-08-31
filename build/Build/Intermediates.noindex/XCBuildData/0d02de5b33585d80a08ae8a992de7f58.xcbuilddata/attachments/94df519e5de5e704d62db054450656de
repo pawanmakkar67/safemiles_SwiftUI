@@ -1,0 +1,4 @@
+module IQKeyboardNotification {
+header "IQKeyboardNotification-Swift.h"
+export *
+}

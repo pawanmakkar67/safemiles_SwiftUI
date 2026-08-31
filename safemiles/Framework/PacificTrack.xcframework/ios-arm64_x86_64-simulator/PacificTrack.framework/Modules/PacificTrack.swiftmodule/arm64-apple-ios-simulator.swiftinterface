@@ -1,14 +1,12 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.9 (swiftlang-5.9.0.128.108 clang-1500.0.40.1)
-// swift-module-flags: -target arm64-apple-ios11.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -Onone -module-name PacificTrack
-// swift-module-flags-ignorable: -enable-bare-slash-regex
+// swift-compiler-version: Apple Swift version 6.3.2 (swiftlang-6.3.2.1.108 clang-2100.1.1.101)
+// swift-module-flags: -target arm64-apple-ios13.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 6 -Onone -enable-experimental-feature DebugDescriptionMacro -module-name PacificTrack
+// swift-module-flags-ignorable: -no-verify-emitted-module-interface -formal-cxx-interoperability-mode=off -interface-compiler-version 6.3.2
 import CoreBluetooth
-import Dispatch
 import Foundation
-import MobileCoreServices
+import OSLog
 @_exported import PacificTrack
 import Swift
-import SystemConfiguration
 import _Concurrency
 import _StringProcessing
 import _SwiftConcurrencyShims
@@ -27,6 +25,15 @@ import _SwiftConcurrencyShims
     @objc get
   }
   @objc deinit
+}
+public enum PTLogger : Swift.Sendable {
+  nonisolated(unsafe) public static var debugLogs: Swift.Bool
+  nonisolated(unsafe) public static var fileLoggingEnabled: Swift.Bool
+  public static func log(level: os.OSLogType = .debug, message: Swift.String)
+  @discardableResult
+  public static func exportLogs() async -> Foundation.URL?
+  public static func clearLogs() async
+  public static func logFileURL() async -> Foundation.URL
 }
 @_hasMissingDesignatedInitializers @objc public class SPNDefinitionParam : ObjectiveC.NSObject {
   @objc public var spn: Swift.UInt {
@@ -59,6 +66,65 @@ import _SwiftConcurrencyShims
   @objc public init?(spn: Swift.UInt, mode: PacificTrack.SPNEventMode, timer: Swift.UInt, value: Swift.UInt, pgn: Swift.UInt, address: Swift.UInt, startByte: Swift.UInt, startBit: Swift.UInt, length: Swift.UInt)
   @objc deinit
 }
+@_hasMissingDesignatedInitializers @objc public class DtcData : ObjectiveC.NSObject {
+  public enum DtcType {
+    case obd2
+    case j1939
+    case j1708
+    case unknown
+    public static func == (a: PacificTrack.DtcData.DtcType, b: PacificTrack.DtcData.DtcType) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  @_hasMissingDesignatedInitializers @objc public class Fault : ObjectiveC.NSObject {
+    @objc override dynamic public var description: Swift.String {
+      @objc get
+    }
+    @objc deinit
+  }
+  @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc final public class OBD2 : PacificTrack.DtcData.Fault {
+    @objc override final public var description: Swift.String {
+      @objc get
+    }
+    @objc deinit
+  }
+  @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc final public class J1708 : PacificTrack.DtcData.Fault {
+    @objc override final public var description: Swift.String {
+      @objc get
+    }
+    @objc deinit
+  }
+  @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc final public class J1939 : PacificTrack.DtcData.Fault {
+    @objc override final public var description: Swift.String {
+      @objc get
+    }
+    @objc deinit
+  }
+  @_hasMissingDesignatedInitializers @objc final public class NotAvailable : PacificTrack.DtcData.Fault {
+    @objc override final public var description: Swift.String {
+      @objc get
+    }
+    @objc deinit
+  }
+  public var dtcType: PacificTrack.DtcData.DtcType {
+    get
+  }
+  public var mil: Swift.Int {
+    get
+  }
+  public var faultCodes: [[Swift.String : Any]] {
+    get
+  }
+  public var numberOfFaults: Swift.Int {
+    get
+  }
+  @objc override dynamic public var description: Swift.String {
+    @objc get
+  }
+  @objc deinit
+}
 @_hasMissingDesignatedInitializers @objc public class EventFrame : PacificTrack.ControlFrame {
   @objc public var sequenceNumber: Swift.Int {
     @objc get
@@ -85,6 +151,9 @@ import _SwiftConcurrencyShims
   @objc public var liveEvent: Swift.Bool {
     @objc get
   }
+  @objc public var hsi: Swift.UInt {
+    @objc get
+  }
   public var obd2: Swift.UInt? {
     get
   }
@@ -104,9 +173,12 @@ import _SwiftConcurrencyShims
     @objc get
   }
   @objc public func getValue(forTag tag: Swift.String) -> Swift.String?
+  @objc override dynamic public var description: Swift.String {
+    @objc get
+  }
   @objc deinit
 }
-@objc public enum TrackerServiceError : Swift.Int {
+@objc public enum TrackerServiceError : Swift.Int, Swift.Sendable {
   case failed
   case invalidParameters
   case invalidState
@@ -124,13 +196,9 @@ import _SwiftConcurrencyShims
     get
   }
 }
-@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc public class VersionParam : ObjectiveC.NSObject {
-  @objc public var level: Swift.UInt {
-    get
-  }
-  @objc public var version: Swift.String {
-    get
-  }
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc final public class VersionParam : ObjectiveC.NSObject, Swift.Sendable {
+  @objc final public let level: Swift.UInt
+  @objc final public let version: Swift.String
   @objc deinit
 }
 @_hasMissingDesignatedInitializers public class VirtualDashboardData {
@@ -142,6 +210,7 @@ import _SwiftConcurrencyShims
   public var speed: Swift.UInt8?
   public var rpm: Swift.UInt16?
   public var numberOfDTCPending: Swift.UInt8?
+  public var dtcData: PacificTrack.DtcData?
   public var oilPressure: Swift.UInt16?
   public var oilLevel: Swift.Double?
   public var oilTemperature: Swift.Int16?
@@ -160,23 +229,29 @@ import _SwiftConcurrencyShims
   public var fuelRate: Swift.Double?
   public var averageFuelEconomy: Swift.Double?
   public var ambientAirTemperature: Swift.Double?
+  public var engineRPMHighRes: Swift.Double?
+  public var intakePressure: Swift.Double?
   public var odometer: Swift.Double?
   public var engineHours: Swift.Double?
   public var idleHours: Swift.Double?
   public var PTOHours: Swift.Double?
   public var totalIdleFuel: Swift.Double?
   public var totalFuelUsed: Swift.Double?
+  public var retarderPercent: Swift.Double?
+  public var brakePedal: Swift.UInt8?
   public var vin: Swift.String?
   @objc deinit
+}
+extension CoreBluetooth.CBUUID : @unchecked @retroactive Swift.Sendable {
 }
 @_hasMissingDesignatedInitializers @objc public class GetVehicleInformationResponse : PacificTrack.ControlFrame {
   @objc public var status: PacificTrack.ResponseStatus {
     @objc get
   }
-  @objc public var vin: Swift.String {
+  @objc public var vin: Swift.String? {
     @objc get
   }
-  public var bus: [PacificTrack.Bus] {
+  public var bus: [PacificTrack.Bus]? {
     get
   }
   @objc public var busArray: [Swift.Int] {
@@ -204,6 +279,8 @@ import _SwiftConcurrencyShims
   @objc public var rpm: Swift.UInt16
   @objc public var numberOfDTCPendingPresent: Swift.Bool
   @objc public var numberOfDTCPending: Swift.UInt8
+  @objc public var dtcDataPresent: Swift.Bool
+  @objc public var dtcData: PacificTrack.DtcData?
   @objc public var oilPressurePresent: Swift.Bool
   @objc public var oilPressure: Swift.UInt16
   @objc public var oilLevelPresent: Swift.Bool
@@ -240,6 +317,10 @@ import _SwiftConcurrencyShims
   @objc public var averageFuelEconomy: Swift.Double
   @objc public var ambientAirTemperaturePresent: Swift.Bool
   @objc public var ambientAirTemperature: Swift.Double
+  @objc public var engineRPMHighResPresent: Swift.Bool
+  @objc public var engineRPMHighRes: Swift.Double
+  @objc public var intakePressurePresent: Swift.Bool
+  @objc public var intakePressure: Swift.Double
   @objc public var odometerPresent: Swift.Bool
   @objc public var odometer: Swift.Double
   @objc public var engineHoursPresent: Swift.Bool
@@ -252,6 +333,10 @@ import _SwiftConcurrencyShims
   @objc public var totalIdleFuel: Swift.Double
   @objc public var totalFuelUsedPresent: Swift.Bool
   @objc public var totalFuelUsed: Swift.Double
+  @objc public var retarderPercentPresent: Swift.Bool
+  @objc public var retarderPercent: Swift.Double
+  @objc public var brakePedalPresent: Swift.Bool
+  @objc public var brakePedal: Swift.UInt8
   @objc public var vinPresent: Swift.Bool
   @objc public var vin: Swift.String
   @objc deinit
@@ -274,7 +359,7 @@ import _SwiftConcurrencyShims
     get
   }
 }
-@_hasMissingDesignatedInitializers @objc public class GeolocationParam : ObjectiveC.NSObject {
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc public class GeolocationParam : ObjectiveC.NSObject {
   @objc public var isLocked: Swift.Bool {
     get
   }
@@ -302,6 +387,9 @@ import _SwiftConcurrencyShims
   @objc public var gpsAgePresent: Swift.Bool
   @objc public var gpsAgeValue: Swift.UInt
   @objc public func getComponents() -> [Swift.String]
+  @objc override dynamic public var description: Swift.String {
+    @objc get
+  }
   @objc deinit
 }
 @_hasMissingDesignatedInitializers @objc public class ConfigureVirtualDashboardRequest : PacificTrack.ControlFrame {
@@ -335,7 +423,7 @@ import _SwiftConcurrencyShims
   }
   @objc deinit
 }
-@objc public enum TrackerUpgradeError : Swift.Int {
+@objc public enum TrackerUpgradeError : Swift.Int, Swift.Sendable {
   case deviceStatusFailed
   case deviceInfoFailed
   case getFirmwareInfoFailed
@@ -367,7 +455,7 @@ import _SwiftConcurrencyShims
   @objc public var status: PacificTrack.ResponseStatus {
     @objc get
   }
-  @objc public var productName: Swift.String {
+  @objc public var productName: Swift.String? {
     @objc get
   }
   @objc public var mainVersion: PacificTrack.VersionParam {
@@ -382,51 +470,67 @@ import _SwiftConcurrencyShims
   @objc public var imei: Swift.String? {
     @objc get
   }
-  @objc public var serialNumber: Swift.String {
+  @objc public var serialNumber: Swift.String? {
     @objc get
   }
   @objc deinit
 }
-@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc public class TrackerService : ObjectiveC.NSObject {
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc public class TrackerService : ObjectiveC.NSObject, @unchecked Swift.Sendable {
   @objc public var state: PacificTrack.TrackerServiceState {
     @objc get
   }
-  @objc public var debug: Swift.Bool
-  @objc public var tracker: PacificTrack.TrackerInfo?
+  public var sdkVersion: Swift.String {
+    get
+  }
+  public var devMode: Swift.Bool {
+    get
+    set
+  }
+  @objc public var debug: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @objc public var tracker: PacificTrack.TrackerInfo? {
+    @objc get
+    @objc set
+  }
   public var virtualDashboardData: PacificTrack.VirtualDashboardData {
     get
   }
   @objc public var virtualDashboardDataUnwrapped: PacificTrack.VirtualDashboardDataUnwrapped {
-    get
+    @objc get
   }
   @objc public var apiKey: Swift.String? {
     @objc get
     @objc set
   }
-  @objc public var delegate: (any PacificTrack.TrackerServiceDelegate)?
+  @objc public var delegate: (any PacificTrack.TrackerServiceDelegate)? {
+    @objc get
+    @objc set
+  }
   @objc public static let sharedInstance: PacificTrack.TrackerService
   @objc public func handle(trackerPeripheral peripheral: CoreBluetooth.CBPeripheral)
   @objc public func stopHandling() -> CoreBluetooth.CBPeripheral?
-  @objc public func getInformation(response: @escaping ((PacificTrack.GetInformationResponse?, PacificTrack.TrackerServiceError) -> Swift.Void))
-  @objc public func getStatus(response: @escaping ((PacificTrack.GetStatusResponse?, PacificTrack.TrackerServiceError) -> Swift.Void))
-  @objc public func getStoredEventsCount(response: @escaping ((PacificTrack.StoredEventsCountResponse?, PacificTrack.TrackerServiceError) -> Swift.Void))
-  @objc public func retrieveStoredEvents(response: @escaping ((PacificTrack.RetrieveStoredEventsResponse?, PacificTrack.TrackerServiceError) -> Swift.Void))
-  @objc public func clearStoredEvents(response: @escaping ((PacificTrack.ClearStoredEventsResponse?, PacificTrack.TrackerServiceError) -> Swift.Void))
-  @objc public func getVehicleInformation(response: @escaping ((PacificTrack.GetVehicleInformationResponse?, PacificTrack.TrackerServiceError) -> Swift.Void))
-  public func getSystemVariable(_ variable: any PacificTrack.TrackerSystemVariable, response: @escaping ((PacificTrack.GetSystemVariableResponse?, PacificTrack.TrackerServiceError) -> Swift.Void))
-  @objc public func getSystemVariable(_ variable: PacificTrack.SystemVariable, response: @escaping ((PacificTrack.GetSystemVariableResponse?, PacificTrack.TrackerServiceError) -> Swift.Void))
-  @objc public func getSystemVariableByTag(_ variableTag: Swift.String, response: @escaping ((PacificTrack.GetSystemVariableResponse?, PacificTrack.TrackerServiceError) -> Swift.Void))
-  public func setSystemVariable(_ variable: any PacificTrack.TrackerSystemVariable, value: Swift.String, response: @escaping ((PacificTrack.SetSystemVariableResponse?, PacificTrack.TrackerServiceError) -> Swift.Void))
-  @objc public func setSystemVariable(_ variable: PacificTrack.SystemVariable, value: Swift.String, response: @escaping ((PacificTrack.SetSystemVariableResponse?, PacificTrack.TrackerServiceError) -> Swift.Void))
-  @objc public func setSystemVariableByTag(_ variableTag: Swift.String, value: Swift.String, response: @escaping ((PacificTrack.SetSystemVariableResponse?, PacificTrack.TrackerServiceError) -> Swift.Void))
-  @objc public func setSPN(spnEventNumber: Swift.Int, spnEventDefinition: PacificTrack.SPNDefinitionParam, response: @escaping ((PacificTrack.SetSPNResponse?, PacificTrack.TrackerServiceError) -> Swift.Void))
-  @objc public func getDTCCodes(response: @escaping ((PacificTrack.GetDTCResponse?, PacificTrack.TrackerServiceError) -> Swift.Void))
-  @objc public func clearDTCCodes(response: @escaping ((PacificTrack.ClearDTCResponse?, PacificTrack.TrackerServiceError) -> Swift.Void))
-  @objc public func isUpgradeAvailable(response: @escaping ((Swift.Bool, PacificTrack.TrackerUpgradeError) -> Swift.Void))
+  @objc public func getInformation(response: @escaping (PacificTrack.GetInformationResponse?, PacificTrack.TrackerServiceError) -> Swift.Void)
+  @objc public func getStatus(response: @escaping (PacificTrack.GetStatusResponse?, PacificTrack.TrackerServiceError) -> Swift.Void)
+  @objc public func getStoredEventsCount(response: @escaping (PacificTrack.StoredEventsCountResponse?, PacificTrack.TrackerServiceError) -> Swift.Void)
+  @objc public func retrieveStoredEvents(response: @escaping (PacificTrack.RetrieveStoredEventsResponse?, PacificTrack.TrackerServiceError) -> Swift.Void)
+  @objc public func clearStoredEvents(response: @escaping (PacificTrack.ClearStoredEventsResponse?, PacificTrack.TrackerServiceError) -> Swift.Void)
+  @objc public func getVehicleInformation(response: @escaping (PacificTrack.GetVehicleInformationResponse?, PacificTrack.TrackerServiceError) -> Swift.Void)
+  public func getSystemVariable(_ variable: any PacificTrack.TrackerSystemVariable, response: @escaping (PacificTrack.GetSystemVariableResponse?, PacificTrack.TrackerServiceError) -> Swift.Void)
+  @objc public func getSystemVariable(_ variable: PacificTrack.SystemVariable, response: @escaping (PacificTrack.GetSystemVariableResponse?, PacificTrack.TrackerServiceError) -> Swift.Void)
+  @objc public func getSystemVariableByTag(_ variableTag: Swift.String, response: @escaping (PacificTrack.GetSystemVariableResponse?, PacificTrack.TrackerServiceError) -> Swift.Void)
+  public func setSystemVariable(_ variable: any PacificTrack.TrackerSystemVariable, value: Swift.String, response: @escaping (PacificTrack.SetSystemVariableResponse?, PacificTrack.TrackerServiceError) -> Swift.Void)
+  @objc public func setSystemVariable(_ variable: PacificTrack.SystemVariable, value: Swift.String, response: @escaping (PacificTrack.SetSystemVariableResponse?, PacificTrack.TrackerServiceError) -> Swift.Void)
+  @objc public func setSystemVariableByTag(_ variableTag: Swift.String, value: Swift.String, response: @escaping (PacificTrack.SetSystemVariableResponse?, PacificTrack.TrackerServiceError) -> Swift.Void)
+  @objc public func setSPN(spnEventNumber: Swift.Int, spnEventDefinition: PacificTrack.SPNDefinitionParam, response: @escaping (PacificTrack.SetSPNResponse?, PacificTrack.TrackerServiceError) -> Swift.Void)
+  @objc public func getDTCCodes(response: @escaping (PacificTrack.GetDTCResponse?, PacificTrack.TrackerServiceError) -> Swift.Void)
+  @objc public func clearDTCCodes(response: @escaping (PacificTrack.ClearDTCResponse?, PacificTrack.TrackerServiceError) -> Swift.Void)
+  @objc public func isUpgradeAvailable(response: @escaping @Sendable (Swift.Bool, PacificTrack.TrackerUpgradeError) -> Swift.Void)
   @objc public func performUpgrade()
   @objc public func performUpgradeUsing(firmware: PacificTrack.TrackerFirmwareFile)
   @objc public func cancelUpgrade()
-  @objc public func performDiagnostics(response: @escaping ((Swift.String?, PacificTrack.TrackerServiceError) -> Swift.Void))
+  @objc public func performDiagnostics(response: @escaping @Sendable (Swift.String?, PacificTrack.TrackerServiceError) -> Swift.Void)
   @objc public func cancelDiagnostics()
   @objc deinit
 }
@@ -443,7 +547,7 @@ import _SwiftConcurrencyShims
   @objc public var status: PacificTrack.ResponseStatus {
     @objc get
   }
-  @objc public var count: Swift.UInt {
+  @objc public var count: Swift.Int {
     @objc get
   }
   @objc deinit
@@ -457,16 +561,16 @@ import _SwiftConcurrencyShims
   }
   @objc deinit
 }
-@_hasMissingDesignatedInitializers @objc public class TrackerInfo : ObjectiveC.NSObject {
-  @objc public var productName: Swift.String
-  @objc public var mainVersion: PacificTrack.VersionParam
-  @objc public var bleVersion: PacificTrack.VersionParam
-  @objc public var vin: Swift.String?
-  @objc public var imei: Swift.String?
-  @objc public var serialNumber: Swift.String
+@_hasMissingDesignatedInitializers @objc final public class TrackerInfo : ObjectiveC.NSObject, Swift.Sendable {
+  @objc final public let productName: Swift.String
+  @objc final public let mainVersion: PacificTrack.VersionParam
+  @objc final public let bleVersion: PacificTrack.VersionParam
+  @objc nonisolated(unsafe) final public var vin: Swift.String?
+  @objc final public let imei: Swift.String?
+  @objc final public let serialNumber: Swift.String
   @objc deinit
 }
-@_hasMissingDesignatedInitializers @objc public class DTCErrorCodes : ObjectiveC.NSObject {
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc public class DTCErrorCodes : ObjectiveC.NSObject {
   @objc public var version: Swift.Int {
     get
   }
@@ -543,14 +647,15 @@ extension Swift.String : PacificTrack.TrackerSystemVariable {
 }
 @objc public protocol TrackerServiceDelegate {
   @objc func trackerService(_ trackerService: PacificTrack.TrackerService, didSync trackerInfo: PacificTrack.TrackerInfo)
-  @objc func trackerService(_ trackerService: PacificTrack.TrackerService, didReceive event: PacificTrack.EventFrame, processed: ((Swift.Bool) -> Swift.Void))
-  @objc func trackerService(_ trackerService: PacificTrack.TrackerService, didRetrieve event: PacificTrack.EventFrame, processed: ((Swift.Bool) -> Swift.Void))
-  @objc func trackerService(_ trackerService: PacificTrack.TrackerService, didReceiveSPN spnEvent: PacificTrack.SPNEventFrame, processed: ((Swift.Bool) -> Swift.Void))
+  @objc func trackerService(_ trackerService: PacificTrack.TrackerService, didReceive event: PacificTrack.EventFrame, processed: (Swift.Bool) -> Swift.Void)
+  @objc func trackerService(_ trackerService: PacificTrack.TrackerService, didRetrieve event: PacificTrack.EventFrame, processed: (Swift.Bool) -> Swift.Void)
+  @objc func trackerService(_ trackerService: PacificTrack.TrackerService, didReceiveSPN spnEvent: PacificTrack.SPNEventFrame, processed: (Swift.Bool) -> Swift.Void)
   @objc func trackerService(_ trackerService: PacificTrack.TrackerService, didReceieveVirtualDashboardReport virtualDashboardReport: PacificTrack.VirtualDashboardReport)
   @objc func trackerService(_ trackerService: PacificTrack.TrackerService, onError error: PacificTrack.TrackerServiceError)
   @objc func trackerService(_ trackerService: PacificTrack.TrackerService, onFirmwareUpgradeProgress progress: Swift.Float)
   @objc func trackerService(_ trackerService: PacificTrack.TrackerService, onFirmwareUpgradeFailed error: PacificTrack.TrackerUpgradeError)
   @objc func trackerService(_ trackerService: PacificTrack.TrackerService, onFirmwareUpgradeCompleted completed: Swift.Bool)
+  @objc optional func trackerService(_ trackerService: PacificTrack.TrackerService, didReceiveRSSI value: Foundation.NSNumber)
 }
 @_hasMissingDesignatedInitializers @objc public class GetStatusResponse : PacificTrack.ControlFrame {
   @objc public var status: PacificTrack.ResponseStatus {
@@ -592,7 +697,7 @@ extension Swift.String : PacificTrack.TrackerSystemVariable {
     get
   }
 }
-@objc public enum EventType : Swift.Int {
+@objc public enum EventType : Swift.Int, Swift.CustomStringConvertible {
   case powerOn
   case powerOff
   case ignitionOn
@@ -609,6 +714,9 @@ extension Swift.String : PacificTrack.TrackerSystemVariable {
   case harshAccelerating
   case harshBraking
   case harshCornering
+  public var description: Swift.String {
+    get
+  }
   public init?(rawValue: Swift.Int)
   public typealias RawValue = Swift.Int
   public var rawValue: Swift.Int {
@@ -654,9 +762,21 @@ extension Swift.String : PacificTrack.TrackerSystemVariable {
   case drivingBraking
   case drivingCornering
   case odometerOverride
+  case hosSequenceIndex
+  case hsiIncrementMode
+  case `extension`
   public init?(rawValue: Swift.Int)
   public typealias RawValue = Swift.Int
   public var rawValue: Swift.Int {
+    get
+  }
+}
+public enum WebServiceEnvironment {
+  case production
+  case development
+  public static func == (a: PacificTrack.WebServiceEnvironment, b: PacificTrack.WebServiceEnvironment) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
     get
   }
 }
@@ -672,9 +792,360 @@ extension Swift.String : PacificTrack.TrackerSystemVariable {
   }
   @objc deinit
 }
+public enum SwiftyJSONError : Swift.Int, Swift.Error {
+  case unsupportedType
+  case indexOutOfBounds
+  case elementTooDeep
+  case wrongType
+  case notExist
+  case invalidJSON
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+extension PacificTrack.SwiftyJSONError : Foundation.CustomNSError {
+  public static var errorDomain: Swift.String {
+    get
+  }
+  public var errorCode: Swift.Int {
+    get
+  }
+  public var errorUserInfo: [Swift.String : Any] {
+    get
+  }
+}
+public enum Type : Swift.Int {
+  case number
+  case string
+  case bool
+  case array
+  case dictionary
+  case null
+  case unknown
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+public struct JSON {
+  public init(data: Foundation.Data, options opt: Foundation.JSONSerialization.ReadingOptions = []) throws
+  public init(_ object: Any)
+  public init(parseJSON jsonString: Swift.String)
+  public mutating func merge(with other: PacificTrack.JSON) throws
+  public func merged(with other: PacificTrack.JSON) throws -> PacificTrack.JSON
+  public var type: PacificTrack.`Type` {
+    get
+  }
+  public var error: PacificTrack.SwiftyJSONError? {
+    get
+  }
+  public var object: Any {
+    get
+    set
+  }
+  @available(*, unavailable, renamed: "null")
+  public static var nullJSON: PacificTrack.JSON {
+    get
+  }
+  public static var null: PacificTrack.JSON {
+    get
+  }
+}
+public enum Index<T> : Swift.Comparable {
+  case array(Swift.Int)
+  case dictionary(Swift.DictionaryIndex<Swift.String, T>)
+  case null
+  public static func == (lhs: PacificTrack.Index<T>, rhs: PacificTrack.Index<T>) -> Swift.Bool
+  public static func < (lhs: PacificTrack.Index<T>, rhs: PacificTrack.Index<T>) -> Swift.Bool
+}
+public typealias JSONIndex = PacificTrack.Index<PacificTrack.JSON>
+public typealias JSONRawIndex = PacificTrack.Index<Any>
+extension PacificTrack.JSON : Swift.Collection {
+  public typealias Index = PacificTrack.JSONRawIndex
+  public var startIndex: PacificTrack.JSON.Index {
+    get
+  }
+  public var endIndex: PacificTrack.JSON.Index {
+    get
+  }
+  public func index(after i: PacificTrack.JSON.Index) -> PacificTrack.JSON.Index
+  public subscript(position: PacificTrack.JSON.Index) -> (Swift.String, PacificTrack.JSON) {
+    get
+  }
+  public typealias Element = (Swift.String, PacificTrack.JSON)
+  public typealias Indices = Swift.DefaultIndices<PacificTrack.JSON>
+  public typealias Iterator = Swift.IndexingIterator<PacificTrack.JSON>
+  public typealias SubSequence = Swift.Slice<PacificTrack.JSON>
+}
+public enum JSONKey {
+  case index(Swift.Int)
+  case key(Swift.String)
+}
+public protocol JSONSubscriptType {
+  var jsonKey: PacificTrack.JSONKey { get }
+}
+extension Swift.Int : PacificTrack.JSONSubscriptType {
+  public var jsonKey: PacificTrack.JSONKey {
+    get
+  }
+}
+extension Swift.String : PacificTrack.JSONSubscriptType {
+  public var jsonKey: PacificTrack.JSONKey {
+    get
+  }
+}
+extension PacificTrack.JSON {
+  public subscript(path: [any PacificTrack.JSONSubscriptType]) -> PacificTrack.JSON {
+    get
+    set
+  }
+  public subscript(path: any PacificTrack.JSONSubscriptType...) -> PacificTrack.JSON {
+    get
+    set
+  }
+}
+extension PacificTrack.JSON : Swift.ExpressibleByStringLiteral {
+  public init(stringLiteral value: Swift.StringLiteralType)
+  public init(extendedGraphemeClusterLiteral value: Swift.StringLiteralType)
+  public init(unicodeScalarLiteral value: Swift.StringLiteralType)
+  public typealias ExtendedGraphemeClusterLiteralType = Swift.StringLiteralType
+  public typealias StringLiteralType = Swift.StringLiteralType
+  public typealias UnicodeScalarLiteralType = Swift.StringLiteralType
+}
+extension PacificTrack.JSON : Swift.ExpressibleByIntegerLiteral {
+  public init(integerLiteral value: Swift.IntegerLiteralType)
+  public typealias IntegerLiteralType = Swift.IntegerLiteralType
+}
+extension PacificTrack.JSON : Swift.ExpressibleByBooleanLiteral {
+  public init(booleanLiteral value: Swift.BooleanLiteralType)
+  public typealias BooleanLiteralType = Swift.BooleanLiteralType
+}
+extension PacificTrack.JSON : Swift.ExpressibleByFloatLiteral {
+  public init(floatLiteral value: Swift.FloatLiteralType)
+  public typealias FloatLiteralType = Swift.FloatLiteralType
+}
+extension PacificTrack.JSON : Swift.ExpressibleByDictionaryLiteral {
+  public init(dictionaryLiteral elements: (Swift.String, Any)...)
+  public typealias Key = Swift.String
+  public typealias Value = Any
+}
+extension PacificTrack.JSON : Swift.ExpressibleByArrayLiteral {
+  public init(arrayLiteral elements: Any...)
+  public typealias ArrayLiteralElement = Any
+}
+extension PacificTrack.JSON : Swift.RawRepresentable {
+  public init?(rawValue: Any)
+  public var rawValue: Any {
+    get
+  }
+  public func rawData(options opt: Foundation.JSONSerialization.WritingOptions = JSONSerialization.WritingOptions(rawValue: 0)) throws -> Foundation.Data
+  public func rawString(_ encoding: Swift.String.Encoding = .utf8, options opt: Foundation.JSONSerialization.WritingOptions = .prettyPrinted) -> Swift.String?
+  public func rawString(_ options: [PacificTrack.writingOptionsKeys : Any]) -> Swift.String?
+  public typealias RawValue = Any
+}
+extension PacificTrack.JSON : Swift.CustomStringConvertible, Swift.CustomDebugStringConvertible {
+  public var description: Swift.String {
+    get
+  }
+  public var debugDescription: Swift.String {
+    get
+  }
+}
+extension PacificTrack.JSON {
+  public var array: [PacificTrack.JSON]? {
+    get
+  }
+  public var arrayValue: [PacificTrack.JSON] {
+    get
+  }
+  public var arrayObject: [Any]? {
+    get
+    set
+  }
+}
+extension PacificTrack.JSON {
+  public var dictionary: [Swift.String : PacificTrack.JSON]? {
+    get
+  }
+  public var dictionaryValue: [Swift.String : PacificTrack.JSON] {
+    get
+  }
+  public var dictionaryObject: [Swift.String : Any]? {
+    get
+    set
+  }
+}
+extension PacificTrack.JSON {
+  public var bool: Swift.Bool? {
+    get
+    set
+  }
+  public var boolValue: Swift.Bool {
+    get
+    set
+  }
+}
+extension PacificTrack.JSON {
+  public var string: Swift.String? {
+    get
+    set
+  }
+  public var stringValue: Swift.String {
+    get
+    set
+  }
+}
+extension PacificTrack.JSON {
+  public var number: Foundation.NSNumber? {
+    get
+    set
+  }
+  public var numberValue: Foundation.NSNumber {
+    get
+    set
+  }
+}
+extension PacificTrack.JSON {
+  public var null: Foundation.NSNull? {
+    get
+    set
+  }
+  public func exists() -> Swift.Bool
+}
+extension PacificTrack.JSON {
+  public var url: Foundation.URL? {
+    get
+    set
+  }
+}
+extension PacificTrack.JSON {
+  public var double: Swift.Double? {
+    get
+    set
+  }
+  public var doubleValue: Swift.Double {
+    get
+    set
+  }
+  public var float: Swift.Float? {
+    get
+    set
+  }
+  public var floatValue: Swift.Float {
+    get
+    set
+  }
+  public var int: Swift.Int? {
+    get
+    set
+  }
+  public var intValue: Swift.Int {
+    get
+    set
+  }
+  public var uInt: Swift.UInt? {
+    get
+    set
+  }
+  public var uIntValue: Swift.UInt {
+    get
+    set
+  }
+  public var int8: Swift.Int8? {
+    get
+    set
+  }
+  public var int8Value: Swift.Int8 {
+    get
+    set
+  }
+  public var uInt8: Swift.UInt8? {
+    get
+    set
+  }
+  public var uInt8Value: Swift.UInt8 {
+    get
+    set
+  }
+  public var int16: Swift.Int16? {
+    get
+    set
+  }
+  public var int16Value: Swift.Int16 {
+    get
+    set
+  }
+  public var uInt16: Swift.UInt16? {
+    get
+    set
+  }
+  public var uInt16Value: Swift.UInt16 {
+    get
+    set
+  }
+  public var int32: Swift.Int32? {
+    get
+    set
+  }
+  public var int32Value: Swift.Int32 {
+    get
+    set
+  }
+  public var uInt32: Swift.UInt32? {
+    get
+    set
+  }
+  public var uInt32Value: Swift.UInt32 {
+    get
+    set
+  }
+  public var int64: Swift.Int64? {
+    get
+    set
+  }
+  public var int64Value: Swift.Int64 {
+    get
+    set
+  }
+  public var uInt64: Swift.UInt64? {
+    get
+    set
+  }
+  public var uInt64Value: Swift.UInt64 {
+    get
+    set
+  }
+}
+extension PacificTrack.JSON : Swift.Comparable {
+}
+public func == (lhs: PacificTrack.JSON, rhs: PacificTrack.JSON) -> Swift.Bool
+public func <= (lhs: PacificTrack.JSON, rhs: PacificTrack.JSON) -> Swift.Bool
+public func >= (lhs: PacificTrack.JSON, rhs: PacificTrack.JSON) -> Swift.Bool
+public func > (lhs: PacificTrack.JSON, rhs: PacificTrack.JSON) -> Swift.Bool
+public func < (lhs: PacificTrack.JSON, rhs: PacificTrack.JSON) -> Swift.Bool
+public enum writingOptionsKeys {
+  case jsonSerialization
+  case castNilToNSNull
+  case maxObjextDepth
+  case encoding
+  public static func == (a: PacificTrack.writingOptionsKeys, b: PacificTrack.writingOptionsKeys) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+extension PacificTrack.JSON : Swift.Codable {
+  public init(from decoder: any Swift.Decoder) throws
+  public func encode(to encoder: any Swift.Encoder) throws
+}
 extension PacificTrack.Bus : Swift.Equatable {}
 extension PacificTrack.Bus : Swift.Hashable {}
 extension PacificTrack.Bus : Swift.RawRepresentable {}
+extension PacificTrack.DtcData.DtcType : Swift.Equatable {}
+extension PacificTrack.DtcData.DtcType : Swift.Hashable {}
 extension PacificTrack.TrackerServiceError : Swift.Equatable {}
 extension PacificTrack.TrackerServiceError : Swift.Hashable {}
 extension PacificTrack.TrackerServiceError : Swift.RawRepresentable {}
@@ -702,3 +1173,13 @@ extension PacificTrack.ResponseStatus : Swift.RawRepresentable {}
 extension PacificTrack.EventType : Swift.Equatable {}
 extension PacificTrack.EventType : Swift.Hashable {}
 extension PacificTrack.EventType : Swift.RawRepresentable {}
+extension PacificTrack.WebServiceEnvironment : Swift.Equatable {}
+extension PacificTrack.WebServiceEnvironment : Swift.Hashable {}
+extension PacificTrack.SwiftyJSONError : Swift.Equatable {}
+extension PacificTrack.SwiftyJSONError : Swift.Hashable {}
+extension PacificTrack.SwiftyJSONError : Swift.RawRepresentable {}
+extension PacificTrack.`Type` : Swift.Equatable {}
+extension PacificTrack.`Type` : Swift.Hashable {}
+extension PacificTrack.`Type` : Swift.RawRepresentable {}
+extension PacificTrack.writingOptionsKeys : Swift.Equatable {}
+extension PacificTrack.writingOptionsKeys : Swift.Hashable {}

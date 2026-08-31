@@ -1,0 +1,37 @@
+{
+  "/Users/pc/Documents/safemiles_SwiftUI/safemiles/Components/CommonHeader.swift" : {
+    "const-values" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/CommonHeader.swiftconstvalues",
+    "dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/CommonHeader.d",
+    "diagnostics" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/CommonHeader.dia",
+    "object" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/CommonHeader.o",
+    "swift-dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/CommonHeader.swiftdeps"
+  },
+  "/Users/pc/Documents/safemiles_SwiftUI/safemiles/Components/CustomTextField.swift" : {
+    "const-values" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/CustomTextField.swiftconstvalues",
+    "dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/CustomTextField.d",
+    "diagnostics" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/CustomTextField.dia",
+    "object" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/CustomTextField.o",
+    "swift-dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/CustomTextField.swiftdeps"
+  },
+  "/Users/pc/Documents/safemiles_SwiftUI/safemiles/Components/FontSizeRow.swift" : {
+    "const-values" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/FontSizeRow.swiftconstvalues",
+    "dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/FontSizeRow.d",
+    "diagnostics" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/FontSizeRow.dia",
+    "object" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/FontSizeRow.o",
+    "swift-dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/FontSizeRow.swiftdeps"
+  },
+  "/Users/pc/Documents/safemiles_SwiftUI/safemiles/Components/HOSRow.swift" : {
+    "const-values" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/HOSRow.swiftconstvalues",
+    "dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/HOSRow.d",
+    "diagnostics" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/HOSRow.dia",
+    "object" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/HOSRow.o",
+    "swift-dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/HOSRow.swiftdeps"
+  },
+  "/Users/pc/Documents/safemiles_SwiftUI/safemiles/Components/RecapRow.swift" : {
+    "const-values" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/RecapRow.swiftconstvalues",
+    "dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/RecapRow.d",
+    "diagnostics" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/RecapRow.dia",
+    "object" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/RecapRow.o",
+    "swift-dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/RecapRow.swiftdeps"
+  }
+}

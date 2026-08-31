@@ -1,0 +1,4 @@
+module IQKeyboardToolbarManager {
+header "IQKeyboardToolbarManager-Swift.h"
+export *
+}

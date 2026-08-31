@@ -154,6 +154,7 @@
 				4F800D6C2F2B5E390086ED91 /* ObjectMapper */,
 				4F800D6F2F2B5E4F0086ED91 /* IQKeyboardManagerSwift */,
 				4F800D772F2B5F540086ED91 /* Alamofire */,
+				4F800D812F2B60000086ED91 /* FirebaseCrashlytics */,
 			);
 			productName = safemiles;
 			productReference = 4F800BCE2F2B57080086ED91 /* safemiles.app */;
@@ -241,6 +242,7 @@
 				4F800D6B2F2B5E390086ED91 /* XCRemoteSwiftPackageReference "ObjectMapper" */,
 				4F800D6E2F2B5E4F0086ED91 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
 				4F800D762F2B5F540086ED91 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				4F800D802F2B60000086ED91 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 4F800BCF2F2B57080086ED91 /* Products */;
@@ -350,7 +352,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = A43984RYK4;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -690,6 +692,14 @@
 				minimumVersion = 5.11.0;
 			};
 		};
+		4F800D802F2B60000086ED91 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 11.8.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -707,6 +717,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 4F800D762F2B5F540086ED91 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
+		};
+		4F800D812F2B60000086ED91 /* FirebaseCrashlytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4F800D802F2B60000086ED91 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCrashlytics;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

@@ -1,0 +1,819 @@
+{
+  "" : {
+    "diagnostics" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/safemiles-primary.dia",
+    "emit-module-dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/safemiles-primary-emit-module.d",
+    "emit-module-diagnostics" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/safemiles-primary-emit-module.dia",
+    "pch" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/safemiles-primary-Bridging-header.pch",
+    "swift-dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/safemiles-primary.swiftdeps"
+  },
+  "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/DerivedSources/GeneratedAssetSymbols.swift" : {
+    "const-values" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/GeneratedAssetSymbols.swiftconstvalues",
+    "dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/GeneratedAssetSymbols.d",
+    "diagnostics" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/GeneratedAssetSymbols.dia",
+    "index-unit-output-path" : "/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/GeneratedAssetSymbols.o",
+    "llvm-bc" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/GeneratedAssetSymbols.bc",
+    "object" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/GeneratedAssetSymbols.o",
+    "swift-dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/GeneratedAssetSymbols.swiftdeps",
+    "swiftmodule" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/GeneratedAssetSymbols~partial.swiftmodule"
+  },
+  "/Users/pc/Documents/safemiles_SwiftUI/safemiles/AccountView.swift" : {
+    "const-values" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/AccountView.swiftconstvalues",
+    "dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/AccountView.d",
+    "diagnostics" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/AccountView.dia",
+    "index-unit-output-path" : "/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/AccountView.o",
+    "llvm-bc" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/AccountView.bc",
+    "object" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/AccountView.o",
+    "swift-dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/AccountView.swiftdeps",
+    "swiftmodule" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/AccountView~partial.swiftmodule"
+  },
+  "/Users/pc/Documents/safemiles_SwiftUI/safemiles/AccountViewModel.swift" : {
+    "const-values" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/AccountViewModel.swiftconstvalues",
+    "dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/AccountViewModel.d",
+    "diagnostics" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/AccountViewModel.dia",
+    "index-unit-output-path" : "/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/AccountViewModel.o",
+    "llvm-bc" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/AccountViewModel.bc",
+    "object" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/AccountViewModel.o",
+    "swift-dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/AccountViewModel.swiftdeps",
+    "swiftmodule" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/AccountViewModel~partial.swiftmodule"
+  },
+  "/Users/pc/Documents/safemiles_SwiftUI/safemiles/AddDvirView.swift" : {
+    "const-values" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/AddDvirView.swiftconstvalues",
+    "dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/AddDvirView.d",
+    "diagnostics" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/AddDvirView.dia",
+    "index-unit-output-path" : "/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/AddDvirView.o",
+    "llvm-bc" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/AddDvirView.bc",
+    "object" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/AddDvirView.o",
+    "swift-dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/AddDvirView.swiftdeps",
+    "swiftmodule" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/AddDvirView~partial.swiftmodule"
+  },
+  "/Users/pc/Documents/safemiles_SwiftUI/safemiles/AddDvirViewModel.swift" : {
+    "const-values" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/AddDvirViewModel.swiftconstvalues",
+    "dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/AddDvirViewModel.d",
+    "diagnostics" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/AddDvirViewModel.dia",
+    "index-unit-output-path" : "/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/AddDvirViewModel.o",
+    "llvm-bc" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/AddDvirViewModel.bc",
+    "object" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/AddDvirViewModel.o",
+    "swift-dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/AddDvirViewModel.swiftdeps",
+    "swiftmodule" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/AddDvirViewModel~partial.swiftmodule"
+  },
+  "/Users/pc/Documents/safemiles_SwiftUI/safemiles/AddEditLogView.swift" : {
+    "const-values" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/AddEditLogView.swiftconstvalues",
+    "dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/AddEditLogView.d",
+    "diagnostics" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/AddEditLogView.dia",
+    "index-unit-output-path" : "/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/AddEditLogView.o",
+    "llvm-bc" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/AddEditLogView.bc",
+    "object" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/AddEditLogView.o",
+    "swift-dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/AddEditLogView.swiftdeps",
+    "swiftmodule" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/AddEditLogView~partial.swiftmodule"
+  },
+  "/Users/pc/Documents/safemiles_SwiftUI/safemiles/AddEditLogViewModel.swift" : {
+    "const-values" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/AddEditLogViewModel.swiftconstvalues",
+    "dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/AddEditLogViewModel.d",
+    "diagnostics" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/AddEditLogViewModel.dia",
+    "index-unit-output-path" : "/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/AddEditLogViewModel.o",
+    "llvm-bc" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/AddEditLogViewModel.bc",
+    "object" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/AddEditLogViewModel.o",
+    "swift-dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/AddEditLogViewModel.swiftdeps",
+    "swiftmodule" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/AddEditLogViewModel~partial.swiftmodule"
+  },
+  "/Users/pc/Documents/safemiles_SwiftUI/safemiles/BluetoothScanningView.swift" : {
+    "const-values" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/BluetoothScanningView.swiftconstvalues",
+    "dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/BluetoothScanningView.d",
+    "diagnostics" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/BluetoothScanningView.dia",
+    "index-unit-output-path" : "/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/BluetoothScanningView.o",
+    "llvm-bc" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/BluetoothScanningView.bc",
+    "object" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/BluetoothScanningView.o",
+    "swift-dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/BluetoothScanningView.swiftdeps",
+    "swiftmodule" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/BluetoothScanningView~partial.swiftmodule"
+  },
+  "/Users/pc/Documents/safemiles_SwiftUI/safemiles/CertifyView.swift" : {
+    "const-values" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/CertifyView.swiftconstvalues",
+    "dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/CertifyView.d",
+    "diagnostics" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/CertifyView.dia",
+    "index-unit-output-path" : "/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/CertifyView.o",
+    "llvm-bc" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/CertifyView.bc",
+    "object" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/CertifyView.o",
+    "swift-dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/CertifyView.swiftdeps",
+    "swiftmodule" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/CertifyView~partial.swiftmodule"
+  },
+  "/Users/pc/Documents/safemiles_SwiftUI/safemiles/CoDriverView.swift" : {
+    "const-values" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/CoDriverView.swiftconstvalues",
+    "dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/CoDriverView.d",
+    "diagnostics" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/CoDriverView.dia",
+    "index-unit-output-path" : "/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/CoDriverView.o",
+    "llvm-bc" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/CoDriverView.bc",
+    "object" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/CoDriverView.o",
+    "swift-dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/CoDriverView.swiftdeps",
+    "swiftmodule" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/CoDriverView~partial.swiftmodule"
+  },
+  "/Users/pc/Documents/safemiles_SwiftUI/safemiles/CoDriverViewModel.swift" : {
+    "const-values" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/CoDriverViewModel.swiftconstvalues",
+    "dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/CoDriverViewModel.d",
+    "diagnostics" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/CoDriverViewModel.dia",
+    "index-unit-output-path" : "/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/CoDriverViewModel.o",
+    "llvm-bc" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/CoDriverViewModel.bc",
+    "object" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/CoDriverViewModel.o",
+    "swift-dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/CoDriverViewModel.swiftdeps",
+    "swiftmodule" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/CoDriverViewModel~partial.swiftmodule"
+  },
+  "/Users/pc/Documents/safemiles_SwiftUI/safemiles/Components/CommonHeader.swift" : {
+    "const-values" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/CommonHeader.swiftconstvalues",
+    "dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/CommonHeader.d",
+    "diagnostics" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/CommonHeader.dia",
+    "index-unit-output-path" : "/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/CommonHeader.o",
+    "llvm-bc" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/CommonHeader.bc",
+    "object" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/CommonHeader.o",
+    "swift-dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/CommonHeader.swiftdeps",
+    "swiftmodule" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/CommonHeader~partial.swiftmodule"
+  },
+  "/Users/pc/Documents/safemiles_SwiftUI/safemiles/Components/CustomTextField.swift" : {
+    "const-values" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/CustomTextField.swiftconstvalues",
+    "dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/CustomTextField.d",
+    "diagnostics" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/CustomTextField.dia",
+    "index-unit-output-path" : "/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/CustomTextField.o",
+    "llvm-bc" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/CustomTextField.bc",
+    "object" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/CustomTextField.o",
+    "swift-dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/CustomTextField.swiftdeps",
+    "swiftmodule" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/CustomTextField~partial.swiftmodule"
+  },
+  "/Users/pc/Documents/safemiles_SwiftUI/safemiles/Components/FontSizeRow.swift" : {
+    "const-values" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/FontSizeRow.swiftconstvalues",
+    "dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/FontSizeRow.d",
+    "diagnostics" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/FontSizeRow.dia",
+    "index-unit-output-path" : "/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/FontSizeRow.o",
+    "llvm-bc" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/FontSizeRow.bc",
+    "object" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/FontSizeRow.o",
+    "swift-dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/FontSizeRow.swiftdeps",
+    "swiftmodule" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/FontSizeRow~partial.swiftmodule"
+  },
+  "/Users/pc/Documents/safemiles_SwiftUI/safemiles/Components/HOSRow.swift" : {
+    "const-values" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/HOSRow.swiftconstvalues",
+    "dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/HOSRow.d",
+    "diagnostics" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/HOSRow.dia",
+    "index-unit-output-path" : "/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/HOSRow.o",
+    "llvm-bc" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/HOSRow.bc",
+    "object" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/HOSRow.o",
+    "swift-dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/HOSRow.swiftdeps",
+    "swiftmodule" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/HOSRow~partial.swiftmodule"
+  },
+  "/Users/pc/Documents/safemiles_SwiftUI/safemiles/Components/RecapRow.swift" : {
+    "const-values" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/RecapRow.swiftconstvalues",
+    "dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/RecapRow.d",
+    "diagnostics" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/RecapRow.dia",
+    "index-unit-output-path" : "/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/RecapRow.o",
+    "llvm-bc" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/RecapRow.bc",
+    "object" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/RecapRow.o",
+    "swift-dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/RecapRow.swiftdeps",
+    "swiftmodule" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/RecapRow~partial.swiftmodule"
+  },
+  "/Users/pc/Documents/safemiles_SwiftUI/safemiles/Components/RecapSummaryRow.swift" : {
+    "const-values" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/RecapSummaryRow.swiftconstvalues",
+    "dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/RecapSummaryRow.d",
+    "diagnostics" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/RecapSummaryRow.dia",
+    "index-unit-output-path" : "/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/RecapSummaryRow.o",
+    "llvm-bc" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/RecapSummaryRow.bc",
+    "object" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/RecapSummaryRow.o",
+    "swift-dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/RecapSummaryRow.swiftdeps",
+    "swiftmodule" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/RecapSummaryRow~partial.swiftmodule"
+  },
+  "/Users/pc/Documents/safemiles_SwiftUI/safemiles/Components/SegmentButton.swift" : {
+    "const-values" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/SegmentButton.swiftconstvalues",
+    "dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/SegmentButton.d",
+    "diagnostics" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/SegmentButton.dia",
+    "index-unit-output-path" : "/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/SegmentButton.o",
+    "llvm-bc" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/SegmentButton.bc",
+    "object" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/SegmentButton.o",
+    "swift-dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/SegmentButton.swiftdeps",
+    "swiftmodule" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/SegmentButton~partial.swiftmodule"
+  },
+  "/Users/pc/Documents/safemiles_SwiftUI/safemiles/Components/SignatureView.swift" : {
+    "const-values" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/SignatureView.swiftconstvalues",
+    "dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/SignatureView.d",
+    "diagnostics" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/SignatureView.dia",
+    "index-unit-output-path" : "/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/SignatureView.o",
+    "llvm-bc" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/SignatureView.bc",
+    "object" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/SignatureView.o",
+    "swift-dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/SignatureView.swiftdeps",
+    "swiftmodule" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/SignatureView~partial.swiftmodule"
+  },
+  "/Users/pc/Documents/safemiles_SwiftUI/safemiles/Components/StatusCard.swift" : {
+    "const-values" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/StatusCard.swiftconstvalues",
+    "dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/StatusCard.d",
+    "diagnostics" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/StatusCard.dia",
+    "index-unit-output-path" : "/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/StatusCard.o",
+    "llvm-bc" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/StatusCard.bc",
+    "object" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/StatusCard.o",
+    "swift-dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/StatusCard.swiftdeps",
+    "swiftmodule" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/StatusCard~partial.swiftmodule"
+  },
+  "/Users/pc/Documents/safemiles_SwiftUI/safemiles/ContentView.swift" : {
+    "const-values" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/ContentView.swiftconstvalues",
+    "dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/ContentView.d",
+    "diagnostics" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/ContentView.dia",
+    "index-unit-output-path" : "/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/ContentView.o",
+    "llvm-bc" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/ContentView.bc",
+    "object" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/ContentView.o",
+    "swift-dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/ContentView.swiftdeps",
+    "swiftmodule" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/ContentView~partial.swiftmodule"
+  },
+  "/Users/pc/Documents/safemiles_SwiftUI/safemiles/DeviceDetailView.swift" : {
+    "const-values" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/DeviceDetailView.swiftconstvalues",
+    "dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/DeviceDetailView.d",
+    "diagnostics" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/DeviceDetailView.dia",
+    "index-unit-output-path" : "/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/DeviceDetailView.o",
+    "llvm-bc" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/DeviceDetailView.bc",
+    "object" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/DeviceDetailView.o",
+    "swift-dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/DeviceDetailView.swiftdeps",
+    "swiftmodule" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/DeviceDetailView~partial.swiftmodule"
+  },
+  "/Users/pc/Documents/safemiles_SwiftUI/safemiles/DotInspectionDetailView.swift" : {
+    "const-values" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/DotInspectionDetailView.swiftconstvalues",
+    "dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/DotInspectionDetailView.d",
+    "diagnostics" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/DotInspectionDetailView.dia",
+    "index-unit-output-path" : "/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/DotInspectionDetailView.o",
+    "llvm-bc" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/DotInspectionDetailView.bc",
+    "object" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/DotInspectionDetailView.o",
+    "swift-dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/DotInspectionDetailView.swiftdeps",
+    "swiftmodule" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/DotInspectionDetailView~partial.swiftmodule"
+  },
+  "/Users/pc/Documents/safemiles_SwiftUI/safemiles/DotInspectionDetailViewModel.swift" : {
+    "const-values" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/DotInspectionDetailViewModel.swiftconstvalues",
+    "dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/DotInspectionDetailViewModel.d",
+    "diagnostics" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/DotInspectionDetailViewModel.dia",
+    "index-unit-output-path" : "/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/DotInspectionDetailViewModel.o",
+    "llvm-bc" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/DotInspectionDetailViewModel.bc",
+    "object" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/DotInspectionDetailViewModel.o",
+    "swift-dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/DotInspectionDetailViewModel.swiftdeps",
+    "swiftmodule" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/DotInspectionDetailViewModel~partial.swiftmodule"
+  },
+  "/Users/pc/Documents/safemiles_SwiftUI/safemiles/DotInspectionView.swift" : {
+    "const-values" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/DotInspectionView.swiftconstvalues",
+    "dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/DotInspectionView.d",
+    "diagnostics" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/DotInspectionView.dia",
+    "index-unit-output-path" : "/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/DotInspectionView.o",
+    "llvm-bc" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/DotInspectionView.bc",
+    "object" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/DotInspectionView.o",
+    "swift-dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/DotInspectionView.swiftdeps",
+    "swiftmodule" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/DotInspectionView~partial.swiftmodule"
+  },
+  "/Users/pc/Documents/safemiles_SwiftUI/safemiles/DotInspectionViewModel.swift" : {
+    "const-values" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/DotInspectionViewModel.swiftconstvalues",
+    "dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/DotInspectionViewModel.d",
+    "diagnostics" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/DotInspectionViewModel.dia",
+    "index-unit-output-path" : "/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/DotInspectionViewModel.o",
+    "llvm-bc" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/DotInspectionViewModel.bc",
+    "object" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/DotInspectionViewModel.o",
+    "swift-dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/DotInspectionViewModel.swiftdeps",
+    "swiftmodule" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/DotInspectionViewModel~partial.swiftmodule"
+  },
+  "/Users/pc/Documents/safemiles_SwiftUI/safemiles/DvirDetailView.swift" : {
+    "const-values" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/DvirDetailView.swiftconstvalues",
+    "dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/DvirDetailView.d",
+    "diagnostics" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/DvirDetailView.dia",
+    "index-unit-output-path" : "/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/DvirDetailView.o",
+    "llvm-bc" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/DvirDetailView.bc",
+    "object" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/DvirDetailView.o",
+    "swift-dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/DvirDetailView.swiftdeps",
+    "swiftmodule" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/DvirDetailView~partial.swiftmodule"
+  },
+  "/Users/pc/Documents/safemiles_SwiftUI/safemiles/DvirView.swift" : {
+    "const-values" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/DvirView.swiftconstvalues",
+    "dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/DvirView.d",
+    "diagnostics" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/DvirView.dia",
+    "index-unit-output-path" : "/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/DvirView.o",
+    "llvm-bc" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/DvirView.bc",
+    "object" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/DvirView.o",
+    "swift-dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/DvirView.swiftdeps",
+    "swiftmodule" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/DvirView~partial.swiftmodule"
+  },
+  "/Users/pc/Documents/safemiles_SwiftUI/safemiles/DvirViewModel.swift" : {
+    "const-values" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/DvirViewModel.swiftconstvalues",
+    "dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/DvirViewModel.d",
+    "diagnostics" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/DvirViewModel.dia",
+    "index-unit-output-path" : "/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/DvirViewModel.o",
+    "llvm-bc" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/DvirViewModel.bc",
+    "object" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/DvirViewModel.o",
+    "swift-dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/DvirViewModel.swiftdeps",
+    "swiftmodule" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/DvirViewModel~partial.swiftmodule"
+  },
+  "/Users/pc/Documents/safemiles_SwiftUI/safemiles/EmailLogsView.swift" : {
+    "const-values" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/EmailLogsView.swiftconstvalues",
+    "dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/EmailLogsView.d",
+    "diagnostics" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/EmailLogsView.dia",
+    "index-unit-output-path" : "/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/EmailLogsView.o",
+    "llvm-bc" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/EmailLogsView.bc",
+    "object" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/EmailLogsView.o",
+    "swift-dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/EmailLogsView.swiftdeps",
+    "swiftmodule" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/EmailLogsView~partial.swiftmodule"
+  },
+  "/Users/pc/Documents/safemiles_SwiftUI/safemiles/EmailLogsViewModel.swift" : {
+    "const-values" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/EmailLogsViewModel.swiftconstvalues",
+    "dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/EmailLogsViewModel.d",
+    "diagnostics" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/EmailLogsViewModel.dia",
+    "index-unit-output-path" : "/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/EmailLogsViewModel.o",
+    "llvm-bc" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/EmailLogsViewModel.bc",
+    "object" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/EmailLogsViewModel.o",
+    "swift-dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/EmailLogsViewModel.swiftdeps",
+    "swiftmodule" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/EmailLogsViewModel~partial.swiftmodule"
+  },
+  "/Users/pc/Documents/safemiles_SwiftUI/safemiles/EventsView.swift" : {
+    "const-values" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/EventsView.swiftconstvalues",
+    "dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/EventsView.d",
+    "diagnostics" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/EventsView.dia",
+    "index-unit-output-path" : "/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/EventsView.o",
+    "llvm-bc" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/EventsView.bc",
+    "object" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/EventsView.o",
+    "swift-dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/EventsView.swiftdeps",
+    "swiftmodule" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/EventsView~partial.swiftmodule"
+  },
+  "/Users/pc/Documents/safemiles_SwiftUI/safemiles/Extensions/Extensions.swift" : {
+    "const-values" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/Extensions.swiftconstvalues",
+    "dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/Extensions.d",
+    "diagnostics" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/Extensions.dia",
+    "index-unit-output-path" : "/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/Extensions.o",
+    "llvm-bc" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/Extensions.bc",
+    "object" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/Extensions.o",
+    "swift-dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/Extensions.swiftdeps",
+    "swiftmodule" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/Extensions~partial.swiftmodule"
+  },
+  "/Users/pc/Documents/safemiles_SwiftUI/safemiles/FontConstants.swift" : {
+    "const-values" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/FontConstants.swiftconstvalues",
+    "dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/FontConstants.d",
+    "diagnostics" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/FontConstants.dia",
+    "index-unit-output-path" : "/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/FontConstants.o",
+    "llvm-bc" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/FontConstants.bc",
+    "object" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/FontConstants.o",
+    "swift-dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/FontConstants.swiftdeps",
+    "swiftmodule" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/FontConstants~partial.swiftmodule"
+  },
+  "/Users/pc/Documents/safemiles_SwiftUI/safemiles/ForgotPasswordView.swift" : {
+    "const-values" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/ForgotPasswordView.swiftconstvalues",
+    "dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/ForgotPasswordView.d",
+    "diagnostics" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/ForgotPasswordView.dia",
+    "index-unit-output-path" : "/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/ForgotPasswordView.o",
+    "llvm-bc" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/ForgotPasswordView.bc",
+    "object" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/ForgotPasswordView.o",
+    "swift-dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/ForgotPasswordView.swiftdeps",
+    "swiftmodule" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/ForgotPasswordView~partial.swiftmodule"
+  },
+  "/Users/pc/Documents/safemiles_SwiftUI/safemiles/ForgotPasswordViewModel.swift" : {
+    "const-values" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/ForgotPasswordViewModel.swiftconstvalues",
+    "dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/ForgotPasswordViewModel.d",
+    "diagnostics" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/ForgotPasswordViewModel.dia",
+    "index-unit-output-path" : "/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/ForgotPasswordViewModel.o",
+    "llvm-bc" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/ForgotPasswordViewModel.bc",
+    "object" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/ForgotPasswordViewModel.o",
+    "swift-dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/ForgotPasswordViewModel.swiftdeps",
+    "swiftmodule" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/ForgotPasswordViewModel~partial.swiftmodule"
+  },
+  "/Users/pc/Documents/safemiles_SwiftUI/safemiles/FormsView.swift" : {
+    "const-values" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/FormsView.swiftconstvalues",
+    "dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/FormsView.d",
+    "diagnostics" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/FormsView.dia",
+    "index-unit-output-path" : "/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/FormsView.o",
+    "llvm-bc" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/FormsView.bc",
+    "object" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/FormsView.o",
+    "swift-dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/FormsView.swiftdeps",
+    "swiftmodule" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/FormsView~partial.swiftmodule"
+  },
+  "/Users/pc/Documents/safemiles_SwiftUI/safemiles/HomeView.swift" : {
+    "const-values" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/HomeView.swiftconstvalues",
+    "dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/HomeView.d",
+    "diagnostics" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/HomeView.dia",
+    "index-unit-output-path" : "/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/HomeView.o",
+    "llvm-bc" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/HomeView.bc",
+    "object" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/HomeView.o",
+    "swift-dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/HomeView.swiftdeps",
+    "swiftmodule" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/HomeView~partial.swiftmodule"
+  },
+  "/Users/pc/Documents/safemiles_SwiftUI/safemiles/HomeViewModel.swift" : {
+    "const-values" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/HomeViewModel.swiftconstvalues",
+    "dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/HomeViewModel.d",
+    "diagnostics" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/HomeViewModel.dia",
+    "index-unit-output-path" : "/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/HomeViewModel.o",
+    "llvm-bc" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/HomeViewModel.bc",
+    "object" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/HomeViewModel.o",
+    "swift-dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/HomeViewModel.swiftdeps",
+    "swiftmodule" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/HomeViewModel~partial.swiftmodule"
+  },
+  "/Users/pc/Documents/safemiles_SwiftUI/safemiles/InformationPacketView.swift" : {
+    "const-values" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/InformationPacketView.swiftconstvalues",
+    "dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/InformationPacketView.d",
+    "diagnostics" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/InformationPacketView.dia",
+    "index-unit-output-path" : "/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/InformationPacketView.o",
+    "llvm-bc" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/InformationPacketView.bc",
+    "object" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/InformationPacketView.o",
+    "swift-dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/InformationPacketView.swiftdeps",
+    "swiftmodule" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/InformationPacketView~partial.swiftmodule"
+  },
+  "/Users/pc/Documents/safemiles_SwiftUI/safemiles/LoginView.swift" : {
+    "const-values" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/LoginView.swiftconstvalues",
+    "dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/LoginView.d",
+    "diagnostics" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/LoginView.dia",
+    "index-unit-output-path" : "/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/LoginView.o",
+    "llvm-bc" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/LoginView.bc",
+    "object" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/LoginView.o",
+    "swift-dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/LoginView.swiftdeps",
+    "swiftmodule" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/LoginView~partial.swiftmodule"
+  },
+  "/Users/pc/Documents/safemiles_SwiftUI/safemiles/LoginViewModel.swift" : {
+    "const-values" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/LoginViewModel.swiftconstvalues",
+    "dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/LoginViewModel.d",
+    "diagnostics" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/LoginViewModel.dia",
+    "index-unit-output-path" : "/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/LoginViewModel.o",
+    "llvm-bc" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/LoginViewModel.bc",
+    "object" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/LoginViewModel.o",
+    "swift-dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/LoginViewModel.swiftdeps",
+    "swiftmodule" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/LoginViewModel~partial.swiftmodule"
+  },
+  "/Users/pc/Documents/safemiles_SwiftUI/safemiles/LogsView.swift" : {
+    "const-values" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/LogsView.swiftconstvalues",
+    "dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/LogsView.d",
+    "diagnostics" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/LogsView.dia",
+    "index-unit-output-path" : "/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/LogsView.o",
+    "llvm-bc" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/LogsView.bc",
+    "object" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/LogsView.o",
+    "swift-dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/LogsView.swiftdeps",
+    "swiftmodule" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/LogsView~partial.swiftmodule"
+  },
+  "/Users/pc/Documents/safemiles_SwiftUI/safemiles/LogsViewModel.swift" : {
+    "const-values" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/LogsViewModel.swiftconstvalues",
+    "dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/LogsViewModel.d",
+    "diagnostics" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/LogsViewModel.dia",
+    "index-unit-output-path" : "/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/LogsViewModel.o",
+    "llvm-bc" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/LogsViewModel.bc",
+    "object" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/LogsViewModel.o",
+    "swift-dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/LogsViewModel.swiftdeps",
+    "swiftmodule" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/LogsViewModel~partial.swiftmodule"
+  },
+  "/Users/pc/Documents/safemiles_SwiftUI/safemiles/MainContainerView.swift" : {
+    "const-values" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/MainContainerView.swiftconstvalues",
+    "dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/MainContainerView.d",
+    "diagnostics" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/MainContainerView.dia",
+    "index-unit-output-path" : "/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/MainContainerView.o",
+    "llvm-bc" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/MainContainerView.bc",
+    "object" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/MainContainerView.o",
+    "swift-dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/MainContainerView.swiftdeps",
+    "swiftmodule" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/MainContainerView~partial.swiftmodule"
+  },
+  "/Users/pc/Documents/safemiles_SwiftUI/safemiles/MainTabView.swift" : {
+    "const-values" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/MainTabView.swiftconstvalues",
+    "dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/MainTabView.d",
+    "diagnostics" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/MainTabView.dia",
+    "index-unit-output-path" : "/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/MainTabView.o",
+    "llvm-bc" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/MainTabView.bc",
+    "object" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/MainTabView.o",
+    "swift-dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/MainTabView.swiftdeps",
+    "swiftmodule" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/MainTabView~partial.swiftmodule"
+  },
+  "/Users/pc/Documents/safemiles_SwiftUI/safemiles/Models/CoDriverModel.swift" : {
+    "const-values" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/CoDriverModel.swiftconstvalues",
+    "dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/CoDriverModel.d",
+    "diagnostics" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/CoDriverModel.dia",
+    "index-unit-output-path" : "/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/CoDriverModel.o",
+    "llvm-bc" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/CoDriverModel.bc",
+    "object" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/CoDriverModel.o",
+    "swift-dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/CoDriverModel.swiftdeps",
+    "swiftmodule" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/CoDriverModel~partial.swiftmodule"
+  },
+  "/Users/pc/Documents/safemiles_SwiftUI/safemiles/Models/DivrModel.swift" : {
+    "const-values" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/DivrModel.swiftconstvalues",
+    "dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/DivrModel.d",
+    "diagnostics" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/DivrModel.dia",
+    "index-unit-output-path" : "/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/DivrModel.o",
+    "llvm-bc" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/DivrModel.bc",
+    "object" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/DivrModel.o",
+    "swift-dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/DivrModel.swiftdeps",
+    "swiftmodule" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/DivrModel~partial.swiftmodule"
+  },
+  "/Users/pc/Documents/safemiles_SwiftUI/safemiles/Models/ProfileModel.swift" : {
+    "const-values" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/ProfileModel.swiftconstvalues",
+    "dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/ProfileModel.d",
+    "diagnostics" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/ProfileModel.dia",
+    "index-unit-output-path" : "/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/ProfileModel.o",
+    "llvm-bc" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/ProfileModel.bc",
+    "object" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/ProfileModel.o",
+    "swift-dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/ProfileModel.swiftdeps",
+    "swiftmodule" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/ProfileModel~partial.swiftmodule"
+  },
+  "/Users/pc/Documents/safemiles_SwiftUI/safemiles/Models/RecapModel.swift" : {
+    "const-values" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/RecapModel.swiftconstvalues",
+    "dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/RecapModel.d",
+    "diagnostics" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/RecapModel.dia",
+    "index-unit-output-path" : "/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/RecapModel.o",
+    "llvm-bc" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/RecapModel.bc",
+    "object" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/RecapModel.o",
+    "swift-dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/RecapModel.swiftdeps",
+    "swiftmodule" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/RecapModel~partial.swiftmodule"
+  },
+  "/Users/pc/Documents/safemiles_SwiftUI/safemiles/Models/RulesModel.swift" : {
+    "const-values" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/RulesModel.swiftconstvalues",
+    "dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/RulesModel.d",
+    "diagnostics" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/RulesModel.dia",
+    "index-unit-output-path" : "/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/RulesModel.o",
+    "llvm-bc" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/RulesModel.bc",
+    "object" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/RulesModel.o",
+    "swift-dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/RulesModel.swiftdeps",
+    "swiftmodule" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/RulesModel~partial.swiftmodule"
+  },
+  "/Users/pc/Documents/safemiles_SwiftUI/safemiles/Models/SuccessModel.swift" : {
+    "const-values" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/SuccessModel.swiftconstvalues",
+    "dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/SuccessModel.d",
+    "diagnostics" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/SuccessModel.dia",
+    "index-unit-output-path" : "/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/SuccessModel.o",
+    "llvm-bc" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/SuccessModel.bc",
+    "object" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/SuccessModel.o",
+    "swift-dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/SuccessModel.swiftdeps",
+    "swiftmodule" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/SuccessModel~partial.swiftmodule"
+  },
+  "/Users/pc/Documents/safemiles_SwiftUI/safemiles/Models/VehicleDetailsModel.swift" : {
+    "const-values" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/VehicleDetailsModel.swiftconstvalues",
+    "dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/VehicleDetailsModel.d",
+    "diagnostics" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/VehicleDetailsModel.dia",
+    "index-unit-output-path" : "/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/VehicleDetailsModel.o",
+    "llvm-bc" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/VehicleDetailsModel.bc",
+    "object" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/VehicleDetailsModel.o",
+    "swift-dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/VehicleDetailsModel.swiftdeps",
+    "swiftmodule" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/VehicleDetailsModel~partial.swiftmodule"
+  },
+  "/Users/pc/Documents/safemiles_SwiftUI/safemiles/Models/logsModel.swift" : {
+    "const-values" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/logsModel.swiftconstvalues",
+    "dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/logsModel.d",
+    "diagnostics" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/logsModel.dia",
+    "index-unit-output-path" : "/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/logsModel.o",
+    "llvm-bc" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/logsModel.bc",
+    "object" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/logsModel.o",
+    "swift-dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/logsModel.swiftdeps",
+    "swiftmodule" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/logsModel~partial.swiftmodule"
+  },
+  "/Users/pc/Documents/safemiles_SwiftUI/safemiles/Models/userModel.swift" : {
+    "const-values" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/userModel.swiftconstvalues",
+    "dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/userModel.d",
+    "diagnostics" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/userModel.dia",
+    "index-unit-output-path" : "/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/userModel.o",
+    "llvm-bc" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/userModel.bc",
+    "object" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/userModel.o",
+    "swift-dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/userModel.swiftdeps",
+    "swiftmodule" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/userModel~partial.swiftmodule"
+  },
+  "/Users/pc/Documents/safemiles_SwiftUI/safemiles/Models/vehicleModel.swift" : {
+    "const-values" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/vehicleModel.swiftconstvalues",
+    "dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/vehicleModel.d",
+    "diagnostics" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/vehicleModel.dia",
+    "index-unit-output-path" : "/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/vehicleModel.o",
+    "llvm-bc" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/vehicleModel.bc",
+    "object" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/vehicleModel.o",
+    "swift-dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/vehicleModel.swiftdeps",
+    "swiftmodule" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/vehicleModel~partial.swiftmodule"
+  },
+  "/Users/pc/Documents/safemiles_SwiftUI/safemiles/PDFViewer.swift" : {
+    "const-values" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/PDFViewer.swiftconstvalues",
+    "dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/PDFViewer.d",
+    "diagnostics" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/PDFViewer.dia",
+    "index-unit-output-path" : "/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/PDFViewer.o",
+    "llvm-bc" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/PDFViewer.bc",
+    "object" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/PDFViewer.o",
+    "swift-dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/PDFViewer.swiftdeps",
+    "swiftmodule" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/PDFViewer~partial.swiftmodule"
+  },
+  "/Users/pc/Documents/safemiles_SwiftUI/safemiles/ProcessingView.swift" : {
+    "const-values" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/ProcessingView.swiftconstvalues",
+    "dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/ProcessingView.d",
+    "diagnostics" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/ProcessingView.dia",
+    "index-unit-output-path" : "/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/ProcessingView.o",
+    "llvm-bc" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/ProcessingView.bc",
+    "object" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/ProcessingView.o",
+    "swift-dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/ProcessingView.swiftdeps",
+    "swiftmodule" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/ProcessingView~partial.swiftmodule"
+  },
+  "/Users/pc/Documents/safemiles_SwiftUI/safemiles/RulesView.swift" : {
+    "const-values" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/RulesView.swiftconstvalues",
+    "dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/RulesView.d",
+    "diagnostics" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/RulesView.dia",
+    "index-unit-output-path" : "/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/RulesView.o",
+    "llvm-bc" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/RulesView.bc",
+    "object" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/RulesView.o",
+    "swift-dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/RulesView.swiftdeps",
+    "swiftmodule" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/RulesView~partial.swiftmodule"
+  },
+  "/Users/pc/Documents/safemiles_SwiftUI/safemiles/RulesViewModel.swift" : {
+    "const-values" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/RulesViewModel.swiftconstvalues",
+    "dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/RulesViewModel.d",
+    "diagnostics" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/RulesViewModel.dia",
+    "index-unit-output-path" : "/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/RulesViewModel.o",
+    "llvm-bc" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/RulesViewModel.bc",
+    "object" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/RulesViewModel.o",
+    "swift-dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/RulesViewModel.swiftdeps",
+    "swiftmodule" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/RulesViewModel~partial.swiftmodule"
+  },
+  "/Users/pc/Documents/safemiles_SwiftUI/safemiles/SelectVehicleView.swift" : {
+    "const-values" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/SelectVehicleView.swiftconstvalues",
+    "dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/SelectVehicleView.d",
+    "diagnostics" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/SelectVehicleView.dia",
+    "index-unit-output-path" : "/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/SelectVehicleView.o",
+    "llvm-bc" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/SelectVehicleView.bc",
+    "object" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/SelectVehicleView.o",
+    "swift-dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/SelectVehicleView.swiftdeps",
+    "swiftmodule" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/SelectVehicleView~partial.swiftmodule"
+  },
+  "/Users/pc/Documents/safemiles_SwiftUI/safemiles/SelectVehicleViewModel.swift" : {
+    "const-values" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/SelectVehicleViewModel.swiftconstvalues",
+    "dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/SelectVehicleViewModel.d",
+    "diagnostics" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/SelectVehicleViewModel.dia",
+    "index-unit-output-path" : "/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/SelectVehicleViewModel.o",
+    "llvm-bc" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/SelectVehicleViewModel.bc",
+    "object" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/SelectVehicleViewModel.o",
+    "swift-dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/SelectVehicleViewModel.swiftdeps",
+    "swiftmodule" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/SelectVehicleViewModel~partial.swiftmodule"
+  },
+  "/Users/pc/Documents/safemiles_SwiftUI/safemiles/SendLogsView.swift" : {
+    "const-values" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/SendLogsView.swiftconstvalues",
+    "dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/SendLogsView.d",
+    "diagnostics" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/SendLogsView.dia",
+    "index-unit-output-path" : "/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/SendLogsView.o",
+    "llvm-bc" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/SendLogsView.bc",
+    "object" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/SendLogsView.o",
+    "swift-dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/SendLogsView.swiftdeps",
+    "swiftmodule" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/SendLogsView~partial.swiftmodule"
+  },
+  "/Users/pc/Documents/safemiles_SwiftUI/safemiles/SendLogsViewModel.swift" : {
+    "const-values" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/SendLogsViewModel.swiftconstvalues",
+    "dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/SendLogsViewModel.d",
+    "diagnostics" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/SendLogsViewModel.dia",
+    "index-unit-output-path" : "/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/SendLogsViewModel.o",
+    "llvm-bc" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/SendLogsViewModel.bc",
+    "object" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/SendLogsViewModel.o",
+    "swift-dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/SendLogsViewModel.swiftdeps",
+    "swiftmodule" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/SendLogsViewModel~partial.swiftmodule"
+  },
+  "/Users/pc/Documents/safemiles_SwiftUI/safemiles/SideMenuView.swift" : {
+    "const-values" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/SideMenuView.swiftconstvalues",
+    "dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/SideMenuView.d",
+    "diagnostics" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/SideMenuView.dia",
+    "index-unit-output-path" : "/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/SideMenuView.o",
+    "llvm-bc" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/SideMenuView.bc",
+    "object" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/SideMenuView.o",
+    "swift-dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/SideMenuView.swiftdeps",
+    "swiftmodule" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/SideMenuView~partial.swiftmodule"
+  },
+  "/Users/pc/Documents/safemiles_SwiftUI/safemiles/SplashScreen.swift" : {
+    "const-values" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/SplashScreen.swiftconstvalues",
+    "dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/SplashScreen.d",
+    "diagnostics" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/SplashScreen.dia",
+    "index-unit-output-path" : "/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/SplashScreen.o",
+    "llvm-bc" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/SplashScreen.bc",
+    "object" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/SplashScreen.o",
+    "swift-dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/SplashScreen.swiftdeps",
+    "swiftmodule" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/SplashScreen~partial.swiftmodule"
+  },
+  "/Users/pc/Documents/safemiles_SwiftUI/safemiles/StatusUpdateView.swift" : {
+    "const-values" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/StatusUpdateView.swiftconstvalues",
+    "dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/StatusUpdateView.d",
+    "diagnostics" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/StatusUpdateView.dia",
+    "index-unit-output-path" : "/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/StatusUpdateView.o",
+    "llvm-bc" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/StatusUpdateView.bc",
+    "object" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/StatusUpdateView.o",
+    "swift-dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/StatusUpdateView.swiftdeps",
+    "swiftmodule" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/StatusUpdateView~partial.swiftmodule"
+  },
+  "/Users/pc/Documents/safemiles_SwiftUI/safemiles/StatusUpdateViewModel.swift" : {
+    "const-values" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/StatusUpdateViewModel.swiftconstvalues",
+    "dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/StatusUpdateViewModel.d",
+    "diagnostics" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/StatusUpdateViewModel.dia",
+    "index-unit-output-path" : "/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/StatusUpdateViewModel.o",
+    "llvm-bc" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/StatusUpdateViewModel.bc",
+    "object" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/StatusUpdateViewModel.o",
+    "swift-dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/StatusUpdateViewModel.swiftdeps",
+    "swiftmodule" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/StatusUpdateViewModel~partial.swiftmodule"
+  },
+  "/Users/pc/Documents/safemiles_SwiftUI/safemiles/Utilities/APIManager.swift" : {
+    "const-values" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/APIManager.swiftconstvalues",
+    "dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/APIManager.d",
+    "diagnostics" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/APIManager.dia",
+    "index-unit-output-path" : "/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/APIManager.o",
+    "llvm-bc" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/APIManager.bc",
+    "object" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/APIManager.o",
+    "swift-dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/APIManager.swiftdeps",
+    "swiftmodule" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/APIManager~partial.swiftmodule"
+  },
+  "/Users/pc/Documents/safemiles_SwiftUI/safemiles/Utilities/ApiList.swift" : {
+    "const-values" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/ApiList.swiftconstvalues",
+    "dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/ApiList.d",
+    "diagnostics" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/ApiList.dia",
+    "index-unit-output-path" : "/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/ApiList.o",
+    "llvm-bc" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/ApiList.bc",
+    "object" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/ApiList.o",
+    "swift-dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/ApiList.swiftdeps",
+    "swiftmodule" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/ApiList~partial.swiftmodule"
+  },
+  "/Users/pc/Documents/safemiles_SwiftUI/safemiles/Utilities/BLEManager.swift" : {
+    "const-values" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/BLEManager.swiftconstvalues",
+    "dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/BLEManager.d",
+    "diagnostics" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/BLEManager.dia",
+    "index-unit-output-path" : "/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/BLEManager.o",
+    "llvm-bc" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/BLEManager.bc",
+    "object" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/BLEManager.o",
+    "swift-dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/BLEManager.swiftdeps",
+    "swiftmodule" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/BLEManager~partial.swiftmodule"
+  },
+  "/Users/pc/Documents/safemiles_SwiftUI/safemiles/Utilities/ColorConstants.swift" : {
+    "const-values" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/ColorConstants.swiftconstvalues",
+    "dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/ColorConstants.d",
+    "diagnostics" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/ColorConstants.dia",
+    "index-unit-output-path" : "/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/ColorConstants.o",
+    "llvm-bc" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/ColorConstants.bc",
+    "object" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/ColorConstants.o",
+    "swift-dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/ColorConstants.swiftdeps",
+    "swiftmodule" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/ColorConstants~partial.swiftmodule"
+  },
+  "/Users/pc/Documents/safemiles_SwiftUI/safemiles/Utilities/DvirConstants.swift" : {
+    "const-values" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/DvirConstants.swiftconstvalues",
+    "dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/DvirConstants.d",
+    "diagnostics" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/DvirConstants.dia",
+    "index-unit-output-path" : "/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/DvirConstants.o",
+    "llvm-bc" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/DvirConstants.bc",
+    "object" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/DvirConstants.o",
+    "swift-dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/DvirConstants.swiftdeps",
+    "swiftmodule" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/DvirConstants~partial.swiftmodule"
+  },
+  "/Users/pc/Documents/safemiles_SwiftUI/safemiles/Utilities/FlexibleTimer.swift" : {
+    "const-values" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/FlexibleTimer.swiftconstvalues",
+    "dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/FlexibleTimer.d",
+    "diagnostics" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/FlexibleTimer.dia",
+    "index-unit-output-path" : "/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/FlexibleTimer.o",
+    "llvm-bc" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/FlexibleTimer.bc",
+    "object" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/FlexibleTimer.o",
+    "swift-dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/FlexibleTimer.swiftdeps",
+    "swiftmodule" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/FlexibleTimer~partial.swiftmodule"
+  },
+  "/Users/pc/Documents/safemiles_SwiftUI/safemiles/Utilities/FontManager.swift" : {
+    "const-values" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/FontManager.swiftconstvalues",
+    "dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/FontManager.d",
+    "diagnostics" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/FontManager.dia",
+    "index-unit-output-path" : "/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/FontManager.o",
+    "llvm-bc" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/FontManager.bc",
+    "object" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/FontManager.o",
+    "swift-dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/FontManager.swiftdeps",
+    "swiftmodule" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/FontManager~partial.swiftmodule"
+  },
+  "/Users/pc/Documents/safemiles_SwiftUI/safemiles/Utilities/KeychainHelper.swift" : {
+    "const-values" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/KeychainHelper.swiftconstvalues",
+    "dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/KeychainHelper.d",
+    "diagnostics" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/KeychainHelper.dia",
+    "index-unit-output-path" : "/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/KeychainHelper.o",
+    "llvm-bc" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/KeychainHelper.bc",
+    "object" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/KeychainHelper.o",
+    "swift-dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/KeychainHelper.swiftdeps",
+    "swiftmodule" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/KeychainHelper~partial.swiftmodule"
+  },
+  "/Users/pc/Documents/safemiles_SwiftUI/safemiles/Utilities/PacificTrackMock.swift" : {
+    "const-values" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/PacificTrackMock.swiftconstvalues",
+    "dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/PacificTrackMock.d",
+    "diagnostics" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/PacificTrackMock.dia",
+    "index-unit-output-path" : "/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/PacificTrackMock.o",
+    "llvm-bc" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/PacificTrackMock.bc",
+    "object" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/PacificTrackMock.o",
+    "swift-dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/PacificTrackMock.swiftdeps",
+    "swiftmodule" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/PacificTrackMock~partial.swiftmodule"
+  },
+  "/Users/pc/Documents/safemiles_SwiftUI/safemiles/Utilities/TimeHelpers.swift" : {
+    "const-values" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/TimeHelpers.swiftconstvalues",
+    "dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/TimeHelpers.d",
+    "diagnostics" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/TimeHelpers.dia",
+    "index-unit-output-path" : "/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/TimeHelpers.o",
+    "llvm-bc" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/TimeHelpers.bc",
+    "object" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/TimeHelpers.o",
+    "swift-dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/TimeHelpers.swiftdeps",
+    "swiftmodule" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/TimeHelpers~partial.swiftmodule"
+  },
+  "/Users/pc/Documents/safemiles_SwiftUI/safemiles/Utilities/UserDefaultExt.swift" : {
+    "const-values" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/UserDefaultExt.swiftconstvalues",
+    "dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/UserDefaultExt.d",
+    "diagnostics" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/UserDefaultExt.dia",
+    "index-unit-output-path" : "/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/UserDefaultExt.o",
+    "llvm-bc" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/UserDefaultExt.bc",
+    "object" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/UserDefaultExt.o",
+    "swift-dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/UserDefaultExt.swiftdeps",
+    "swiftmodule" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/UserDefaultExt~partial.swiftmodule"
+  },
+  "/Users/pc/Documents/safemiles_SwiftUI/safemiles/ViolationsView.swift" : {
+    "const-values" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/ViolationsView.swiftconstvalues",
+    "dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/ViolationsView.d",
+    "diagnostics" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/ViolationsView.dia",
+    "index-unit-output-path" : "/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/ViolationsView.o",
+    "llvm-bc" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/ViolationsView.bc",
+    "object" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/ViolationsView.o",
+    "swift-dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/ViolationsView.swiftdeps",
+    "swiftmodule" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/ViolationsView~partial.swiftmodule"
+  },
+  "/Users/pc/Documents/safemiles_SwiftUI/safemiles/safemilesApp.swift" : {
+    "const-values" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/safemilesApp.swiftconstvalues",
+    "dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/safemilesApp.d",
+    "diagnostics" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/safemilesApp.dia",
+    "index-unit-output-path" : "/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/safemilesApp.o",
+    "llvm-bc" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/safemilesApp.bc",
+    "object" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/safemilesApp.o",
+    "swift-dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/safemilesApp.swiftdeps",
+    "swiftmodule" : "/Users/pc/Documents/safemiles_SwiftUI/build/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/safemilesApp~partial.swiftmodule"
+  }
+}

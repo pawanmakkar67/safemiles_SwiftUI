@@ -1,0 +1,23 @@
+{
+  "/Users/pc/Documents/safemiles_SwiftUI/build/SourcePackages/checkouts/Alamofire/Source/Extensions/OperationQueue+Alamofire.swift" : {
+    "const-values" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/Alamofire.build/Debug-iphonesimulator/Alamofire.build/Objects-normal/x86_64/OperationQueue+Alamofire.swiftconstvalues",
+    "dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/Alamofire.build/Debug-iphonesimulator/Alamofire.build/Objects-normal/x86_64/OperationQueue+Alamofire.d",
+    "diagnostics" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/Alamofire.build/Debug-iphonesimulator/Alamofire.build/Objects-normal/x86_64/OperationQueue+Alamofire.dia",
+    "object" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/Alamofire.build/Debug-iphonesimulator/Alamofire.build/Objects-normal/x86_64/OperationQueue+Alamofire.o",
+    "swift-dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/Alamofire.build/Debug-iphonesimulator/Alamofire.build/Objects-normal/x86_64/OperationQueue+Alamofire.swiftdeps"
+  },
+  "/Users/pc/Documents/safemiles_SwiftUI/build/SourcePackages/checkouts/Alamofire/Source/Extensions/Result+Alamofire.swift" : {
+    "const-values" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/Alamofire.build/Debug-iphonesimulator/Alamofire.build/Objects-normal/x86_64/Result+Alamofire.swiftconstvalues",
+    "dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/Alamofire.build/Debug-iphonesimulator/Alamofire.build/Objects-normal/x86_64/Result+Alamofire.d",
+    "diagnostics" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/Alamofire.build/Debug-iphonesimulator/Alamofire.build/Objects-normal/x86_64/Result+Alamofire.dia",
+    "object" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/Alamofire.build/Debug-iphonesimulator/Alamofire.build/Objects-normal/x86_64/Result+Alamofire.o",
+    "swift-dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/Alamofire.build/Debug-iphonesimulator/Alamofire.build/Objects-normal/x86_64/Result+Alamofire.swiftdeps"
+  },
+  "/Users/pc/Documents/safemiles_SwiftUI/build/SourcePackages/checkouts/Alamofire/Source/Extensions/StringEncoding+Alamofire.swift" : {
+    "const-values" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/Alamofire.build/Debug-iphonesimulator/Alamofire.build/Objects-normal/x86_64/StringEncoding+Alamofire.swiftconstvalues",
+    "dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/Alamofire.build/Debug-iphonesimulator/Alamofire.build/Objects-normal/x86_64/StringEncoding+Alamofire.d",
+    "diagnostics" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/Alamofire.build/Debug-iphonesimulator/Alamofire.build/Objects-normal/x86_64/StringEncoding+Alamofire.dia",
+    "object" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/Alamofire.build/Debug-iphonesimulator/Alamofire.build/Objects-normal/x86_64/StringEncoding+Alamofire.o",
+    "swift-dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/Alamofire.build/Debug-iphonesimulator/Alamofire.build/Objects-normal/x86_64/StringEncoding+Alamofire.swiftdeps"
+  }
+}

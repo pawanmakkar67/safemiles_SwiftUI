@@ -1,0 +1,858 @@
+Command line invocation:
+    /Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project safemiles.xcodeproj -scheme safemiles -destination "platform=iOS Simulator,name=iPhone 17 Pro" build CLANG_ENABLE_MODULE_DEBUGGING=NO SWIFT_USE_EXPLICIT_MODULES=NO CLANG_USE_EXPLICIT_MODULES=NO COMPILER_INDEX_STORE_ENABLE=NO
+
+Build settings from command line:
+    CLANG_ENABLE_MODULE_DEBUGGING = NO
+    CLANG_USE_EXPLICIT_MODULES = NO
+    COMPILER_INDEX_STORE_ENABLE = NO
+    SWIFT_USE_EXPLICIT_MODULES = NO
+
+Resolve Package Graph
+
+
+Resolved source packages:
+  IQKeyboardToolbarManager: https://github.com/hackiftekhar/IQKeyboardToolbarManager.git @ 1.1.4
+  IQKeyboardManagerSwift: https://github.com/hackiftekhar/IQKeyboardManager @ 8.0.2
+  IQKeyboardCore: https://github.com/hackiftekhar/IQKeyboardCore.git @ 1.0.8
+  IQTextInputViewNotification: https://github.com/hackiftekhar/IQTextInputViewNotification.git @ 1.0.9
+  ObjectMapper: https://github.com/tristanhimmelman/ObjectMapper @ 4.4.3
+  IQTextView: https://github.com/hackiftekhar/IQTextView.git @ 1.0.5
+  IQKeyboardToolbar: https://github.com/hackiftekhar/IQKeyboardToolbar.git @ 1.1.3
+  IQKeyboardNotification: https://github.com/hackiftekhar/IQKeyboardNotification.git @ 1.0.6
+  IQKeyboardReturnManager: https://github.com/hackiftekhar/IQKeyboardReturnManager.git @ 1.0.6
+  Alamofire: https://github.com/Alamofire/Alamofire.git @ 5.11.0
+
+2026-03-27 10:44:58.049 xcodebuild[6938:59319] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+ComputePackagePrebuildTargetDependencyGraph
+
+Prepare packages
+
+CreateBuildRequest
+
+SendProjectDescription
+
+CreateBuildOperation
+
+ComputeTargetDependencyGraph
+note: Building targets in dependency order
+note: Target dependency graph (30 targets)
+    Target 'safemiles' in project 'safemiles'
+        ➜ Explicit dependency on target 'ObjectMapper' in project 'ObjectMapper'
+        ➜ Explicit dependency on target 'Alamofire' in project 'Alamofire'
+        ➜ Explicit dependency on target 'IQKeyboardManagerSwift' in project 'IQKeyboardManagerSwift'
+    Target 'IQKeyboardManagerSwift' in project 'IQKeyboardManagerSwift'
+        ➜ Explicit dependency on target 'IQKeyboardManagerSwift' in project 'IQKeyboardManagerSwift'
+        ➜ Explicit dependency on target 'IQKeyboardManagerSwift_IQKeyboardManagerSwift' in project 'IQKeyboardManagerSwift'
+        ➜ Explicit dependency on target 'IQKeyboardNotification' in project 'IQKeyboardNotification'
+        ➜ Explicit dependency on target 'IQTextInputViewNotification' in project 'IQTextInputViewNotification'
+        ➜ Explicit dependency on target 'IQKeyboardToolbarManager' in project 'IQKeyboardToolbarManager'
+        ➜ Explicit dependency on target 'IQKeyboardReturnManager' in project 'IQKeyboardReturnManager'
+        ➜ Explicit dependency on target 'IQTextView' in project 'IQTextView'
+    Target 'IQKeyboardManagerSwift' in project 'IQKeyboardManagerSwift'
+        ➜ Explicit dependency on target 'IQKeyboardManagerSwift_IQKeyboardManagerSwift' in project 'IQKeyboardManagerSwift'
+        ➜ Explicit dependency on target 'IQKeyboardNotification' in project 'IQKeyboardNotification'
+        ➜ Explicit dependency on target 'IQTextInputViewNotification' in project 'IQTextInputViewNotification'
+        ➜ Explicit dependency on target 'IQKeyboardToolbarManager' in project 'IQKeyboardToolbarManager'
+        ➜ Explicit dependency on target 'IQKeyboardReturnManager' in project 'IQKeyboardReturnManager'
+        ➜ Explicit dependency on target 'IQTextView' in project 'IQTextView'
+    Target 'IQTextView' in project 'IQTextView'
+        ➜ Explicit dependency on target 'IQTextView' in project 'IQTextView'
+        ➜ Explicit dependency on target 'IQTextView_IQTextView' in project 'IQTextView'
+        ➜ Explicit dependency on target 'IQKeyboardToolbar' in project 'IQKeyboardToolbar'
+    Target 'IQTextView' in project 'IQTextView'
+        ➜ Explicit dependency on target 'IQTextView_IQTextView' in project 'IQTextView'
+        ➜ Explicit dependency on target 'IQKeyboardToolbar' in project 'IQKeyboardToolbar'
+    Target 'IQTextView_IQTextView' in project 'IQTextView' (no dependencies)
+    Target 'IQKeyboardReturnManager' in project 'IQKeyboardReturnManager'
+        ➜ Explicit dependency on target 'IQKeyboardReturnManager' in project 'IQKeyboardReturnManager'
+        ➜ Explicit dependency on target 'IQKeyboardReturnManager_IQKeyboardReturnManager' in project 'IQKeyboardReturnManager'
+        ➜ Explicit dependency on target 'IQKeyboardCore' in project 'IQKeyboardCore'
+    Target 'IQKeyboardReturnManager' in project 'IQKeyboardReturnManager'
+        ➜ Explicit dependency on target 'IQKeyboardReturnManager_IQKeyboardReturnManager' in project 'IQKeyboardReturnManager'
+        ➜ Explicit dependency on target 'IQKeyboardCore' in project 'IQKeyboardCore'
+    Target 'IQKeyboardReturnManager_IQKeyboardReturnManager' in project 'IQKeyboardReturnManager' (no dependencies)
+    Target 'IQKeyboardToolbarManager' in project 'IQKeyboardToolbarManager'
+        ➜ Explicit dependency on target 'IQKeyboardToolbarManager' in project 'IQKeyboardToolbarManager'
+        ➜ Explicit dependency on target 'IQKeyboardToolbarManager_IQKeyboardToolbarManager' in project 'IQKeyboardToolbarManager'
+        ➜ Explicit dependency on target 'IQKeyboardToolbar' in project 'IQKeyboardToolbar'
+        ➜ Explicit dependency on target 'IQTextInputViewNotification' in project 'IQTextInputViewNotification'
+    Target 'IQKeyboardToolbarManager' in project 'IQKeyboardToolbarManager'
+        ➜ Explicit dependency on target 'IQKeyboardToolbarManager_IQKeyboardToolbarManager' in project 'IQKeyboardToolbarManager'
+        ➜ Explicit dependency on target 'IQKeyboardToolbar' in project 'IQKeyboardToolbar'
+        ➜ Explicit dependency on target 'IQTextInputViewNotification' in project 'IQTextInputViewNotification'
+    Target 'IQKeyboardToolbar' in project 'IQKeyboardToolbar'
+        ➜ Explicit dependency on target 'IQKeyboardToolbar' in project 'IQKeyboardToolbar'
+        ➜ Explicit dependency on target 'IQKeyboardToolbar_IQKeyboardToolbar' in project 'IQKeyboardToolbar'
+        ➜ Explicit dependency on target 'IQKeyboardCore' in project 'IQKeyboardCore'
+    Target 'IQKeyboardToolbar' in project 'IQKeyboardToolbar'
+        ➜ Explicit dependency on target 'IQKeyboardToolbar_IQKeyboardToolbar' in project 'IQKeyboardToolbar'
+        ➜ Explicit dependency on target 'IQKeyboardCore' in project 'IQKeyboardCore'
+    Target 'IQKeyboardToolbar_IQKeyboardToolbar' in project 'IQKeyboardToolbar' (no dependencies)
+    Target 'IQKeyboardToolbarManager_IQKeyboardToolbarManager' in project 'IQKeyboardToolbarManager' (no dependencies)
+    Target 'IQTextInputViewNotification' in project 'IQTextInputViewNotification'
+        ➜ Explicit dependency on target 'IQTextInputViewNotification' in project 'IQTextInputViewNotification'
+        ➜ Explicit dependency on target 'IQTextInputViewNotification_IQTextInputViewNotification' in project 'IQTextInputViewNotification'
+        ➜ Explicit dependency on target 'IQKeyboardCore' in project 'IQKeyboardCore'
+    Target 'IQTextInputViewNotification' in project 'IQTextInputViewNotification'
+        ➜ Explicit dependency on target 'IQTextInputViewNotification_IQTextInputViewNotification' in project 'IQTextInputViewNotification'
+        ➜ Explicit dependency on target 'IQKeyboardCore' in project 'IQKeyboardCore'
+    Target 'IQKeyboardCore' in project 'IQKeyboardCore'
+        ➜ Explicit dependency on target 'IQKeyboardCore' in project 'IQKeyboardCore'
+        ➜ Explicit dependency on target 'IQKeyboardCore_IQKeyboardCore' in project 'IQKeyboardCore'
+    Target 'IQKeyboardCore' in project 'IQKeyboardCore'
+        ➜ Explicit dependency on target 'IQKeyboardCore_IQKeyboardCore' in project 'IQKeyboardCore'
+    Target 'IQKeyboardCore_IQKeyboardCore' in project 'IQKeyboardCore' (no dependencies)
+    Target 'IQTextInputViewNotification_IQTextInputViewNotification' in project 'IQTextInputViewNotification' (no dependencies)
+    Target 'IQKeyboardNotification' in project 'IQKeyboardNotification'
+        ➜ Explicit dependency on target 'IQKeyboardNotification' in project 'IQKeyboardNotification'
+        ➜ Explicit dependency on target 'IQKeyboardNotification_IQKeyboardNotification' in project 'IQKeyboardNotification'
+    Target 'IQKeyboardNotification' in project 'IQKeyboardNotification'
+        ➜ Explicit dependency on target 'IQKeyboardNotification_IQKeyboardNotification' in project 'IQKeyboardNotification'
+    Target 'IQKeyboardNotification_IQKeyboardNotification' in project 'IQKeyboardNotification' (no dependencies)
+    Target 'IQKeyboardManagerSwift_IQKeyboardManagerSwift' in project 'IQKeyboardManagerSwift' (no dependencies)
+    Target 'Alamofire' in project 'Alamofire'
+        ➜ Explicit dependency on target 'Alamofire' in project 'Alamofire'
+        ➜ Explicit dependency on target 'Alamofire_Alamofire' in project 'Alamofire'
+    Target 'Alamofire' in project 'Alamofire'
+        ➜ Explicit dependency on target 'Alamofire_Alamofire' in project 'Alamofire'
+    Target 'Alamofire_Alamofire' in project 'Alamofire' (no dependencies)
+    Target 'ObjectMapper' in project 'ObjectMapper'
+        ➜ Explicit dependency on target 'ObjectMapper' in project 'ObjectMapper'
+    Target 'ObjectMapper' in project 'ObjectMapper' (no dependencies)
+
+GatherProvisioningInputs
+
+CreateBuildDescription
+
+ExecuteExternalTool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc --version
+
+ExecuteExternalTool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -v -E -dM -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.1.sdk -x c -c /dev/null
+
+ExecuteExternalTool /Applications/Xcode.app/Contents/Developer/usr/bin/actool --print-asset-tag-combinations --output-format xml1 /Users/pc/Documents/safemiles_SwiftUI/safemiles/Assets.xcassets
+
+ExecuteExternalTool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld -version_details
+
+ExecuteExternalTool /Applications/Xcode.app/Contents/Developer/usr/bin/actool --version --output-format xml1
+
+Build description signature: ae66dd2a7a75513603a81aac54a3872f
+Build description path: /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Intermediates.noindex/XCBuildData/ae66dd2a7a75513603a81aac54a3872f.xcbuilddata
+ClangStatCache /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang-stat-cache /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.1.sdk /Users/pc/Library/Developer/Xcode/DerivedData/SDKStatCaches.noindex/iphonesimulator26.1-23B77-3885c01c3e6b6a337905948deab2002e90cf18a4295e390e64c810bc6bd7acbc.sdkstatcache
+    cd /Users/pc/Documents/safemiles_SwiftUI/safemiles.xcodeproj
+    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang-stat-cache /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.1.sdk -o /Users/pc/Library/Developer/Xcode/DerivedData/SDKStatCaches.noindex/iphonesimulator26.1-23B77-3885c01c3e6b6a337905948deab2002e90cf18a4295e390e64c810bc6bd7acbc.sdkstatcache
+
+ProcessInfoPlistFile /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Products/Debug-iphonesimulator/IQTextView_IQTextView.bundle/Info.plist /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Intermediates.noindex/IQTextView.build/Debug-iphonesimulator/IQTextView_IQTextView.build/empty-IQTextView_IQTextView.plist (in target 'IQTextView_IQTextView' from project 'IQTextView')
+    cd /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/SourcePackages/checkouts/IQTextView
+    builtin-infoPlistUtility /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Intermediates.noindex/IQTextView.build/Debug-iphonesimulator/IQTextView_IQTextView.build/empty-IQTextView_IQTextView.plist -producttype com.apple.product-type.bundle -expandbuildsettings -format binary -platform iphonesimulator -o /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Products/Debug-iphonesimulator/IQTextView_IQTextView.bundle/Info.plist
+
+ProcessInfoPlistFile /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Products/Debug-iphonesimulator/IQTextInputViewNotification_IQTextInputViewNotification.bundle/Info.plist /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Intermediates.noindex/IQTextInputViewNotification.build/Debug-iphonesimulator/IQTextInputViewNotification_IQTextInputViewNotification.build/empty-IQTextInputViewNotification_IQTextInputViewNotification.plist (in target 'IQTextInputViewNotification_IQTextInputViewNotification' from project 'IQTextInputViewNotification')
+    cd /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/SourcePackages/checkouts/IQTextInputViewNotification
+    builtin-infoPlistUtility /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Intermediates.noindex/IQTextInputViewNotification.build/Debug-iphonesimulator/IQTextInputViewNotification_IQTextInputViewNotification.build/empty-IQTextInputViewNotification_IQTextInputViewNotification.plist -producttype com.apple.product-type.bundle -expandbuildsettings -format binary -platform iphonesimulator -o /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Products/Debug-iphonesimulator/IQTextInputViewNotification_IQTextInputViewNotification.bundle/Info.plist
+
+ProcessInfoPlistFile /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Products/Debug-iphonesimulator/IQKeyboardToolbarManager_IQKeyboardToolbarManager.bundle/Info.plist /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Intermediates.noindex/IQKeyboardToolbarManager.build/Debug-iphonesimulator/IQKeyboardToolbarManager_IQKeyboardToolbarManager.build/empty-IQKeyboardToolbarManager_IQKeyboardToolbarManager.plist (in target 'IQKeyboardToolbarManager_IQKeyboardToolbarManager' from project 'IQKeyboardToolbarManager')
+    cd /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/SourcePackages/checkouts/IQKeyboardToolbarManager
+    builtin-infoPlistUtility /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Intermediates.noindex/IQKeyboardToolbarManager.build/Debug-iphonesimulator/IQKeyboardToolbarManager_IQKeyboardToolbarManager.build/empty-IQKeyboardToolbarManager_IQKeyboardToolbarManager.plist -producttype com.apple.product-type.bundle -expandbuildsettings -format binary -platform iphonesimulator -o /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Products/Debug-iphonesimulator/IQKeyboardToolbarManager_IQKeyboardToolbarManager.bundle/Info.plist
+
+ProcessInfoPlistFile /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Products/Debug-iphonesimulator/IQKeyboardReturnManager_IQKeyboardReturnManager.bundle/Info.plist /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Intermediates.noindex/IQKeyboardReturnManager.build/Debug-iphonesimulator/IQKeyboardReturnManager_IQKeyboardReturnManager.build/empty-IQKeyboardReturnManager_IQKeyboardReturnManager.plist (in target 'IQKeyboardReturnManager_IQKeyboardReturnManager' from project 'IQKeyboardReturnManager')
+    cd /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/SourcePackages/checkouts/IQKeyboardReturnManager
+    builtin-infoPlistUtility /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Intermediates.noindex/IQKeyboardReturnManager.build/Debug-iphonesimulator/IQKeyboardReturnManager_IQKeyboardReturnManager.build/empty-IQKeyboardReturnManager_IQKeyboardReturnManager.plist -producttype com.apple.product-type.bundle -expandbuildsettings -format binary -platform iphonesimulator -o /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Products/Debug-iphonesimulator/IQKeyboardReturnManager_IQKeyboardReturnManager.bundle/Info.plist
+
+ProcessInfoPlistFile /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Products/Debug-iphonesimulator/IQKeyboardNotification_IQKeyboardNotification.bundle/Info.plist /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Intermediates.noindex/IQKeyboardNotification.build/Debug-iphonesimulator/IQKeyboardNotification_IQKeyboardNotification.build/empty-IQKeyboardNotification_IQKeyboardNotification.plist (in target 'IQKeyboardNotification_IQKeyboardNotification' from project 'IQKeyboardNotification')
+    cd /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/SourcePackages/checkouts/IQKeyboardNotification
+    builtin-infoPlistUtility /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Intermediates.noindex/IQKeyboardNotification.build/Debug-iphonesimulator/IQKeyboardNotification_IQKeyboardNotification.build/empty-IQKeyboardNotification_IQKeyboardNotification.plist -producttype com.apple.product-type.bundle -expandbuildsettings -format binary -platform iphonesimulator -o /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Products/Debug-iphonesimulator/IQKeyboardNotification_IQKeyboardNotification.bundle/Info.plist
+
+ProcessInfoPlistFile /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Products/Debug-iphonesimulator/IQKeyboardToolbar_IQKeyboardToolbar.bundle/Info.plist /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Intermediates.noindex/IQKeyboardToolbar.build/Debug-iphonesimulator/IQKeyboardToolbar_IQKeyboardToolbar.build/empty-IQKeyboardToolbar_IQKeyboardToolbar.plist (in target 'IQKeyboardToolbar_IQKeyboardToolbar' from project 'IQKeyboardToolbar')
+    cd /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/SourcePackages/checkouts/IQKeyboardToolbar
+    builtin-infoPlistUtility /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Intermediates.noindex/IQKeyboardToolbar.build/Debug-iphonesimulator/IQKeyboardToolbar_IQKeyboardToolbar.build/empty-IQKeyboardToolbar_IQKeyboardToolbar.plist -producttype com.apple.product-type.bundle -expandbuildsettings -format binary -platform iphonesimulator -o /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Products/Debug-iphonesimulator/IQKeyboardToolbar_IQKeyboardToolbar.bundle/Info.plist
+
+ProcessInfoPlistFile /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Products/Debug-iphonesimulator/IQKeyboardCore_IQKeyboardCore.bundle/Info.plist /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Intermediates.noindex/IQKeyboardCore.build/Debug-iphonesimulator/IQKeyboardCore_IQKeyboardCore.build/empty-IQKeyboardCore_IQKeyboardCore.plist (in target 'IQKeyboardCore_IQKeyboardCore' from project 'IQKeyboardCore')
+    cd /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/SourcePackages/checkouts/IQKeyboardCore
+    builtin-infoPlistUtility /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Intermediates.noindex/IQKeyboardCore.build/Debug-iphonesimulator/IQKeyboardCore_IQKeyboardCore.build/empty-IQKeyboardCore_IQKeyboardCore.plist -producttype com.apple.product-type.bundle -expandbuildsettings -format binary -platform iphonesimulator -o /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Products/Debug-iphonesimulator/IQKeyboardCore_IQKeyboardCore.bundle/Info.plist
+
+ProcessInfoPlistFile /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Products/Debug-iphonesimulator/Alamofire_Alamofire.bundle/Info.plist /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Intermediates.noindex/Alamofire.build/Debug-iphonesimulator/Alamofire_Alamofire.build/empty-Alamofire_Alamofire.plist (in target 'Alamofire_Alamofire' from project 'Alamofire')
+    cd /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/SourcePackages/checkouts/Alamofire
+    builtin-infoPlistUtility /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Intermediates.noindex/Alamofire.build/Debug-iphonesimulator/Alamofire_Alamofire.build/empty-Alamofire_Alamofire.plist -producttype com.apple.product-type.bundle -expandbuildsettings -format binary -platform iphonesimulator -o /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Products/Debug-iphonesimulator/Alamofire_Alamofire.bundle/Info.plist
+
+CompileAssetCatalogVariant thinned /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Products/Debug-iphonesimulator/safemiles.app /Users/pc/Documents/safemiles_SwiftUI/safemiles/Assets.xcassets (in target 'safemiles' from project 'safemiles')
+    cd /Users/pc/Documents/safemiles_SwiftUI
+    /Applications/Xcode.app/Contents/Developer/usr/bin/actool /Users/pc/Documents/safemiles_SwiftUI/safemiles/Assets.xcassets --compile /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Intermediates.noindex/safemiles.build/Debug-iphonesimulator/safemiles.build/assetcatalog_output/thinned --output-format human-readable-text --notices --warnings --export-dependency-info /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Intermediates.noindex/safemiles.build/Debug-iphonesimulator/safemiles.build/assetcatalog_dependencies_thinned --output-partial-info-plist /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Intermediates.noindex/safemiles.build/Debug-iphonesimulator/safemiles.build/assetcatalog_generated_info.plist_thinned --app-icon AppIcon --accent-color AccentColor --compress-pngs --enable-on-demand-resources YES --filter-for-thinning-device-configuration iPhone18,1 --filter-for-device-os-version 26.1 --development-region en --target-device iphone --target-device ipad --minimum-deployment-target 15.6 --platform iphonesimulator
+/* com.apple.actool.compilation-results */
+/Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Intermediates.noindex/safemiles.build/Debug-iphonesimulator/safemiles.build/assetcatalog_generated_info.plist_thinned
+/Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Intermediates.noindex/safemiles.build/Debug-iphonesimulator/safemiles.build/assetcatalog_output/thinned/AppIcon60x60@2x.png
+/Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Intermediates.noindex/safemiles.build/Debug-iphonesimulator/safemiles.build/assetcatalog_output/thinned/AppIcon76x76@2x~ipad.png
+/Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Intermediates.noindex/safemiles.build/Debug-iphonesimulator/safemiles.build/assetcatalog_output/thinned/Assets.car
+
+
+SwiftDriver safemiles normal x86_64 com.apple.xcode.tools.swift.compiler (in target 'safemiles' from project 'safemiles')
+    cd /Users/pc/Documents/safemiles_SwiftUI
+    builtin-SwiftDriver -- /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc -module-name safemiles -Onone -enforce-exclusivity\=checked @/Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Intermediates.noindex/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/safemiles.SwiftFileList -DDEBUG -default-isolation\=MainActor -enable-bare-slash-regex -enable-upcoming-feature DisableOutwardActorInference -enable-upcoming-feature InferSendableFromCaptures -enable-upcoming-feature GlobalActorIsolatedTypesUsability -enable-upcoming-feature MemberImportVisibility -enable-upcoming-feature InferIsolatedConformances -enable-upcoming-feature NonisolatedNonsendingByDefault -enable-experimental-feature DebugDescriptionMacro -sdk /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.1.sdk -target x86_64-apple-ios15.6-simulator -g -module-cache-path /Users/pc/Library/Developer/Xcode/DerivedData/ModuleCache.noindex -Xfrontend -serialize-debugging-options -profile-coverage-mapping -profile-generate -enable-testing -Xcc -D_LIBCPP_HARDENING_MODE\=_LIBCPP_HARDENING_MODE_DEBUG -swift-version 5 -I /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Products/Debug-iphonesimulator -F /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Products/Debug-iphonesimulator/PackageFrameworks -F /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Products/Debug-iphonesimulator/PackageFrameworks -F /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Products/Debug-iphonesimulator/PackageFrameworks -F /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Products/Debug-iphonesimulator/PackageFrameworks -F /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Products/Debug-iphonesimulator/PackageFrameworks -F /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Products/Debug-iphonesimulator/PackageFrameworks -F /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Products/Debug-iphonesimulator/PackageFrameworks -F /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Products/Debug-iphonesimulator/PackageFrameworks -F /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Products/Debug-iphonesimulator/PackageFrameworks -F /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Products/Debug-iphonesimulator/PackageFrameworks -F /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Products/Debug-iphonesimulator -emit-localized-strings -emit-localized-strings-path /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Intermediates.noindex/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64 -c -j16 -enable-batch-mode -incremental -Xcc -ivfsstatcache -Xcc /Users/pc/Library/Developer/Xcode/DerivedData/SDKStatCaches.noindex/iphonesimulator26.1-23B77-3885c01c3e6b6a337905948deab2002e90cf18a4295e390e64c810bc6bd7acbc.sdkstatcache -output-file-map /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Intermediates.noindex/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/safemiles-OutputFileMap.json -use-frontend-parseable-output -save-temps -no-color-diagnostics -explicit-module-build -module-cache-path /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Intermediates.noindex/SwiftExplicitPrecompiledModules -clang-scanner-module-cache-path /Users/pc/Library/Developer/Xcode/DerivedData/ModuleCache.noindex -sdk-module-cache-path /Users/pc/Library/Developer/Xcode/DerivedData/ModuleCache.noindex -serialize-diagnostics -emit-dependencies -emit-module -emit-module-path /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Intermediates.noindex/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/safemiles.swiftmodule -validate-clang-modules-once -clang-build-session-file /Users/pc/Library/Developer/Xcode/DerivedData/ModuleCache.noindex/Session.modulevalidation -Xcc -I/Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Intermediates.noindex/safemiles.build/Debug-iphonesimulator/safemiles.build/swift-overrides.hmap -emit-const-values -Xfrontend -const-gather-protocols-file -Xfrontend /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Intermediates.noindex/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/safemiles_const_extract_protocols.json -Xcc -iquote -Xcc /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Intermediates.noindex/safemiles.build/Debug-iphonesimulator/safemiles.build/safemiles-generated-files.hmap -Xcc -I/Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Intermediates.noindex/safemiles.build/Debug-iphonesimulator/safemiles.build/safemiles-own-target-headers.hmap -Xcc -I/Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Intermediates.noindex/safemiles.build/Debug-iphonesimulator/safemiles.build/safemiles-all-non-framework-target-headers.hmap -Xcc -ivfsoverlay -Xcc /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Intermediates.noindex/safemiles.build/Debug-iphonesimulator/safemiles-b1c88cbff074a65c298a9f490789838c-VFS-iphonesimulator/all-product-headers.yaml -Xcc -iquote -Xcc /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Intermediates.noindex/safemiles.build/Debug-iphonesimulator/safemiles.build/safemiles-project-headers.hmap -Xcc -I/Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Products/Debug-iphonesimulator/include -Xcc -I/Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Intermediates.noindex/safemiles.build/Debug-iphonesimulator/safemiles.build/DerivedSources-normal/x86_64 -Xcc -I/Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Intermediates.noindex/safemiles.build/Debug-iphonesimulator/safemiles.build/DerivedSources/x86_64 -Xcc -I/Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Intermediates.noindex/safemiles.build/Debug-iphonesimulator/safemiles.build/DerivedSources -Xcc -DDEBUG\=1 -emit-objc-header -emit-objc-header-path /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Intermediates.noindex/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/safemiles-Swift.h -working-directory /Users/pc/Documents/safemiles_SwiftUI -experimental-emit-module-separately -disable-cmo
+
+ProcessInfoPlistFile /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Products/Debug-iphonesimulator/IQKeyboardManagerSwift_IQKeyboardManagerSwift.bundle/Info.plist /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Intermediates.noindex/IQKeyboardManagerSwift.build/Debug-iphonesimulator/IQKeyboardManagerSwift_IQKeyboardManagerSwift.build/empty-IQKeyboardManagerSwift_IQKeyboardManagerSwift.plist (in target 'IQKeyboardManagerSwift_IQKeyboardManagerSwift' from project 'IQKeyboardManagerSwift')
+    cd /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/SourcePackages/checkouts/IQKeyboardManager
+    builtin-infoPlistUtility /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Intermediates.noindex/IQKeyboardManagerSwift.build/Debug-iphonesimulator/IQKeyboardManagerSwift_IQKeyboardManagerSwift.build/empty-IQKeyboardManagerSwift_IQKeyboardManagerSwift.plist -producttype com.apple.product-type.bundle -expandbuildsettings -format binary -platform iphonesimulator -o /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Products/Debug-iphonesimulator/IQKeyboardManagerSwift_IQKeyboardManagerSwift.bundle/Info.plist
+
+SwiftCompile normal x86_64 Compiling\ ApiList.swift,\ APIManager.swift,\ BLEManager.swift,\ ColorConstants.swift /Users/pc/Documents/safemiles_SwiftUI/safemiles/Utilities/ApiList.swift /Users/pc/Documents/safemiles_SwiftUI/safemiles/Utilities/APIManager.swift /Users/pc/Documents/safemiles_SwiftUI/safemiles/Utilities/BLEManager.swift /Users/pc/Documents/safemiles_SwiftUI/safemiles/Utilities/ColorConstants.swift (in target 'safemiles' from project 'safemiles')
+
+SwiftCompile normal x86_64 /Users/pc/Documents/safemiles_SwiftUI/safemiles/Utilities/ApiList.swift (in target 'safemiles' from project 'safemiles')
+    cd /Users/pc/Documents/safemiles_SwiftUI
+    
+
+SwiftCompile normal x86_64 /Users/pc/Documents/safemiles_SwiftUI/safemiles/Utilities/APIManager.swift (in target 'safemiles' from project 'safemiles')
+    cd /Users/pc/Documents/safemiles_SwiftUI
+    
+/Users/pc/Documents/safemiles_SwiftUI/safemiles/Utilities/APIManager.swift:38:115: warning: 'responseJSON(queue:dataPreprocessor:emptyResponseCodes:emptyRequestMethods:options:completionHandler:)' is deprecated: responseJSON deprecated and will be removed in Alamofire 6. Use responseDecodable instead.
+        AF.request(url1, method: method, parameters: parameters, encoding: URLEncoding.default, headers: headers).responseJSON { (response) in
+                                                                                                                  ^
+/Users/pc/Documents/safemiles_SwiftUI/safemiles/Utilities/APIManager.swift:22:13: warning: variable 'url1' was never mutated; consider changing to 'let' constant
+        var url1 = url
+        ~~~ ^
+        let
+/Users/pc/Documents/safemiles_SwiftUI/safemiles/Utilities/APIManager.swift:48:17: warning: initialization of immutable value 'controller' was never used; consider replacing with assignment to '_' or removing it
+            let controller = UIApplication.topViewController()
+            ~~~~^~~~~~~~~~
+            _
+/Users/pc/Documents/safemiles_SwiftUI/safemiles/Utilities/APIManager.swift:68:21: warning: initialization of immutable value 'maintenanceMsg' was never used; consider replacing with assignment to '_' or removing it
+                let maintenanceMsg = (response.value as AnyObject)["message"] as? String ?? ""
+                ~~~~^~~~~~~~~~~~~~
+                _
+/Users/pc/Documents/safemiles_SwiftUI/safemiles/Utilities/APIManager.swift:151:10: warning: 'responseJSON(queue:dataPreprocessor:emptyResponseCodes:emptyRequestMethods:options:completionHandler:)' is deprecated: responseJSON deprecated and will be removed in Alamofire 6. Use responseDecodable instead.
+        .responseJSON { (response) in
+         ^
+/Users/pc/Documents/safemiles_SwiftUI/safemiles/Utilities/APIManager.swift:119:13: warning: variable 'url1' was never mutated; consider changing to 'let' constant
+        var url1 = url
+        ~~~ ^
+        let
+/Users/pc/Documents/safemiles_SwiftUI/safemiles/Utilities/APIManager.swift:244:14: warning: 'responseJSON(queue:dataPreprocessor:emptyResponseCodes:emptyRequestMethods:options:completionHandler:)' is deprecated: responseJSON deprecated and will be removed in Alamofire 6. Use responseDecodable instead.
+            .responseJSON { (response) in
+             ^
+/Users/pc/Documents/safemiles_SwiftUI/safemiles/Utilities/APIManager.swift:187:13: warning: variable 'url1' was never mutated; consider changing to 'let' constant
+        var url1 = url
+        ~~~ ^
+        let
+/Users/pc/Documents/safemiles_SwiftUI/safemiles/Utilities/APIManager.swift:312:10: warning: 'responseJSON(queue:dataPreprocessor:emptyResponseCodes:emptyRequestMethods:options:completionHandler:)' is deprecated: responseJSON deprecated and will be removed in Alamofire 6. Use responseDecodable instead.
+        .responseJSON { (response) in
+         ^
+/Users/pc/Documents/safemiles_SwiftUI/safemiles/Utilities/APIManager.swift:280:13: warning: initialization of immutable value 'queue' was never used; consider replacing with assignment to '_' or removing it
+        let queue = DispatchQueue(label: "com.cnoon.manager-response-queue", attributes: DispatchQueue.Attributes.concurrent)
+        ~~~~^~~~~
+        _
+/Users/pc/Documents/safemiles_SwiftUI/safemiles/Utilities/APIManager.swift:390:52: warning: left side of nil coalescing operator '??' has non-optional type 'String', so the right side is never used
+        let strToken = UserDefaults.getUserToken() ?? ""
+                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~
+                                                  
+/Users/pc/Documents/safemiles_SwiftUI/safemiles/Utilities/APIManager.swift:400:115: warning: 'responseJSON(queue:dataPreprocessor:emptyResponseCodes:emptyRequestMethods:options:completionHandler:)' is deprecated: responseJSON deprecated and will be removed in Alamofire 6. Use responseDecodable instead.
+        AF.request(url1, method: method, parameters: parameters, encoding: URLEncoding.default, headers: headers).responseJSON { (response) in
+                                                                                                                  ^
+/Users/pc/Documents/safemiles_SwiftUI/safemiles/Utilities/APIManager.swift:388:13: warning: variable 'url1' was never mutated; consider changing to 'let' constant
+        var url1 = url
+        ~~~ ^
+        let
+/Users/pc/Documents/safemiles_SwiftUI/safemiles/Utilities/APIManager.swift:410:17: warning: initialization of immutable value 'controller' was never used; consider replacing with assignment to '_' or removing it
+            let controller = UIApplication.topViewController()
+            ~~~~^~~~~~~~~~
+            _
+/Users/pc/Documents/safemiles_SwiftUI/safemiles/Utilities/APIManager.swift:423:21: warning: initialization of immutable value 'maintenanceMsg' was never used; consider replacing with assignment to '_' or removing it
+                let maintenanceMsg = (response.value as AnyObject)["message"] as? String ?? ""
+                ~~~~^~~~~~~~~~~~~~
+                _
+
+SwiftCompile normal x86_64 /Users/pc/Documents/safemiles_SwiftUI/safemiles/Utilities/BLEManager.swift (in target 'safemiles' from project 'safemiles')
+    cd /Users/pc/Documents/safemiles_SwiftUI
+    
+/Users/pc/Documents/safemiles_SwiftUI/safemiles/Utilities/BLEManager.swift:304:55: warning: string interpolation produces a debug description for an optional value; did you mean to make this explicit?
+            print("Failed to fetch vehicle details: \(error)")
+                                                      ^~~~~
+/Users/pc/Documents/safemiles_SwiftUI/safemiles/Utilities/BLEManager.swift:304:55: note: provide a default value to avoid this warning
+            print("Failed to fetch vehicle details: \(error)")
+                                                      ^~~~~
+                                                            ?? <#default value#>
+/Users/pc/Documents/safemiles_SwiftUI/safemiles/Utilities/BLEManager.swift:304:55: note: use 'String(describing:)' to silence this warning
+            print("Failed to fetch vehicle details: \(error)")
+                                                      ^~~~~
+                                                      String(describing:  )
+
+SwiftCompile normal x86_64 /Users/pc/Documents/safemiles_SwiftUI/safemiles/Utilities/ColorConstants.swift (in target 'safemiles' from project 'safemiles')
+    cd /Users/pc/Documents/safemiles_SwiftUI
+    
+
+SwiftCompile normal x86_64 Compiling\ DvirConstants.swift,\ PacificTrackMock.swift,\ AddDvirView.swift,\ AddDvirViewModel.swift /Users/pc/Documents/safemiles_SwiftUI/safemiles/Utilities/DvirConstants.swift /Users/pc/Documents/safemiles_SwiftUI/safemiles/Utilities/PacificTrackMock.swift /Users/pc/Documents/safemiles_SwiftUI/safemiles/AddDvirView.swift /Users/pc/Documents/safemiles_SwiftUI/safemiles/AddDvirViewModel.swift (in target 'safemiles' from project 'safemiles')
+
+SwiftCompile normal x86_64 /Users/pc/Documents/safemiles_SwiftUI/safemiles/Utilities/DvirConstants.swift (in target 'safemiles' from project 'safemiles')
+    cd /Users/pc/Documents/safemiles_SwiftUI
+    
+
+SwiftCompile normal x86_64 /Users/pc/Documents/safemiles_SwiftUI/safemiles/Utilities/PacificTrackMock.swift (in target 'safemiles' from project 'safemiles')
+    cd /Users/pc/Documents/safemiles_SwiftUI
+    
+
+SwiftCompile normal x86_64 /Users/pc/Documents/safemiles_SwiftUI/safemiles/AddDvirView.swift (in target 'safemiles' from project 'safemiles')
+    cd /Users/pc/Documents/safemiles_SwiftUI
+    
+
+SwiftCompile normal x86_64 /Users/pc/Documents/safemiles_SwiftUI/safemiles/AddDvirViewModel.swift (in target 'safemiles' from project 'safemiles')
+    cd /Users/pc/Documents/safemiles_SwiftUI
+    
+
+SwiftCompile normal x86_64 Compiling\ AddEditLogView.swift,\ AddEditLogViewModel.swift,\ BluetoothScanningView.swift,\ CertifyView.swift /Users/pc/Documents/safemiles_SwiftUI/safemiles/AddEditLogView.swift /Users/pc/Documents/safemiles_SwiftUI/safemiles/AddEditLogViewModel.swift /Users/pc/Documents/safemiles_SwiftUI/safemiles/BluetoothScanningView.swift /Users/pc/Documents/safemiles_SwiftUI/safemiles/CertifyView.swift (in target 'safemiles' from project 'safemiles')
+
+SwiftCompile normal x86_64 /Users/pc/Documents/safemiles_SwiftUI/safemiles/AddEditLogView.swift (in target 'safemiles' from project 'safemiles')
+    cd /Users/pc/Documents/safemiles_SwiftUI
+    
+
+SwiftCompile normal x86_64 /Users/pc/Documents/safemiles_SwiftUI/safemiles/AddEditLogViewModel.swift (in target 'safemiles' from project 'safemiles')
+    cd /Users/pc/Documents/safemiles_SwiftUI
+    
+
+SwiftCompile normal x86_64 /Users/pc/Documents/safemiles_SwiftUI/safemiles/BluetoothScanningView.swift (in target 'safemiles' from project 'safemiles')
+    cd /Users/pc/Documents/safemiles_SwiftUI
+    
+/Users/pc/Documents/safemiles_SwiftUI/safemiles/BluetoothScanningView.swift:209:53: warning: left side of nil coalescing operator '??' has non-optional type 'Color', so the right side is never used
+            .shadow(color: AppColors.blackOpacity05 ?? AppColors.blackOpacity10, radius: 2, x: 0, y: 1) // Safe match
+                           ~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~
+                                                   
+
+SwiftCompile normal x86_64 /Users/pc/Documents/safemiles_SwiftUI/safemiles/CertifyView.swift (in target 'safemiles' from project 'safemiles')
+    cd /Users/pc/Documents/safemiles_SwiftUI
+    
+
+SwiftCompile normal x86_64 Compiling\ CoDriverModel.swift,\ RulesModel.swift,\ VehicleDetailsModel.swift,\ vehicleModel.swift /Users/pc/Documents/safemiles_SwiftUI/safemiles/Models/CoDriverModel.swift /Users/pc/Documents/safemiles_SwiftUI/safemiles/Models/RulesModel.swift /Users/pc/Documents/safemiles_SwiftUI/safemiles/Models/VehicleDetailsModel.swift /Users/pc/Documents/safemiles_SwiftUI/safemiles/Models/vehicleModel.swift (in target 'safemiles' from project 'safemiles')
+
+SwiftCompile normal x86_64 /Users/pc/Documents/safemiles_SwiftUI/safemiles/Models/CoDriverModel.swift (in target 'safemiles' from project 'safemiles')
+    cd /Users/pc/Documents/safemiles_SwiftUI
+    
+
+SwiftCompile normal x86_64 /Users/pc/Documents/safemiles_SwiftUI/safemiles/Models/RulesModel.swift (in target 'safemiles' from project 'safemiles')
+    cd /Users/pc/Documents/safemiles_SwiftUI
+    
+
+SwiftCompile normal x86_64 /Users/pc/Documents/safemiles_SwiftUI/safemiles/Models/VehicleDetailsModel.swift (in target 'safemiles' from project 'safemiles')
+    cd /Users/pc/Documents/safemiles_SwiftUI
+    
+
+SwiftCompile normal x86_64 /Users/pc/Documents/safemiles_SwiftUI/safemiles/Models/vehicleModel.swift (in target 'safemiles' from project 'safemiles')
+    cd /Users/pc/Documents/safemiles_SwiftUI
+    
+
+SwiftCompile normal x86_64 Compiling\ DotInspectionDetailView.swift,\ DotInspectionDetailViewModel.swift,\ DotInspectionView.swift,\ DotInspectionViewModel.swift /Users/pc/Documents/safemiles_SwiftUI/safemiles/DotInspectionDetailView.swift /Users/pc/Documents/safemiles_SwiftUI/safemiles/DotInspectionDetailViewModel.swift /Users/pc/Documents/safemiles_SwiftUI/safemiles/DotInspectionView.swift /Users/pc/Documents/safemiles_SwiftUI/safemiles/DotInspectionViewModel.swift (in target 'safemiles' from project 'safemiles')
+
+SwiftCompile normal x86_64 /Users/pc/Documents/safemiles_SwiftUI/safemiles/DotInspectionDetailView.swift (in target 'safemiles' from project 'safemiles')
+    cd /Users/pc/Documents/safemiles_SwiftUI
+    
+
+SwiftCompile normal x86_64 /Users/pc/Documents/safemiles_SwiftUI/safemiles/DotInspectionDetailViewModel.swift (in target 'safemiles' from project 'safemiles')
+    cd /Users/pc/Documents/safemiles_SwiftUI
+    
+
+SwiftCompile normal x86_64 /Users/pc/Documents/safemiles_SwiftUI/safemiles/DotInspectionView.swift (in target 'safemiles' from project 'safemiles')
+    cd /Users/pc/Documents/safemiles_SwiftUI
+    
+
+SwiftCompile normal x86_64 /Users/pc/Documents/safemiles_SwiftUI/safemiles/DotInspectionViewModel.swift (in target 'safemiles' from project 'safemiles')
+    cd /Users/pc/Documents/safemiles_SwiftUI
+    
+
+SwiftCompile normal x86_64 Compiling\ EmailLogsViewModel.swift,\ EventsView.swift,\ FontConstants.swift,\ ForgotPasswordView.swift /Users/pc/Documents/safemiles_SwiftUI/safemiles/EmailLogsViewModel.swift /Users/pc/Documents/safemiles_SwiftUI/safemiles/EventsView.swift /Users/pc/Documents/safemiles_SwiftUI/safemiles/FontConstants.swift /Users/pc/Documents/safemiles_SwiftUI/safemiles/ForgotPasswordView.swift (in target 'safemiles' from project 'safemiles')
+
+SwiftCompile normal x86_64 /Users/pc/Documents/safemiles_SwiftUI/safemiles/EmailLogsViewModel.swift (in target 'safemiles' from project 'safemiles')
+    cd /Users/pc/Documents/safemiles_SwiftUI
+    
+/Users/pc/Documents/safemiles_SwiftUI/safemiles/EmailLogsViewModel.swift:22:102: warning: variable 'self' was written to, but never read
+        APIManager.shared.request(url: ApiList.sendEmail, method: .post, parameters: params) { [weak self] _ in
+                                                                                                     ^
+
+SwiftCompile normal x86_64 /Users/pc/Documents/safemiles_SwiftUI/safemiles/EventsView.swift (in target 'safemiles' from project 'safemiles')
+    cd /Users/pc/Documents/safemiles_SwiftUI
+    
+
+SwiftCompile normal x86_64 /Users/pc/Documents/safemiles_SwiftUI/safemiles/FontConstants.swift (in target 'safemiles' from project 'safemiles')
+    cd /Users/pc/Documents/safemiles_SwiftUI
+    
+
+SwiftCompile normal x86_64 /Users/pc/Documents/safemiles_SwiftUI/safemiles/ForgotPasswordView.swift (in target 'safemiles' from project 'safemiles')
+    cd /Users/pc/Documents/safemiles_SwiftUI
+    
+
+SwiftCompile normal x86_64 Compiling\ CoDriverView.swift,\ CoDriverViewModel.swift,\ ContentView.swift,\ DeviceDetailView.swift /Users/pc/Documents/safemiles_SwiftUI/safemiles/CoDriverView.swift /Users/pc/Documents/safemiles_SwiftUI/safemiles/CoDriverViewModel.swift /Users/pc/Documents/safemiles_SwiftUI/safemiles/ContentView.swift /Users/pc/Documents/safemiles_SwiftUI/safemiles/DeviceDetailView.swift (in target 'safemiles' from project 'safemiles')
+
+SwiftCompile normal x86_64 /Users/pc/Documents/safemiles_SwiftUI/safemiles/CoDriverView.swift (in target 'safemiles' from project 'safemiles')
+    cd /Users/pc/Documents/safemiles_SwiftUI
+    
+
+SwiftCompile normal x86_64 /Users/pc/Documents/safemiles_SwiftUI/safemiles/CoDriverViewModel.swift (in target 'safemiles' from project 'safemiles')
+    cd /Users/pc/Documents/safemiles_SwiftUI
+    
+/Users/pc/Documents/safemiles_SwiftUI/safemiles/CoDriverViewModel.swift:31:104: warning: variable 'self' was written to, but never read
+        APIManager.shared.request(url: ApiList.getCoDrivers, method: .post, parameters: param) { [weak self] _ in
+                                                                                                       ^
+/Users/pc/Documents/safemiles_SwiftUI/safemiles/CoDriverViewModel.swift:36:21: warning: initialization of immutable value 'obj' was never used; consider replacing with assignment to '_' or removing it
+                let obj = Mapper<CoDriverModel>().map(JSONObject: response)
+                ~~~~^~~
+                _
+
+SwiftCompile normal x86_64 /Users/pc/Documents/safemiles_SwiftUI/safemiles/ContentView.swift (in target 'safemiles' from project 'safemiles')
+    cd /Users/pc/Documents/safemiles_SwiftUI
+    
+
+SwiftCompile normal x86_64 /Users/pc/Documents/safemiles_SwiftUI/safemiles/DeviceDetailView.swift (in target 'safemiles' from project 'safemiles')
+    cd /Users/pc/Documents/safemiles_SwiftUI
+    
+
+SwiftCompile normal x86_64 Compiling\ ForgotPasswordViewModel.swift,\ FormsView.swift,\ HomeView.swift,\ HomeViewModel.swift /Users/pc/Documents/safemiles_SwiftUI/safemiles/ForgotPasswordViewModel.swift /Users/pc/Documents/safemiles_SwiftUI/safemiles/FormsView.swift /Users/pc/Documents/safemiles_SwiftUI/safemiles/HomeView.swift /Users/pc/Documents/safemiles_SwiftUI/safemiles/HomeViewModel.swift (in target 'safemiles' from project 'safemiles')
+SwiftCompile normal x86_64 /Users/pc/Documents/safemiles_SwiftUI/safemiles/ForgotPasswordViewModel.swift (in target 'safemiles' from project 'safemiles')
+    cd /Users/pc/Documents/safemiles_SwiftUI
+    
+
+SwiftCompile normal x86_64 /Users/pc/Documents/safemiles_SwiftUI/safemiles/FormsView.swift (in target 'safemiles' from project 'safemiles')
+    cd /Users/pc/Documents/safemiles_SwiftUI
+    
+/Users/pc/Documents/safemiles_SwiftUI/safemiles/FormsView.swift:200:49: warning: left side of nil coalescing operator '??' has non-optional type 'Color', so the right side is never used
+        .shadow(color: AppColors.blackOpacity05 ?? Color.black.opacity(0.05), radius: 2, x: 0, y: 1) // Safe fallback if not defined
+                       ~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                                               
+/Users/pc/Documents/safemiles_SwiftUI/safemiles/FormsView.swift:394:49: warning: left side of nil coalescing operator '??' has non-optional type 'Color', so the right side is never used
+        .shadow(color: AppColors.blackOpacity05 ?? Color.black.opacity(0.05), radius: 2, x: 0, y: 1)
+                       ~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                                               
+
+SwiftCompile normal x86_64 /Users/pc/Documents/safemiles_SwiftUI/safemiles/HomeView.swift (in target 'safemiles' from project 'safemiles')
+    cd /Users/pc/Documents/safemiles_SwiftUI
+    
+
+SwiftCompile normal x86_64 /Users/pc/Documents/safemiles_SwiftUI/safemiles/HomeViewModel.swift (in target 'safemiles' from project 'safemiles')
+    cd /Users/pc/Documents/safemiles_SwiftUI
+    
+/Users/pc/Documents/safemiles_SwiftUI/safemiles/HomeViewModel.swift:407:20: warning: value 'vll' was defined but never used; consider replacing with boolean test
+            if let vll = data.hos_status?.code_d_sec {
+               ~~~~^~~~~~
+               (                                    ) != nil
+/Users/pc/Documents/safemiles_SwiftUI/safemiles/HomeViewModel.swift:417:20: warning: value 'vll' was defined but never used; consider replacing with boolean test
+            if let vll = data.hos_status?.code_d_sec {
+               ~~~~^~~~~~
+               (                                    ) != nil
+/Users/pc/Documents/safemiles_SwiftUI/safemiles/HomeViewModel.swift:621:52: warning: left side of nil coalescing operator '??' has non-optional type 'Double', so the right side is never used
+        let totalOdometer = (Double(startOdometer) ?? 0.0) + Double(offset)
+                             ~~~~~~~~~~~~~~~~~~~~~~^~~~~~
+                                                  
+/Users/pc/Documents/safemiles_SwiftUI/safemiles/HomeViewModel.swift:697:46: warning: string interpolation produces a debug description for an optional value; did you mean to make this explicit?
+            print("Hardware update failed: \(error)")
+                                             ^~~~~
+/Users/pc/Documents/safemiles_SwiftUI/safemiles/HomeViewModel.swift:697:46: note: provide a default value to avoid this warning
+            print("Hardware update failed: \(error)")
+                                             ^~~~~
+                                                   ?? <#default value#>
+/Users/pc/Documents/safemiles_SwiftUI/safemiles/HomeViewModel.swift:697:46: note: use 'String(describing:)' to silence this warning
+            print("Hardware update failed: \(error)")
+                                             ^~~~~
+                                             String(describing:  )
+
+SwiftCompile normal x86_64 Compiling\ DvirDetailView.swift,\ DvirView.swift,\ DvirViewModel.swift,\ EmailLogsView.swift /Users/pc/Documents/safemiles_SwiftUI/safemiles/DvirDetailView.swift /Users/pc/Documents/safemiles_SwiftUI/safemiles/DvirView.swift /Users/pc/Documents/safemiles_SwiftUI/safemiles/DvirViewModel.swift /Users/pc/Documents/safemiles_SwiftUI/safemiles/EmailLogsView.swift (in target 'safemiles' from project 'safemiles')
+
+SwiftCompile normal x86_64 /Users/pc/Documents/safemiles_SwiftUI/safemiles/DvirDetailView.swift (in target 'safemiles' from project 'safemiles')
+    cd /Users/pc/Documents/safemiles_SwiftUI
+    
+
+SwiftCompile normal x86_64 /Users/pc/Documents/safemiles_SwiftUI/safemiles/DvirView.swift (in target 'safemiles' from project 'safemiles')
+    cd /Users/pc/Documents/safemiles_SwiftUI
+    
+
+SwiftCompile normal x86_64 /Users/pc/Documents/safemiles_SwiftUI/safemiles/DvirViewModel.swift (in target 'safemiles' from project 'safemiles')
+    cd /Users/pc/Documents/safemiles_SwiftUI
+    
+
+SwiftCompile normal x86_64 /Users/pc/Documents/safemiles_SwiftUI/safemiles/EmailLogsView.swift (in target 'safemiles' from project 'safemiles')
+    cd /Users/pc/Documents/safemiles_SwiftUI
+    
+/Users/pc/Documents/safemiles_SwiftUI/safemiles/EmailLogsView.swift:63:61: warning: left side of nil coalescing operator '??' has non-optional type 'Color', so the right side is never used
+                    .shadow(color: AppColors.blackOpacity05 ?? AppColors.blackOpacity10, radius: 5, x: 0, y: 2)
+                                   ~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~
+                                                           
+
+SwiftCompile normal x86_64 Compiling\ InformationPacketView.swift,\ LoginView.swift,\ LoginViewModel.swift,\ LogsView.swift /Users/pc/Documents/safemiles_SwiftUI/safemiles/InformationPacketView.swift /Users/pc/Documents/safemiles_SwiftUI/safemiles/LoginView.swift /Users/pc/Documents/safemiles_SwiftUI/safemiles/LoginViewModel.swift /Users/pc/Documents/safemiles_SwiftUI/safemiles/LogsView.swift (in target 'safemiles' from project 'safemiles')
+
+SwiftCompile normal x86_64 /Users/pc/Documents/safemiles_SwiftUI/safemiles/InformationPacketView.swift (in target 'safemiles' from project 'safemiles')
+    cd /Users/pc/Documents/safemiles_SwiftUI
+    
+
+SwiftCompile normal x86_64 /Users/pc/Documents/safemiles_SwiftUI/safemiles/LoginView.swift (in target 'safemiles' from project 'safemiles')
+    cd /Users/pc/Documents/safemiles_SwiftUI
+    
+
+SwiftCompile normal x86_64 /Users/pc/Documents/safemiles_SwiftUI/safemiles/LoginViewModel.swift (in target 'safemiles' from project 'safemiles')
+    cd /Users/pc/Documents/safemiles_SwiftUI
+    
+
+SwiftCompile normal x86_64 /Users/pc/Documents/safemiles_SwiftUI/safemiles/LogsView.swift (in target 'safemiles' from project 'safemiles')
+    cd /Users/pc/Documents/safemiles_SwiftUI
+    
+
+SwiftCompile normal x86_64 Compiling\ LogsViewModel.swift,\ MainContainerView.swift,\ MainTabView.swift /Users/pc/Documents/safemiles_SwiftUI/safemiles/LogsViewModel.swift /Users/pc/Documents/safemiles_SwiftUI/safemiles/MainContainerView.swift /Users/pc/Documents/safemiles_SwiftUI/safemiles/MainTabView.swift (in target 'safemiles' from project 'safemiles')
+
+SwiftCompile normal x86_64 /Users/pc/Documents/safemiles_SwiftUI/safemiles/LogsViewModel.swift (in target 'safemiles' from project 'safemiles')
+    cd /Users/pc/Documents/safemiles_SwiftUI
+    
+/Users/pc/Documents/safemiles_SwiftUI/safemiles/LogsViewModel.swift:146:17: warning: variable 'currentValue' was never mutated; consider changing to 'let' constant
+            var currentValue: Events? = value
+            ~~~ ^
+            let
+
+SwiftCompile normal x86_64 /Users/pc/Documents/safemiles_SwiftUI/safemiles/MainContainerView.swift (in target 'safemiles' from project 'safemiles')
+    cd /Users/pc/Documents/safemiles_SwiftUI
+    
+/Users/pc/Documents/safemiles_SwiftUI/safemiles/MainContainerView.swift:32:40: warning: immutable value 'window' was never used; consider replacing with '_' or removing it
+                                   let window = windowScene.windows.first {
+                                   ~~~~^~~~~~
+                                   _
+
+SwiftCompile normal x86_64 /Users/pc/Documents/safemiles_SwiftUI/safemiles/MainTabView.swift (in target 'safemiles' from project 'safemiles')
+    cd /Users/pc/Documents/safemiles_SwiftUI
+    
+
+SwiftCompile normal x86_64 Compiling\ RulesViewModel.swift,\ safemilesApp.swift,\ SelectVehicleView.swift /Users/pc/Documents/safemiles_SwiftUI/safemiles/RulesViewModel.swift /Users/pc/Documents/safemiles_SwiftUI/safemiles/safemilesApp.swift /Users/pc/Documents/safemiles_SwiftUI/safemiles/SelectVehicleView.swift (in target 'safemiles' from project 'safemiles')
+
+SwiftCompile normal x86_64 /Users/pc/Documents/safemiles_SwiftUI/safemiles/RulesViewModel.swift (in target 'safemiles' from project 'safemiles')
+    cd /Users/pc/Documents/safemiles_SwiftUI
+    
+/Users/pc/Documents/safemiles_SwiftUI/safemiles/RulesViewModel.swift:22:97: warning: variable 'self' was written to, but never read
+        APIManager.shared.request(url: ApiList.getRules, method: .get, parameters: nil) { [weak self] _ in
+                                                                                                ^
+/Users/pc/Documents/safemiles_SwiftUI/safemiles/RulesViewModel.swift:79:101: warning: variable 'self' was written to, but never read
+        APIManager.shared.request(url: ApiList.getRules, method: .post, parameters: params) { [weak self] _ in
+                                                                                                    ^
+
+SwiftCompile normal x86_64 /Users/pc/Documents/safemiles_SwiftUI/safemiles/safemilesApp.swift (in target 'safemiles' from project 'safemiles')
+    cd /Users/pc/Documents/safemiles_SwiftUI
+    
+/Users/pc/Documents/safemiles_SwiftUI/safemiles/safemilesApp.swift:15:34: warning: 'enableAutoToolbar' is deprecated: Please use `IQKeyboardToolbarManager` independently from https://github.com/hackiftekhar/IQKeyboardToolbarManager
+        IQKeyboardManager.shared.enableAutoToolbar = true
+                                 ^
+/Users/pc/Documents/safemiles_SwiftUI/safemiles/safemilesApp.swift:17:34: warning: 'toolbarConfiguration' is deprecated: Please use `IQKeyboardToolbarManager` independently from https://github.com/hackiftekhar/IQKeyboardToolbarManager
+        IQKeyboardManager.shared.toolbarConfiguration.previousNextDisplayMode = .alwaysShow
+                                 ^
+
+SwiftCompile normal x86_64 /Users/pc/Documents/safemiles_SwiftUI/safemiles/SelectVehicleView.swift (in target 'safemiles' from project 'safemiles')
+    cd /Users/pc/Documents/safemiles_SwiftUI
+    
+
+SwiftCompile normal x86_64 Compiling\ PDFViewer.swift,\ ProcessingView.swift,\ RulesView.swift /Users/pc/Documents/safemiles_SwiftUI/safemiles/PDFViewer.swift /Users/pc/Documents/safemiles_SwiftUI/safemiles/ProcessingView.swift /Users/pc/Documents/safemiles_SwiftUI/safemiles/RulesView.swift (in target 'safemiles' from project 'safemiles')
+
+SwiftCompile normal x86_64 /Users/pc/Documents/safemiles_SwiftUI/safemiles/PDFViewer.swift (in target 'safemiles' from project 'safemiles')
+    cd /Users/pc/Documents/safemiles_SwiftUI
+    
+
+SwiftCompile normal x86_64 /Users/pc/Documents/safemiles_SwiftUI/safemiles/ProcessingView.swift (in target 'safemiles' from project 'safemiles')
+    cd /Users/pc/Documents/safemiles_SwiftUI
+    
+
+SwiftCompile normal x86_64 /Users/pc/Documents/safemiles_SwiftUI/safemiles/RulesView.swift (in target 'safemiles' from project 'safemiles')
+    cd /Users/pc/Documents/safemiles_SwiftUI
+    
+
+SwiftCompile normal x86_64 Compiling\ SelectVehicleViewModel.swift,\ SendLogsView.swift,\ SendLogsViewModel.swift /Users/pc/Documents/safemiles_SwiftUI/safemiles/SelectVehicleViewModel.swift /Users/pc/Documents/safemiles_SwiftUI/safemiles/SendLogsView.swift /Users/pc/Documents/safemiles_SwiftUI/safemiles/SendLogsViewModel.swift (in target 'safemiles' from project 'safemiles')
+
+SwiftCompile normal x86_64 /Users/pc/Documents/safemiles_SwiftUI/safemiles/SelectVehicleViewModel.swift (in target 'safemiles' from project 'safemiles')
+    cd /Users/pc/Documents/safemiles_SwiftUI
+    
+/Users/pc/Documents/safemiles_SwiftUI/safemiles/SelectVehicleViewModel.swift:39:83: warning: variable 'self' was written to, but never read
+        APIManager.shared.request(url: ApiList.allvehicles, method: .get) { [weak self] _ in
+                                                                                  ^
+
+SwiftCompile normal x86_64 /Users/pc/Documents/safemiles_SwiftUI/safemiles/SendLogsView.swift (in target 'safemiles' from project 'safemiles')
+    cd /Users/pc/Documents/safemiles_SwiftUI
+    
+/Users/pc/Documents/safemiles_SwiftUI/safemiles/SendLogsView.swift:101:61: warning: left side of nil coalescing operator '??' has non-optional type 'Color', so the right side is never used
+                    .shadow(color: AppColors.blackOpacity05 ?? AppColors.blackOpacity10, radius: 5, x: 0, y: 2)
+                                   ~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~
+                                                           
+
+SwiftCompile normal x86_64 /Users/pc/Documents/safemiles_SwiftUI/safemiles/SendLogsViewModel.swift (in target 'safemiles' from project 'safemiles')
+    cd /Users/pc/Documents/safemiles_SwiftUI
+    
+/Users/pc/Documents/safemiles_SwiftUI/safemiles/SendLogsViewModel.swift:36:101: warning: variable 'self' was written to, but never read
+        APIManager.shared.request(url: ApiList.sendLogs, method: .post, parameters: params) { [weak self] _ in
+                                                                                                    ^
+
+SwiftEmitModule normal x86_64 Emitting\ module\ for\ safemiles (in target 'safemiles' from project 'safemiles')
+
+EmitSwiftModule normal x86_64 (in target 'safemiles' from project 'safemiles')
+    cd /Users/pc/Documents/safemiles_SwiftUI
+    
+
+SwiftCompile normal x86_64 Compiling\ SideMenuView.swift,\ SplashScreen.swift,\ StatusUpdateView.swift /Users/pc/Documents/safemiles_SwiftUI/safemiles/SideMenuView.swift /Users/pc/Documents/safemiles_SwiftUI/safemiles/SplashScreen.swift /Users/pc/Documents/safemiles_SwiftUI/safemiles/StatusUpdateView.swift (in target 'safemiles' from project 'safemiles')
+
+SwiftCompile normal x86_64 /Users/pc/Documents/safemiles_SwiftUI/safemiles/SideMenuView.swift (in target 'safemiles' from project 'safemiles')
+    cd /Users/pc/Documents/safemiles_SwiftUI
+    
+
+SwiftCompile normal x86_64 /Users/pc/Documents/safemiles_SwiftUI/safemiles/SplashScreen.swift (in target 'safemiles' from project 'safemiles')
+    cd /Users/pc/Documents/safemiles_SwiftUI
+    
+
+SwiftCompile normal x86_64 /Users/pc/Documents/safemiles_SwiftUI/safemiles/StatusUpdateView.swift (in target 'safemiles' from project 'safemiles')
+    cd /Users/pc/Documents/safemiles_SwiftUI
+    
+
+SwiftDriverJobDiscovery normal x86_64 Compiling CoDriverModel.swift, RulesModel.swift, VehicleDetailsModel.swift, vehicleModel.swift (in target 'safemiles' from project 'safemiles')
+
+SwiftCompile normal x86_64 Compiling\ StatusUpdateViewModel.swift,\ ViolationsView.swift,\ GeneratedAssetSymbols.swift /Users/pc/Documents/safemiles_SwiftUI/safemiles/StatusUpdateViewModel.swift /Users/pc/Documents/safemiles_SwiftUI/safemiles/ViolationsView.swift /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Intermediates.noindex/safemiles.build/Debug-iphonesimulator/safemiles.build/DerivedSources/GeneratedAssetSymbols.swift (in target 'safemiles' from project 'safemiles')
+
+SwiftCompile normal x86_64 /Users/pc/Documents/safemiles_SwiftUI/safemiles/StatusUpdateViewModel.swift (in target 'safemiles' from project 'safemiles')
+    cd /Users/pc/Documents/safemiles_SwiftUI
+    
+/Users/pc/Documents/safemiles_SwiftUI/safemiles/StatusUpdateViewModel.swift:65:45: warning: conditional cast from 'String' to 'String' always succeeds
+        if let connectedVehicle = vehicleiD as? String, vehicleiD != "" {
+                                            ^
+
+SwiftCompile normal x86_64 /Users/pc/Documents/safemiles_SwiftUI/safemiles/ViolationsView.swift (in target 'safemiles' from project 'safemiles')
+    cd /Users/pc/Documents/safemiles_SwiftUI
+    
+
+SwiftCompile normal x86_64 /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Intermediates.noindex/safemiles.build/Debug-iphonesimulator/safemiles.build/DerivedSources/GeneratedAssetSymbols.swift (in target 'safemiles' from project 'safemiles')
+    cd /Users/pc/Documents/safemiles_SwiftUI
+    
+
+SwiftDriverJobDiscovery normal x86_64 Compiling SelectVehicleViewModel.swift, SendLogsView.swift, SendLogsViewModel.swift (in target 'safemiles' from project 'safemiles')
+
+SwiftDriverJobDiscovery normal x86_64 Compiling RulesViewModel.swift, safemilesApp.swift, SelectVehicleView.swift (in target 'safemiles' from project 'safemiles')
+
+SwiftDriverJobDiscovery normal x86_64 Compiling ApiList.swift, APIManager.swift, BLEManager.swift, ColorConstants.swift (in target 'safemiles' from project 'safemiles')
+
+SwiftDriverJobDiscovery normal x86_64 Compiling PDFViewer.swift, ProcessingView.swift, RulesView.swift (in target 'safemiles' from project 'safemiles')
+
+SwiftCompile normal x86_64 Compiling\ SegmentButton.swift /Users/pc/Documents/safemiles_SwiftUI/safemiles/Components/SegmentButton.swift (in target 'safemiles' from project 'safemiles')
+
+SwiftCompile normal x86_64 /Users/pc/Documents/safemiles_SwiftUI/safemiles/Components/SegmentButton.swift (in target 'safemiles' from project 'safemiles')
+    cd /Users/pc/Documents/safemiles_SwiftUI
+    
+
+SwiftCompile normal x86_64 Compiling\ HOSRow.swift /Users/pc/Documents/safemiles_SwiftUI/safemiles/Components/HOSRow.swift (in target 'safemiles' from project 'safemiles')
+
+SwiftCompile normal x86_64 /Users/pc/Documents/safemiles_SwiftUI/safemiles/Components/HOSRow.swift (in target 'safemiles' from project 'safemiles')
+    cd /Users/pc/Documents/safemiles_SwiftUI
+    
+
+SwiftCompile normal x86_64 Compiling\ AccountViewModel.swift /Users/pc/Documents/safemiles_SwiftUI/safemiles/AccountViewModel.swift (in target 'safemiles' from project 'safemiles')
+
+SwiftCompile normal x86_64 /Users/pc/Documents/safemiles_SwiftUI/safemiles/AccountViewModel.swift (in target 'safemiles' from project 'safemiles')
+    cd /Users/pc/Documents/safemiles_SwiftUI
+    
+/Users/pc/Documents/safemiles_SwiftUI/safemiles/AccountViewModel.swift:29:84: warning: variable 'self' was written to, but never read
+        APIManager.shared.request(url: ApiList.getMyprofile, method: .get) { [weak self] _ in
+                                                                                   ^
+
+SwiftCompile normal x86_64 Compiling\ RecapSummaryRow.swift /Users/pc/Documents/safemiles_SwiftUI/safemiles/Components/RecapSummaryRow.swift (in target 'safemiles' from project 'safemiles')
+
+SwiftCompile normal x86_64 /Users/pc/Documents/safemiles_SwiftUI/safemiles/Components/RecapSummaryRow.swift (in target 'safemiles' from project 'safemiles')
+    cd /Users/pc/Documents/safemiles_SwiftUI
+    
+
+SwiftDriverJobDiscovery normal x86_64 Compiling LogsViewModel.swift, MainContainerView.swift, MainTabView.swift (in target 'safemiles' from project 'safemiles')
+
+SwiftCompile normal x86_64 Compiling\ CustomTextField.swift /Users/pc/Documents/safemiles_SwiftUI/safemiles/Components/CustomTextField.swift (in target 'safemiles' from project 'safemiles')
+
+SwiftCompile normal x86_64 /Users/pc/Documents/safemiles_SwiftUI/safemiles/Components/CustomTextField.swift (in target 'safemiles' from project 'safemiles')
+    cd /Users/pc/Documents/safemiles_SwiftUI
+    
+
+SwiftDriverJobDiscovery normal x86_64 Emitting module for safemiles (in target 'safemiles' from project 'safemiles')
+
+SwiftDriver\ Compilation\ Requirements safemiles normal x86_64 com.apple.xcode.tools.swift.compiler (in target 'safemiles' from project 'safemiles')
+    cd /Users/pc/Documents/safemiles_SwiftUI
+    builtin-Swift-Compilation-Requirements -- /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc -module-name safemiles -Onone -enforce-exclusivity\=checked @/Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Intermediates.noindex/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/safemiles.SwiftFileList -DDEBUG -default-isolation\=MainActor -enable-bare-slash-regex -enable-upcoming-feature DisableOutwardActorInference -enable-upcoming-feature InferSendableFromCaptures -enable-upcoming-feature GlobalActorIsolatedTypesUsability -enable-upcoming-feature MemberImportVisibility -enable-upcoming-feature InferIsolatedConformances -enable-upcoming-feature NonisolatedNonsendingByDefault -enable-experimental-feature DebugDescriptionMacro -sdk /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.1.sdk -target x86_64-apple-ios15.6-simulator -g -module-cache-path /Users/pc/Library/Developer/Xcode/DerivedData/ModuleCache.noindex -Xfrontend -serialize-debugging-options -profile-coverage-mapping -profile-generate -enable-testing -Xcc -D_LIBCPP_HARDENING_MODE\=_LIBCPP_HARDENING_MODE_DEBUG -swift-version 5 -I /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Products/Debug-iphonesimulator -F /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Products/Debug-iphonesimulator/PackageFrameworks -F /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Products/Debug-iphonesimulator/PackageFrameworks -F /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Products/Debug-iphonesimulator/PackageFrameworks -F /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Products/Debug-iphonesimulator/PackageFrameworks -F /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Products/Debug-iphonesimulator/PackageFrameworks -F /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Products/Debug-iphonesimulator/PackageFrameworks -F /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Products/Debug-iphonesimulator/PackageFrameworks -F /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Products/Debug-iphonesimulator/PackageFrameworks -F /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Products/Debug-iphonesimulator/PackageFrameworks -F /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Products/Debug-iphonesimulator/PackageFrameworks -F /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Products/Debug-iphonesimulator -emit-localized-strings -emit-localized-strings-path /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Intermediates.noindex/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64 -c -j16 -enable-batch-mode -incremental -Xcc -ivfsstatcache -Xcc /Users/pc/Library/Developer/Xcode/DerivedData/SDKStatCaches.noindex/iphonesimulator26.1-23B77-3885c01c3e6b6a337905948deab2002e90cf18a4295e390e64c810bc6bd7acbc.sdkstatcache -output-file-map /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Intermediates.noindex/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/safemiles-OutputFileMap.json -use-frontend-parseable-output -save-temps -no-color-diagnostics -explicit-module-build -module-cache-path /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Intermediates.noindex/SwiftExplicitPrecompiledModules -clang-scanner-module-cache-path /Users/pc/Library/Developer/Xcode/DerivedData/ModuleCache.noindex -sdk-module-cache-path /Users/pc/Library/Developer/Xcode/DerivedData/ModuleCache.noindex -serialize-diagnostics -emit-dependencies -emit-module -emit-module-path /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Intermediates.noindex/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/safemiles.swiftmodule -validate-clang-modules-once -clang-build-session-file /Users/pc/Library/Developer/Xcode/DerivedData/ModuleCache.noindex/Session.modulevalidation -Xcc -I/Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Intermediates.noindex/safemiles.build/Debug-iphonesimulator/safemiles.build/swift-overrides.hmap -emit-const-values -Xfrontend -const-gather-protocols-file -Xfrontend /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Intermediates.noindex/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/safemiles_const_extract_protocols.json -Xcc -iquote -Xcc /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Intermediates.noindex/safemiles.build/Debug-iphonesimulator/safemiles.build/safemiles-generated-files.hmap -Xcc -I/Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Intermediates.noindex/safemiles.build/Debug-iphonesimulator/safemiles.build/safemiles-own-target-headers.hmap -Xcc -I/Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Intermediates.noindex/safemiles.build/Debug-iphonesimulator/safemiles.build/safemiles-all-non-framework-target-headers.hmap -Xcc -ivfsoverlay -Xcc /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Intermediates.noindex/safemiles.build/Debug-iphonesimulator/safemiles-b1c88cbff074a65c298a9f490789838c-VFS-iphonesimulator/all-product-headers.yaml -Xcc -iquote -Xcc /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Intermediates.noindex/safemiles.build/Debug-iphonesimulator/safemiles.build/safemiles-project-headers.hmap -Xcc -I/Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Products/Debug-iphonesimulator/include -Xcc -I/Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Intermediates.noindex/safemiles.build/Debug-iphonesimulator/safemiles.build/DerivedSources-normal/x86_64 -Xcc -I/Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Intermediates.noindex/safemiles.build/Debug-iphonesimulator/safemiles.build/DerivedSources/x86_64 -Xcc -I/Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Intermediates.noindex/safemiles.build/Debug-iphonesimulator/safemiles.build/DerivedSources -Xcc -DDEBUG\=1 -emit-objc-header -emit-objc-header-path /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Intermediates.noindex/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/safemiles-Swift.h -working-directory /Users/pc/Documents/safemiles_SwiftUI -experimental-emit-module-separately -disable-cmo
+
+SwiftDriverJobDiscovery normal x86_64 Compiling HOSRow.swift (in target 'safemiles' from project 'safemiles')
+
+SwiftCompile normal x86_64 Compiling\ CommonHeader.swift /Users/pc/Documents/safemiles_SwiftUI/safemiles/Components/CommonHeader.swift (in target 'safemiles' from project 'safemiles')
+
+SwiftCompile normal x86_64 /Users/pc/Documents/safemiles_SwiftUI/safemiles/Components/CommonHeader.swift (in target 'safemiles' from project 'safemiles')
+    cd /Users/pc/Documents/safemiles_SwiftUI
+    
+
+SwiftMergeGeneratedHeaders /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Intermediates.noindex/safemiles.build/Debug-iphonesimulator/safemiles.build/DerivedSources/safemiles-Swift.h /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Intermediates.noindex/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/safemiles-Swift.h (in target 'safemiles' from project 'safemiles')
+    cd /Users/pc/Documents/safemiles_SwiftUI
+    builtin-swiftHeaderTool -arch x86_64 /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Intermediates.noindex/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/safemiles-Swift.h -o /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Intermediates.noindex/safemiles.build/Debug-iphonesimulator/safemiles.build/DerivedSources/safemiles-Swift.h
+
+SwiftDriverJobDiscovery normal x86_64 Compiling SegmentButton.swift (in target 'safemiles' from project 'safemiles')
+
+Copy /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Products/Debug-iphonesimulator/safemiles.swiftmodule/x86_64-apple-ios-simulator.swiftmodule /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Intermediates.noindex/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/safemiles.swiftmodule (in target 'safemiles' from project 'safemiles')
+    cd /Users/pc/Documents/safemiles_SwiftUI
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks -rename /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Intermediates.noindex/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/safemiles.swiftmodule /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Products/Debug-iphonesimulator/safemiles.swiftmodule/x86_64-apple-ios-simulator.swiftmodule
+
+Copy /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Products/Debug-iphonesimulator/safemiles.swiftmodule/x86_64-apple-ios-simulator.swiftdoc /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Intermediates.noindex/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/safemiles.swiftdoc (in target 'safemiles' from project 'safemiles')
+    cd /Users/pc/Documents/safemiles_SwiftUI
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks -rename /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Intermediates.noindex/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/safemiles.swiftdoc /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Products/Debug-iphonesimulator/safemiles.swiftmodule/x86_64-apple-ios-simulator.swiftdoc
+
+SwiftDriverJobDiscovery normal x86_64 Compiling RecapSummaryRow.swift (in target 'safemiles' from project 'safemiles')
+
+Copy /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Products/Debug-iphonesimulator/safemiles.swiftmodule/x86_64-apple-ios-simulator.abi.json /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Intermediates.noindex/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/safemiles.abi.json (in target 'safemiles' from project 'safemiles')
+    cd /Users/pc/Documents/safemiles_SwiftUI
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks -rename /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Intermediates.noindex/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/safemiles.abi.json /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Products/Debug-iphonesimulator/safemiles.swiftmodule/x86_64-apple-ios-simulator.abi.json
+
+Copy /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Products/Debug-iphonesimulator/safemiles.swiftmodule/Project/x86_64-apple-ios-simulator.swiftsourceinfo /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Intermediates.noindex/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/safemiles.swiftsourceinfo (in target 'safemiles' from project 'safemiles')
+    cd /Users/pc/Documents/safemiles_SwiftUI
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks -rename /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Intermediates.noindex/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/safemiles.swiftsourceinfo /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Products/Debug-iphonesimulator/safemiles.swiftmodule/Project/x86_64-apple-ios-simulator.swiftsourceinfo
+
+SwiftCompile normal x86_64 Compiling\ AccountView.swift /Users/pc/Documents/safemiles_SwiftUI/safemiles/AccountView.swift (in target 'safemiles' from project 'safemiles')
+
+SwiftCompile normal x86_64 /Users/pc/Documents/safemiles_SwiftUI/safemiles/AccountView.swift (in target 'safemiles' from project 'safemiles')
+    cd /Users/pc/Documents/safemiles_SwiftUI
+    
+
+SwiftCompile normal x86_64 Compiling\ Extensions.swift /Users/pc/Documents/safemiles_SwiftUI/safemiles/Extensions/Extensions.swift (in target 'safemiles' from project 'safemiles')
+
+SwiftCompile normal x86_64 /Users/pc/Documents/safemiles_SwiftUI/safemiles/Extensions/Extensions.swift (in target 'safemiles' from project 'safemiles')
+    cd /Users/pc/Documents/safemiles_SwiftUI
+    
+
+SwiftDriverJobDiscovery normal x86_64 Compiling SideMenuView.swift, SplashScreen.swift, StatusUpdateView.swift (in target 'safemiles' from project 'safemiles')
+
+SwiftCompile normal x86_64 Compiling\ RecapRow.swift /Users/pc/Documents/safemiles_SwiftUI/safemiles/Components/RecapRow.swift (in target 'safemiles' from project 'safemiles')
+
+SwiftCompile normal x86_64 /Users/pc/Documents/safemiles_SwiftUI/safemiles/Components/RecapRow.swift (in target 'safemiles' from project 'safemiles')
+    cd /Users/pc/Documents/safemiles_SwiftUI
+    
+
+SwiftCompile normal x86_64 Compiling\ SignatureView.swift /Users/pc/Documents/safemiles_SwiftUI/safemiles/Components/SignatureView.swift (in target 'safemiles' from project 'safemiles')
+
+SwiftCompile normal x86_64 /Users/pc/Documents/safemiles_SwiftUI/safemiles/Components/SignatureView.swift (in target 'safemiles' from project 'safemiles')
+    cd /Users/pc/Documents/safemiles_SwiftUI
+    
+
+SwiftDriverJobDiscovery normal x86_64 Compiling AccountViewModel.swift (in target 'safemiles' from project 'safemiles')
+
+SwiftCompile normal x86_64 Compiling\ StatusCard.swift /Users/pc/Documents/safemiles_SwiftUI/safemiles/Components/StatusCard.swift (in target 'safemiles' from project 'safemiles')
+
+SwiftCompile normal x86_64 /Users/pc/Documents/safemiles_SwiftUI/safemiles/Components/StatusCard.swift (in target 'safemiles' from project 'safemiles')
+    cd /Users/pc/Documents/safemiles_SwiftUI
+    
+
+SwiftDriverJobDiscovery normal x86_64 Compiling CustomTextField.swift (in target 'safemiles' from project 'safemiles')
+
+SwiftCompile normal x86_64 Compiling\ FontSizeRow.swift /Users/pc/Documents/safemiles_SwiftUI/safemiles/Components/FontSizeRow.swift (in target 'safemiles' from project 'safemiles')
+
+SwiftCompile normal x86_64 /Users/pc/Documents/safemiles_SwiftUI/safemiles/Components/FontSizeRow.swift (in target 'safemiles' from project 'safemiles')
+    cd /Users/pc/Documents/safemiles_SwiftUI
+    
+
+SwiftDriverJobDiscovery normal x86_64 Compiling RecapRow.swift (in target 'safemiles' from project 'safemiles')
+
+SwiftDriverJobDiscovery normal x86_64 Compiling CommonHeader.swift (in target 'safemiles' from project 'safemiles')
+
+SwiftDriverJobDiscovery normal x86_64 Compiling InformationPacketView.swift, LoginView.swift, LoginViewModel.swift, LogsView.swift (in target 'safemiles' from project 'safemiles')
+
+SwiftDriverJobDiscovery normal x86_64 Compiling SignatureView.swift (in target 'safemiles' from project 'safemiles')
+
+SwiftDriverJobDiscovery normal x86_64 Compiling Extensions.swift (in target 'safemiles' from project 'safemiles')
+
+SwiftDriverJobDiscovery normal x86_64 Compiling EmailLogsViewModel.swift, EventsView.swift, FontConstants.swift, ForgotPasswordView.swift (in target 'safemiles' from project 'safemiles')
+
+SwiftDriverJobDiscovery normal x86_64 Compiling StatusCard.swift (in target 'safemiles' from project 'safemiles')
+
+SwiftDriverJobDiscovery normal x86_64 Compiling StatusUpdateViewModel.swift, ViolationsView.swift, GeneratedAssetSymbols.swift (in target 'safemiles' from project 'safemiles')
+
+SwiftDriverJobDiscovery normal x86_64 Compiling AccountView.swift (in target 'safemiles' from project 'safemiles')
+
+SwiftDriverJobDiscovery normal x86_64 Compiling DotInspectionDetailView.swift, DotInspectionDetailViewModel.swift, DotInspectionView.swift, DotInspectionViewModel.swift (in target 'safemiles' from project 'safemiles')
+
+SwiftDriverJobDiscovery normal x86_64 Compiling FontSizeRow.swift (in target 'safemiles' from project 'safemiles')
+
+SwiftDriverJobDiscovery normal x86_64 Compiling DvirConstants.swift, PacificTrackMock.swift, AddDvirView.swift, AddDvirViewModel.swift (in target 'safemiles' from project 'safemiles')
+
+SwiftDriverJobDiscovery normal x86_64 Compiling AddEditLogView.swift, AddEditLogViewModel.swift, BluetoothScanningView.swift, CertifyView.swift (in target 'safemiles' from project 'safemiles')
+
+SwiftDriverJobDiscovery normal x86_64 Compiling DvirDetailView.swift, DvirView.swift, DvirViewModel.swift, EmailLogsView.swift (in target 'safemiles' from project 'safemiles')
+
+SwiftDriverJobDiscovery normal x86_64 Compiling CoDriverView.swift, CoDriverViewModel.swift, ContentView.swift, DeviceDetailView.swift (in target 'safemiles' from project 'safemiles')
+
+LinkAssetCatalog /Users/pc/Documents/safemiles_SwiftUI/safemiles/Assets.xcassets (in target 'safemiles' from project 'safemiles')
+    cd /Users/pc/Documents/safemiles_SwiftUI
+    builtin-linkAssetCatalog --thinned /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Intermediates.noindex/safemiles.build/Debug-iphonesimulator/safemiles.build/assetcatalog_output/thinned --thinned-dependencies /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Intermediates.noindex/safemiles.build/Debug-iphonesimulator/safemiles.build/assetcatalog_dependencies_thinned --thinned-info-plist-content /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Intermediates.noindex/safemiles.build/Debug-iphonesimulator/safemiles.build/assetcatalog_generated_info.plist_thinned --unthinned /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Intermediates.noindex/safemiles.build/Debug-iphonesimulator/safemiles.build/assetcatalog_output/unthinned --unthinned-dependencies /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Intermediates.noindex/safemiles.build/Debug-iphonesimulator/safemiles.build/assetcatalog_dependencies_unthinned --unthinned-info-plist-content /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Intermediates.noindex/safemiles.build/Debug-iphonesimulator/safemiles.build/assetcatalog_generated_info.plist_unthinned --output /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Products/Debug-iphonesimulator/safemiles.app --plist-output /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Intermediates.noindex/safemiles.build/Debug-iphonesimulator/safemiles.build/assetcatalog_generated_info.plist
+note: Emplaced /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Products/Debug-iphonesimulator/safemiles.app/AppIcon60x60@2x.png (in target 'safemiles' from project 'safemiles')
+note: Emplaced /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Products/Debug-iphonesimulator/safemiles.app/Assets.car (in target 'safemiles' from project 'safemiles')
+note: Emplaced /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Products/Debug-iphonesimulator/safemiles.app/AppIcon76x76@2x~ipad.png (in target 'safemiles' from project 'safemiles')
+
+SwiftDriverJobDiscovery normal x86_64 Compiling ForgotPasswordViewModel.swift, FormsView.swift, HomeView.swift, HomeViewModel.swift (in target 'safemiles' from project 'safemiles')
+
+SwiftDriver\ Compilation safemiles normal x86_64 com.apple.xcode.tools.swift.compiler (in target 'safemiles' from project 'safemiles')
+    cd /Users/pc/Documents/safemiles_SwiftUI
+    builtin-Swift-Compilation -- /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc -module-name safemiles -Onone -enforce-exclusivity\=checked @/Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Intermediates.noindex/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/safemiles.SwiftFileList -DDEBUG -default-isolation\=MainActor -enable-bare-slash-regex -enable-upcoming-feature DisableOutwardActorInference -enable-upcoming-feature InferSendableFromCaptures -enable-upcoming-feature GlobalActorIsolatedTypesUsability -enable-upcoming-feature MemberImportVisibility -enable-upcoming-feature InferIsolatedConformances -enable-upcoming-feature NonisolatedNonsendingByDefault -enable-experimental-feature DebugDescriptionMacro -sdk /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.1.sdk -target x86_64-apple-ios15.6-simulator -g -module-cache-path /Users/pc/Library/Developer/Xcode/DerivedData/ModuleCache.noindex -Xfrontend -serialize-debugging-options -profile-coverage-mapping -profile-generate -enable-testing -Xcc -D_LIBCPP_HARDENING_MODE\=_LIBCPP_HARDENING_MODE_DEBUG -swift-version 5 -I /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Products/Debug-iphonesimulator -F /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Products/Debug-iphonesimulator/PackageFrameworks -F /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Products/Debug-iphonesimulator/PackageFrameworks -F /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Products/Debug-iphonesimulator/PackageFrameworks -F /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Products/Debug-iphonesimulator/PackageFrameworks -F /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Products/Debug-iphonesimulator/PackageFrameworks -F /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Products/Debug-iphonesimulator/PackageFrameworks -F /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Products/Debug-iphonesimulator/PackageFrameworks -F /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Products/Debug-iphonesimulator/PackageFrameworks -F /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Products/Debug-iphonesimulator/PackageFrameworks -F /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Products/Debug-iphonesimulator/PackageFrameworks -F /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Products/Debug-iphonesimulator -emit-localized-strings -emit-localized-strings-path /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Intermediates.noindex/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64 -c -j16 -enable-batch-mode -incremental -Xcc -ivfsstatcache -Xcc /Users/pc/Library/Developer/Xcode/DerivedData/SDKStatCaches.noindex/iphonesimulator26.1-23B77-3885c01c3e6b6a337905948deab2002e90cf18a4295e390e64c810bc6bd7acbc.sdkstatcache -output-file-map /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Intermediates.noindex/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/safemiles-OutputFileMap.json -use-frontend-parseable-output -save-temps -no-color-diagnostics -explicit-module-build -module-cache-path /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Intermediates.noindex/SwiftExplicitPrecompiledModules -clang-scanner-module-cache-path /Users/pc/Library/Developer/Xcode/DerivedData/ModuleCache.noindex -sdk-module-cache-path /Users/pc/Library/Developer/Xcode/DerivedData/ModuleCache.noindex -serialize-diagnostics -emit-dependencies -emit-module -emit-module-path /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Intermediates.noindex/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/safemiles.swiftmodule -validate-clang-modules-once -clang-build-session-file /Users/pc/Library/Developer/Xcode/DerivedData/ModuleCache.noindex/Session.modulevalidation -Xcc -I/Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Intermediates.noindex/safemiles.build/Debug-iphonesimulator/safemiles.build/swift-overrides.hmap -emit-const-values -Xfrontend -const-gather-protocols-file -Xfrontend /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Intermediates.noindex/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/safemiles_const_extract_protocols.json -Xcc -iquote -Xcc /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Intermediates.noindex/safemiles.build/Debug-iphonesimulator/safemiles.build/safemiles-generated-files.hmap -Xcc -I/Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Intermediates.noindex/safemiles.build/Debug-iphonesimulator/safemiles.build/safemiles-own-target-headers.hmap -Xcc -I/Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Intermediates.noindex/safemiles.build/Debug-iphonesimulator/safemiles.build/safemiles-all-non-framework-target-headers.hmap -Xcc -ivfsoverlay -Xcc /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Intermediates.noindex/safemiles.build/Debug-iphonesimulator/safemiles-b1c88cbff074a65c298a9f490789838c-VFS-iphonesimulator/all-product-headers.yaml -Xcc -iquote -Xcc /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Intermediates.noindex/safemiles.build/Debug-iphonesimulator/safemiles.build/safemiles-project-headers.hmap -Xcc -I/Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Products/Debug-iphonesimulator/include -Xcc -I/Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Intermediates.noindex/safemiles.build/Debug-iphonesimulator/safemiles.build/DerivedSources-normal/x86_64 -Xcc -I/Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Intermediates.noindex/safemiles.build/Debug-iphonesimulator/safemiles.build/DerivedSources/x86_64 -Xcc -I/Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Intermediates.noindex/safemiles.build/Debug-iphonesimulator/safemiles.build/DerivedSources -Xcc -DDEBUG\=1 -emit-objc-header -emit-objc-header-path /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Intermediates.noindex/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/safemiles-Swift.h -working-directory /Users/pc/Documents/safemiles_SwiftUI -experimental-emit-module-separately -disable-cmo
+
+Ld /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Products/Debug-iphonesimulator/safemiles.app/safemiles.debug.dylib normal (in target 'safemiles' from project 'safemiles')
+    cd /Users/pc/Documents/safemiles_SwiftUI
+    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -Xlinker -reproducible -target x86_64-apple-ios15.6-simulator -dynamiclib -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.1.sdk -O0 -L/Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Intermediates.noindex/EagerLinkingTBDs/Debug-iphonesimulator -L/Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Products/Debug-iphonesimulator -F/Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Intermediates.noindex/EagerLinkingTBDs/Debug-iphonesimulator -F/Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Products/Debug-iphonesimulator/PackageFrameworks -F/Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Products/Debug-iphonesimulator/PackageFrameworks -F/Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Products/Debug-iphonesimulator/PackageFrameworks -F/Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Products/Debug-iphonesimulator/PackageFrameworks -F/Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Products/Debug-iphonesimulator/PackageFrameworks -F/Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Products/Debug-iphonesimulator/PackageFrameworks -F/Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Products/Debug-iphonesimulator/PackageFrameworks -F/Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Products/Debug-iphonesimulator/PackageFrameworks -F/Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Products/Debug-iphonesimulator/PackageFrameworks -F/Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Products/Debug-iphonesimulator/PackageFrameworks -F/Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Products/Debug-iphonesimulator -filelist /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Intermediates.noindex/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/safemiles.LinkFileList -install_name @rpath/safemiles.debug.dylib -Xlinker -rpath -Xlinker /usr/lib/swift -Xlinker -rpath -Xlinker /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Products/Debug-iphonesimulator/PackageFrameworks -Xlinker -rpath -Xlinker @executable_path/Frameworks -dead_strip -Xlinker -object_path_lto -Xlinker /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Intermediates.noindex/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/safemiles_lto.o -rdynamic -Xlinker -no_deduplicate -Xlinker -objc_abi_version -Xlinker 2 -Xlinker -debug_variant -Xlinker -dependency_info -Xlinker /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Intermediates.noindex/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/safemiles_dependency_info.dat -fobjc-link-runtime -fprofile-instr-generate -L/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator -L/usr/lib/swift -Xlinker -add_ast_path -Xlinker /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Intermediates.noindex/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/safemiles.swiftmodule @/Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Intermediates.noindex/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/safemiles-linker-args.resp -Wl,-no_warn_duplicate_libraries -Wl,-no_warn_duplicate_libraries -Wl,-no_warn_duplicate_libraries -Wl,-no_warn_duplicate_libraries -Wl,-no_warn_duplicate_libraries -Wl,-no_warn_duplicate_libraries -Wl,-no_warn_duplicate_libraries -Wl,-no_warn_duplicate_libraries -Wl,-no_warn_duplicate_libraries -Wl,-no_warn_duplicate_libraries -framework UIKit -framework UIKit -framework UIKit -framework UIKit -framework UIKit -framework Combine -framework UIKit -framework Combine -framework UIKit -framework Combine -framework UIKit -framework CFNetwork -Xlinker -alias -Xlinker _main -Xlinker ___debug_main_executable_dylib_entry_point -framework PacificTrack -Xlinker -no_adhoc_codesign -o /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Products/Debug-iphonesimulator/safemiles.app/safemiles.debug.dylib -Xlinker -add_ast_path -Xlinker /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/ObjectMapper.swiftmodule @/Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/ObjectMapper-linker-args.resp -Xlinker -add_ast_path -Xlinker /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Intermediates.noindex/Alamofire.build/Debug-iphonesimulator/Alamofire.build/Objects-normal/x86_64/Alamofire.swiftmodule @/Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Intermediates.noindex/Alamofire.build/Debug-iphonesimulator/Alamofire.build/Objects-normal/x86_64/Alamofire-linker-args.resp -Xlinker -add_ast_path -Xlinker /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Intermediates.noindex/IQKeyboardManagerSwift.build/Debug-iphonesimulator/IQKeyboardManagerSwift.build/Objects-normal/x86_64/IQKeyboardManagerSwift.swiftmodule @/Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Intermediates.noindex/IQKeyboardManagerSwift.build/Debug-iphonesimulator/IQKeyboardManagerSwift.build/Objects-normal/x86_64/IQKeyboardManagerSwift-linker-args.resp -Xlinker -add_ast_path -Xlinker /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Intermediates.noindex/IQKeyboardNotification.build/Debug-iphonesimulator/IQKeyboardNotification.build/Objects-normal/x86_64/IQKeyboardNotification.swiftmodule @/Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Intermediates.noindex/IQKeyboardNotification.build/Debug-iphonesimulator/IQKeyboardNotification.build/Objects-normal/x86_64/IQKeyboardNotification-linker-args.resp -Xlinker -add_ast_path -Xlinker /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Intermediates.noindex/IQTextInputViewNotification.build/Debug-iphonesimulator/IQTextInputViewNotification.build/Objects-normal/x86_64/IQTextInputViewNotification.swiftmodule @/Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Intermediates.noindex/IQTextInputViewNotification.build/Debug-iphonesimulator/IQTextInputViewNotification.build/Objects-normal/x86_64/IQTextInputViewNotification-linker-args.resp -Xlinker -add_ast_path -Xlinker /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Intermediates.noindex/IQKeyboardCore.build/Debug-iphonesimulator/IQKeyboardCore.build/Objects-normal/x86_64/IQKeyboardCore.swiftmodule @/Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Intermediates.noindex/IQKeyboardCore.build/Debug-iphonesimulator/IQKeyboardCore.build/Objects-normal/x86_64/IQKeyboardCore-linker-args.resp -Xlinker -add_ast_path -Xlinker /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Intermediates.noindex/IQKeyboardToolbarManager.build/Debug-iphonesimulator/IQKeyboardToolbarManager.build/Objects-normal/x86_64/IQKeyboardToolbarManager.swiftmodule @/Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Intermediates.noindex/IQKeyboardToolbarManager.build/Debug-iphonesimulator/IQKeyboardToolbarManager.build/Objects-normal/x86_64/IQKeyboardToolbarManager-linker-args.resp -Xlinker -add_ast_path -Xlinker /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Intermediates.noindex/IQKeyboardToolbar.build/Debug-iphonesimulator/IQKeyboardToolbar.build/Objects-normal/x86_64/IQKeyboardToolbar.swiftmodule @/Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Intermediates.noindex/IQKeyboardToolbar.build/Debug-iphonesimulator/IQKeyboardToolbar.build/Objects-normal/x86_64/IQKeyboardToolbar-linker-args.resp -Xlinker -add_ast_path -Xlinker /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Intermediates.noindex/IQKeyboardReturnManager.build/Debug-iphonesimulator/IQKeyboardReturnManager.build/Objects-normal/x86_64/IQKeyboardReturnManager.swiftmodule @/Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Intermediates.noindex/IQKeyboardReturnManager.build/Debug-iphonesimulator/IQKeyboardReturnManager.build/Objects-normal/x86_64/IQKeyboardReturnManager-linker-args.resp -Xlinker -add_ast_path -Xlinker /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Intermediates.noindex/IQTextView.build/Debug-iphonesimulator/IQTextView.build/Objects-normal/x86_64/IQTextView.swiftmodule @/Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Intermediates.noindex/IQTextView.build/Debug-iphonesimulator/IQTextView.build/Objects-normal/x86_64/IQTextView-linker-args.resp
+
+ConstructStubExecutorLinkFileList /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Intermediates.noindex/safemiles.build/Debug-iphonesimulator/safemiles.build/safemiles-ExecutorLinkFileList-normal-x86_64.txt (in target 'safemiles' from project 'safemiles')
+    cd /Users/pc/Documents/safemiles_SwiftUI
+    construct-stub-executor-link-file-list /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Products/Debug-iphonesimulator/safemiles.app/safemiles.debug.dylib /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/lib/libPreviewsJITStubExecutor_no_swift_entry_point.a /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/lib/libPreviewsJITStubExecutor.a --output /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Intermediates.noindex/safemiles.build/Debug-iphonesimulator/safemiles.build/safemiles-ExecutorLinkFileList-normal-x86_64.txt
+note: Using stub executor library with Swift entry point. (in target 'safemiles' from project 'safemiles')
+
+Ld /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Products/Debug-iphonesimulator/safemiles.app/safemiles normal (in target 'safemiles' from project 'safemiles')
+    cd /Users/pc/Documents/safemiles_SwiftUI
+    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -Xlinker -reproducible -target x86_64-apple-ios15.6-simulator -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.1.sdk -O0 -L/Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Products/Debug-iphonesimulator -F/Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Products/Debug-iphonesimulator/PackageFrameworks -F/Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Products/Debug-iphonesimulator/PackageFrameworks -F/Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Products/Debug-iphonesimulator/PackageFrameworks -F/Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Products/Debug-iphonesimulator/PackageFrameworks -F/Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Products/Debug-iphonesimulator/PackageFrameworks -F/Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Products/Debug-iphonesimulator/PackageFrameworks -F/Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Products/Debug-iphonesimulator/PackageFrameworks -F/Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Products/Debug-iphonesimulator/PackageFrameworks -F/Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Products/Debug-iphonesimulator/PackageFrameworks -F/Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Products/Debug-iphonesimulator/PackageFrameworks -F/Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Products/Debug-iphonesimulator -Xlinker -rpath -Xlinker @executable_path -Xlinker -rpath -Xlinker /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Products/Debug-iphonesimulator/PackageFrameworks -Xlinker -rpath -Xlinker @executable_path/Frameworks -rdynamic -Xlinker -no_deduplicate -Xlinker -objc_abi_version -Xlinker 2 -Xlinker -debug_variant -e ___debug_blank_executor_main -Xlinker -sectcreate -Xlinker __TEXT -Xlinker __debug_dylib -Xlinker /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Intermediates.noindex/safemiles.build/Debug-iphonesimulator/safemiles.build/safemiles-DebugDylibPath-normal-x86_64.txt -Xlinker -sectcreate -Xlinker __TEXT -Xlinker __debug_instlnm -Xlinker /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Intermediates.noindex/safemiles.build/Debug-iphonesimulator/safemiles.build/safemiles-DebugDylibInstallName-normal-x86_64.txt -Xlinker -filelist -Xlinker /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Intermediates.noindex/safemiles.build/Debug-iphonesimulator/safemiles.build/safemiles-ExecutorLinkFileList-normal-x86_64.txt -Xlinker -sectcreate -Xlinker __TEXT -Xlinker __entitlements -Xlinker /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Intermediates.noindex/safemiles.build/Debug-iphonesimulator/safemiles.build/safemiles.app-Simulated.xcent -Xlinker -sectcreate -Xlinker __TEXT -Xlinker __ents_der -Xlinker /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Intermediates.noindex/safemiles.build/Debug-iphonesimulator/safemiles.build/safemiles.app-Simulated.xcent.der /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Products/Debug-iphonesimulator/safemiles.app/safemiles.debug.dylib -Xlinker -no_adhoc_codesign -o /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Products/Debug-iphonesimulator/safemiles.app/safemiles
+
+Copy /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Products/Debug-iphonesimulator/safemiles.app/Frameworks/PacificTrack.framework /Users/pc/Documents/safemiles_SwiftUI/safemiles/Framework/PacificTrack.xcframework/ios-arm64_x86_64-simulator/PacificTrack.framework (in target 'safemiles' from project 'safemiles')
+    cd /Users/pc/Documents/safemiles_SwiftUI
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -exclude Headers -exclude PrivateHeaders -exclude Modules -exclude \*.tbd -resolve-src-symlinks -remove-static-executable /Users/pc/Documents/safemiles_SwiftUI/safemiles/Framework/PacificTrack.xcframework/ios-arm64_x86_64-simulator/PacificTrack.framework /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Products/Debug-iphonesimulator/safemiles.app/Frameworks
+
+ProcessInfoPlistFile /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Products/Debug-iphonesimulator/safemiles.app/Info.plist /Users/pc/Documents/safemiles_SwiftUI/Info.plist (in target 'safemiles' from project 'safemiles')
+    cd /Users/pc/Documents/safemiles_SwiftUI
+    builtin-infoPlistUtility /Users/pc/Documents/safemiles_SwiftUI/Info.plist -producttype com.apple.product-type.application -genpkginfo /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Products/Debug-iphonesimulator/safemiles.app/PkgInfo -expandbuildsettings -format binary -platform iphonesimulator -additionalcontentfile /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Intermediates.noindex/safemiles.build/Debug-iphonesimulator/safemiles.build/assetcatalog_generated_info.plist -scanforprivacyfile /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Products/Debug-iphonesimulator/safemiles.app/Alamofire_Alamofire.bundle -scanforprivacyfile /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Products/Debug-iphonesimulator/safemiles.app/Frameworks/PacificTrack.framework -scanforprivacyfile /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Products/Debug-iphonesimulator/safemiles.app/IQKeyboardCore_IQKeyboardCore.bundle -scanforprivacyfile /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Products/Debug-iphonesimulator/safemiles.app/IQKeyboardManagerSwift_IQKeyboardManagerSwift.bundle -scanforprivacyfile /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Products/Debug-iphonesimulator/safemiles.app/IQKeyboardNotification_IQKeyboardNotification.bundle -scanforprivacyfile /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Products/Debug-iphonesimulator/safemiles.app/IQKeyboardReturnManager_IQKeyboardReturnManager.bundle -scanforprivacyfile /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Products/Debug-iphonesimulator/safemiles.app/IQKeyboardToolbarManager_IQKeyboardToolbarManager.bundle -scanforprivacyfile /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Products/Debug-iphonesimulator/safemiles.app/IQKeyboardToolbar_IQKeyboardToolbar.bundle -scanforprivacyfile /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Products/Debug-iphonesimulator/safemiles.app/IQTextInputViewNotification_IQTextInputViewNotification.bundle -scanforprivacyfile /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Products/Debug-iphonesimulator/safemiles.app/IQTextView_IQTextView.bundle -o /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Products/Debug-iphonesimulator/safemiles.app/Info.plist
+
+CodeSign /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Products/Debug-iphonesimulator/safemiles.app/Frameworks/PacificTrack.framework (in target 'safemiles' from project 'safemiles')
+    cd /Users/pc/Documents/safemiles_SwiftUI
+    
+    Signing Identity:     "Sign to Run Locally"
+    
+    /usr/bin/codesign --force --sign - --timestamp\=none --preserve-metadata\=identifier,entitlements,flags --generate-entitlement-der /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Products/Debug-iphonesimulator/safemiles.app/Frameworks/PacificTrack.framework
+/Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Products/Debug-iphonesimulator/safemiles.app/Frameworks/PacificTrack.framework: replacing existing signature
+
+CopySwiftLibs /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Products/Debug-iphonesimulator/safemiles.app (in target 'safemiles' from project 'safemiles')
+    cd /Users/pc/Documents/safemiles_SwiftUI
+    builtin-swiftStdLibTool --copy --verbose --sign - --scan-executable /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Products/Debug-iphonesimulator/safemiles.app/safemiles.debug.dylib --scan-folder /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Products/Debug-iphonesimulator/safemiles.app/Frameworks --scan-folder /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Products/Debug-iphonesimulator/safemiles.app/PlugIns --scan-folder /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Products/Debug-iphonesimulator/safemiles.app/SystemExtensions --scan-folder /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Products/Debug-iphonesimulator/safemiles.app/Extensions --platform iphonesimulator --toolchain /Users/pc/Library/Developer/DVTDownloads/MetalToolchain/mounts/68d8db6212b48d387d071ff7b905df796658e713/Metal.xctoolchain --toolchain /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain --destination /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Products/Debug-iphonesimulator/safemiles.app/Frameworks --strip-bitcode --strip-bitcode-tool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/bitcode_strip --emit-dependency-info /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Intermediates.noindex/safemiles.build/Debug-iphonesimulator/safemiles.build/SwiftStdLibToolInputDependencies.dep --filter-for-swift-os
+
+ExtractAppIntentsMetadata (in target 'safemiles' from project 'safemiles')
+    cd /Users/pc/Documents/safemiles_SwiftUI
+    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/appintentsmetadataprocessor --toolchain-dir /Users/pc/Library/Developer/DVTDownloads/MetalToolchain/mounts/68d8db6212b48d387d071ff7b905df796658e713/Metal.xctoolchain --module-name safemiles --sdk-root /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.1.sdk --xcode-version 17B100 --platform-family iOS --deployment-target 15.6 --bundle-identifier com.SafetyMiles --output /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Products/Debug-iphonesimulator/safemiles.app --target-triple x86_64-apple-ios15.6-simulator --binary-file /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Products/Debug-iphonesimulator/safemiles.app/safemiles --dependency-file /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Intermediates.noindex/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/safemiles_dependency_info.dat --stringsdata-file /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Intermediates.noindex/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/ExtractedAppShortcutsMetadata.stringsdata --source-file-list /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Intermediates.noindex/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/safemiles.SwiftFileList --metadata-file-list /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Intermediates.noindex/safemiles.build/Debug-iphonesimulator/safemiles.build/safemiles.DependencyMetadataFileList --static-metadata-file-list /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Intermediates.noindex/safemiles.build/Debug-iphonesimulator/safemiles.build/safemiles.DependencyStaticMetadataFileList --swift-const-vals-list /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Intermediates.noindex/safemiles.build/Debug-iphonesimulator/safemiles.build/Objects-normal/x86_64/safemiles.SwiftConstValuesFileList --compile-time-extraction --deployment-aware-processing --validate-assistant-intents --no-app-shortcuts-localization
+2026-03-27 10:45:23.508 appintentsmetadataprocessor[7082:60284] Starting appintentsmetadataprocessor export
+2026-03-27 10:45:23.513 appintentsmetadataprocessor[7082:60284] warning: Metadata extraction skipped. No AppIntents.framework dependency found.
+
+AppIntentsSSUTraining (in target 'safemiles' from project 'safemiles')
+    cd /Users/pc/Documents/safemiles_SwiftUI
+    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/appintentsnltrainingprocessor --infoplist-path /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Products/Debug-iphonesimulator/safemiles.app/Info.plist --temp-dir-path /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Intermediates.noindex/safemiles.build/Debug-iphonesimulator/safemiles.build/ssu --bundle-id com.SafetyMiles --product-path /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Products/Debug-iphonesimulator/safemiles.app --extracted-metadata-path /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Products/Debug-iphonesimulator/safemiles.app/Metadata.appintents --metadata-file-list /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Intermediates.noindex/safemiles.build/Debug-iphonesimulator/safemiles.build/safemiles.DependencyMetadataFileList --archive-ssu-assets
+2026-03-27 10:45:23.559 appintentsnltrainingprocessor[7083:60286] Parsing options for appintentsnltrainingprocessor
+2026-03-27 10:45:23.560 appintentsnltrainingprocessor[7083:60286] No AppShortcuts found - Skipping.
+
+CodeSign /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Products/Debug-iphonesimulator/safemiles.app/safemiles.debug.dylib (in target 'safemiles' from project 'safemiles')
+    cd /Users/pc/Documents/safemiles_SwiftUI
+    
+    Signing Identity:     "Sign to Run Locally"
+    
+    /usr/bin/codesign --force --sign - --timestamp\=none --generate-entitlement-der /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Products/Debug-iphonesimulator/safemiles.app/safemiles.debug.dylib
+
+CodeSign /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Products/Debug-iphonesimulator/safemiles.app/__preview.dylib (in target 'safemiles' from project 'safemiles')
+    cd /Users/pc/Documents/safemiles_SwiftUI
+    
+    Signing Identity:     "Sign to Run Locally"
+    
+    /usr/bin/codesign --force --sign - --timestamp\=none --generate-entitlement-der /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Products/Debug-iphonesimulator/safemiles.app/__preview.dylib
+
+CodeSign /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Products/Debug-iphonesimulator/safemiles.app (in target 'safemiles' from project 'safemiles')
+    cd /Users/pc/Documents/safemiles_SwiftUI
+    
+    Signing Identity:     "Sign to Run Locally"
+    
+    /usr/bin/codesign --force --sign - --timestamp\=none --generate-entitlement-der /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Products/Debug-iphonesimulator/safemiles.app
+
+RegisterExecutionPolicyException /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Products/Debug-iphonesimulator/safemiles.app (in target 'safemiles' from project 'safemiles')
+    cd /Users/pc/Documents/safemiles_SwiftUI
+    builtin-RegisterExecutionPolicyException /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Products/Debug-iphonesimulator/safemiles.app
+
+Validate /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Products/Debug-iphonesimulator/safemiles.app (in target 'safemiles' from project 'safemiles')
+    cd /Users/pc/Documents/safemiles_SwiftUI
+    builtin-validationUtility /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Products/Debug-iphonesimulator/safemiles.app -shallow-bundle -infoplist-subpath Info.plist
+
+Touch /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Products/Debug-iphonesimulator/safemiles.app (in target 'safemiles' from project 'safemiles')
+    cd /Users/pc/Documents/safemiles_SwiftUI
+    /usr/bin/touch -c /Users/pc/Library/Developer/Xcode/DerivedData/safemiles-ebdxzuqeltrgupbbelwbneeyyyli/Build/Products/Debug-iphonesimulator/safemiles.app
+
+note: Disabling hardened runtime with ad-hoc codesigning. (in target 'safemiles' from project 'safemiles')
+** BUILD SUCCEEDED **
+

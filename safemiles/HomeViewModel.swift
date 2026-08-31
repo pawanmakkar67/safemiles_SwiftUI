@@ -746,9 +746,33 @@ class HomeViewModel: ObservableObject {
             //            eldevice["vin"] = trackerInfo.vin
             // Add other fields if needed from TrackerInfo
 
+            let mainVersionStr: String = {
+                #if targetEnvironment(simulator)
+                return trackerInfo.mainVersion.version
+                #else
+                if let verObj = (trackerInfo as AnyObject).value(forKey: "mainVersion") as? NSObject,
+                   let verStr = verObj.value(forKey: "version") as? String {
+                    return verStr
+                }
+                return trackerInfo.mainVersion.version
+                #endif
+            }()
+            
+            let bleVersionStr: String = {
+                #if targetEnvironment(simulator)
+                return trackerInfo.bleVersion.version
+                #else
+                if let verObj = (trackerInfo as AnyObject).value(forKey: "bleVersion") as? NSObject,
+                   let verStr = verObj.value(forKey: "version") as? String {
+                    return verStr
+                }
+                return trackerInfo.bleVersion.version
+                #endif
+            }()
+
             eldevice.updateValue(trackerInfo.productName, forKey: "eld_type")
-            eldevice.updateValue(trackerInfo.mainVersion.version, forKey: "fw_version")
-            eldevice.updateValue(trackerInfo.bleVersion.version, forKey: "bleVersion")
+            eldevice.updateValue(mainVersionStr, forKey: "fw_version")
+            eldevice.updateValue(bleVersionStr, forKey: "bleVersion")
             eldevice.updateValue(
                 ble.connectedPeripheral?.identifier.uuidString ?? "", forKey: "device_uuid")
             eldevice.updateValue(trackerInfo.serialNumber, forKey: "device_number")

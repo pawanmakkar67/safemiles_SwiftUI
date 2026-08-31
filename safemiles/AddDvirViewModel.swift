@@ -3,7 +3,9 @@ import Combine
 import ObjectMapper
 import Alamofire
 import CoreLocation
+#if !targetEnvironment(simulator)
 import PacificTrack
+#endif
 
 class AddDvirViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
     // Form Fields

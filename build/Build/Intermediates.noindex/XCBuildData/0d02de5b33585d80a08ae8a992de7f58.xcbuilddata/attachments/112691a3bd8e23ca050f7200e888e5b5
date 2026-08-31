@@ -1,0 +1,4 @@
+module IQKeyboardReturnManager {
+header "IQKeyboardReturnManager-Swift.h"
+export *
+}

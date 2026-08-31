@@ -1,0 +1,183 @@
+{
+  "object" : {
+    "artifacts" : [
+
+    ],
+    "dependencies" : [
+      {
+        "basedOn" : null,
+        "packageRef" : {
+          "identity" : "alamofire",
+          "kind" : "remoteSourceControl",
+          "location" : "https://github.com/Alamofire/Alamofire.git",
+          "name" : "Alamofire"
+        },
+        "state" : {
+          "checkoutState" : {
+            "revision" : "7be73f6c2b5cd90e40798b06ebd5da8f9f79cf88",
+            "version" : "5.11.0"
+          },
+          "name" : "sourceControlCheckout"
+        },
+        "subpath" : "Alamofire"
+      },
+      {
+        "basedOn" : null,
+        "packageRef" : {
+          "identity" : "iqkeyboardcore",
+          "kind" : "remoteSourceControl",
+          "location" : "https://github.com/hackiftekhar/IQKeyboardCore.git",
+          "name" : "IQKeyboardCore"
+        },
+        "state" : {
+          "checkoutState" : {
+            "revision" : "6501e93b03161ce1c9355d2d689bad91c534104e",
+            "version" : "1.0.8"
+          },
+          "name" : "sourceControlCheckout"
+        },
+        "subpath" : "IQKeyboardCore"
+      },
+      {
+        "basedOn" : null,
+        "packageRef" : {
+          "identity" : "iqkeyboardmanager",
+          "kind" : "remoteSourceControl",
+          "location" : "https://github.com/hackiftekhar/IQKeyboardManager",
+          "name" : "IQKeyboardManagerSwift"
+        },
+        "state" : {
+          "checkoutState" : {
+            "revision" : "5e15518eaa4966527140aeeae96dc306f96cf7b8",
+            "version" : "8.0.2"
+          },
+          "name" : "sourceControlCheckout"
+        },
+        "subpath" : "IQKeyboardManager"
+      },
+      {
+        "basedOn" : null,
+        "packageRef" : {
+          "identity" : "iqkeyboardnotification",
+          "kind" : "remoteSourceControl",
+          "location" : "https://github.com/hackiftekhar/IQKeyboardNotification.git",
+          "name" : "IQKeyboardNotification"
+        },
+        "state" : {
+          "checkoutState" : {
+            "revision" : "08bdc90e7db64ac88f51da5dc9e82f4c247e7057",
+            "version" : "1.0.6"
+          },
+          "name" : "sourceControlCheckout"
+        },
+        "subpath" : "IQKeyboardNotification"
+      },
+      {
+        "basedOn" : null,
+        "packageRef" : {
+          "identity" : "iqkeyboardreturnmanager",
+          "kind" : "remoteSourceControl",
+          "location" : "https://github.com/hackiftekhar/IQKeyboardReturnManager.git",
+          "name" : "IQKeyboardReturnManager"
+        },
+        "state" : {
+          "checkoutState" : {
+            "revision" : "495f694a6e62e431d776b4926a18fc26c62db317",
+            "version" : "1.0.6"
+          },
+          "name" : "sourceControlCheckout"
+        },
+        "subpath" : "IQKeyboardReturnManager"
+      },
+      {
+        "basedOn" : null,
+        "packageRef" : {
+          "identity" : "iqkeyboardtoolbar",
+          "kind" : "remoteSourceControl",
+          "location" : "https://github.com/hackiftekhar/IQKeyboardToolbar.git",
+          "name" : "IQKeyboardToolbar"
+        },
+        "state" : {
+          "checkoutState" : {
+            "revision" : "9fef421f6fb39a3e0495f0004f9111b8eaaf0e69",
+            "version" : "1.1.3"
+          },
+          "name" : "sourceControlCheckout"
+        },
+        "subpath" : "IQKeyboardToolbar"
+      },
+      {
+        "basedOn" : null,
+        "packageRef" : {
+          "identity" : "iqkeyboardtoolbarmanager",
+          "kind" : "remoteSourceControl",
+          "location" : "https://github.com/hackiftekhar/IQKeyboardToolbarManager.git",
+          "name" : "IQKeyboardToolbarManager"
+        },
+        "state" : {
+          "checkoutState" : {
+            "revision" : "ebbb417870237c4ed8d7a4876c18970c3ae54264",
+            "version" : "1.1.4"
+          },
+          "name" : "sourceControlCheckout"
+        },
+        "subpath" : "IQKeyboardToolbarManager"
+      },
+      {
+        "basedOn" : null,
+        "packageRef" : {
+          "identity" : "iqtextinputviewnotification",
+          "kind" : "remoteSourceControl",
+          "location" : "https://github.com/hackiftekhar/IQTextInputViewNotification.git",
+          "name" : "IQTextInputViewNotification"
+        },
+        "state" : {
+          "checkoutState" : {
+            "revision" : "723784a2197121bb76a940cc6d79fd2fa6c23f43",
+            "version" : "1.0.9"
+          },
+          "name" : "sourceControlCheckout"
+        },
+        "subpath" : "IQTextInputViewNotification"
+      },
+      {
+        "basedOn" : null,
+        "packageRef" : {
+          "identity" : "iqtextview",
+          "kind" : "remoteSourceControl",
+          "location" : "https://github.com/hackiftekhar/IQTextView.git",
+          "name" : "IQTextView"
+        },
+        "state" : {
+          "checkoutState" : {
+            "revision" : "76f514eba5218bdf67659168ba227c77da5f75fe",
+            "version" : "1.0.5"
+          },
+          "name" : "sourceControlCheckout"
+        },
+        "subpath" : "IQTextView"
+      },
+      {
+        "basedOn" : null,
+        "packageRef" : {
+          "identity" : "objectmapper",
+          "kind" : "remoteSourceControl",
+          "location" : "https://github.com/tristanhimmelman/ObjectMapper",
+          "name" : "ObjectMapper"
+        },
+        "state" : {
+          "checkoutState" : {
+            "revision" : "6021c6035e83a306047348666f6400dc61445d3b",
+            "version" : "4.4.3"
+          },
+          "name" : "sourceControlCheckout"
+        },
+        "subpath" : "ObjectMapper"
+      }
+    ],
+    "prebuilts" : [
+
+    ]
+  },
+  "version" : 7
+}

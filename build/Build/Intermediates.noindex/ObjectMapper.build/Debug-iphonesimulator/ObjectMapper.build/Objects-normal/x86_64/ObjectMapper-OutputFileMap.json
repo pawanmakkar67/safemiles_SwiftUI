@@ -1,0 +1,249 @@
+{
+  "" : {
+    "diagnostics" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/ObjectMapper-primary.dia",
+    "emit-module-dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/ObjectMapper-primary-emit-module.d",
+    "emit-module-diagnostics" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/ObjectMapper-primary-emit-module.dia",
+    "pch" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/ObjectMapper-primary-Bridging-header.pch",
+    "swift-dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/ObjectMapper-primary.swiftdeps"
+  },
+  "/Users/pc/Documents/safemiles_SwiftUI/build/SourcePackages/checkouts/ObjectMapper/Sources/CodableTransform.swift" : {
+    "const-values" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/CodableTransform.swiftconstvalues",
+    "dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/CodableTransform.d",
+    "diagnostics" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/CodableTransform.dia",
+    "index-unit-output-path" : "/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/CodableTransform.o",
+    "llvm-bc" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/CodableTransform.bc",
+    "object" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/CodableTransform.o",
+    "swift-dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/CodableTransform.swiftdeps",
+    "swiftmodule" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/CodableTransform~partial.swiftmodule"
+  },
+  "/Users/pc/Documents/safemiles_SwiftUI/build/SourcePackages/checkouts/ObjectMapper/Sources/CustomDateFormatTransform.swift" : {
+    "const-values" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/CustomDateFormatTransform.swiftconstvalues",
+    "dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/CustomDateFormatTransform.d",
+    "diagnostics" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/CustomDateFormatTransform.dia",
+    "index-unit-output-path" : "/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/CustomDateFormatTransform.o",
+    "llvm-bc" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/CustomDateFormatTransform.bc",
+    "object" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/CustomDateFormatTransform.o",
+    "swift-dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/CustomDateFormatTransform.swiftdeps",
+    "swiftmodule" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/CustomDateFormatTransform~partial.swiftmodule"
+  },
+  "/Users/pc/Documents/safemiles_SwiftUI/build/SourcePackages/checkouts/ObjectMapper/Sources/DataTransform.swift" : {
+    "const-values" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/DataTransform.swiftconstvalues",
+    "dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/DataTransform.d",
+    "diagnostics" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/DataTransform.dia",
+    "index-unit-output-path" : "/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/DataTransform.o",
+    "llvm-bc" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/DataTransform.bc",
+    "object" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/DataTransform.o",
+    "swift-dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/DataTransform.swiftdeps",
+    "swiftmodule" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/DataTransform~partial.swiftmodule"
+  },
+  "/Users/pc/Documents/safemiles_SwiftUI/build/SourcePackages/checkouts/ObjectMapper/Sources/DateFormatterTransform.swift" : {
+    "const-values" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/DateFormatterTransform.swiftconstvalues",
+    "dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/DateFormatterTransform.d",
+    "diagnostics" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/DateFormatterTransform.dia",
+    "index-unit-output-path" : "/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/DateFormatterTransform.o",
+    "llvm-bc" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/DateFormatterTransform.bc",
+    "object" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/DateFormatterTransform.o",
+    "swift-dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/DateFormatterTransform.swiftdeps",
+    "swiftmodule" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/DateFormatterTransform~partial.swiftmodule"
+  },
+  "/Users/pc/Documents/safemiles_SwiftUI/build/SourcePackages/checkouts/ObjectMapper/Sources/DateTransform.swift" : {
+    "const-values" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/DateTransform.swiftconstvalues",
+    "dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/DateTransform.d",
+    "diagnostics" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/DateTransform.dia",
+    "index-unit-output-path" : "/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/DateTransform.o",
+    "llvm-bc" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/DateTransform.bc",
+    "object" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/DateTransform.o",
+    "swift-dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/DateTransform.swiftdeps",
+    "swiftmodule" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/DateTransform~partial.swiftmodule"
+  },
+  "/Users/pc/Documents/safemiles_SwiftUI/build/SourcePackages/checkouts/ObjectMapper/Sources/DictionaryTransform.swift" : {
+    "const-values" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/DictionaryTransform.swiftconstvalues",
+    "dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/DictionaryTransform.d",
+    "diagnostics" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/DictionaryTransform.dia",
+    "index-unit-output-path" : "/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/DictionaryTransform.o",
+    "llvm-bc" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/DictionaryTransform.bc",
+    "object" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/DictionaryTransform.o",
+    "swift-dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/DictionaryTransform.swiftdeps",
+    "swiftmodule" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/DictionaryTransform~partial.swiftmodule"
+  },
+  "/Users/pc/Documents/safemiles_SwiftUI/build/SourcePackages/checkouts/ObjectMapper/Sources/EnumOperators.swift" : {
+    "const-values" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/EnumOperators.swiftconstvalues",
+    "dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/EnumOperators.d",
+    "diagnostics" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/EnumOperators.dia",
+    "index-unit-output-path" : "/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/EnumOperators.o",
+    "llvm-bc" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/EnumOperators.bc",
+    "object" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/EnumOperators.o",
+    "swift-dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/EnumOperators.swiftdeps",
+    "swiftmodule" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/EnumOperators~partial.swiftmodule"
+  },
+  "/Users/pc/Documents/safemiles_SwiftUI/build/SourcePackages/checkouts/ObjectMapper/Sources/EnumTransform.swift" : {
+    "const-values" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/EnumTransform.swiftconstvalues",
+    "dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/EnumTransform.d",
+    "diagnostics" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/EnumTransform.dia",
+    "index-unit-output-path" : "/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/EnumTransform.o",
+    "llvm-bc" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/EnumTransform.bc",
+    "object" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/EnumTransform.o",
+    "swift-dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/EnumTransform.swiftdeps",
+    "swiftmodule" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/EnumTransform~partial.swiftmodule"
+  },
+  "/Users/pc/Documents/safemiles_SwiftUI/build/SourcePackages/checkouts/ObjectMapper/Sources/FromJSON.swift" : {
+    "const-values" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/FromJSON.swiftconstvalues",
+    "dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/FromJSON.d",
+    "diagnostics" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/FromJSON.dia",
+    "index-unit-output-path" : "/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/FromJSON.o",
+    "llvm-bc" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/FromJSON.bc",
+    "object" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/FromJSON.o",
+    "swift-dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/FromJSON.swiftdeps",
+    "swiftmodule" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/FromJSON~partial.swiftmodule"
+  },
+  "/Users/pc/Documents/safemiles_SwiftUI/build/SourcePackages/checkouts/ObjectMapper/Sources/HexColorTransform.swift" : {
+    "const-values" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/HexColorTransform.swiftconstvalues",
+    "dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/HexColorTransform.d",
+    "diagnostics" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/HexColorTransform.dia",
+    "index-unit-output-path" : "/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/HexColorTransform.o",
+    "llvm-bc" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/HexColorTransform.bc",
+    "object" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/HexColorTransform.o",
+    "swift-dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/HexColorTransform.swiftdeps",
+    "swiftmodule" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/HexColorTransform~partial.swiftmodule"
+  },
+  "/Users/pc/Documents/safemiles_SwiftUI/build/SourcePackages/checkouts/ObjectMapper/Sources/ISO8601DateTransform.swift" : {
+    "const-values" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/ISO8601DateTransform.swiftconstvalues",
+    "dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/ISO8601DateTransform.d",
+    "diagnostics" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/ISO8601DateTransform.dia",
+    "index-unit-output-path" : "/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/ISO8601DateTransform.o",
+    "llvm-bc" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/ISO8601DateTransform.bc",
+    "object" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/ISO8601DateTransform.o",
+    "swift-dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/ISO8601DateTransform.swiftdeps",
+    "swiftmodule" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/ISO8601DateTransform~partial.swiftmodule"
+  },
+  "/Users/pc/Documents/safemiles_SwiftUI/build/SourcePackages/checkouts/ObjectMapper/Sources/ImmutableMappable.swift" : {
+    "const-values" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/ImmutableMappable.swiftconstvalues",
+    "dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/ImmutableMappable.d",
+    "diagnostics" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/ImmutableMappable.dia",
+    "index-unit-output-path" : "/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/ImmutableMappable.o",
+    "llvm-bc" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/ImmutableMappable.bc",
+    "object" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/ImmutableMappable.o",
+    "swift-dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/ImmutableMappable.swiftdeps",
+    "swiftmodule" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/ImmutableMappable~partial.swiftmodule"
+  },
+  "/Users/pc/Documents/safemiles_SwiftUI/build/SourcePackages/checkouts/ObjectMapper/Sources/IntegerOperators.swift" : {
+    "const-values" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/IntegerOperators.swiftconstvalues",
+    "dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/IntegerOperators.d",
+    "diagnostics" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/IntegerOperators.dia",
+    "index-unit-output-path" : "/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/IntegerOperators.o",
+    "llvm-bc" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/IntegerOperators.bc",
+    "object" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/IntegerOperators.o",
+    "swift-dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/IntegerOperators.swiftdeps",
+    "swiftmodule" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/IntegerOperators~partial.swiftmodule"
+  },
+  "/Users/pc/Documents/safemiles_SwiftUI/build/SourcePackages/checkouts/ObjectMapper/Sources/Map.swift" : {
+    "const-values" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/Map.swiftconstvalues",
+    "dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/Map.d",
+    "diagnostics" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/Map.dia",
+    "index-unit-output-path" : "/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/Map.o",
+    "llvm-bc" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/Map.bc",
+    "object" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/Map.o",
+    "swift-dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/Map.swiftdeps",
+    "swiftmodule" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/Map~partial.swiftmodule"
+  },
+  "/Users/pc/Documents/safemiles_SwiftUI/build/SourcePackages/checkouts/ObjectMapper/Sources/MapError.swift" : {
+    "const-values" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/MapError.swiftconstvalues",
+    "dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/MapError.d",
+    "diagnostics" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/MapError.dia",
+    "index-unit-output-path" : "/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/MapError.o",
+    "llvm-bc" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/MapError.bc",
+    "object" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/MapError.o",
+    "swift-dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/MapError.swiftdeps",
+    "swiftmodule" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/MapError~partial.swiftmodule"
+  },
+  "/Users/pc/Documents/safemiles_SwiftUI/build/SourcePackages/checkouts/ObjectMapper/Sources/Mappable.swift" : {
+    "const-values" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/Mappable.swiftconstvalues",
+    "dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/Mappable.d",
+    "diagnostics" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/Mappable.dia",
+    "index-unit-output-path" : "/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/Mappable.o",
+    "llvm-bc" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/Mappable.bc",
+    "object" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/Mappable.o",
+    "swift-dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/Mappable.swiftdeps",
+    "swiftmodule" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/Mappable~partial.swiftmodule"
+  },
+  "/Users/pc/Documents/safemiles_SwiftUI/build/SourcePackages/checkouts/ObjectMapper/Sources/Mapper.swift" : {
+    "const-values" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/Mapper.swiftconstvalues",
+    "dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/Mapper.d",
+    "diagnostics" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/Mapper.dia",
+    "index-unit-output-path" : "/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/Mapper.o",
+    "llvm-bc" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/Mapper.bc",
+    "object" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/Mapper.o",
+    "swift-dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/Mapper.swiftdeps",
+    "swiftmodule" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/Mapper~partial.swiftmodule"
+  },
+  "/Users/pc/Documents/safemiles_SwiftUI/build/SourcePackages/checkouts/ObjectMapper/Sources/NSDecimalNumberTransform.swift" : {
+    "const-values" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/NSDecimalNumberTransform.swiftconstvalues",
+    "dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/NSDecimalNumberTransform.d",
+    "diagnostics" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/NSDecimalNumberTransform.dia",
+    "index-unit-output-path" : "/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/NSDecimalNumberTransform.o",
+    "llvm-bc" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/NSDecimalNumberTransform.bc",
+    "object" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/NSDecimalNumberTransform.o",
+    "swift-dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/NSDecimalNumberTransform.swiftdeps",
+    "swiftmodule" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/NSDecimalNumberTransform~partial.swiftmodule"
+  },
+  "/Users/pc/Documents/safemiles_SwiftUI/build/SourcePackages/checkouts/ObjectMapper/Sources/Operators.swift" : {
+    "const-values" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/Operators.swiftconstvalues",
+    "dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/Operators.d",
+    "diagnostics" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/Operators.dia",
+    "index-unit-output-path" : "/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/Operators.o",
+    "llvm-bc" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/Operators.bc",
+    "object" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/Operators.o",
+    "swift-dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/Operators.swiftdeps",
+    "swiftmodule" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/Operators~partial.swiftmodule"
+  },
+  "/Users/pc/Documents/safemiles_SwiftUI/build/SourcePackages/checkouts/ObjectMapper/Sources/ToJSON.swift" : {
+    "const-values" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/ToJSON.swiftconstvalues",
+    "dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/ToJSON.d",
+    "diagnostics" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/ToJSON.dia",
+    "index-unit-output-path" : "/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/ToJSON.o",
+    "llvm-bc" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/ToJSON.bc",
+    "object" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/ToJSON.o",
+    "swift-dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/ToJSON.swiftdeps",
+    "swiftmodule" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/ToJSON~partial.swiftmodule"
+  },
+  "/Users/pc/Documents/safemiles_SwiftUI/build/SourcePackages/checkouts/ObjectMapper/Sources/TransformOf.swift" : {
+    "const-values" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/TransformOf.swiftconstvalues",
+    "dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/TransformOf.d",
+    "diagnostics" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/TransformOf.dia",
+    "index-unit-output-path" : "/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/TransformOf.o",
+    "llvm-bc" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/TransformOf.bc",
+    "object" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/TransformOf.o",
+    "swift-dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/TransformOf.swiftdeps",
+    "swiftmodule" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/TransformOf~partial.swiftmodule"
+  },
+  "/Users/pc/Documents/safemiles_SwiftUI/build/SourcePackages/checkouts/ObjectMapper/Sources/TransformOperators.swift" : {
+    "const-values" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/TransformOperators.swiftconstvalues",
+    "dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/TransformOperators.d",
+    "diagnostics" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/TransformOperators.dia",
+    "index-unit-output-path" : "/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/TransformOperators.o",
+    "llvm-bc" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/TransformOperators.bc",
+    "object" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/TransformOperators.o",
+    "swift-dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/TransformOperators.swiftdeps",
+    "swiftmodule" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/TransformOperators~partial.swiftmodule"
+  },
+  "/Users/pc/Documents/safemiles_SwiftUI/build/SourcePackages/checkouts/ObjectMapper/Sources/TransformType.swift" : {
+    "const-values" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/TransformType.swiftconstvalues",
+    "dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/TransformType.d",
+    "diagnostics" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/TransformType.dia",
+    "index-unit-output-path" : "/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/TransformType.o",
+    "llvm-bc" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/TransformType.bc",
+    "object" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/TransformType.o",
+    "swift-dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/TransformType.swiftdeps",
+    "swiftmodule" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/TransformType~partial.swiftmodule"
+  },
+  "/Users/pc/Documents/safemiles_SwiftUI/build/SourcePackages/checkouts/ObjectMapper/Sources/URLTransform.swift" : {
+    "const-values" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/URLTransform.swiftconstvalues",
+    "dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/URLTransform.d",
+    "diagnostics" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/URLTransform.dia",
+    "index-unit-output-path" : "/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/URLTransform.o",
+    "llvm-bc" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/URLTransform.bc",
+    "object" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/URLTransform.o",
+    "swift-dependencies" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/URLTransform.swiftdeps",
+    "swiftmodule" : "/Users/pc/Documents/safemiles_SwiftUI/build/Build/Intermediates.noindex/ObjectMapper.build/Debug-iphonesimulator/ObjectMapper.build/Objects-normal/x86_64/URLTransform~partial.swiftmodule"
+  }
+}

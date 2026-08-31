@@ -1,0 +1,11 @@
+framework module PacificTrack {
+  umbrella header "PacificTrack.h"
+  export *
+
+  module * { export * }
+}
+
+module PacificTrack.Swift {
+  header "PacificTrack-Swift.h"
+  requires objc
+}

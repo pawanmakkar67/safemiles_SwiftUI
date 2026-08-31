@@ -1,0 +1,704 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.9 (swiftlang-5.9.0.128.108 clang-1500.0.40.1)
+// swift-module-flags: -target x86_64-apple-ios11.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -Onone -module-name PacificTrack
+// swift-module-flags-ignorable: -enable-bare-slash-regex
+import CoreBluetooth
+import Dispatch
+import Foundation
+import MobileCoreServices
+@_exported import PacificTrack
+import Swift
+import SystemConfiguration
+import _Concurrency
+import _StringProcessing
+import _SwiftConcurrencyShims
+@objc public enum Bus : Swift.Int {
+  case obd2 = 0
+  case j1708 = 1
+  case j1939 = 2
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@_hasMissingDesignatedInitializers @objc public class ClearStoredEventsResponse : PacificTrack.ControlFrame {
+  @objc public var status: PacificTrack.ResponseStatus {
+    @objc get
+  }
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc public class SPNDefinitionParam : ObjectiveC.NSObject {
+  @objc public var spn: Swift.UInt {
+    get
+  }
+  @objc public var mode: PacificTrack.SPNEventMode {
+    get
+  }
+  @objc public var timer: Swift.UInt {
+    get
+  }
+  @objc public var value: Swift.UInt {
+    get
+  }
+  @objc public var pgn: Swift.UInt {
+    get
+  }
+  @objc public var address: Swift.UInt {
+    get
+  }
+  @objc public var startByte: Swift.UInt {
+    get
+  }
+  @objc public var startBit: Swift.UInt {
+    get
+  }
+  @objc public var length: Swift.UInt {
+    get
+  }
+  @objc public init?(spn: Swift.UInt, mode: PacificTrack.SPNEventMode, timer: Swift.UInt, value: Swift.UInt, pgn: Swift.UInt, address: Swift.UInt, startByte: Swift.UInt, startBit: Swift.UInt, length: Swift.UInt)
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc public class EventFrame : PacificTrack.ControlFrame {
+  @objc public var sequenceNumber: Swift.Int {
+    @objc get
+  }
+  @objc public var eventType: PacificTrack.EventType
+  @objc public var datetime: Foundation.Date {
+    @objc get
+  }
+  @objc public var geolocation: PacificTrack.GeolocationParam {
+    @objc get
+  }
+  @objc public var odometer: Swift.Float {
+    @objc get
+  }
+  @objc public var velocity: Swift.Int {
+    @objc get
+  }
+  @objc public var engineHours: Swift.Float {
+    @objc get
+  }
+  @objc public var rpm: Swift.Int {
+    @objc get
+  }
+  @objc public var liveEvent: Swift.Bool {
+    @objc get
+  }
+  public var obd2: Swift.UInt? {
+    get
+  }
+  @objc public var obd2Present: Swift.Bool {
+    @objc get
+  }
+  @objc public var obd2Value: Swift.UInt {
+    @objc get
+  }
+  public var engineAge: Swift.UInt? {
+    get
+  }
+  @objc public var engineAgePresent: Swift.Bool {
+    @objc get
+  }
+  @objc public var engineAgeValue: Swift.UInt {
+    @objc get
+  }
+  @objc public func getValue(forTag tag: Swift.String) -> Swift.String?
+  @objc deinit
+}
+@objc public enum TrackerServiceError : Swift.Int {
+  case failed
+  case invalidParameters
+  case invalidState
+  case invalidRequest
+  case invalidResponse
+  case trackerUnavailable
+  case trackerNotSynced
+  case wsError
+  case bluetoothOff
+  case notSupported
+  case noError
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc public class VersionParam : ObjectiveC.NSObject {
+  @objc public var level: Swift.UInt {
+    get
+  }
+  @objc public var version: Swift.String {
+    get
+  }
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers public class VirtualDashboardData {
+  public var busType: Swift.UInt?
+  public var odometerComputed: Swift.Bool?
+  public var engineHoursComputed: Swift.Bool?
+  public var currentGear: Swift.UInt8?
+  public var seatbeltOn: Swift.Bool?
+  public var speed: Swift.UInt8?
+  public var rpm: Swift.UInt16?
+  public var numberOfDTCPending: Swift.UInt8?
+  public var oilPressure: Swift.UInt16?
+  public var oilLevel: Swift.Double?
+  public var oilTemperature: Swift.Int16?
+  public var coolantLevel: Swift.Double?
+  public var coolantTemperature: Swift.Int16?
+  public var fuelLevel: Swift.Double?
+  public var DEFlevel: Swift.Double?
+  public var engineLoad: Swift.Double?
+  public var barometer: Swift.Double?
+  public var intakeManifoldTemperature: Swift.Int16?
+  public var engineFuelTankTemperature: Swift.Int16?
+  public var engineIntercoolerTemperature: Swift.Int16?
+  public var engineTurboOilTemperature: Swift.Int16?
+  public var transmisionOilTemperature: Swift.Int16?
+  public var fuelLevel2: Swift.Double?
+  public var fuelRate: Swift.Double?
+  public var averageFuelEconomy: Swift.Double?
+  public var ambientAirTemperature: Swift.Double?
+  public var odometer: Swift.Double?
+  public var engineHours: Swift.Double?
+  public var idleHours: Swift.Double?
+  public var PTOHours: Swift.Double?
+  public var totalIdleFuel: Swift.Double?
+  public var totalFuelUsed: Swift.Double?
+  public var vin: Swift.String?
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc public class GetVehicleInformationResponse : PacificTrack.ControlFrame {
+  @objc public var status: PacificTrack.ResponseStatus {
+    @objc get
+  }
+  @objc public var vin: Swift.String {
+    @objc get
+  }
+  public var bus: [PacificTrack.Bus] {
+    get
+  }
+  @objc public var busArray: [Swift.Int] {
+    @objc get
+  }
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc public class BaseCommand : ObjectiveC.NSObject {
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc public class VirtualDashboardDataUnwrapped : ObjectiveC.NSObject {
+  @objc public var busTypePresent: Swift.Bool
+  @objc public var busType: Swift.UInt
+  @objc public var odometerComputedPresent: Swift.Bool
+  @objc public var odometerComputed: Swift.Bool
+  @objc public var engineHoursComputedPresent: Swift.Bool
+  @objc public var engineHoursComputed: Swift.Bool
+  @objc public var currentGearPresent: Swift.Bool
+  @objc public var currentGear: Swift.UInt8
+  @objc public var seatbeltOnPresent: Swift.Bool
+  @objc public var seatbeltOn: Swift.Bool
+  @objc public var speedPresent: Swift.Bool
+  @objc public var speed: Swift.UInt8
+  @objc public var rpmPresent: Swift.Bool
+  @objc public var rpm: Swift.UInt16
+  @objc public var numberOfDTCPendingPresent: Swift.Bool
+  @objc public var numberOfDTCPending: Swift.UInt8
+  @objc public var oilPressurePresent: Swift.Bool
+  @objc public var oilPressure: Swift.UInt16
+  @objc public var oilLevelPresent: Swift.Bool
+  @objc public var oilLevel: Swift.Double
+  @objc public var oilTemperaturePresent: Swift.Bool
+  @objc public var oilTemperature: Swift.Int16
+  @objc public var coolantLevelPresent: Swift.Bool
+  @objc public var coolantLevel: Swift.Double
+  @objc public var coolantTemperaturePresent: Swift.Bool
+  @objc public var coolantTemperature: Swift.Int16
+  @objc public var fuelLevelPresent: Swift.Bool
+  @objc public var fuelLevel: Swift.Double
+  @objc public var DEFlevelPresent: Swift.Bool
+  @objc public var DEFlevel: Swift.Double
+  @objc public var engineLoadPresent: Swift.Bool
+  @objc public var engineLoad: Swift.Double
+  @objc public var barometerPresent: Swift.Bool
+  @objc public var barometer: Swift.Double
+  @objc public var intakeManifoldTemperaturePresent: Swift.Bool
+  @objc public var intakeManifoldTemperature: Swift.Int16
+  @objc public var engineFuelTankTemperaturePresent: Swift.Bool
+  @objc public var engineFuelTankTemperature: Swift.Int16
+  @objc public var engineIntercoolerTemperaturePresent: Swift.Bool
+  @objc public var engineIntercoolerTemperature: Swift.Int16
+  @objc public var engineTurboOilTemperaturePresent: Swift.Bool
+  @objc public var engineTurboOilTemperature: Swift.Int16
+  @objc public var transmisionOilTemperaturePresent: Swift.Bool
+  @objc public var transmisionOilTemperature: Swift.Int16
+  @objc public var fuelLevel2Present: Swift.Bool
+  @objc public var fuelLevel2: Swift.Double
+  @objc public var fuelRatePresent: Swift.Bool
+  @objc public var fuelRate: Swift.Double
+  @objc public var averageFuelEconomyPresent: Swift.Bool
+  @objc public var averageFuelEconomy: Swift.Double
+  @objc public var ambientAirTemperaturePresent: Swift.Bool
+  @objc public var ambientAirTemperature: Swift.Double
+  @objc public var odometerPresent: Swift.Bool
+  @objc public var odometer: Swift.Double
+  @objc public var engineHoursPresent: Swift.Bool
+  @objc public var engineHours: Swift.Double
+  @objc public var idleHoursPresent: Swift.Bool
+  @objc public var idleHours: Swift.Double
+  @objc public var PTOHoursPresent: Swift.Bool
+  @objc public var PTOHours: Swift.Double
+  @objc public var totalIdleFuelPresent: Swift.Bool
+  @objc public var totalIdleFuel: Swift.Double
+  @objc public var totalFuelUsedPresent: Swift.Bool
+  @objc public var totalFuelUsed: Swift.Double
+  @objc public var vinPresent: Swift.Bool
+  @objc public var vin: Swift.String
+  @objc deinit
+}
+@objc public class TrackerFirmwareFile : ObjectiveC.NSObject {
+  @objc public var name: Swift.String
+  @objc public var type: PacificTrack.TrackerFirmwareType
+  @objc public var data: Foundation.Data
+  @objc public init(name: Swift.String, type: PacificTrack.TrackerFirmwareType, data: Foundation.Data)
+  @objc deinit
+}
+@objc public enum SPNEventMode : Swift.Int {
+  case timer = 0
+  case lowerThanValue = 1
+  case higherThanValue = 2
+  case transitions = 3
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@_hasMissingDesignatedInitializers @objc public class GeolocationParam : ObjectiveC.NSObject {
+  @objc public var isLocked: Swift.Bool {
+    get
+  }
+  @objc public var sateliteCount: Swift.Int {
+    get
+  }
+  @objc public var latitude: Swift.Float {
+    get
+  }
+  @objc public var longitude: Swift.Float {
+    get
+  }
+  @objc public var speed: Swift.Int {
+    get
+  }
+  @objc public var heading: Swift.Int {
+    get
+  }
+  @objc public var dop: Swift.Float {
+    get
+  }
+  public var gpsAge: Swift.UInt? {
+    get
+  }
+  @objc public var gpsAgePresent: Swift.Bool
+  @objc public var gpsAgeValue: Swift.UInt
+  @objc public func getComponents() -> [Swift.String]
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc public class ConfigureVirtualDashboardRequest : PacificTrack.ControlFrame {
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc public class RetrieveStoredEventsResponse : PacificTrack.ControlFrame {
+  @objc public var status: PacificTrack.ResponseStatus {
+    @objc get
+  }
+  @objc deinit
+}
+@objc public enum TrackerServiceState : Swift.Int {
+  case idle
+  case handled
+  case synced
+  case upgrade
+  case diagnostics
+  case upgradeCompleted
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@_hasMissingDesignatedInitializers @objc public class GetDTCResponse : PacificTrack.ControlFrame {
+  @objc public var status: PacificTrack.ResponseStatus {
+    @objc get
+  }
+  @objc public var errorCodes: PacificTrack.DTCErrorCodes {
+    @objc get
+  }
+  @objc deinit
+}
+@objc public enum TrackerUpgradeError : Swift.Int {
+  case deviceStatusFailed
+  case deviceInfoFailed
+  case getFirmwareInfoFailed
+  case firmwareDownloadFailed
+  case upgradeFailed
+  case fileIOError
+  case sequenceError
+  case sizeMismatch
+  case checksumError
+  case upgradeInitFailed
+  case unauthorized
+  case upgradeNotRequired
+  case canceled
+  case timeout
+  case noError
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@_hasMissingDesignatedInitializers @objc public class TrackerBaseInfo : ObjectiveC.NSObject {
+  @objc public var trackerName: Swift.String?
+  @objc public var uuid: Swift.String
+  @objc public var rssi: Foundation.NSNumber
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc public class GetInformationResponse : PacificTrack.ControlFrame {
+  @objc public var status: PacificTrack.ResponseStatus {
+    @objc get
+  }
+  @objc public var productName: Swift.String {
+    @objc get
+  }
+  @objc public var mainVersion: PacificTrack.VersionParam {
+    @objc get
+  }
+  @objc public var bleVersion: PacificTrack.VersionParam {
+    @objc get
+  }
+  @objc public var vin: Swift.String? {
+    @objc get
+  }
+  @objc public var imei: Swift.String? {
+    @objc get
+  }
+  @objc public var serialNumber: Swift.String {
+    @objc get
+  }
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc public class TrackerService : ObjectiveC.NSObject {
+  @objc public var state: PacificTrack.TrackerServiceState {
+    @objc get
+  }
+  @objc public var debug: Swift.Bool
+  @objc public var tracker: PacificTrack.TrackerInfo?
+  public var virtualDashboardData: PacificTrack.VirtualDashboardData {
+    get
+  }
+  @objc public var virtualDashboardDataUnwrapped: PacificTrack.VirtualDashboardDataUnwrapped {
+    get
+  }
+  @objc public var apiKey: Swift.String? {
+    @objc get
+    @objc set
+  }
+  @objc public var delegate: (any PacificTrack.TrackerServiceDelegate)?
+  @objc public static let sharedInstance: PacificTrack.TrackerService
+  @objc public func handle(trackerPeripheral peripheral: CoreBluetooth.CBPeripheral)
+  @objc public func stopHandling() -> CoreBluetooth.CBPeripheral?
+  @objc public func getInformation(response: @escaping ((PacificTrack.GetInformationResponse?, PacificTrack.TrackerServiceError) -> Swift.Void))
+  @objc public func getStatus(response: @escaping ((PacificTrack.GetStatusResponse?, PacificTrack.TrackerServiceError) -> Swift.Void))
+  @objc public func getStoredEventsCount(response: @escaping ((PacificTrack.StoredEventsCountResponse?, PacificTrack.TrackerServiceError) -> Swift.Void))
+  @objc public func retrieveStoredEvents(response: @escaping ((PacificTrack.RetrieveStoredEventsResponse?, PacificTrack.TrackerServiceError) -> Swift.Void))
+  @objc public func clearStoredEvents(response: @escaping ((PacificTrack.ClearStoredEventsResponse?, PacificTrack.TrackerServiceError) -> Swift.Void))
+  @objc public func getVehicleInformation(response: @escaping ((PacificTrack.GetVehicleInformationResponse?, PacificTrack.TrackerServiceError) -> Swift.Void))
+  public func getSystemVariable(_ variable: any PacificTrack.TrackerSystemVariable, response: @escaping ((PacificTrack.GetSystemVariableResponse?, PacificTrack.TrackerServiceError) -> Swift.Void))
+  @objc public func getSystemVariable(_ variable: PacificTrack.SystemVariable, response: @escaping ((PacificTrack.GetSystemVariableResponse?, PacificTrack.TrackerServiceError) -> Swift.Void))
+  @objc public func getSystemVariableByTag(_ variableTag: Swift.String, response: @escaping ((PacificTrack.GetSystemVariableResponse?, PacificTrack.TrackerServiceError) -> Swift.Void))
+  public func setSystemVariable(_ variable: any PacificTrack.TrackerSystemVariable, value: Swift.String, response: @escaping ((PacificTrack.SetSystemVariableResponse?, PacificTrack.TrackerServiceError) -> Swift.Void))
+  @objc public func setSystemVariable(_ variable: PacificTrack.SystemVariable, value: Swift.String, response: @escaping ((PacificTrack.SetSystemVariableResponse?, PacificTrack.TrackerServiceError) -> Swift.Void))
+  @objc public func setSystemVariableByTag(_ variableTag: Swift.String, value: Swift.String, response: @escaping ((PacificTrack.SetSystemVariableResponse?, PacificTrack.TrackerServiceError) -> Swift.Void))
+  @objc public func setSPN(spnEventNumber: Swift.Int, spnEventDefinition: PacificTrack.SPNDefinitionParam, response: @escaping ((PacificTrack.SetSPNResponse?, PacificTrack.TrackerServiceError) -> Swift.Void))
+  @objc public func getDTCCodes(response: @escaping ((PacificTrack.GetDTCResponse?, PacificTrack.TrackerServiceError) -> Swift.Void))
+  @objc public func clearDTCCodes(response: @escaping ((PacificTrack.ClearDTCResponse?, PacificTrack.TrackerServiceError) -> Swift.Void))
+  @objc public func isUpgradeAvailable(response: @escaping ((Swift.Bool, PacificTrack.TrackerUpgradeError) -> Swift.Void))
+  @objc public func performUpgrade()
+  @objc public func performUpgradeUsing(firmware: PacificTrack.TrackerFirmwareFile)
+  @objc public func cancelUpgrade()
+  @objc public func performDiagnostics(response: @escaping ((Swift.String?, PacificTrack.TrackerServiceError) -> Swift.Void))
+  @objc public func cancelDiagnostics()
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc public class SPNEventFrame : PacificTrack.ControlFrame {
+  @objc public var spnEventNumber: Swift.Int {
+    @objc get
+  }
+  @objc public var spnData: PacificTrack.SPNData {
+    @objc get
+  }
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc public class StoredEventsCountResponse : PacificTrack.ControlFrame {
+  @objc public var status: PacificTrack.ResponseStatus {
+    @objc get
+  }
+  @objc public var count: Swift.UInt {
+    @objc get
+  }
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc public class VariableParam : ObjectiveC.NSObject {
+  @objc public var variable: Swift.String {
+    get
+  }
+  @objc public var value: Swift.String {
+    get
+  }
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc public class TrackerInfo : ObjectiveC.NSObject {
+  @objc public var productName: Swift.String
+  @objc public var mainVersion: PacificTrack.VersionParam
+  @objc public var bleVersion: PacificTrack.VersionParam
+  @objc public var vin: Swift.String?
+  @objc public var imei: Swift.String?
+  @objc public var serialNumber: Swift.String
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc public class DTCErrorCodes : ObjectiveC.NSObject {
+  @objc public var version: Swift.Int {
+    get
+  }
+  @objc public var mil: Swift.Bool {
+    get
+  }
+  @objc public var bus: PacificTrack.BusType {
+    get
+  }
+  @objc public var number: Swift.Int {
+    get
+  }
+  @objc public var codes: [Swift.String] {
+    get
+  }
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc public class SetSPNResponse : PacificTrack.ControlFrame {
+  @objc public var status: PacificTrack.ResponseStatus {
+    @objc get
+  }
+  @objc public var spnEventNumber: Swift.Int {
+    @objc get
+  }
+  @objc deinit
+}
+public func == (lhs: PacificTrack.TrackerBaseInfo, rhs: PacificTrack.TrackerBaseInfo) -> Swift.Bool
+public protocol TrackerSystemVariable {
+}
+extension PacificTrack.SystemVariable : PacificTrack.TrackerSystemVariable {
+}
+extension Swift.String : PacificTrack.TrackerSystemVariable {
+}
+@_hasMissingDesignatedInitializers @objc public class ClearDTCResponse : PacificTrack.ControlFrame {
+  @objc public var status: PacificTrack.ResponseStatus {
+    @objc get
+  }
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc public class GetSystemVariableResponse : PacificTrack.ControlFrame {
+  @objc public var status: PacificTrack.ResponseStatus {
+    @objc get
+  }
+  @objc public var variablePair: PacificTrack.VariableParam {
+    @objc get
+  }
+  @objc deinit
+}
+@objc public enum BusType : Swift.Int {
+  case notDetected = 0
+  case obd2 = 1
+  case j1708 = 2
+  case j1939 = 4
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc public enum TrackerFirmwareType : Swift.Int {
+  case controller = 0
+  case ble = 1
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@_hasMissingDesignatedInitializers @objc public class SetSystemVariableResponse : PacificTrack.ControlFrame {
+  @objc public var status: PacificTrack.ResponseStatus {
+    @objc get
+  }
+  @objc deinit
+}
+@objc public protocol TrackerServiceDelegate {
+  @objc func trackerService(_ trackerService: PacificTrack.TrackerService, didSync trackerInfo: PacificTrack.TrackerInfo)
+  @objc func trackerService(_ trackerService: PacificTrack.TrackerService, didReceive event: PacificTrack.EventFrame, processed: ((Swift.Bool) -> Swift.Void))
+  @objc func trackerService(_ trackerService: PacificTrack.TrackerService, didRetrieve event: PacificTrack.EventFrame, processed: ((Swift.Bool) -> Swift.Void))
+  @objc func trackerService(_ trackerService: PacificTrack.TrackerService, didReceiveSPN spnEvent: PacificTrack.SPNEventFrame, processed: ((Swift.Bool) -> Swift.Void))
+  @objc func trackerService(_ trackerService: PacificTrack.TrackerService, didReceieveVirtualDashboardReport virtualDashboardReport: PacificTrack.VirtualDashboardReport)
+  @objc func trackerService(_ trackerService: PacificTrack.TrackerService, onError error: PacificTrack.TrackerServiceError)
+  @objc func trackerService(_ trackerService: PacificTrack.TrackerService, onFirmwareUpgradeProgress progress: Swift.Float)
+  @objc func trackerService(_ trackerService: PacificTrack.TrackerService, onFirmwareUpgradeFailed error: PacificTrack.TrackerUpgradeError)
+  @objc func trackerService(_ trackerService: PacificTrack.TrackerService, onFirmwareUpgradeCompleted completed: Swift.Bool)
+}
+@_hasMissingDesignatedInitializers @objc public class GetStatusResponse : PacificTrack.ControlFrame {
+  @objc public var status: PacificTrack.ResponseStatus {
+    @objc get
+  }
+  @objc public var sequenceNumber: Swift.Int {
+    @objc get
+  }
+  @objc public var eventType: PacificTrack.EventType
+  @objc public var datetime: Foundation.Date {
+    @objc get
+  }
+  @objc public var geolocation: PacificTrack.GeolocationParam {
+    @objc get
+  }
+  @objc public var odometer: Swift.Float {
+    @objc get
+  }
+  @objc public var velocity: Swift.Int {
+    @objc get
+  }
+  @objc public var engineHours: Swift.Float {
+    @objc get
+  }
+  @objc public var rpm: Swift.Int {
+    @objc get
+  }
+  @objc public var liveEvent: Swift.Bool {
+    @objc get
+  }
+  @objc deinit
+}
+@objc public enum ResponseStatus : Swift.Int {
+  case success
+  case failure
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc public enum EventType : Swift.Int {
+  case powerOn
+  case powerOff
+  case ignitionOn
+  case ignitionOff
+  case engineOn
+  case engineOff
+  case tripStart
+  case tripStop
+  case periodic
+  case bluetoothConnected
+  case bluetoothDisconnected
+  case busConnected
+  case busDisconnected
+  case harshAccelerating
+  case harshBraking
+  case harshCornering
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc @_hasMissingDesignatedInitializers public class ControlFrame : ObjectiveC.NSObject {
+  public var version: Swift.UInt {
+    get
+  }
+  @objc override dynamic public var description: Swift.String {
+    @objc get
+  }
+  public func getValue(forKey key: Swift.String) -> Swift.String?
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc public class VirtualDashboardReport : PacificTrack.ControlFrame {
+  @objc public var reportNumber: Swift.UInt {
+    @objc get
+  }
+  public var virtualDashboardData: PacificTrack.VirtualDashboardData {
+    get
+  }
+  @objc public var virtualDashboardDataUnwrapped: PacificTrack.VirtualDashboardDataUnwrapped {
+    @objc get
+  }
+  @objc deinit
+}
+@objc public enum SystemVariable : Swift.Int {
+  case timeBetweenPeriodicEvents
+  case bluetoothEventsStreaming
+  case uartEventsStreaming
+  case ignitionDebounceTime
+  case minRPM
+  case rpmDebounceTime
+  case minSpeedTrigger
+  case minTimeAboveMinSpeed
+  case maxSpeedTrigger
+  case minTimeBelowMaxSpeed
+  case redLedOn
+  case storeEventsInFlash
+  case drivingAcceleration
+  case drivingBraking
+  case drivingCornering
+  case odometerOverride
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@_hasMissingDesignatedInitializers @objc public class SPNData : ObjectiveC.NSObject {
+  @objc public var spn: Swift.UInt {
+    get
+  }
+  @objc public var address: Swift.UInt {
+    get
+  }
+  @objc public var value: Swift.UInt {
+    get
+  }
+  @objc deinit
+}
+extension PacificTrack.Bus : Swift.Equatable {}
+extension PacificTrack.Bus : Swift.Hashable {}
+extension PacificTrack.Bus : Swift.RawRepresentable {}
+extension PacificTrack.TrackerServiceError : Swift.Equatable {}
+extension PacificTrack.TrackerServiceError : Swift.Hashable {}
+extension PacificTrack.TrackerServiceError : Swift.RawRepresentable {}
+extension PacificTrack.SPNEventMode : Swift.Equatable {}
+extension PacificTrack.SPNEventMode : Swift.Hashable {}
+extension PacificTrack.SPNEventMode : Swift.RawRepresentable {}
+extension PacificTrack.TrackerServiceState : Swift.Equatable {}
+extension PacificTrack.TrackerServiceState : Swift.Hashable {}
+extension PacificTrack.TrackerServiceState : Swift.RawRepresentable {}
+extension PacificTrack.TrackerUpgradeError : Swift.Equatable {}
+extension PacificTrack.TrackerUpgradeError : Swift.Hashable {}
+extension PacificTrack.TrackerUpgradeError : Swift.RawRepresentable {}
+extension PacificTrack.SystemVariable : Swift.Equatable {}
+extension PacificTrack.SystemVariable : Swift.Hashable {}
+extension PacificTrack.SystemVariable : Swift.RawRepresentable {}
+extension PacificTrack.BusType : Swift.Equatable {}
+extension PacificTrack.BusType : Swift.Hashable {}
+extension PacificTrack.BusType : Swift.RawRepresentable {}
+extension PacificTrack.TrackerFirmwareType : Swift.Equatable {}
+extension PacificTrack.TrackerFirmwareType : Swift.Hashable {}
+extension PacificTrack.TrackerFirmwareType : Swift.RawRepresentable {}
+extension PacificTrack.ResponseStatus : Swift.Equatable {}
+extension PacificTrack.ResponseStatus : Swift.Hashable {}
+extension PacificTrack.ResponseStatus : Swift.RawRepresentable {}
+extension PacificTrack.EventType : Swift.Equatable {}
+extension PacificTrack.EventType : Swift.Hashable {}
+extension PacificTrack.EventType : Swift.RawRepresentable {}

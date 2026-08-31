@@ -6,7 +6,7 @@
 	<dict>
 		<key>Headers/PacificTrack-Swift.h</key>
 		<data>
-		278T104kB7FwuZ4N83jGPNFEMOM=
+		IZwWGY2Ci9s/o4tcCranmlBw0Ds=
 		</data>
 		<key>Headers/PacificTrack.h</key>
 		<data>
@@ -14,31 +14,31 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		BYrk4jYB3z/T+yKDCNtDP16Xt4k=
+		RcxeFQ3KV5/wtN1nrYfx6iqgnkQ=
 		</data>
 		<key>Modules/PacificTrack.swiftmodule/arm64-apple-ios.abi.json</key>
 		<data>
-		behXzz6rtMAILLiqPzJYzYTAU/4=
+		5shYJEw99wdPxLiOeKmRfLyCLU8=
 		</data>
 		<key>Modules/PacificTrack.swiftmodule/arm64-apple-ios.private.swiftinterface</key>
 		<data>
-		PTrvKxxCHWviQYWlaK/glDlTN84=
+		Xi5Lm/TrADVeJ/ilrkaXeyhC340=
 		</data>
 		<key>Modules/PacificTrack.swiftmodule/arm64-apple-ios.swiftdoc</key>
 		<data>
-		x1HJvxvjOCpw+NTRINTsQ0uY+b8=
+		ryxpvnp3WdFTlKwAzjKlljt/zqI=
 		</data>
 		<key>Modules/PacificTrack.swiftmodule/arm64-apple-ios.swiftinterface</key>
 		<data>
-		PTrvKxxCHWviQYWlaK/glDlTN84=
+		Xi5Lm/TrADVeJ/ilrkaXeyhC340=
 		</data>
 		<key>Modules/PacificTrack.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<data>
-		tFcYr3A+MCfkGAAB4xa0wHhKpvU=
+		pUdXX8oDN7uH1Ikl6vXENGycDqs=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
-		KsKmwpJqcaDq6qeFXGVfRfiWkIc=
+		urahi7OmRDW55UmWORnWudmqcec=
 		</data>
 	</dict>
 	<key>files2</key>
@@ -47,7 +47,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			k9Fkpnn1cUV9mRXhHrygWg2aj1R0YQCYx58n9EWqh3Y=
+			x3RB3U8Qpd9/r+ubfdnb0BxHgOaAFdWSHRMi1Ao4qJk=
 			</data>
 		</dict>
 		<key>Headers/PacificTrack.h</key>
@@ -61,42 +61,42 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			dyNkENhgUQwWg954GZc5fYcAOJVagS71iqetpjzYh60=
+			tIisQL5nDsYvOCROLCCmfCoWzw1aQSWRIwipchYT6ZM=
 			</data>
 		</dict>
 		<key>Modules/PacificTrack.swiftmodule/arm64-apple-ios.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			W91iAgHFBhKiHgI0vLTIQvQuAxRyFnNQ7DFpeL5lMMM=
+			ABxldEDklTDxIsXT8Oe0NN1RIx0TEcqsxC6daBNukZw=
 			</data>
 		</dict>
 		<key>Modules/PacificTrack.swiftmodule/arm64-apple-ios.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			YdNVFcxO7D+bywQBtQj1hGcjlSQtT0myqDsE45yvJWE=
+			wWUDCkYrYCPj6wmIpVUq3YuyAKr9/Q0R2OhAdYmc7Tg=
 			</data>
 		</dict>
 		<key>Modules/PacificTrack.swiftmodule/arm64-apple-ios.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			W91iAgHFBhKiHgI0vLTIQvQuAxRyFnNQ7DFpeL5lMMM=
+			ABxldEDklTDxIsXT8Oe0NN1RIx0TEcqsxC6daBNukZw=
 			</data>
 		</dict>
 		<key>Modules/PacificTrack.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			WzOnocKRWzZvzigWoASb4Q5/Trm2k1OiVQ7zaJazmLw=
+			By+HxaloMgVjA5a/rzC/TEOZ3120lXTcPoQRxfUjR68=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			B0jTHAU3t3c9cr/w60BLirkBs9EHfjwBVCEsefef1+M=
+			xL9bO7YCEA3tVqitWxxKD86ud48j9OE6XQJ17h3qTzo=
 			</data>
 		</dict>
 	</dict>

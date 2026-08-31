@@ -52,12 +52,17 @@ public typealias VirtualDashboardData = PacificTrack.VirtualDashboardData
 public typealias TrackerInfo = PacificTrackMock.TrackerInfo
 public typealias VirtualDashboardReport = PacificTrackMock.VirtualDashboardReport
 public typealias EventFrame = PacificTrackMock.EventFrame
+public typealias EventType = PacificTrackMock.EventType
 public typealias SPNEventFrame = PacificTrackMock.SPNEventFrame
 public typealias TrackerServiceError = PacificTrackMock.TrackerServiceError
 public typealias TrackerUpgradeError = PacificTrackMock.TrackerUpgradeError
 
 // Using a separate enum for other mock types
 public enum PacificTrackMock {
+    public enum EventType: Int {
+        case unknown = 0
+    }
+
     public struct Version {
         public var version: String = "1.0.0"
         public init() {}
@@ -86,6 +91,7 @@ public enum PacificTrackMock {
 
     public struct EventFrame {
         public var sequenceNumber: Int = 0
+        public var eventType: EventType = .unknown
         public var datetime: Date = Date()
         public var geolocation: Geolocation = Geolocation()
         public var odometer: Double = 0.0

@@ -1,0 +1,4 @@
+module IQTextView {
+header "IQTextView-Swift.h"
+export *
+}
